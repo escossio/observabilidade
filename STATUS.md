@@ -107,3 +107,12 @@
 - validação técnica confirmada por API após o save compacto do dashboard
 - artefato novo desta rodada:
   - `artifacts/grafana_dashboard_compact_refresh.md`
+
+## Rodada de saúde do host
+
+- descoberta local concluída para CPU e RAM nativos do Zabbix agent2
+- `system.cpu.util` e `vm.memory.utilization` já existem e seguem coletando
+- `sensor[k10temp-pci-00c3,temp1]` foi validado no host como fonte local legível de temperatura da CPU
+- item de temperatura foi inserido no Zabbix como `CPU temperature`, mas a coleta no history ainda não apareceu após recarga de cache
+- bloqueio real da rodada: o dashboard Grafana não foi atualizado nesta passagem porque o caminho de edição disponível ficou sem acesso operacional confiável ao objeto do dashboard
+- próximo passo técnico: fechar a persistência do item de temperatura no Zabbix e então aplicar o encaixe visual no dashboard principal

@@ -29,6 +29,15 @@
 - `32537` - unbound parado
 - `32538` - Web 127.0.0.1:8080 indisponivel
 
+## Host health items
+
+- `69621` - `CPU temperature` - `sensor[k10temp-pci-00c3,temp1]`
+
+## Notes
+
+- CPU e RAM já existiam como itens nativos do template Linux by Zabbix agent
+- a temperatura da CPU foi descoberta localmente via `lm-sensors` e validada no host com o agent2
+
 ## Validation notes
 
 - `emby-server` permanece monitorado como item real, mas sem trigger ruidosa adicional

@@ -34,3 +34,10 @@
 - `example.com` deixou de aparecer como painel principal
 - a visualização padrão não exige rolagem para ver o conjunto principal
 - `Emby` foi removido do layout principal
+
+## Rodada de saúde do host
+
+- esta rodada ainda não alterou o dashboard principal do Grafana
+- CPU, RAM e temperatura foram mapeados para a próxima expansão do bloco de saúde do host
+- a fonte de temperatura escolhida foi `sensor[k10temp-pci-00c3,temp1]`
+- a validação visual do encaixe dos novos painéis permanece pendente
