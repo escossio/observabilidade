@@ -86,3 +86,14 @@
   - item DNS legado de `example.com` foi reaproveitado para `observabilidade.escossio.dev.br`
   - item web legado de `127.0.0.1` foi reaproveitado para o domínio público `observabilidade.escossio.dev.br`
   - dashboard do Grafana foi rebatizado para a baseline atual e já não exibe `example.com` como painel principal
+
+## Fechamento da rodada visual
+
+- dashboard principal do Grafana reorganizado em grade 4x4 para reduzir área morta e eliminar rolagem na visualização padrão
+- linha 1 reservada para `Resumo`, `Problemas`, `Web Público` e `DNS Público`
+- linhas centrais reservadas para os serviços críticos da baseline operacional
+- linha inferior reservada para diagnósticos e segunda linha: `Grafana Local`, `Zabbix Frontend`, `localhost-a` e `Emby`
+- cores e hierarquia visual ajustadas para leitura operacional rápida em monitor grande ou TV
+- validação técnica confirmada por API do Grafana após o save do dashboard
+- artefato novo previsto nesta rodada:
+  - `artifacts/grafana_dashboard_visual_refresh.md`

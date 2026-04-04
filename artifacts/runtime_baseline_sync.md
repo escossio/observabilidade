@@ -24,6 +24,9 @@ Data: `2026-04-04`
 - painel de serviço passou a destacar `grafana-server`
 - painéis de web passaram a apontar para `observabilidade-public` e `zabbix-frontend-alt-port`
 - painéis de DNS passaram a apontar para `observabilidade-public-a` e `localhost-a`
+- layout do dashboard foi reorganizado em grade 4x4 para caber sem scroll na visão padrão
+- os painéis centrais ficaram dedicados aos serviços críticos da baseline operacional
+- a linha inferior foi reservada para diagnósticos e segunda linha
 
 ## O que deixou de ser referência principal
 
@@ -35,3 +38,4 @@ Data: `2026-04-04`
 - `grafana-server` e `cloudflared` seguem tratados como críticos na baseline do projeto
 - `localhost-a` permanece apenas como diagnóstico local de segunda linha
 - `snmpd.service` continua apenas registrado como falho; não houve correção nesta rodada
+- o dashboard principal ganhou hierarquia visual operacional em vez de leitura linear improvisada

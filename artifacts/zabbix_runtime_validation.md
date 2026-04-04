@@ -68,6 +68,8 @@
 - Grafana URL: `http://127.0.0.1:3000/`
 - plugin installed: `alexanderzobnin-zabbix-app v6.3.0`
 - datasource `Zabbix` created and provisioned
-- dashboard `Observabilidade Zabbix - Grafana` created with `9` panels
+- dashboard `Observabilidade Zabbix - Grafana` validado com `16` painéis em grade 4x4
 - painel de serviço principal passou a destacar `Service grafana-server running`
 - painéis de web e DNS foram rebatizados para `observabilidade-public`, `zabbix-frontend-alt-port`, `grafana-local`, `observabilidade-public-a` e `localhost-a`
+- a visualização padrão foi conferida para manter os blocos acima da dobra sem rolagem
+- `example.com` não aparece mais como referência principal no dashboard
