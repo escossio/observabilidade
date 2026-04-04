@@ -31,6 +31,7 @@ Data: `2026-04-04`
 - azul/ciano para informação estrutural quando útil
 - os cards de estado passaram a usar fundo por threshold para leitura imediata
 - topo refinado com `Resumo` menor e `Problemas` mais compacto
+- linha crítica ajustada com fonte menor para leitura mais rápida em tela grande
 
 ## Evidência técnica
 
