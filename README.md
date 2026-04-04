@@ -129,6 +129,7 @@ Os resultados ficam em `artifacts/` e o estado consolidado em `STATUS.md`.
 
 - Zabbix local instalado e funcional
 - Grafana instalado e integrado ao Zabbix
+- Grafana publicado em `https://observabilidade.escossio.dev.br/` via Cloudflare Tunnel
 - host monitorado: `agt01`
 - itens criados para serviços, web e DNS
 - triggers criadas para serviço, web e DNS
@@ -150,4 +151,3 @@ Consulte `STATUS.md` para o fechamento mais recente.
 - refinar a visualização dos checks textuais no Grafana
 - manter `config/` como fonte única dos checks
 - preservar a separação entre documentação, artefatos e segredos
-

@@ -45,6 +45,7 @@
 - dashboard `Observabilidade Zabbix - resumo` preenchido com widgets reais
 - Grafana instalado e integrado ao Zabbix como camada principal de visualização
 - dashboard principal do Grafana criado em `observabilidade-grafana`
+- hostname público `observabilidade.escossio.dev.br` publicado para o Grafana via Cloudflare Tunnel
 - credencial padrão `Admin/zabbix` removida da operação
 - evidências objetivas salvas em `artifacts/`
 - preparação do git concluída com separação entre fonte versionável, artefatos e segredos locais
