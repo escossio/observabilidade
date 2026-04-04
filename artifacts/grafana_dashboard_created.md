@@ -9,18 +9,18 @@
 
 - `Serviço apache2` - `stat`
 - `Serviço unbound` - `stat`
-- `Serviço emby-server` - `stat`
-- `Web 127.0.0.1` - `table` (`Zabbix Problems`)
-- `Web 127.0.0.1:8080` - `table` (`Zabbix Problems`)
-- `DNS example.com` - `table` (`Zabbix Problems`)
-- `DNS checks` - `table` (`Zabbix Problems`)
-- `Resumo do host` - `stat`
+- `Serviço grafana-server` - `stat`
+- `Web observabilidade public` - `table` (`Zabbix Problems`)
+- `Web zabbix frontend alt port` - `table` (`Zabbix Problems`)
+- `DNS observabilidade public` - `table` (`Zabbix Problems`)
+- `DNS localhost` - `table` (`Zabbix Problems`)
+- `Frontend público` - `URL`
 - `Problemas ativos` - `table` (`Zabbix Problems`)
 
 ## Validação
 
 - o dashboard foi salvo com sucesso no Grafana
 - o datasource Zabbix está associado ao dashboard
-- os painéis de serviço usam itens reais do Zabbix com filtro pelo nome do item, não pela `key_`
-- os painéis de web/DNS foram adaptados para o painel `Zabbix Problems`, porque o plugin não renderizou os valores textuais como `stat`
-- o painel `Resumo do host` usa o item numérico real `Zabbix agent availability`
+- os painéis de serviço usam itens reais do Zabbix com filtro pelo nome do item
+- os painéis de web e DNS foram rebatizados para a baseline atual
+- `example.com` deixou de aparecer como painel principal

@@ -81,3 +81,8 @@
 - ajuste mínimo pendente: incluir `dnsmasq` apenas se a rede da libvirt virar alvo explícito de monitoramento
 - inventário de web/DNS também foi alinhado à baseline operacional, com foco no domínio público publicado e no resolvedor local real
 - `observabilidade.escossio.dev.br` virou base mínima de web e DNS; checks herdados e genéricos ficaram fora
+- runtime do Zabbix sincronizado com a baseline final:
+  - itens de serviço criados para `zabbix-server`, `zabbix-agent2`, `grafana-server`, `cloudflared`, `postgresql` e `ssh`
+  - item DNS legado de `example.com` foi reaproveitado para `observabilidade.escossio.dev.br`
+  - item web legado de `127.0.0.1` foi reaproveitado para o domínio público `observabilidade.escossio.dev.br`
+  - dashboard do Grafana foi rebatizado para a baseline atual e já não exibe `example.com` como painel principal
