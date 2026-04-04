@@ -86,6 +86,7 @@
 - item de temperatura agora usa a key final `cpu.temp`
 - `UserParameter=cpu.temp` foi adicionado em `/etc/zabbix/zabbix_agent2.d/cpu_temp.conf`
 - o item de temperatura agora produz `latest data` no Zabbix
+- o painel `CPU Temp` do Grafana está filtrando o item `CPU temperature` do host `agt01`
 - latest data validado com evidência real para CPU, RAM e temperatura:
   - CPU utilization: `7.207320999999993` em `2026-04-04 22:01:31-03`
   - Available memory in %: `78.200826` em `2026-04-04 22:02:11-03`

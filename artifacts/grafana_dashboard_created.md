@@ -41,7 +41,7 @@
 
 ## Rodada de saúde do host
 
-- esta rodada ainda não alterou o dashboard principal do Grafana
-- CPU, RAM e temperatura foram mapeados para a próxima expansão do bloco de saúde do host
-- a fonte de temperatura escolhida foi `sensor[k10temp-pci-00c3,temp1]`
-- a validação visual do encaixe dos novos painéis permanece pendente
+- o dashboard principal do Grafana foi expandido com `CPU`, `RAM` e `CPU Temp`
+- o painel `CPU Temp` referencia o item `CPU temperature` do Zabbix
+- o painel usa a key final `cpu.temp` no backend
+- a validação final de consistência entre Zabbix e Grafana foi concluída nesta rodada

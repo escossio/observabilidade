@@ -117,4 +117,5 @@
 - a key final do item passou a ser `cpu.temp`
 - o agent2 recebeu `UserParameter=cpu.temp` apontando para `/sys/class/hwmon/hwmon1/temp2_input`
 - o item `CPU temperature` foi convertido para coleta operacional no Zabbix e recebeu `lastvalue` real
+- o painel `CPU Temp` do Grafana foi validado como apontando para o item final `CPU temperature` / `cpu.temp`
 - dashboard principal do Grafana permaneceu sem alterações nesta rodada
