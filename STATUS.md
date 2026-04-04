@@ -113,6 +113,8 @@
 - descoberta local concluída para CPU e memória nativas do template Linux by Zabbix agent
 - `system.cpu.util` segue coletando como CPU usage
 - `vm.memory.size[pavailable]` segue coletando como base operacional de RAM no host
-- `sensor[nct6776-isa-0290,temp2]` foi escolhido como fonte local mais legível para temperatura da CPU após validação no host via `lm-sensors`
-- dashboard principal do Grafana foi atualizado com a nova linha de saúde: `CPU`, `RAM` e `CPU Temp`
-- bloqueio residual da rodada: a temperatura ainda não apareceu em `latest data` do Zabbix no momento da validação final, então a evidência completa depende desse último ciclo de coleta
+- a fonte local de temperatura foi validada via `lm-sensors` em `nct6776-isa-0290` / `temp2`
+- a key final do item passou a ser `cpu.temp`
+- o agent2 recebeu `UserParameter=cpu.temp` apontando para `/sys/class/hwmon/hwmon1/temp2_input`
+- o item `CPU temperature` foi convertido para coleta operacional no Zabbix e recebeu `lastvalue` real
+- dashboard principal do Grafana permaneceu sem alterações nesta rodada

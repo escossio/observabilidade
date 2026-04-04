@@ -83,10 +83,11 @@
 - CPU e RAM já possuem itens nativos ativos no Zabbix:
   - `CPU utilization` / `system.cpu.util`
   - `Available memory in %` / `vm.memory.size[pavailable]`
-- item de temperatura criado no Zabbix como `CPU temperature` com key `sensor[nct6776-isa-0290,temp2]`
-- o item de temperatura ainda não produziu `latest data` no Zabbix no momento da última validação
-- latest data validado com evidência real para CPU e RAM:
+- item de temperatura agora usa a key final `cpu.temp`
+- `UserParameter=cpu.temp` foi adicionado em `/etc/zabbix/zabbix_agent2.d/cpu_temp.conf`
+- o item de temperatura agora produz `latest data` no Zabbix
+- latest data validado com evidência real para CPU, RAM e temperatura:
   - CPU utilization: `7.207320999999993` em `2026-04-04 22:01:31-03`
   - Available memory in %: `78.200826` em `2026-04-04 22:02:11-03`
-  - CPU temperature: evidência direta no host via `zabbix_agent2 -t` em `39.5`
-- o dashboard Grafana foi atualizado com os painéis `CPU`, `RAM` e `CPU Temp`
+  - CPU temperature: `38.5` em `2026-04-04 22:10:45-03`
+- o dashboard Grafana não foi alterado nesta rodada
