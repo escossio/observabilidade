@@ -30,6 +30,7 @@ Data: `2026-04-04`
 - vermelho para falha
 - azul/ciano para informação estrutural quando útil
 - os cards de estado passaram a usar fundo por threshold para leitura imediata
+- topo refinado com `Resumo` menor e `Problemas` mais compacto
 
 ## Evidência técnica
 
