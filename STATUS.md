@@ -48,4 +48,5 @@
 - credencial padrão `Admin/zabbix` removida da operação
 - evidências objetivas salvas em `artifacts/`
 - preparação do git concluída com separação entre fonte versionável, artefatos e segredos locais
+- README reorganizado para explicitar a arquitetura Zabbix → Grafana e a estrutura do repositório
 - `shellcheck` não está instalado no host, então a validação de shell ficou limitada à execução dos scripts

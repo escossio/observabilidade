@@ -1,81 +1,111 @@
 # Observabilidade Zabbix
 
-Frente de trabalho para monitoramento com Zabbix cobrindo:
+Repositório da frente de observabilidade que usa **Zabbix como backend de coleta, itens, triggers e alertas** e **Grafana como camada principal de visualização**.
 
-- status de serviços `systemd`
-- disponibilidade de páginas HTTP/HTTPS
+O objetivo é manter a operação reproduzível por arquivos, scripts e documentação, sem depender de ajuste manual solto na interface.
+
+## Visão geral
+
+Esta frente monitora:
+
+- serviços `systemd`
+- páginas HTTP/HTTPS
 - resolução DNS
 
-Este diretório é a base isolada da frente. A ideia é manter tudo reproduzível por arquivos, scripts e artefatos, evitando dependência de ajuste manual solto na UI.
+A arquitetura está separada em duas camadas:
 
-## Diagnóstico resumido
+- **Zabbix** coleta dados, mantém itens, dispara triggers e concentra alertas
+- **Grafana** consome os dados do Zabbix para exibição operacional e painéis de uso diário
 
-- Apache `2.4.66` está instalado e ativo no host
-- Não há serviços `zabbix*` ativos no ambiente no momento do diagnóstico
-- Não foram encontrados arquivos usuais de configuração do Zabbix em `/etc`, `/opt` ou `/usr/local`
-- Pacotes `zabbix-server-pgsql`, `zabbix-server-mysql`, `zabbix-frontend-php` e `zabbix-agent2` não estão instalados
-- O host já expõe DNS local via `unbound` em `127.0.0.1:53` e `10.45.0.3:53`
+## Arquitetura operacional
 
-Conclusão inicial:
+O fluxo do projeto é:
 
-- não existe stack Zabbix funcional local para reaproveitar
-- a frente segue com plano de implantação e artefatos editáveis
-- a aplicação segura depende de informar credenciais/API do Zabbix ou de instalar a stack mínima fora desta rodada
+1. os inventários em `config/` definem o que deve ser monitorado
+2. os scripts em `scripts/` validam os arquivos e geram plano ou evidência
+3. o Zabbix recebe os itens, triggers e alertas
+4. o Grafana lê o backend do Zabbix para o painel principal
+5. os artefatos em `artifacts/` registram diagnóstico, validação e decisões
 
-## Estrutura
+O repositório versiona a parte **estrutural e documental** da frente.
 
-- `config/`: inventários editáveis de serviços, URLs e checagens DNS
-- `scripts/`: coleta de ambiente, validação e geração de plano
-- `docs/`: blueprint do dashboard e guia de aplicação
-- `examples/`: exemplos de referência
-- `artifacts/`: saídas geradas pelo diagnóstico e validação
+Não entram no versionamento por padrão:
 
-## Versionamento
+- segredos e credenciais locais
+- runtime do ambiente
+- backups
+- artefatos descartáveis ou sensíveis
+- inventários brutos de coleta
 
-- a fonte versionável deve ficar em `README.md`, `STATUS.md`, `config/`, `scripts/`, `docs/` e `examples/`
-- artefatos operacionais e evidências sensíveis ficam em `artifacts/` e não devem ser publicados por padrão
-- segredos locais, backups e arquivos de runtime devem ser mantidos fora do git
+## Estrutura do repositório
 
-## Como preencher os inventários
+### `config/`
 
-### `config/services.yaml`
+Inventários editáveis da frente.
 
-Liste os serviços `systemd` que devem ser monitorados. O arquivo já vem com exemplos e o script de coleta marca quais existem de fato no host.
+- `services.yaml`: serviços `systemd` monitorados
+- `web_checks.yaml`: URLs e verificações HTTP
+- `dns_checks.yaml`: domínios e registros DNS
 
-Campos esperados:
+### `docs/`
 
-- `name`: nome legível do serviço
-- `unit`: unidade `systemd`
-- `enabled`: se o serviço deve entrar no escopo
-- `severity`: severidade base
+Documentação operacional da frente.
 
-### `config/web_checks.yaml`
+- `aplicacao_zabbix.md`: referência de aplicação da frente no Zabbix
+- `dashboard_blueprint.md`: blueprint do painel operacional
 
-Liste URLs HTTP/HTTPS para checagem de disponibilidade.
+### `examples/`
 
-Campos esperados:
+Exemplos de referência para manter o formato esperado dos inventários.
 
-- `name`
-- `url`
-- `expected_status`
-- `timeout`
-- `follow_redirects`
-- `expected_string` opcional
+### `scripts/`
 
-### `config/dns_checks.yaml`
+Automação pequena e reproduzível para:
 
-Liste domínios e registros para validação de resolução.
+- coletar inventário do host
+- validar os YAMLs
+- gerar plano de aplicação
+- renderizar exemplos
 
-Campos esperados:
+### `artifacts/`
 
-- `name`
-- `domain`
-- `server` opcional
-- `record_type`
-- `expected_value` opcional
-- `timeout`
+Saídas geradas durante diagnóstico, validação e integração.
 
-## Como validar
+- relatórios de ambiente
+- evidências de Zabbix
+- evidências de Grafana
+- relatório de preparação do git
+
+### `README.md`
+
+Visão geral da frente e ponto de entrada do repositório.
+
+### `STATUS.md`
+
+Estado operacional atual, decisões tomadas, riscos e pendências.
+
+## Como o projeto está organizado
+
+O repositório foi montado para separar claramente:
+
+- **fonte versionável**: documentação, configurações sanitizadas, scripts e exemplos
+- **artefatos operacionais**: relatórios e evidências geradas
+- **segredos locais**: credenciais, arquivos de runtime e backups
+
+Isso permite evoluir a frente sem misturar:
+
+- configuração limpa
+- documentação de uso
+- evidência operacional
+- segredos
+
+## Fluxo operacional
+
+### 1. Definir o que monitorar
+
+Atualize os arquivos em `config/`.
+
+### 2. Validar a estrutura
 
 Execute:
 
@@ -83,59 +113,41 @@ Execute:
 ./scripts/validate_configs.sh
 ```
 
-O script valida a sintaxe dos YAMLs, checa se `shellcheck` existe e valida os inventários gerados em `artifacts/`.
+### 3. Gerar ou aplicar o plano
 
-## Como aplicar
-
-Se existir Zabbix funcional e credenciais/API disponíveis:
+Execute:
 
 ```bash
 ./scripts/apply_or_generate_zabbix_plan.sh
 ```
 
-Sem API/credenciais, o script gera um plano objetivo em `artifacts/zabbix_plan.md` com os passos para aplicar no Zabbix existente.
+### 4. Manter documentação e evidência
 
-## Serviços systemd
-
-O monitoramento de serviços deve priorizar Zabbix Agent 2 com checagens baseadas em `systemd`.
-
-Exemplos já previstos:
-
-- `apache2`
-- `nginx`
-- `postfix`
-- `dovecot`
-- `zabbix-agent2`
-
-Se o serviço não existir no host, ele permanece como exemplo e não deve ser forçado.
-
-## Web checks
-
-Os checks web devem ser transformados em web scenarios no Zabbix.
-
-Fluxo previsto:
-
-1. preencher `config/web_checks.yaml`
-2. validar com `scripts/validate_configs.sh`
-3. gerar ou aplicar o plano com `scripts/apply_or_generate_zabbix_plan.sh`
-
-## DNS checks
-
-Os checks DNS devem usar a capacidade do Zabbix Agent 2 ou items nativos equivalentes do Zabbix, sem gambiarra desnecessária.
-
-Critérios previstos:
-
-- resolução bem-sucedida
-- tempo de resposta
-- divergência de valor esperado, quando configurado
-
-## Dashboard e alertas
-
-Veja:
-
-- `docs/dashboard_blueprint.md`
-- `docs/aplicacao_zabbix.md`
+Os resultados ficam em `artifacts/` e o estado consolidado em `STATUS.md`.
 
 ## Estado atual
 
-Consulte `STATUS.md` para diagnóstico, decisões, pendências e riscos.
+- Zabbix local instalado e funcional
+- Grafana instalado e integrado ao Zabbix
+- host monitorado: `agt01`
+- itens criados para serviços, web e DNS
+- triggers criadas para serviço, web e DNS
+- dashboard do Zabbix preenchido
+- dashboard principal do Grafana criado
+- credencial padrão do Zabbix removida da operação
+
+Consulte `STATUS.md` para o fechamento mais recente.
+
+## Segurança
+
+- não versionar credenciais
+- não versionar backups
+- não versionar runtime local
+- não versionar artefatos brutos descartáveis
+
+## Próximos passos
+
+- refinar a visualização dos checks textuais no Grafana
+- manter `config/` como fonte única dos checks
+- preservar a separação entre documentação, artefatos e segredos
+
