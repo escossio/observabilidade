@@ -97,3 +97,13 @@
 - validação técnica confirmada por API do Grafana após o save do dashboard
 - artefato novo previsto nesta rodada:
   - `artifacts/grafana_dashboard_visual_refresh.md`
+
+## Fechamento da rodada compacta
+
+- dashboard principal compactado para reduzir a altura dos cards e deixar a leitura mais viva
+- painel `Emby` removido do layout principal sem impacto na baseline de coleta
+- cards centrais reduzidos para altura `3` e linha de diagnóstico reaproveitada em três blocos mais largos
+- `Resumo` e demais cards principais seguem acima da dobra com leitura operacional preservada
+- validação técnica confirmada por API após o save compacto do dashboard
+- artefato novo desta rodada:
+  - `artifacts/grafana_dashboard_compact_refresh.md`
