@@ -132,3 +132,33 @@ Se a intenção for manter o YAML enxuto, o corte ainda precisa preservar:
 - publicação web
 - DNS local
 - acesso remoto
+
+## Leitura prática para `config/web_checks.yaml`
+
+### Base mínima
+
+- `observabilidade-public` em `https://observabilidade.escossio.dev.br/`
+
+### Segunda linha
+
+- `grafana-local` em `http://127.0.0.1:3000/`
+- `zabbix-frontend-alt-port` em `http://127.0.0.1:8081/`
+
+### Fora de escopo nesta rodada
+
+- check público adicional de exemplo
+- check local redundante do frontend Zabbix na porta `80`
+
+## Leitura prática para `config/dns_checks.yaml`
+
+### Base mínima
+
+- `observabilidade-public-a` consultando `observabilidade.escossio.dev.br` via `127.0.0.1`
+
+### Segunda linha
+
+- `localhost-a` como diagnóstico local do resolvedor
+
+### Fora de escopo nesta rodada
+
+- `example.com` como check genérico herdado de exemplo antigo

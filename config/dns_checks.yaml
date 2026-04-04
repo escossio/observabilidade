@@ -1,16 +1,20 @@
 dns_checks:
-  - name: example-com-a
-    domain: example.com
+  # base_minima
+  - name: observabilidade-public-a
+    domain: observabilidade.escossio.dev.br
     server: 127.0.0.1
     record_type: A
     expected_value:
-      - 104.18.27.120
-      - 104.18.26.120
+      - 172.67.131.172
+      - 104.21.4.50
     timeout: 5
 
+  # segunda_linha
   - name: localhost-a
     domain: localhost
     server: 127.0.0.1
     record_type: A
     expected_value: 127.0.0.1
     timeout: 5
+
+  # fora_de_escopo_nesta_rodada

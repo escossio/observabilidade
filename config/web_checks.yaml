@@ -1,14 +1,22 @@
 web_checks:
-  - name: apache-local-http
-    url: http://127.0.0.1/
+  # base_minima
+  - name: observabilidade-public
+    url: https://observabilidade.escossio.dev.br/
     expected_status: 200
     timeout: 5
     follow_redirects: true
-    expected_string: Apache/2.4.66
 
-  - name: apache-local-alt-port
-    url: http://127.0.0.1:8080/
+  # segunda_linha
+  - name: grafana-local
+    url: http://127.0.0.1:3000/
     expected_status: 200
     timeout: 5
     follow_redirects: true
-    expected_string: Apache/2.4.66
+
+  - name: zabbix-frontend-alt-port
+    url: http://127.0.0.1:8081/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  # fora_de_escopo_nesta_rodada
