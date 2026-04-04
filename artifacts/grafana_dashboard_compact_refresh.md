@@ -29,6 +29,7 @@ Data: `2026-04-04`
 - amarelo/laranja para atenção ou diagnóstico
 - vermelho para falha
 - azul/ciano para informação estrutural quando útil
+- os cards de estado passaram a usar fundo por threshold para leitura imediata
 
 ## Evidência técnica
 
