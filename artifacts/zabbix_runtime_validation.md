@@ -57,9 +57,9 @@
 - `proc.num[apache2]` returned `11`
 - `proc.num[unbound]` returned `1`
 - `proc.num[emby-server]` returned `0`
-- `system.cpu.util` returned a live CPU utilization sample from the agent
-- `vm.memory.size[pavailable]` returned a live memory-available percentage from the agent
-- `sensor[k10temp-pci-00c3,temp1]` returned `10.5` via `zabbix_agent2 -t`
+- `system.cpu.util` returned `7.207320999999993` as a live CPU utilization sample from the agent
+- `vm.memory.size[pavailable]` returned `78.200826` as a live memory-available percentage from the agent
+- `sensor[nct6776-isa-0290,temp2]` returned `39.5` via `zabbix_agent2 -t`
 - `web.page.get[observabilidade.escossio.dev.br,/,443]` returned HTTPS content from the public Grafana endpoint
 - `web.page.get[127.0.0.1,/,8081]` returned the local Zabbix frontend
 - `net.dns.record[127.0.0.1,observabilidade.escossio.dev.br,A]` returned the public A records
@@ -71,7 +71,7 @@
 - Grafana URL: `http://127.0.0.1:3000/`
 - plugin installed: `alexanderzobnin-zabbix-app v6.3.0`
 - datasource `Zabbix` created and provisioned
-- dashboard `Observabilidade Zabbix - Grafana` validado com `16` painéis em grade 4x4
+- dashboard `Observabilidade Zabbix - Grafana` validado com `18` painéis em grade compacta 4x4
 - painel de serviço principal passou a destacar `Service grafana-server running`
 - painéis de web e DNS foram rebatizados para `observabilidade-public`, `zabbix-frontend-alt-port`, `grafana-local`, `observabilidade-public-a` e `localhost-a`
 - a visualização padrão foi conferida para manter os blocos acima da dobra sem rolagem
@@ -79,15 +79,14 @@
 
 ## Rodada de saúde do host
 
-- fonte da temperatura validada no host: `k10temp-pci-00c3` com leitura `temp1`
+- fonte da temperatura validada no host: `nct6776-isa-0290` com leitura `temp2`
 - CPU e RAM já possuem itens nativos ativos no Zabbix:
   - `CPU utilization` / `system.cpu.util`
-  - `Memory utilization` / `vm.memory.utilization`
   - `Available memory in %` / `vm.memory.size[pavailable]`
-- item de temperatura criado no Zabbix como `CPU temperature` com key `sensor[k10temp-pci-00c3,temp1]`
-- o item de temperatura ainda não produziu histórico em `history` após `config_cache_reload`
+- item de temperatura criado no Zabbix como `CPU temperature` com key `sensor[nct6776-isa-0290,temp2]`
+- o item de temperatura ainda não produziu `latest data` no Zabbix no momento da última validação
 - latest data validado com evidência real para CPU e RAM:
-  - CPU utilization: `18.283190000000005` em `2026-04-04 18:56:31-03`
-  - Available memory in %: `78.520667` em `2026-04-04 18:56:11-03`
-  - Memory utilization: `21.479332999999997` em `2026-04-04 18:56:11-03`
-- não houve alteração confirmada no dashboard Grafana nesta passagem
+  - CPU utilization: `7.207320999999993` em `2026-04-04 22:01:31-03`
+  - Available memory in %: `78.200826` em `2026-04-04 22:02:11-03`
+  - CPU temperature: evidência direta no host via `zabbix_agent2 -t` em `39.5`
+- o dashboard Grafana foi atualizado com os painéis `CPU`, `RAM` e `CPU Temp`

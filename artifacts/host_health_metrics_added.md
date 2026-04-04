@@ -4,44 +4,36 @@ Data: `2026-04-04`
 
 ## Objetivo
 
-- expandir o monitoramento principal com CPU, RAM e temperatura da CPU
-- preservar a baseline de serviços, web, DNS e layout já estabilizada
+- ampliar o monitoramento do host com CPU, RAM e temperatura sem mexer na baseline de serviços, web e DNS
+- manter o dashboard principal sem scroll no bloco principal
 
-## Descoberta local
+## Fonte de temperatura
 
-- CPU usage: já existe nativamente via `system.cpu.util`
-- RAM usage: já existe nativamente via `vm.memory.utilization` e `vm.memory.size[pavailable]`
-- CPU temperature: fonte local validada via `lm-sensors`
-  - `k10temp-pci-00c3`
-  - leitura `temp1`
-  - valor observado no host via `zabbix_agent2 -t`: `10.5`
+- fonte validada no host: `nct6776-isa-0290`
+- leitura escolhida: `temp2`
+- motivo: leitura estável e legível via `lm-sensors`, com valor operacional de `39.5`
 
-## Zabbix
+## Itens no Zabbix
 
-- item nativo existente de CPU mantido: `CPU utilization`
-- item nativo existente de memória mantido: `Memory utilization`
-- item nativo existente de memória mantido: `Available memory in %`
-- item novo criado para temperatura:
-  - name: `CPU temperature`
-  - key: `sensor[k10temp-pci-00c3,temp1]`
-  - unidade: `C`
-  - tipo de dado: numérico flutuante
-- validação operacional da temperatura ainda pendente em `history`
+- `CPU utilization` / `system.cpu.util`
+- `Available memory in %` / `vm.memory.size[pavailable]`
+- `CPU temperature` / `sensor[nct6776-isa-0290,temp2]`
 
 ## Latest data validado
 
-- `CPU utilization`: `18.283190000000005` em `2026-04-04 18:56:31-03`
-- `Available memory in %`: `78.520667` em `2026-04-04 18:56:11-03`
-- `Memory utilization`: `21.479332999999997` em `2026-04-04 18:56:11-03`
+- CPU utilization: `7.207320999999993`
+- Available memory in %: `78.200826`
+- CPU temperature: evidência direta no host em `39.5` via `zabbix_agent2 -t`
 
-## Grafana
+## Dashboard Grafana
 
-- dashboard principal não foi alterado nesta passagem
-- o encaixe do bloco `CPU` / `RAM` / `CPU Temp` permanece pendente
-- nenhum scroll adicional foi introduzido
+- dashboard: `Observabilidade Zabbix - Grafana`
+- painel count: `18`
+- novos painéis: `CPU`, `RAM`, `CPU Temp`
+- layout: 4 linhas compactas, sem scroll na visão padrão
+- linha nova de saúde posicionada abaixo da linha de diagnósticos
 
-## Bloqueio real
+## Observação operacional
 
-- a fonte de temperatura foi validada
-- a persistência do item de temperatura no Zabbix ainda não gerou histórico
-- o dashboard Grafana não foi editado nesta rodada por bloqueio operacional de acesso ao objeto do dashboard
+- a temperatura ainda não apareceu em `latest data` do Zabbix no último ciclo observado, embora a fonte local esteja validada no host
+- CPU e RAM já estão refletidas no Zabbix e no dashboard

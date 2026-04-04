@@ -110,9 +110,9 @@
 
 ## Rodada de saúde do host
 
-- descoberta local concluída para CPU e RAM nativos do Zabbix agent2
-- `system.cpu.util` e `vm.memory.utilization` já existem e seguem coletando
-- `sensor[k10temp-pci-00c3,temp1]` foi validado no host como fonte local legível de temperatura da CPU
-- item de temperatura foi inserido no Zabbix como `CPU temperature`, mas a coleta no history ainda não apareceu após recarga de cache
-- bloqueio real da rodada: o dashboard Grafana não foi atualizado nesta passagem porque o caminho de edição disponível ficou sem acesso operacional confiável ao objeto do dashboard
-- próximo passo técnico: fechar a persistência do item de temperatura no Zabbix e então aplicar o encaixe visual no dashboard principal
+- descoberta local concluída para CPU e memória nativas do template Linux by Zabbix agent
+- `system.cpu.util` segue coletando como CPU usage
+- `vm.memory.size[pavailable]` segue coletando como base operacional de RAM no host
+- `sensor[nct6776-isa-0290,temp2]` foi escolhido como fonte local mais legível para temperatura da CPU após validação no host via `lm-sensors`
+- dashboard principal do Grafana foi atualizado com a nova linha de saúde: `CPU`, `RAM` e `CPU Temp`
+- bloqueio residual da rodada: a temperatura ainda não apareceu em `latest data` do Zabbix no momento da validação final, então a evidência completa depende desse último ciclo de coleta

@@ -3,7 +3,7 @@
 - dashboard uid: `observabilidade-grafana`
 - title: `Observabilidade Zabbix - Grafana`
 - URL: `http://127.0.0.1:3000/d/observabilidade-grafana/observabilidade-zabbix-grafana`
-- panel count: `15`
+- panel count: `18`
 
 ## Painéis
 
@@ -22,6 +22,9 @@
 - `Grafana Local` - `URL`
 - `Zabbix Frontend` - `URL`
 - `localhost-a` - `stat`
+- `CPU` - `stat`
+- `RAM` - `stat`
+- `CPU Temp` - `stat`
 
 ## Validação
 
@@ -32,6 +35,7 @@
 - os cards foram compactados para altura menor e linha de diagnóstico reaproveitada
 - os painéis de web e DNS foram rebatizados para a baseline atual
 - `example.com` deixou de aparecer como painel principal
+- a rodada de saúde do host adicionou uma nova linha com `CPU`, `RAM` e `CPU Temp`
 - a visualização padrão não exige rolagem para ver o conjunto principal
 - `Emby` foi removido do layout principal
 
