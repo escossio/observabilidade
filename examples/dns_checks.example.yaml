@@ -1,0 +1,6 @@
+dns_checks:
+  - name: example-dns
+    domain: example.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5

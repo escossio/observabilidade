@@ -1,0 +1,14 @@
+web_checks:
+  - name: apache-local-http
+    url: http://127.0.0.1/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+    expected_string: Apache/2.4.66
+
+  - name: apache-local-alt-port
+    url: http://127.0.0.1:8080/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+    expected_string: Apache/2.4.66

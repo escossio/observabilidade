@@ -1,0 +1,48 @@
+# Runtime and local state
+.git/
+*.pid
+*.pid.lock
+*.log
+*.out
+*.tmp
+*.swp
+*.swo
+
+# Secrets and credentials
+*.secret
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.env
+*.env.*
+*.token
+*.pass
+*.password
+*zabbix.conf.php
+
+# Backups and dumps
+backups/
+*.bak
+*.backup
+*.dump
+*.sql.gz
+*.sqlite
+
+# Generated artifacts and runtime captures
+artifacts/*
+!artifacts/*.md
+!artifacts/.gitkeep
+artifacts/environment_inventory.txt
+artifacts/validation_results.txt
+artifacts/rendered_examples/
+
+# Tool caches
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

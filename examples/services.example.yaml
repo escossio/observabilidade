@@ -1,0 +1,5 @@
+services:
+  - name: apache2
+    unit: apache2.service
+    enabled: true
+    severity: high

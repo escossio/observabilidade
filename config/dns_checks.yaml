@@ -1,0 +1,16 @@
+dns_checks:
+  - name: example-com-a
+    domain: example.com
+    server: 127.0.0.1
+    record_type: A
+    expected_value:
+      - 104.18.27.120
+      - 104.18.26.120
+    timeout: 5
+
+  - name: localhost-a
+    domain: localhost
+    server: 127.0.0.1
+    record_type: A
+    expected_value: 127.0.0.1
+    timeout: 5

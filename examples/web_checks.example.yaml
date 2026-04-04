@@ -1,0 +1,6 @@
+web_checks:
+  - name: example-http
+    url: http://example.com/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true

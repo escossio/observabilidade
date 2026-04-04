@@ -1,0 +1,18 @@
+services:
+  - name: apache2
+    unit: apache2.service
+    enabled: true
+    severity: high
+    notes: HTTP server ativo no host de diagnóstico.
+
+  - name: unbound
+    unit: unbound.service
+    enabled: true
+    severity: high
+    notes: Resolver DNS local ativo no host.
+
+  - name: emby-server
+    unit: emby-server.service
+    enabled: true
+    severity: medium
+    notes: Serviço real adicional presente no host.
