@@ -118,6 +118,15 @@
 - documentação desta rodada foi registrada nos artefatos do projeto
 - dashboard principal permaneceu sem scroll e com a hierarquia visual intacta
 
+## Fechamento da rodada de query do CPU Temp
+
+- o painel `CPU Temp` foi ajustado para o modo `Item ID` do datasource Zabbix
+- a query passou a ancorar explicitamente o item `cpu.temp` pelo `itemid 69621`
+- o datasource do Grafana voltou a responder com série real para o painel
+- o valor validado para temperatura no Grafana foi `38.5 C`
+- a correção foi aplicada sem mexer no layout geral nem nos demais cards
+- documentação desta rodada foi registrada nos artefatos do projeto
+
 ## Rodada de saúde do host
 
 - descoberta local concluída para CPU e memória nativas do template Linux by Zabbix agent

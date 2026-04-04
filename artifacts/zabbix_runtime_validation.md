@@ -92,3 +92,10 @@
   - Available memory in %: `78.200826` em `2026-04-04 22:02:11-03`
   - CPU temperature: `38.5` em `2026-04-04 22:10:45-03`
 - o dashboard Grafana não foi alterado nesta rodada
+
+## Rodada de query do CPU Temp
+
+- o painel `CPU Temp` do Grafana passou a usar `queryType: 3` com `itemids: 69621`
+- a fonte do painel continua sendo o item `CPU temperature` / `cpu.temp`
+- a query por nome do item estava retornando `frames: 0` no datasource do Grafana
+- a leitura validada no datasource voltou a expor o valor `38.5`
