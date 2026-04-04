@@ -38,6 +38,11 @@
 - a rodada de saúde do host adicionou uma nova linha com `CPU`, `RAM` e `CPU Temp`
 - a visualização padrão não exige rolagem para ver o conjunto principal
 - `Emby` foi removido do layout principal
+- a semântica operacional foi refinada nesta rodada sem alterar a grade principal
+- `RAM` passou a representar `Memória disponível`
+- painéis de serviço remanescentes passaram a exibir `Up/Down` em vez de valor cru
+- `localhost-a` foi rebaixado para leitura diagnóstica
+- `CPU Temp` recebeu threshold e unidade de temperatura coerentes
 
 ## Rodada de saúde do host
 
@@ -45,3 +50,10 @@
 - o painel `CPU Temp` referencia o item `CPU temperature` do Zabbix
 - o painel usa a key final `cpu.temp` no backend
 - a validação final de consistência entre Zabbix e Grafana foi concluída nesta rodada
+
+## Rodada semântica
+
+- `RAM` foi rebatizada para `Memória disponível` para refletir corretamente a métrica `vm.memory.size[pavailable]`
+- os cards `Apache2`, `PostgreSQL` e `Zabbix Frontend` passaram a usar leitura operacional `Up/Down`
+- `localhost-a` deixou de competir visualmente com os painéis críticos
+- `CPU Temp` permaneceu ligado ao item `CPU temperature` / `cpu.temp` e teve sua apresentação mantida como dado operacional de temperatura

@@ -108,6 +108,16 @@
 - artefato novo desta rodada:
   - `artifacts/grafana_dashboard_compact_refresh.md`
 
+## Fechamento da rodada semântica
+
+- dashboard principal do Grafana teve a semântica operacional ajustada sem mexer no layout base
+- `RAM` foi rebatizada para `Memória disponível` e recebeu threshold compatível com `vm.memory.size[pavailable]`
+- painéis de serviço que ainda exibiam número cru passaram a usar mapeamento operacional `Up/Down`
+- `localhost-a` foi rebaixado para leitura diagnóstica com cor neutra/atenção leve
+- `CPU Temp` foi mantido como painel operacional de temperatura com unidade e thresholds coerentes, sem alterar a baseline de coleta
+- documentação desta rodada foi registrada nos artefatos do projeto
+- dashboard principal permaneceu sem scroll e com a hierarquia visual intacta
+
 ## Rodada de saúde do host
 
 - descoberta local concluída para CPU e memória nativas do template Linux by Zabbix agent
