@@ -1,18 +1,90 @@
 services:
+  - name: zabbix-server
+    unit: zabbix-server.service
+    enabled: true
+    severity: high
+    notes: "Backend de coleta e alertas."
+
+  - name: zabbix-agent2
+    unit: zabbix-agent2.service
+    enabled: true
+    severity: high
+    notes: "Agente local para coleta do host."
+
   - name: apache2
     unit: apache2.service
     enabled: true
     severity: high
-    notes: HTTP server ativo no host de diagnóstico.
+    notes: "Frontend local e publicação HTTP."
+
+  - name: grafana-server
+    unit: grafana-server.service
+    enabled: true
+    severity: high
+    notes: "Visualização operacional principal."
+
+  - name: cloudflared
+    unit: cloudflared.service
+    enabled: true
+    severity: high
+    notes: "Túnel de publicação do Grafana."
 
   - name: unbound
     unit: unbound.service
     enabled: true
     severity: high
-    notes: Resolver DNS local ativo no host.
+    notes: "Resolver DNS local em uso real."
+
+  - name: postgresql@17-main
+    unit: postgresql@17-main.service
+    enabled: true
+    severity: high
+    notes: "Dependência direta do Zabbix."
+
+  - name: ssh
+    unit: ssh.service
+    enabled: true
+    severity: high
+    notes: "Acesso remoto administrativo."
 
   - name: emby-server
     unit: emby-server.service
     enabled: true
     severity: medium
-    notes: Serviço real adicional presente no host.
+    notes: "Segunda linha: aplicação útil do host."
+
+  - name: livecopilot-semantic-api
+    unit: livecopilot-semantic-api.service
+    enabled: true
+    severity: medium
+    notes: "Segunda linha: API própria do host."
+
+  - name: cloudflared-livecopilot
+    unit: cloudflared-livecopilot.service
+    enabled: true
+    severity: medium
+    notes: "Segunda linha: túnel adicional."
+
+  - name: smbd
+    unit: smbd.service
+    enabled: true
+    severity: medium
+    notes: "Segunda linha: compartilhamento SMB."
+
+  - name: nmbd
+    unit: nmbd.service
+    enabled: true
+    severity: medium
+    notes: "Segunda linha: complemento NetBIOS do Samba."
+
+  - name: winbind
+    unit: winbind.service
+    enabled: true
+    severity: medium
+    notes: "Segunda linha: suporte de identidade para Samba."
+
+  - name: libvirtd
+    unit: libvirtd.service
+    enabled: true
+    severity: medium
+    notes: "Segunda linha: virtualização local."

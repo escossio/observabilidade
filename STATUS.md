@@ -29,7 +29,7 @@
 ## Riscos
 
 - checks DNS e web precisam refletir o comportamento real do host
-- `emby-server` está monitorado e atualmente reporta 0 processos
+- `emby-server` já apareceu com leitura inconsistente em validação anterior, mas o inventário desta rodada encontrou o serviço ativo e expondo `8096`
 
 ## Resultado desta rodada
 
@@ -58,3 +58,24 @@
 - segredo armazenado apenas em caminho local restrito fora do git: `/srv/observabilidade-zabbix/backups/20260404-grafana-login/grafana_admin_password.secret` (permissões `600`)
 - troubleshooting do dashboard Grafana iniciado e causa raiz identificada: os painéis numéricos estavam filtrando pelo `key_` do Zabbix, mas o plugin do Grafana respondeu corretamente apenas quando o filtro passou a usar o **nome do item**
 - painéis de web/DNS em item textual exigiram adaptação para painéis de problema/status, porque o plugin não renderizou os retornos textuais como `stat`
+- inventário operacional do host Debian iniciado com cruzamento de `systemd` ativo/habilitado/falho e `ss`/processos para escopo de monitoramento
+- classificação preliminar fechada entre serviços críticos, úteis e ruído operacional sem mexer em configuração
+- artefatos novos previstos nesta rodada:
+  - `artifacts/debian_services_inventory.md`
+  - `artifacts/monitoring_scope_recommendation.md`
+- achado operacional relevante:
+  - `snmpd.service` está em estado `failed`
+  - `emby-server.service` segue ativo e exposto em `8096`, então é candidato a monitoramento útil, não crítico
+
+## Fechamento da rodada atual
+
+- inventário confirmado com base em `systemd` (`running`, `enabled`, `failed`), `ss -tulpn` e `ps`
+- base mínima atualizada em `config/services.yaml`: `zabbix-server`, `zabbix-agent2`, `apache2`, `grafana-server`, `cloudflared`, `unbound`, `postgresql@17-main`, `ssh`
+- segunda linha documentada no YAML: `emby-server`, `livecopilot-semantic-api`, `cloudflared-livecopilot`, `smbd`, `nmbd`, `winbind`, `libvirtd`
+- serviços dispensáveis para item dedicado agora: `dbus`, `polkit`, `systemd-journald`, `systemd-logind`, `systemd-machined`, `systemd-udevd`, `udisks2`, `avahi-daemon`, `cron`, `virtlockd`, `virtlogd`, `liveui-xfce`, `liveui-xvfb`, `getty@tty1`, `user@0`, `dnsmasq` da libvirt
+- falha operacional registrada sem correção nesta rodada: `snmpd.service`
+- documentação atualizada com os artefatos:
+  - `artifacts/debian_services_inventory.md`
+  - `artifacts/monitoring_scope_recommendation.md`
+- `config/services.yaml` foi alinhado à base mínima real do host, sem mexer em runtime do Zabbix/Grafana
+- ajuste mínimo pendente: incluir `dnsmasq` apenas se a rede da libvirt virar alvo explícito de monitoramento
