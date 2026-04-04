@@ -46,8 +46,13 @@
 - Grafana instalado e integrado ao Zabbix como camada principal de visualização
 - dashboard principal do Grafana criado em `observabilidade-grafana`
 - hostname público `observabilidade.escossio.dev.br` publicado para o Grafana via Cloudflare Tunnel
+- login operacional do Grafana validado com o usuário `admin`
 - credencial padrão `Admin/zabbix` removida da operação
 - evidências objetivas salvas em `artifacts/`
 - preparação do git concluída com separação entre fonte versionável, artefatos e segredos locais
 - README reorganizado para explicitar a arquitetura Zabbix → Grafana e a estrutura do repositório
 - `shellcheck` não está instalado no host, então a validação de shell ficou limitada à execução dos scripts
+- hardening imediato do Grafana realizado com rotação da credencial `admin` via `grafana-cli`
+- login antigo `admin/admin` deixou de autenticar
+- nova credencial validada pela API pública do Grafana
+- segredo armazenado apenas em caminho local restrito fora do git: `/srv/observabilidade-zabbix/backups/20260404-grafana-login/grafana_admin_password.secret` (permissões `600`)
