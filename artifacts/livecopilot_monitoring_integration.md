@@ -54,6 +54,12 @@ Fonte canônica da arquitetura: `/lab/projects/livecopilot/docs/ARCHITECTURE_CUR
 - `livecopilot-backend-status`
 - `livecopilot-backend-api-summary`
 
+## Implementação no dashboard
+
+- o dashboard principal recebeu 7 painéis novos do Livecopilot
+- a seção foi posicionada logo abaixo do topo principal para não ficar escondida em uma dobra distante
+- o bloco inclui `Livecopilot Public Health` como checagem complementar da publicação pública
+
 ## O que não entrou
 
 - `dns_checks.yaml` não recebeu novo check
@@ -66,6 +72,7 @@ Fonte canônica da arquitetura: `/lab/projects/livecopilot/docs/ARCHITECTURE_CUR
 - a validação de `ws` e `realtime/respond` seguiu fora do runtime automático para evitar carga e efeitos colaterais
 - a integração de runtime foi aplicada no Zabbix local com itens e triggers reais
 - o dashboard do Grafana foi preparado como bloco de leitura operacional e recebeu a nova área do Livecopilot
+- a visibilidade no painel foi confirmada por captura autenticada do dashboard real
 
 ## Leituras operacionais desejadas
 

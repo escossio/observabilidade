@@ -14,6 +14,14 @@
 - Não houve inclusão de DNS novo porque o objetivo operacional foi cobrir publicação e aplicação, não resolução específica.
 - A escrita automática no Zabbix central ficou acessível por API local nesta máquina e os itens/triggers da camada Livecopilot foram aplicados no runtime.
 
+## 2026-04-04 - correção de visibilidade do bloco Livecopilot no Grafana
+
+- O dashboard principal do Grafana foi regravado com um bloco Livecopilot explícito logo abaixo do topo principal.
+- Causa raiz: o bloco não existia no JSON do dashboard servindo a UI, apesar de os itens/triggers já existirem no Zabbix.
+- A posição final ficou visível no layout real, com a seção Livecopilot aparecendo entre o bloco principal e os painéis inferiores.
+- A validação foi feita por API do Grafana e por captura visual do dashboard autenticado.
+- O recorte visual mostrou os painéis `Livecopilot Serviço`, `Livecopilot Apache Edge` e `Livecopilot Frontend Público` já no corpo da página.
+
 ## Diagnóstico inicial
 
 - Diretório do projeto criado e organizado

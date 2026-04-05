@@ -3,7 +3,7 @@
 - dashboard uid: `observabilidade-grafana`
 - title: `Observabilidade Zabbix - Grafana`
 - URL: `http://127.0.0.1:3000/d/observabilidade-grafana/observabilidade-zabbix-grafana`
-- panel count: `18`
+- panel count: `25`
 
 ## Painéis
 
@@ -22,6 +22,7 @@
 - `Livecopilot Serviço` - `stat`
 - `Livecopilot Apache Edge` - `stat`
 - `Livecopilot Frontend Público` - `stat`
+- `Livecopilot Public Health` - `stat`
 - `Livecopilot Backend Health` - `stat`
 - `Livecopilot Backend Status` - `stat`
 - `Livecopilot Backend API` - `stat`
@@ -43,8 +44,11 @@
 - `example.com` deixou de aparecer como painel principal
 - a rodada de saúde do host adicionou uma nova linha com `CPU`, `RAM` e `CPU Temp`
 - o bloco do Livecopilot foi adicionado como leitura por camada com `Serviço`, `Apache Edge`, `Frontend Público`, `Backend Health`, `Backend Status` e `Backend API`
+- o bloco do Livecopilot foi regravado no dashboard principal e agora aparece logo abaixo do bloco superior
+- o bloco passou a incluir `Livecopilot Public Health` como camada pública complementar
 - o bloco do Livecopilot agora usa itens reais criados no runtime do Zabbix para serviço, borda, frontend público, health, status e API
 - o check público foi mantido em HTTP na borda externa para validação estável do agente nesta máquina
+- a posição final dos painéis Livecopilot ficou entre `Resumo`/`Zabbix` e os painéis inferiores do host
 - a visualização padrão não exige rolagem para ver o conjunto principal
 - `Emby` foi removido do layout principal
 - a semântica operacional foi refinada nesta rodada sem alterar a grade principal
@@ -64,7 +68,8 @@
 ## Rodada Livecopilot
 
 - o dashboard ganhou um bloco dedicado ao Livecopilot com leitura por camada
-- a ordem visual separa serviço, borda Apache, frontend público e backend
+- o bloco foi reposicionado para aparecer no corpo visível do dashboard principal
+- a ordem visual separa serviço, borda Apache, frontend público, health público e backend
 - o bloco foi desenhado para distinguir falha de publicação de falha de aplicação
 - o check de `/status` ficou como diagnóstico complementar de segunda linha
 
