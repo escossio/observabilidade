@@ -291,6 +291,45 @@
   - identificar um destino operacional real, se houver um alvo único
   - expandir a mesma semântica para outros clusters quando houver base local suficiente
 
+## 2026-04-05 - rodada parcial de validação SNMP da MikroTik
+
+- A frente `mikrotik-snmp/` foi iniciada para validar SNMP e levantar inventário bruto de OIDs úteis.
+- O IP alvo usado na validação foi `10.45.0.6`, alinhado com os artefatos de integração do ambiente.
+- A instalação do pacote `snmp` foi concluída no host para viabilizar `snmpwalk` e `snmpget`.
+- A tentativa de reachability por `ping` para `10.45.0.6` falhou com perda total de pacotes.
+- A tentativa de leitura SNMP v2c com community `public` em `sysDescr` retornou `Timeout: No Response`.
+- Os primeiros walks dos blocos `1.3.6.1.2.1.1` e `1.3.6.1.2.1.2` também retornaram timeout.
+- A rodada foi interrompida a pedido do usuário antes da varredura dos blocos `1.3.6.1.2.1.25` e `1.3.6.1.4.1.14988`.
+- A validação ainda não confirmou SNMP operacional a partir do host do Zabbix; neste ponto o problema parece ser reachability ou community de leitura incorreta.
+- Os artefatos brutos já gerados foram salvos em `mikrotik-snmp/discovery/`.
+
+## 2026-04-05 - validação SNMP da MikroTik corrigindo o IP alvo
+
+- O IP correto da MikroTik foi ajustado para `10.45.0.1`.
+- A validação por `ping` para `10.45.0.1` respondeu com sucesso.
+- A leitura SNMP v2c com community `public` respondeu com sucesso em `sysDescr.0`.
+- `snmpwalk` dos blocos principais respondeu com dados reais e foi salvo nos arquivos de descoberta.
+- O bloco `system` confirmou:
+  - `sysDescr.0 = RouterOS RB3011UiAS`
+  - `sysName.0 = MikroTik`
+  - `sysObjectID.0 = .1.3.6.1.4.1.14988.1`
+- O bloco `interfaces` confirmou a presença de:
+  - `bridge`
+  - `pppoe-out1`
+  - `wg0`
+  - `ether1` a `ether10`
+- O bloco `host/resources` trouxe memória e armazenamento lógico.
+- O bloco `enterprise MikroTik` trouxe:
+  - versão de RouterOS
+  - modelo da board
+  - sensores de temperatura e voltagem
+  - contadores e nomes de interfaces
+- Foi criado o inventário inicial em:
+  - `mikrotik-snmp/discovery/mikrotik_oid_inventory.md`
+- Foi criada a nota de validação em:
+  - `mikrotik-snmp/artifacts/snmp_validation.md`
+- O próximo passo natural é transformar essa base em template Zabbix, mas isso ainda não foi feito nesta rodada.
+
 - cards `stat` do dashboard principal voltaram para altura `2`
 - o valor voltou a ter mais protagonismo do que o título
 - a organização visual anterior foi preservada
