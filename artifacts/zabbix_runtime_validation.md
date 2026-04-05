@@ -73,9 +73,10 @@
 - datasource `Zabbix` created and provisioned
 - dashboard `Observabilidade Zabbix - Grafana` validado com `18` painéis em grade compacta 4x4
 - painel de serviço principal passou a destacar `Service grafana-server running`
-- painéis de web e DNS foram rebatizados para `observabilidade-public`, `zabbix-frontend-alt-port`, `grafana-local`, `observabilidade-public-a` e `localhost-a`
+- painéis de web e DNS foram rebatizados para `observabilidade-public`, `zabbix-frontend-alt-port`, `grafana-local`, `observabilidade-public-a` e `DNS Local`
 - a visualização padrão foi conferida para manter os blocos acima da dobra sem rolagem
 - `example.com` não aparece mais como referência principal no dashboard
+- os cards de serviço foram compactados para altura menor sem alterar queries
 
 ## Rodada de saúde do host
 
@@ -99,3 +100,13 @@
 - a fonte do painel continua sendo o item `CPU temperature` / `cpu.temp`
 - a query por nome do item estava retornando `frames: 0` no datasource do Grafana
 - a leitura validada no datasource voltou a expor o valor `38.5`
+
+## Rodada de refinamento visual
+
+- `Zabbix Server` virou `Zabbix`
+- `Apache2` virou `Apache`
+- `Memória disponível` virou `Memória Livre`
+- `localhost-a` virou `DNS Local`
+- `CPU Temp` virou `Temperatura CPU`
+- os cards stat passaram a usar altura `1`
+- as queries e valores permaneceram corretos

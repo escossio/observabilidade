@@ -64,3 +64,14 @@
 - o painel `CPU Temp` deixou o modo `Metrics` e passou a usar o modo `Item ID`
 - a query foi ancorada no `itemid 69621` para evitar o `frames: 0` observado no filtro por nome
 - o valor retornado pelo datasource voltou a ser exposto no dashboard
+
+## Rodada de refinamento visual
+
+- `Zabbix Server` foi encurtado para `Zabbix`
+- `Apache2` foi encurtado para `Apache`
+- `Memória disponível` foi encurtada para `Memória Livre`
+- `localhost-a` foi rebatizado para `DNS Local`
+- `CPU Temp` foi rebatizado para `Temperatura CPU`
+- a altura dos cards stat foi reduzida para `1`
+- o topo com `Resumo`, `Problemas`, `Web Público` e `DNS Público` foi preservado
+- as queries e thresholds permaneceram intactos

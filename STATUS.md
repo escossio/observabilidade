@@ -127,6 +127,18 @@
 - a correção foi aplicada sem mexer no layout geral nem nos demais cards
 - documentação desta rodada foi registrada nos artefatos do projeto
 
+## Fechamento da rodada de refinamento visual
+
+- títulos dos cards foram encurtados para nomes operacionais mais diretos
+- cards principais tiveram altura reduzida para ganhar densidade visual
+- painel `localhost-a` foi renomeado para `DNS Local`
+- `Zabbix Server` foi encurtado para `Zabbix`
+- `Apache2` foi encurtado para `Apache`
+- `Memória disponível` passou a aparecer como `Memória Livre`
+- `CPU Temp` passou a aparecer como `Temperatura CPU`
+- a grade principal permaneceu sem scroll e com as queries intactas
+- documentação desta rodada foi registrada nos artefatos do projeto
+
 ## Rodada de saúde do host
 
 - descoberta local concluída para CPU e memória nativas do template Linux by Zabbix agent
