@@ -55,4 +55,29 @@ web_checks:
     timeout: 5
     follow_redirects: true
 
+  # internet_observation_targets
+  - name: netflix-public-www
+    url: https://www.netflix.com/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: primevideo-public-www
+    url: https://www.primevideo.com/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: google-public-www
+    url: https://www.google.com/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: youtube-public-www
+    url: https://www.youtube.com/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
   # fora_de_escopo_nesta_rodada

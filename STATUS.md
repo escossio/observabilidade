@@ -1,5 +1,48 @@
 # Status
 
+## 2026-04-05 - domínios reais adicionados e playbook de captura preparado
+
+- Foi criada a frente `internet-observation/` para separar checagem pública simples de observação real de tráfego.
+- Estrutura criada:
+  - `internet-observation/README.md`
+  - `internet-observation/artifacts/domain_targets.md`
+  - `internet-observation/artifacts/netflix_capture_playbook.md`
+  - `internet-observation/artifacts/initial_domain_validation.md`
+  - `internet-observation/captures/`
+- Domínios adicionados ao escopo DNS:
+  - `netflix.com`
+  - `www.netflix.com`
+  - `primevideo.com`
+  - `www.primevideo.com`
+  - `google.com`
+  - `www.google.com`
+  - `youtube.com`
+  - `www.youtube.com`
+- Endpoints HTTPS públicos adicionados ao escopo web:
+  - `https://www.netflix.com/`
+  - `https://www.primevideo.com/`
+  - `https://www.google.com/`
+  - `https://www.youtube.com/`
+- Validação simples executada com:
+  - `dig`
+  - `ping`
+  - `curl -L`
+- Resultado objetivo desta coleta:
+  - Netflix respondeu em HTTPS simples, mas ICMP falhou
+  - Prime Video, Google e YouTube responderam em DNS, ICMP e HTTPS simples
+- Ferramentas presentes na VM:
+  - `tcpdump`
+  - `curl`
+  - `dig`
+  - `traceroute`
+  - `chromium`
+  - `firefox`
+- Ferramenta ausente:
+  - `mtr`
+- Observação importante:
+  - ping e domínio público não substituem observação do tráfego real de streaming
+- A metodologia de captura real para Netflix ficou preparada com `tcpdump` + DevTools + consolidação posterior de hostnames, IPs e ASN.
+
 ## 2026-04-05 - regras de impacto adicionadas ao dependency-graph
 
 - O `dependency-graph` passou a carregar semântica explícita de impacto além de dependência estrutural.

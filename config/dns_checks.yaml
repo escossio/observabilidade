@@ -17,4 +17,53 @@ dns_checks:
     expected_value: 127.0.0.1
     timeout: 5
 
+  # internet_observation_targets
+  - name: netflix-a
+    domain: netflix.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
+  - name: netflix-www-a
+    domain: www.netflix.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
+  - name: primevideo-a
+    domain: primevideo.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
+  - name: primevideo-www-a
+    domain: www.primevideo.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
+  - name: google-a
+    domain: google.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
+  - name: google-www-a
+    domain: www.google.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
+  - name: youtube-a
+    domain: youtube.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
+  - name: youtube-www-a
+    domain: www.youtube.com
+    server: 127.0.0.1
+    record_type: A
+    timeout: 5
+
   # fora_de_escopo_nesta_rodada
