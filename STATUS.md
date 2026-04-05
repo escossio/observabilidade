@@ -399,6 +399,14 @@
 - A validação foi registrada em `mikrotik-snmp/artifacts/zabbix_template_import_validation.md`.
 - A base principal já está coletando; a correção fina da LLD fica como próxima rodada separada para não inflar o escopo.
 
+## 2026-04-05 - ajuste tentado na descoberta de interfaces da MikroTik
+
+- A regra `mikrotik.if.discovery` foi revisada para tentar gerar LLD de interfaces no Zabbix.
+- O host e os itens fixos continuaram válidos com `latest data` real.
+- A descoberta de interfaces permaneceu `unsupported` com o mesmo erro de parsing de OID SNMP.
+- O Zabbix continuou exigindo `pairs of macro and OID are expected` na regra de descoberta, então a LLD segue como pendência técnica isolada.
+- A decisão desta rodada foi manter a coleta principal em produção e não expandir mais a estrutura da LLD até uma correção específica do formato suportado pela versão local do Zabbix.
+
 - cards `stat` do dashboard principal voltaram para altura `2`
 - o valor voltou a ter mais protagonismo do que o título
 - a organização visual anterior foi preservada
