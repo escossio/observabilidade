@@ -1,218 +1,348 @@
-version: 1
+version: 2
 cluster: AGT
 host:
   id: host-agt01
-  name: agt01
+  label: agt01
   type: host
   layer: host
+  criticality: critical
+  validation_source: observed
+  confidence: high
+  notes: Host principal do cluster AGT.
 nodes:
   - id: svc-zabbix-server
-    name: zabbix-server
+    label: zabbix-server
     type: service
     layer: service
-    category: observability
-    direct: true
-    inferred: false
+    criticality: critical
+    depends_on: host-agt01
+    impact_scope: monitoring-platform
+    validation_source: observed
+    confidence: high
+    notes: Serviço local confirmado.
   - id: svc-zabbix-agent2
-    name: zabbix-agent2
+    label: zabbix-agent2
     type: service
     layer: service
-    category: observability
-    direct: true
-    inferred: false
+    criticality: critical
+    depends_on: host-agt01
+    impact_scope: monitoring-platform
+    validation_source: observed
+    confidence: high
+    notes: Serviço local confirmado.
   - id: svc-grafana-server
-    name: grafana-server
+    label: grafana-server
     type: service
     layer: service
-    category: observability
-    direct: true
-    inferred: false
+    criticality: high
+    depends_on: host-agt01
+    impact_scope: observability-ui
+    validation_source: observed
+    confidence: high
+    notes: Serviço local confirmado.
   - id: svc-apache2
-    name: apache2
+    label: apache2
     type: service
     layer: service
-    category: publication
-    direct: true
-    inferred: false
+    criticality: high
+    depends_on: host-agt01
+    impact_scope: publication
+    validation_source: observed
+    confidence: high
+    notes: Borda HTTP local confirmada.
   - id: svc-cloudflared
-    name: cloudflared
+    label: cloudflared
     type: service
     layer: service
-    category: publication
-    direct: true
-    inferred: false
+    criticality: high
+    depends_on: host-agt01
+    impact_scope: publication
+    validation_source: observed
+    confidence: high
+    notes: Túnel público confirmado.
   - id: svc-cloudflared-livecopilot
-    name: cloudflared-livecopilot
+    label: cloudflared-livecopilot
     type: service
     layer: service
-    category: publication
-    direct: true
-    inferred: false
+    criticality: medium
+    depends_on: host-agt01
+    impact_scope: publication
+    validation_source: observed
+    confidence: high
+    notes: Túnel específico do Livecopilot.
   - id: svc-postgresql-17-main
-    name: postgresql@17-main
+    label: postgresql@17-main
     type: service
     layer: service
-    category: infrastructure
-    direct: true
-    inferred: false
+    criticality: critical
+    depends_on: host-agt01
+    impact_scope: platform-data
+    validation_source: observed
+    confidence: high
+    notes: Banco local reutilizado.
   - id: svc-unbound
-    name: unbound
+    label: unbound
     type: service
     layer: service
-    category: infrastructure
-    direct: true
-    inferred: false
+    criticality: medium
+    depends_on: host-agt01
+    impact_scope: infrastructure
+    validation_source: observed
+    confidence: high
+    notes: Resolver local confirmado.
   - id: svc-ssh
-    name: ssh
+    label: ssh
     type: service
     layer: service
-    category: infrastructure
-    direct: true
-    inferred: false
+    criticality: medium
+    depends_on: host-agt01
+    impact_scope: administration
+    validation_source: observed
+    confidence: high
+    notes: Acesso administrativo local.
   - id: svc-livecopilot-semantic-api
-    name: livecopilot-semantic-api
+    label: livecopilot-semantic-api
     type: service
     layer: service
-    category: application
-    direct: true
-    inferred: false
+    criticality: high
+    depends_on: host-agt01
+    impact_scope: application
+    validation_source: observed
+    confidence: high
+    notes: Serviço de aplicação local.
   - id: svc-emby-server
-    name: emby-server
+    label: emby-server
     type: service
     layer: service
-    category: application
-    direct: true
-    inferred: false
+    criticality: low
+    depends_on: host-agt01
+    impact_scope: application
+    validation_source: observed
+    confidence: high
+    notes: Serviço observado, mas fora do núcleo crítico.
   - id: svc-smbd
-    name: smbd
+    label: smbd
     type: service
     layer: service
-    category: application
-    direct: true
-    inferred: false
+    criticality: low
+    depends_on: host-agt01
+    impact_scope: application
+    validation_source: observed
+    confidence: high
+    notes: Serviço local confirmado.
   - id: svc-nmbd
-    name: nmbd
+    label: nmbd
     type: service
     layer: service
-    category: application
-    direct: true
-    inferred: false
+    criticality: low
+    depends_on: host-agt01
+    impact_scope: application
+    validation_source: observed
+    confidence: high
+    notes: Serviço local confirmado.
   - id: svc-winbind
-    name: winbind
+    label: winbind
     type: service
     layer: service
-    category: application
-    direct: true
-    inferred: false
+    criticality: low
+    depends_on: host-agt01
+    impact_scope: application
+    validation_source: observed
+    confidence: high
+    notes: Serviço local confirmado.
   - id: svc-libvirtd
-    name: libvirtd
+    label: libvirtd
     type: service
     layer: service
-    category: application
-    direct: true
-    inferred: false
-  - id: access-link-concentrator
-    name: concentrador do link do host
-    type: access
+    criticality: low
+    depends_on: host-agt01
+    impact_scope: virtualization
+    validation_source: observed
+    confidence: high
+    notes: Serviço local confirmado.
+  - id: access-link-bridge-br0
+    label: bridge br0
+    type: access_device
     layer: access
-    direct: false
-    inferred: true
+    criticality: critical
+    depends_on: host-agt01
+    impact_scope: local-egress
+    validation_source: observed
+    confidence: high
+    notes: Interface de saída observada no host.
   - id: access-ppp-session
-    name: sessão PPP
-    type: access
+    label: sessão PPP
+    type: ppp_session
     layer: access
-    direct: false
-    inferred: true
-  - id: access-dedicated-ip
-    name: IP dedicado
-    type: access
+    criticality: high
+    depends_on: access-link-bridge-br0
+    impact_scope: local-egress
+    validation_source: pending_confirmation
+    confidence: low
+    notes: Nenhum processo PPP ativo foi observado; permanece como hipótese operacional.
+  - id: access-public-ip-206-42-12-37
+    label: 206.42.12.37
+    type: public_ip
     layer: access
-    direct: false
-    inferred: true
-  - id: edge-next-hop
-    name: gateway / next-hop
-    type: edge
+    criticality: high
+    depends_on: access-link-bridge-br0
+    impact_scope: external-reachability
+    validation_source: observed
+    confidence: high
+    notes: IP público de saída confirmado.
+  - id: edge-next-hop-10-45-0-1
+    label: gateway 10.45.0.1
+    type: gateway
     layer: edge
-    direct: false
-    inferred: true
-  - id: provider-as
-    name: operadora / AS
+    criticality: high
+    depends_on: access-link-bridge-br0
+    impact_scope: external-reachability
+    validation_source: observed
+    confidence: high
+    notes: Gateway padrão do host na rota principal.
+  - id: provider-as-brisanet
+    label: AS28126 BRISANET
     type: provider
     layer: provider
-    direct: false
-    inferred: true
+    criticality: medium
+    depends_on: edge-next-hop-10-45-0-1
+    impact_scope: upstream-connectivity
+    validation_source: observed
+    confidence: high
+    notes: Identidade obtida a partir do egress público observado.
   - id: destination-cloud
-    name: nuvem / destino
+    label: nuvem / destino
     type: destination
     layer: destination
-    direct: false
-    inferred: true
+    criticality: low
+    depends_on: provider-as-brisanet
+    impact_scope: external-service-reachability
+    validation_source: inferred
+    confidence: low
+    notes: Alvo final genérico; nenhum destino único foi confirmado.
 edges:
   - from: svc-zabbix-server
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-zabbix-agent2
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-grafana-server
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-apache2
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-cloudflared
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-cloudflared-livecopilot
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-postgresql-17-main
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-unbound
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-ssh
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-livecopilot-semantic-api
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-emby-server
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-smbd
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-nmbd
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-winbind
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: svc-libvirtd
     to: host-agt01
     relation: depends_on
+    validation_source: observed
+    confidence: high
   - from: host-agt01
-    to: access-link-concentrator
+    to: access-link-bridge-br0
     relation: depends_on
-  - from: access-link-concentrator
+    validation_source: observed
+    confidence: high
+  - from: access-link-bridge-br0
     to: access-ppp-session
     relation: depends_on
-  - from: access-ppp-session
-    to: access-dedicated-ip
+    validation_source: pending_confirmation
+    confidence: low
+  - from: access-link-bridge-br0
+    to: access-public-ip-206-42-12-37
     relation: depends_on
-  - from: access-dedicated-ip
-    to: edge-next-hop
+    validation_source: observed
+    confidence: high
+  - from: access-public-ip-206-42-12-37
+    to: edge-next-hop-10-45-0-1
     relation: depends_on
-  - from: edge-next-hop
-    to: provider-as
+    validation_source: observed
+    confidence: high
+  - from: edge-next-hop-10-45-0-1
+    to: provider-as-brisanet
     relation: depends_on
-  - from: provider-as
+    validation_source: observed
+    confidence: high
+  - from: provider-as-brisanet
     to: destination-cloud
     relation: depends_on
+    validation_source: inferred
+    confidence: low
 semantics:
-  direct_node_definition: nó confirmado por documentação ou inventário local.
-  inferred_node_definition: nó operacional necessário para explicar o encadeamento, mas ainda sem confirmação de nome final.
-  dependency_edge_definition: uma relação "depende de" que propaga impacto do dependente para a dependência.
-  impact_propagation: se um nó superior falha, todos os nós abaixo dele podem perder a função representada na leitura operacional.
+  node_fields:
+    - id
+    - label
+    - type
+    - layer
+    - criticality
+    - depends_on
+    - impact_scope
+    - validation_source
+    - confidence
+    - notes
+  confirmed_node_rule: nó com validation_source observed ou documented e confidence alta.
+  inferred_node_rule: nó com validation_source inferred quando a identidade ainda é uma dedução útil, não um fato observado.
+  pending_node_rule: nó com validation_source pending_confirmation quando a cadeia operacional existe, mas o nome final ainda não foi validado.
+  dependency_edge_definition: relação manual "depends_on" que propaga impacto do nó de origem para o nó de destino.
+  observed_dependency_rule: aresta sustentada por rota, interface, processo, item ou inventário local verificável.
+  manual_dependency_rule: aresta criada para representar a cadeia operacional antes da automação de descoberta.
+  future_auto_discovery_rule: aresta que poderá ser substituída por descoberta automática quando houver sinalização suficiente e validação cruzada.
+  impact_propagation: se um nó superior falha, tudo abaixo dele pode perder a função representada na leitura operacional.

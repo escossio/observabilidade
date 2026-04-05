@@ -255,6 +255,42 @@
 - Limitação atual: os nós de conectividade acima do host ainda usam nomes operacionais genéricos onde a documentação não confirmou o nome final.
 - Próximo passo provável: refinar a cadeia de conectividade com nomes reais e expandir o grafo para novos clusters quando houver base confirmada.
 
+## 2026-04-05 - refinamento operacional da cadeia AGT
+
+- A cadeia acima do host `agt01` foi refinada com evidência local objetiva.
+- Fatos confirmados nesta rodada:
+  - interface de saída principal: `br0`
+  - default route: `default via 10.45.0.1 dev br0 onlink`
+  - gateway / next-hop: `10.45.0.1`
+  - IP público de saída: `206.42.12.37`
+  - operadora / AS: `AS28126 BRISANET SERVICOS DE TELECOMUNICACOES S.A`
+- A consulta de conectividade não encontrou processo PPP ativo, então a sessão PPP permaneceu como hipótese pendente e foi marcada explicitamente como `pending_confirmation`.
+- O nó genérico de IP foi substituído por um IP real observado.
+- O nó genérico de gateway foi substituído por um gateway real observado.
+- O nó de operadora / AS passou a carregar identidade real confirmada pelo egress público.
+- O destino final continua genérico porque não houve confirmação operacional de um alvo único.
+- O modelo agora carrega metadados úteis por nó:
+  - `id`
+  - `label`
+  - `type`
+  - `layer`
+  - `criticality`
+  - `depends_on`
+  - `impact_scope`
+  - `validation_source`
+  - `confidence`
+  - `notes`
+- A documentação foi atualizada em:
+  - `dependency-graph/SEMANTICS.md`
+  - `dependency-graph/clusters/agt.md`
+  - `dependency-graph/models/agt_dependency_model.yaml`
+  - `dependency-graph/views/agt_dependency_graph.mmd`
+- O grafo ficou mais útil para responder impacto de rota, quebra de acesso e distinção entre fato observado, inferência e pendência.
+- Próximo passo natural:
+  - confirmar se a sessão PPP existe de fato ou remover a hipótese
+  - identificar um destino operacional real, se houver um alvo único
+  - expandir a mesma semântica para outros clusters quando houver base local suficiente
+
 - cards `stat` do dashboard principal voltaram para altura `2`
 - o valor voltou a ter mais protagonismo do que o título
 - a organização visual anterior foi preservada

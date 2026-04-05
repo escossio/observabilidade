@@ -4,15 +4,42 @@
 
 - `host`: máquina central do cluster
 - `service`: serviço executado diretamente no host
-- `access`: nó de acesso ou conectividade local
-- `edge`: nó de borda, salto de rede ou next-hop
+- `access_device`: interface, bridge, modem ou concentrador local de saída
+- `ppp_session`: sessão PPP ou equivalente de acesso
+- `public_ip`: IP público ou dedicado observado na saída
+- `gateway`: salto de borda, next-hop ou gateway padrão
 - `provider`: entidade de operadora, AS ou transporte externo
 - `destination`: alvo final percebido como nuvem, serviço externo ou destino remoto
+- `inferred`: nó estrutural útil para leitura operacional, mas ainda não confirmado como fato observado
 
-## Classificação de origem
+## Camadas
 
-- `direct`: nó confirmado por documentação ou inventário local
-- `inferred`: nó necessário para completar a cadeia, mas ainda sem nome final confirmado
+- `service`
+- `host`
+- `access`
+- `edge`
+- `provider`
+- `destination`
+
+## Metadados por nó
+
+- `id`: identificador estável do nó
+- `label`: nome legível do nó
+- `type`: tipo operacional do nó
+- `layer`: camada do grafo
+- `criticality`: impacto esperado em caso de falha
+- `depends_on`: referência ao nó imediatamente abaixo na cadeia
+- `impact_scope`: porção do ambiente afetada por uma falha
+- `validation_source`: origem da validação do nó
+- `confidence`: nível de confiança da classificação
+- `notes`: observação curta sobre o porquê da classificação
+
+## Classificação de validação
+
+- `documented`: confirmado por documento, inventário ou fonte explícita
+- `observed`: confirmado por evidência local objetiva
+- `inferred`: útil para completar a cadeia, mas ainda deduzido
+- `pending_confirmation`: existe como hipótese operacional, mas ainda não foi validado
 
 ## Relação
 
@@ -23,11 +50,12 @@
 - falha em um nó acima do grafo afeta tudo que está abaixo dele na leitura operacional
 - falha no host afeta todos os serviços do cluster
 - falha em conectividade afeta o host e, por consequência, todos os serviços que ele sustenta
-- falha em borda ou provedor afeta a percepção externa mesmo com o host saudável
+- falha em gateway, provedor ou destino afeta a percepção externa mesmo com o host saudável
 
 ## Uso futuro
 
-- nós `direct` podem virar fonte para automação e validação
+- nós `observed` podem virar fonte para automação e validação
 - nós `inferred` podem ser refinados ou substituídos por nomes reais depois
+- nós `pending_confirmation` devem continuar explícitos até nova evidência
 - arestas manuais podem ser validadas por evidência operacional
 - o mesmo modelo pode virar base para cálculo de impacto, caminho causal e correlação de alerta

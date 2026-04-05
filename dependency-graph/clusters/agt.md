@@ -9,6 +9,10 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 ## Host principal
 
 - `agt01`
+- interface de saída observada: `br0`
+- gateway padrão observado: `10.45.0.1`
+- IP público de saída observado: `206.42.12.37`
+- operadora observada pelo egress: `AS28126 BRISANET SERVICOS DE TELECOMUNICACOES S.A`
 
 ## Serviços ligados ao host
 
@@ -41,30 +45,34 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 
 ## Cadeia de conectividade acima do host
 
-- concentrador do link do host
+- bridge `br0`
 - sessão PPP
-- IP dedicado
-- gateway / next-hop
-- operadora / AS
+- IP público `206.42.12.37`
+- gateway `10.45.0.1`
+- operadora / AS `AS28126 BRISANET`
 - nuvem / destino
 
 ## Relações de dependência
 
 - os serviços dependem do host `agt01`
-- o host depende da conectividade local e da rota até o provedor
-- a conectividade local depende da sessão PPP
-- a sessão PPP depende do IP dedicado e do gateway / next-hop
-- o IP dedicado e o gateway dependem da operadora / AS
-- a operadora / AS suporta o alcance até a nuvem / destino
+- o host depende da conectividade local via `br0`
+- a conectividade local observada depende da rota padrão até `10.45.0.1`
+- a cadeia acima do host ainda mantém a sessão PPP como hipótese pendente
+- o IP público observado depende do caminho de saída via `br0`
+- o gateway observado aponta para a operadora `AS28126 BRISANET`
+- a operadora / AS sustenta o alcance até a nuvem / destino
 
 ## Leitura conceitual de impacto
 
 - se o host `agt01` cair, os serviços do cluster perdem execução local
-- se a sessão PPP cair, a rota de saída do host deixa de existir
+- se `br0` ou a rota padrão caírem, o host perde saída e a cadeia superior deixa de sustentar o tráfego
+- se a sessão PPP existir de fato e cair, a leitura operacional deve tratar isso como quebra da camada de acesso até confirmação adicional
 - se a operadora / AS degradar, o host pode ficar isolado mesmo com serviço local saudável
 - se a nuvem / destino tiver problema de rota, os serviços podem parecer indisponíveis para consumo externo
 
 ## Observação
 
-- nomes genéricos foram mantidos onde a documentação atual ainda não confirmou o nome operacional final
+- nomes reais foram usados onde havia evidência objetiva local
+- a sessão PPP permanece genérica porque não houve processo PPP ativo nem evidência local suficiente para nomeação final
+- o destino final continua genérico porque a confirmação operacional ainda não existe
 - esta versão não faz descoberta automática nem tenta inferir dependências ocultas
