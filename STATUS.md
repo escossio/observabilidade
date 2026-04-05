@@ -376,6 +376,29 @@
 - A exportação ainda não foi importada no runtime do Zabbix; ficou apenas versionada como artefato pronto para importação manual.
 - O XML passou por validação estrutural local e o volume final ficou em `12` itens fixos e `4` protótipos de item de descoberta.
 
+## 2026-04-05 - importação do template MikroTik no runtime do Zabbix
+
+- O template `MikroTik SNMP` foi importado com sucesso no Zabbix local.
+- O host `MikroTik RB3011` foi criado com hostid `10778`.
+- O host recebeu a interface SNMP `10.45.0.1:161` com `SNMP v2c` e community `public`.
+- O host foi associado ao template `MikroTik SNMP` com templateid `10777`.
+- Itens principais com `latest data` real confirmado:
+  - `SNMP system description` -> `RouterOS RB3011UiAS`
+  - `SNMP system name` -> `MikroTik`
+  - `SNMP uptime` -> `28918200`
+  - `Interface count` -> `15`
+  - `Memory size` -> `1048576`
+  - `Host resources uptime` -> `28918200`
+  - `Board name` -> `RB3011UiAS`
+  - `RouterOS version` -> `7.21.1`
+  - `Temperature` -> `31`
+  - `Voltage` -> `240`
+  - `PPPoE tunnel status` -> `1`
+  - `WireGuard tunnel status` -> `1`
+- A descoberta de interfaces não fechou nesta rodada: o item `mikrotik.if.discovery` ficou `unsupported` com erro de OID SNMP inválido no formato esperado pelo Zabbix.
+- A validação foi registrada em `mikrotik-snmp/artifacts/zabbix_template_import_validation.md`.
+- A base principal já está coletando; a correção fina da LLD fica como próxima rodada separada para não inflar o escopo.
+
 - cards `stat` do dashboard principal voltaram para altura `2`
 - o valor voltou a ter mais protagonismo do que o título
 - a organização visual anterior foi preservada

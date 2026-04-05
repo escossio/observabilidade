@@ -3,11 +3,13 @@
   <version>7.4</version>
   <template_groups>
     <template_group>
+      <uuid>2f4f0d0f7fd64d969c277d19fbdc0a01</uuid>
       <name>Templates/SNMP</name>
     </template_group>
   </template_groups>
   <templates>
     <template>
+      <uuid>8f7b8d2e4cb248e18f92c5f8d29ed001</uuid>
       <template>MikroTik SNMP</template>
       <name>MikroTik SNMP</name>
       <description>Template SNMP inicial para MikroTik RouterOS validado no RB3011UiAS.</description>
@@ -28,6 +30,7 @@
       </macros>
       <items>
         <item>
+          <uuid>11111111111141118111111111111101</uuid>
           <name>SNMP system description</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.1.1.0</snmp_oid>
@@ -40,6 +43,7 @@
           <description>Confirma identificação base do equipamento.</description>
         </item>
         <item>
+          <uuid>11111111111141118111111111111102</uuid>
           <name>SNMP system name</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.1.5.0</snmp_oid>
@@ -51,6 +55,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>11111111111141118111111111111103</uuid>
           <name>SNMP uptime</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.1.3.0</snmp_oid>
@@ -63,6 +68,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>11111111111141118111111111111104</uuid>
           <name>Interface count</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.2.1.0</snmp_oid>
@@ -74,6 +80,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>11111111111141118111111111111105</uuid>
           <name>Memory size</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.25.2.2.0</snmp_oid>
@@ -86,6 +93,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>11111111111141118111111111111106</uuid>
           <name>Host resources uptime</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.25.1.1.0</snmp_oid>
@@ -98,6 +106,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>11111111111141118111111111111107</uuid>
           <name>Board name</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.4.1.14988.1.1.7.8.0</snmp_oid>
@@ -109,6 +118,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>11111111111141118111111111111108</uuid>
           <name>RouterOS version</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.4.1.14988.1.1.4.4.0</snmp_oid>
@@ -120,6 +130,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>11111111111141118111111111111109</uuid>
           <name>Temperature</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.4.1.14988.1.1.3.100.1.3.14</snmp_oid>
@@ -132,6 +143,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>1111111111114111811111111111110a</uuid>
           <name>Voltage</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.4.1.14988.1.1.3.100.1.3.13</snmp_oid>
@@ -144,6 +156,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>1111111111114111811111111111110b</uuid>
           <name>PPPoE tunnel status</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.2.2.1.8.14</snmp_oid>
@@ -155,6 +168,7 @@
           <status>ENABLED</status>
         </item>
         <item>
+          <uuid>1111111111114111811111111111110c</uuid>
           <name>WireGuard tunnel status</name>
           <type>SNMP_AGENT</type>
           <snmp_oid>1.3.6.1.2.1.2.2.1.8.16</snmp_oid>
@@ -168,19 +182,21 @@
       </items>
       <discovery_rules>
         <discovery_rule>
+          <uuid>22222222222242228222222222222201</uuid>
           <name>Interface discovery</name>
           <type>SNMP_AGENT</type>
-          <snmp_oid>1.3.6.1.2.1.2.2.1</snmp_oid>
+          <snmp_oid>discovery[{#SNMPINDEX},1.3.6.1.2.1.2.2.1.1]</snmp_oid>
           <key>mikrotik.if.discovery</key>
           <delay>1h</delay>
           <lifetime>7d</lifetime>
           <status>ENABLED</status>
           <item_prototypes>
             <item_prototype>
-              <name>Interface {#IFINDEX} description</name>
+              <uuid>33333333333343338333333333333301</uuid>
+              <name>Interface {#SNMPINDEX} description</name>
               <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.2.{#IFINDEX}</snmp_oid>
-              <key>mikrotik.ifDescr[{#IFINDEX}]</key>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.2.{#SNMPINDEX}</snmp_oid>
+              <key>mikrotik.ifDescr[{#SNMPINDEX}]</key>
               <delay>1h</delay>
               <history>90d</history>
               <trends>0</trends>
@@ -188,10 +204,11 @@
               <status>ENABLED</status>
             </item_prototype>
             <item_prototype>
-              <name>Interface {#IFINDEX} operational status</name>
+              <uuid>33333333333343338333333333333302</uuid>
+              <name>Interface {#SNMPINDEX} operational status</name>
               <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.8.{#IFINDEX}</snmp_oid>
-              <key>mikrotik.ifOperStatus[{#IFINDEX}]</key>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.8.{#SNMPINDEX}</snmp_oid>
+              <key>mikrotik.ifOperStatus[{#SNMPINDEX}]</key>
               <delay>1m</delay>
               <history>90d</history>
               <trends>365d</trends>
@@ -199,10 +216,11 @@
               <status>ENABLED</status>
             </item_prototype>
             <item_prototype>
-              <name>Interface {#IFINDEX} inbound traffic</name>
+              <uuid>33333333333343338333333333333303</uuid>
+              <name>Interface {#SNMPINDEX} inbound traffic</name>
               <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.10.{#IFINDEX}</snmp_oid>
-              <key>mikrotik.ifInOctets[{#IFINDEX}]</key>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.10.{#SNMPINDEX}</snmp_oid>
+              <key>mikrotik.ifInOctets[{#SNMPINDEX}]</key>
               <delay>1m</delay>
               <history>90d</history>
               <trends>365d</trends>
@@ -211,10 +229,11 @@
               <status>ENABLED</status>
             </item_prototype>
             <item_prototype>
-              <name>Interface {#IFINDEX} outbound traffic</name>
+              <uuid>33333333333343338333333333333304</uuid>
+              <name>Interface {#SNMPINDEX} outbound traffic</name>
               <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.16.{#IFINDEX}</snmp_oid>
-              <key>mikrotik.ifOutOctets[{#IFINDEX}]</key>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.16.{#SNMPINDEX}</snmp_oid>
+              <key>mikrotik.ifOutOctets[{#SNMPINDEX}]</key>
               <delay>1m</delay>
               <history>90d</history>
               <trends>365d</trends>
