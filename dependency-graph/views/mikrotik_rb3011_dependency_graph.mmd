@@ -1,14 +1,14 @@
 flowchart TB
   host["MikroTik RB3011<br/>10.45.0.1"]
 
-  bridge["bridge"]
-  nexthop["Next-hop 10.45.0.1"]
-  ether1["ether1"]
-  pppoe["pppoe-out1"]
-  public_ip["206.42.12.37"]
+  bridge["bridge<br/>(borda local)"]
+  nexthop["Next-hop 10.45.0.1<br/>(gateway local)"]
+  ether1["ether1<br/>(uplink físico)"]
+  pppoe["pppoe-out1<br/>(WAN principal)"]
+  public_ip["206.42.12.37<br/>(caminho público)"]
   wg0["wg0<br/>(overlay observado)"]
-  provider["AS28126 BRISANET"]
-  destination["Nuvem / destino<br/>(inferido)"]
+  provider["AS28126 BRISANET<br/>(upstream)"]
+  destination["Nuvem / destino<br/>(externo inferido)"]
 
   bridge --> host
   nexthop --> host

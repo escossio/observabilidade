@@ -63,6 +63,20 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 - a cadeia externa do AGT deixou de ficar embutida neste cluster e passou a ser mantida no cluster da borda
 - a leitura intercluster continua causal e documental, sem tentar reproduzir forwarding interno
 
+## Regras de impacto
+
+- falha em `agt01`:
+  - impacta diretamente os serviços do AGT
+  - não implica falha da borda MikroTik
+  - não implica falha da operadora
+- falha em `br0`:
+  - impacta a ligação local do host com a borda
+  - pode deixar o AGT sem saída mesmo com serviços locais ainda vivos
+- falha no cluster `MikroTik RB3011`:
+  - impacta a borda consumida pelo AGT
+  - pode afetar publicação e acesso externo dos serviços do AGT
+  - não implica que o host `agt01` morreu
+
 ## Leitura conceitual de impacto
 
 - se o host `agt01` cair, os serviços do cluster perdem execução local
@@ -75,5 +89,6 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 - nomes reais foram usados onde havia evidência objetiva local
 - a borda MikroTik foi separada para um cluster próprio para evitar duplicação estrutural
 - o cluster AGT mantém apenas o que pertence ao host e a sua ligação imediata com a borda
+- falha local de host e falha de borda agora ficam separadas explicitamente no modelo
 - o destino final continua genérico porque a confirmação operacional ainda não existe e agora fica documentado no cluster da MikroTik
 - esta versão não faz descoberta automática nem tenta inferir dependências ocultas

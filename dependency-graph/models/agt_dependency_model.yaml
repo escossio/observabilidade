@@ -6,6 +6,15 @@ host:
   type: host
   layer: host
   criticality: critical
+  impact_scope: agt-cluster
+  impact_targets:
+    - agt-services
+    - agt-publication
+    - agt-observability
+  failure_semantics: host_failure
+  blast_radius: cluster-local
+  severity_if_failed: critical
+  propagation_mode: direct
   validation_source: observed
   confidence: high
   notes: Host principal do cluster AGT.
@@ -167,6 +176,13 @@ nodes:
     criticality: critical
     depends_on: cluster-mikrotik-rb3011
     impact_scope: local-egress
+    impact_targets:
+      - agt-egress
+      - agt-publication
+    failure_semantics: local_edge_failure
+    blast_radius: intercluster-edge
+    severity_if_failed: high
+    propagation_mode: transitive
     validation_source: observed
     confidence: high
     notes: Interface de saída observada no host.
@@ -176,6 +192,14 @@ nodes:
     layer: edge
     criticality: critical
     impact_scope: agt-edge
+    impact_targets:
+      - agt-egress
+      - agt-publication
+      - agt-external-access
+    failure_semantics: external_edge_failure
+    blast_radius: edge-shared
+    severity_if_failed: critical
+    propagation_mode: transitive
     validation_source: documented
     confidence: high
     notes: Referência explícita ao cluster dedicado da borda em dependency-graph/clusters/mikrotik-rb3011.md.
@@ -274,6 +298,11 @@ semantics:
     - criticality
     - depends_on
     - impact_scope
+    - impact_targets
+    - failure_semantics
+    - blast_radius
+    - severity_if_failed
+    - propagation_mode
     - validation_source
     - confidence
     - notes

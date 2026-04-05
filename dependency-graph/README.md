@@ -16,6 +16,7 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 - `models/`: modelo estruturado para automação futura
 - `views/`: diagrama versionável do mesmo modelo
 - `SEMANTICS.md`: semântica de nós, arestas e estados
+- `IMPACT_RULES.md`: regras documentais de impacto direto e propagado
 
 ## Modelo inicial
 

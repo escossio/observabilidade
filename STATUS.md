@@ -1,5 +1,34 @@
 # Status
 
+## 2026-04-05 - regras de impacto adicionadas ao dependency-graph
+
+- O `dependency-graph` passou a carregar semântica explícita de impacto além de dependência estrutural.
+- Foi criado o artefato:
+  - `dependency-graph/IMPACT_RULES.md`
+- A semântica do projeto foi estendida para suportar:
+  - `impact_targets`
+  - `failure_semantics`
+  - `blast_radius`
+  - `severity_if_failed`
+  - `propagation_mode`
+- O cluster `AGT` agora distingue explicitamente:
+  - falha do host `agt01`
+  - falha de `br0`
+  - falha da borda `MikroTik RB3011`
+- O cluster `MikroTik RB3011` agora distingue explicitamente:
+  - falha da borda local
+  - falha de uplink físico
+  - falha da WAN principal
+  - falha de overlay
+  - falha de upstream
+  - falha externa acima do provedor
+- `wg0` permaneceu separado da cadeia causal principal e continua tratado como `overlay observed`.
+- `nuvem / destino` continua inferido.
+- Limite atual:
+  - as regras ainda são documentais e sem engine automática de RCA
+- Próximo passo provável:
+  - decidir se essas regras viram uma camada agregadora de correlação ou consulta operacional sobre os clusters já modelados
+
 ## 2026-04-05 - MikroTik separada em cluster próprio no dependency-graph
 
 - Foi criado o cluster dedicado `MikroTik RB3011` no `dependency-graph`.

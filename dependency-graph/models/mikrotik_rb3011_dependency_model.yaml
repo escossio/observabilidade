@@ -6,6 +6,15 @@ host:
   type: host
   layer: host
   criticality: critical
+  impact_scope: edge-shared
+  impact_targets:
+    - agt-egress
+    - agt-publication
+    - agt-edge
+  failure_semantics: edge_failure
+  blast_radius: edge-shared
+  severity_if_failed: critical
+  propagation_mode: transitive
   validation_source: observed
   confidence: high
   notes: Equipamento de borda monitorado por SNMP no Zabbix em 10.45.0.1.
@@ -17,6 +26,13 @@ nodes:
     criticality: critical
     depends_on: host-mikrotik-rb3011
     impact_scope: agt-lan-egress
+    impact_targets:
+      - agt-egress
+      - agt-local-edge
+    failure_semantics: local_edge_failure
+    blast_radius: intercluster-edge
+    severity_if_failed: high
+    propagation_mode: transitive
     validation_source: observed
     confidence: high
     notes: Domínio L2 local observado na descoberta de interfaces da RB3011.
@@ -27,6 +43,13 @@ nodes:
     criticality: critical
     depends_on: host-mikrotik-rb3011
     impact_scope: agt-lan-egress
+    impact_targets:
+      - agt-egress
+      - agt-default-route
+    failure_semantics: gateway_failure
+    blast_radius: intercluster-edge
+    severity_if_failed: high
+    propagation_mode: transitive
     validation_source: observed
     confidence: high
     notes: Gateway padrão observado pelo AGT e exposto pela RB3011.
@@ -37,6 +60,13 @@ nodes:
     criticality: high
     depends_on: host-mikrotik-rb3011
     impact_scope: wan-uplink
+    impact_targets:
+      - wan-primary
+      - agt-external-access
+    failure_semantics: wan_uplink_failure
+    blast_radius: wan-uplink
+    severity_if_failed: high
+    propagation_mode: transitive
     validation_source: observed
     confidence: high
     notes: Uplink físico observado da WAN principal.
@@ -47,6 +77,14 @@ nodes:
     criticality: high
     depends_on: edge-mikrotik-ether1
     impact_scope: wan-uplink
+    impact_targets:
+      - wan-primary
+      - agt-external-access
+      - public-egress
+    failure_semantics: wan_primary_failure
+    blast_radius: wan-primary
+    severity_if_failed: critical
+    propagation_mode: transitive
     validation_source: observed
     confidence: high
     notes: Sessão WAN principal observada ativa no runtime do Zabbix.
@@ -57,6 +95,13 @@ nodes:
     criticality: high
     depends_on: edge-mikrotik-pppoe-out1
     impact_scope: external-reachability
+    impact_targets:
+      - public-egress
+      - external-access
+    failure_semantics: public_path_failure
+    blast_radius: upstream
+    severity_if_failed: high
+    propagation_mode: transitive
     validation_source: observed
     confidence: high
     notes: IP público de saída observado na cadeia principal da RB3011.
@@ -67,6 +112,12 @@ nodes:
     criticality: low
     depends_on: host-mikrotik-rb3011
     impact_scope: overlay-connectivity
+    impact_targets:
+      - overlay-dependents
+    failure_semantics: overlay_failure
+    blast_radius: overlay-only
+    severity_if_failed: low
+    propagation_mode: contained
     validation_source: observed
     confidence: medium
     notes: Túnel WireGuard observado ativo; mantido fora da cadeia causal principal.
@@ -76,6 +127,13 @@ nodes:
     layer: provider
     criticality: medium
     impact_scope: upstream-connectivity
+    impact_targets:
+      - public-egress
+      - external-access
+    failure_semantics: upstream_provider_failure
+    blast_radius: upstream
+    severity_if_failed: high
+    propagation_mode: external
     validation_source: observed
     confidence: high
     notes: Identidade do upstream observada a partir do egress público.
@@ -86,6 +144,12 @@ nodes:
     criticality: low
     depends_on: provider-as-brisanet
     impact_scope: external-service-reachability
+    impact_targets:
+      - external-consumers
+    failure_semantics: external_destination_failure
+    blast_radius: external-destination
+    severity_if_failed: medium
+    propagation_mode: external
     validation_source: inferred
     confidence: low
     notes: Alvo final genérico; nenhum destino único foi confirmado.
@@ -139,6 +203,11 @@ semantics:
     - criticality
     - depends_on
     - impact_scope
+    - impact_targets
+    - failure_semantics
+    - blast_radius
+    - severity_if_failed
+    - propagation_mode
     - validation_source
     - confidence
     - notes

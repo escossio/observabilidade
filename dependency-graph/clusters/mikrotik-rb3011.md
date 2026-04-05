@@ -44,15 +44,43 @@ O objetivo deste cluster é separar o que pertence ao host `agt01` do que perten
 - `wg0` depende do equipamento `MikroTik RB3011`, mas não sustenta a saída principal do AGT
 - o cluster `AGT` depende deste cluster pela ligação `br0 -> bridge / next-hop`
 
+## Regras de impacto
+
+- falha em `MikroTik RB3011`:
+  - impacta a borda do AGT
+  - pode afetar publicação e egress do AGT
+  - não implica morte do host `agt01`
+- falha em `bridge`:
+  - impacta a ligação local do AGT com a borda
+  - não implica queda total da WAN por si só
+- falha em `ether1`:
+  - impacta o uplink físico da WAN principal
+  - pode propagar para `pppoe-out1`
+- falha em `pppoe-out1`:
+  - impacta a WAN principal observada
+  - pode afetar caminho público e egress do AGT
+- falha em `wg0`:
+  - impacta apenas overlays dependentes
+  - não derruba automaticamente a cadeia principal
+- falha em `AS28126 BRISANET`:
+  - impacta o caminho acima da MikroTik
+  - não implica falha do AGT nem da RB3011
+- falha em `nuvem / destino`:
+  - representa falha acima do provedor
+  - deve ser distinguida de falha local, de borda e de upstream
+
 ## Leitura conceitual de impacto
 
 - se a `MikroTik RB3011` cair, o `AGT` perde a borda externa mesmo que o host continue em execução
+- se `bridge` falhar, o AGT pode perder a borda local mesmo com a RB3011 ainda respondendo
 - se `ether1` ou `pppoe-out1` degradarem, a saída WAN principal pode falhar sem implicar queda total do equipamento
 - se `wg0` cair, a conectividade overlay pode ser afetada sem caracterizar perda da WAN principal
 - se a operadora / AS degradar, a borda pode permanecer ativa localmente e ainda assim perder alcance externo
+- se `nuvem / destino` falhar, a quebra é externa ao ambiente local
 
 ## Observação
 
 - a leitura continua causal e documental, não uma reprodução literal do forwarding interno do RouterOS
 - `wg0` permanece como overlay observado
+- overlay e cadeia causal principal continuam separados explicitamente
 - `nuvem / destino` continua inferido porque não há um destino único confirmado

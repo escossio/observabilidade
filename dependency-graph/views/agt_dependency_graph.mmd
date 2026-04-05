@@ -19,8 +19,8 @@ flowchart TB
 
   host["Host AGT / agt01"]
 
-  br0["bridge br0"]
-  mikrotik_cluster["Cluster MikroTik RB3011<br/>(borda dedicada)"]
+  br0["bridge br0<br/>(borda local)"]
+  mikrotik_cluster["Cluster MikroTik RB3011<br/>(impacto de borda)"]
 
   zabbix_server --> host
   zabbix_agent2 --> host
