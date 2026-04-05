@@ -26,10 +26,11 @@
 - Validação simples executada com:
   - `dig`
   - `ping`
-  - `curl -L`
+  - `curl -L` com `GET`
 - Resultado objetivo desta coleta:
   - Netflix respondeu em HTTPS simples, mas ICMP falhou
   - Prime Video, Google e YouTube responderam em DNS, ICMP e HTTPS simples
+  - `HEAD` simples devolveu `405` em Netflix e Prime Video, então a referência documental desta rodada ficou em `GET`
 - Ferramentas presentes na VM:
   - `tcpdump`
   - `curl`

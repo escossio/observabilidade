@@ -8,12 +8,13 @@ Escopo:
 
 - resolução DNS via `127.0.0.1`
 - `ping -c 1 -W 2`
-- HTTPS simples com `curl -L`
+- HTTPS simples com `curl -L` usando `GET`
 
 Observação importante:
 
 - ping e domínio público servem apenas como sinal grosso
 - isso não substitui observação real do tráfego durante playback
+- `HEAD` simples pode retornar `405` em alguns domínios públicos sem indicar indisponibilidade; nesta rodada a referência operacional ficou em `GET`
 
 ## Ferramentas presentes
 
