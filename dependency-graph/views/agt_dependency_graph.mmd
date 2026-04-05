@@ -20,9 +20,13 @@ flowchart TB
   host["Host AGT / agt01"]
 
   br0["bridge br0"]
-  ppp["Sessão PPP<br/>(pendente)"]
+  mikrotik_bridge["MikroTik bridge"]
+  nexthop["Next-hop 10.45.0.1"]
   public_ip["206.42.12.37"]
-  nexthop["Gateway 10.45.0.1"]
+  pppoe["pppoe-out1"]
+  ether1["ether1"]
+  mikrotik["MikroTik RB3011<br/>10.45.0.1"]
+  wg0["wg0<br/>(overlay observado)"]
   provider["AS28126 BRISANET"]
   destination["Nuvem / destino<br/>(inferido)"]
 
@@ -43,16 +47,19 @@ flowchart TB
   libvirtd --> host
 
   host --> br0
-  br0 --> ppp
-  br0 --> public_ip
-  public_ip --> nexthop
-  nexthop --> provider
+  br0 --> mikrotik_bridge
+  mikrotik_bridge --> nexthop
+  nexthop --> public_ip
+  public_ip --> pppoe
+  pppoe --> ether1
+  ether1 --> mikrotik
+  wg0 --> mikrotik
+  public_ip --> provider
   provider --> destination
 
   classDef observed fill:#dff7e7,stroke:#2f855a,color:#1f2937,stroke-width:1px;
   classDef inferred fill:#fff4cc,stroke:#b7791f,color:#1f2937,stroke-width:1px,stroke-dasharray: 4 3;
   classDef pending fill:#f3f4f6,stroke:#6b7280,color:#1f2937,stroke-width:1px,stroke-dasharray: 2 2;
 
-  class host,br0,public_ip,nexthop,provider observed;
-  class ppp pending;
+  class host,br0,mikrotik_bridge,nexthop,public_ip,pppoe,ether1,mikrotik,wg0,provider observed;
   class destination inferred;

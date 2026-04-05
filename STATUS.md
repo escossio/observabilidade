@@ -1,5 +1,34 @@
 # Status
 
+## 2026-04-05 - MikroTik RB3011 integrada ao dependency-graph do AGT
+
+- O cluster `AGT` deixou de depender de uma abstração genérica de concentrador e passou a apontar para a borda concreta `MikroTik RB3011`.
+- A cadeia superior do AGT foi reescrita com evidência já validada no runtime e no inventário local:
+  - `br0`
+  - `bridge` da MikroTik
+  - `next-hop 10.45.0.1`
+  - IP público `206.42.12.37`
+  - `pppoe-out1`
+  - `ether1`
+  - `MikroTik RB3011`
+  - `AS28126 BRISANET`
+- Nós concretizados nesta rodada:
+  - `MikroTik RB3011` como equipamento real de borda do AGT
+  - `bridge` como domínio L2 local observado
+  - `ether1` como uplink físico observado
+  - `pppoe-out1` como sessão WAN principal compatível com a evidência validada
+  - `wg0` como túnel / overlay observado fora da cadeia causal principal
+- O nó genérico do concentrador do link deixou de existir no modelo do AGT.
+- O que continua inferido:
+  - `nuvem / destino`, porque ainda não há um alvo único confirmado
+  - a leitura do caminho na RB3011 continua causal e documental, não uma reprodução literal do forwarding interno do equipamento
+- Os três formatos do grafo foram atualizados:
+  - `dependency-graph/clusters/agt.md`
+  - `dependency-graph/models/agt_dependency_model.yaml`
+  - `dependency-graph/views/agt_dependency_graph.mmd`
+- O arquivo `STATUS.md` foi atualizado nesta mesma rodada.
+- Não houve mudança no runtime do Grafana.
+
 ## 2026-04-04 - integração do Livecopilot por camada
 
 - O Livecopilot foi integrado ao escopo de observabilidade por camada sem alterar a arquitetura do serviço.
