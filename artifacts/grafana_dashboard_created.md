@@ -73,6 +73,14 @@
 - a telemetria ficou agrupada em `CPU`, `Memória Livre` e `Temperatura CPU`
 - a captura autenticada validou a leitura visual final sem regressão de dados
 
+## Rodada de tipografia dos serviços
+
+- os cards de serviço passaram a exibir o nome do serviço como conteúdo principal
+- a tipografia dos serviços foi reduzida para uma leitura mais compacta
+- a telemetria permaneceu com seu formato numérico original
+- `DNS Local` ficou como diagnóstico complementar em cinza
+- a alteração não tocou em consultas, itens ou thresholds do Zabbix
+
 ## Rodada de saúde do host
 
 - o dashboard principal do Grafana foi expandido com `CPU`, `RAM` e `CPU Temp`

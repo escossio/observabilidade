@@ -59,6 +59,18 @@
 - A reorganização foi feita somente com `gridPos`, sem mexer em coleta, itens, triggers ou thresholds.
 - A captura autenticada mostrou a divisão visual clara entre serviços à esquerda e telemetria à direita.
 
+## 2026-04-05 - simplificação visual dos cards de serviço
+
+- Os cards de serviço passaram a mostrar o nome do serviço como conteúdo principal dentro da caixa.
+- A cor do card continua indicando estado operacional:
+  - verde para saudável / `UP`
+  - vermelho para indisponível / `DOWN`
+  - cinza para diagnóstico complementar
+- A telemetria permaneceu separada na coluna da direita, sem mudança de coleta nem de thresholds.
+- O card `DNS Local` foi mantido como diagnóstico complementar.
+- A mudança foi puramente de apresentação no Grafana, sem tocar na baseline do Zabbix.
+- O refinamento final reduziu a tipografia dos cards de serviço para deixar a leitura mais compacta.
+
 ## Diagnóstico inicial
 
 - Diretório do projeto criado e organizado
