@@ -40,6 +40,25 @@
 - O card `Livecopilot Backend Status` foi tratado como diagnóstico complementar e passou a exibir `OK` quando saudável.
 - O layout macro não foi alterado.
 
+## 2026-04-05 - reorganização em duas colunas do dashboard Grafana
+
+- O dashboard principal foi reorganizado em duas faixas visuais claras abaixo do topo aprovado.
+- Coluna esquerda:
+  - serviços críticos do host
+  - serviços de telemetria operacional tratados como status de aplicativo/infra
+  - bloco Livecopilot inteiro, preservando leitura `UP / DOWN / OK`
+- Coluna direita:
+  - `CPU`
+  - `Memória Livre`
+  - `Temperatura CPU`
+- O topo permaneceu intacto:
+  - `Resumo`
+  - `Problemas`
+  - `Web Público`
+  - `DNS Público`
+- A reorganização foi feita somente com `gridPos`, sem mexer em coleta, itens, triggers ou thresholds.
+- A captura autenticada mostrou a divisão visual clara entre serviços à esquerda e telemetria à direita.
+
 ## Diagnóstico inicial
 
 - Diretório do projeto criado e organizado

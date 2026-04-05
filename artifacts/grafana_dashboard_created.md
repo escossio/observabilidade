@@ -61,6 +61,18 @@
 - `CPU Temp` recebeu threshold e unidade de temperatura coerentes
 - `CPU Temp` passou a usar `itemid 69621` no modo `Item ID` do datasource
 
+## Rodada de duas colunas
+
+- o topo do dashboard permaneceu com `Resumo`, `Problemas`, `Web Público` e `DNS Público`
+- a área principal foi reorganizada em duas colunas lógicas:
+  - esquerda: serviços e diagnósticos operacionais
+  - direita: telemetria do host
+- os cards de serviços continuam mostrando o nome dentro da caixa e o estado no valor central
+- os cards de telemetria continuam mostrando o valor numérico real com thresholds coerentes
+- o bloco Livecopilot permaneceu íntegro dentro da coluna de serviços
+- a telemetria ficou agrupada em `CPU`, `Memória Livre` e `Temperatura CPU`
+- a captura autenticada validou a leitura visual final sem regressão de dados
+
 ## Rodada de saúde do host
 
 - o dashboard principal do Grafana foi expandido com `CPU`, `RAM` e `CPU Temp`
