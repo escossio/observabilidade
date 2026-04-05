@@ -432,3 +432,11 @@
 - a nossa base já valida `sysDescr`, `sysName`, `sysUpTime`, `ifNumber`, memória, board, versão do RouterOS, temperatura, voltagem e túneis observados
 - a principal pendência técnica identificada foi alinhar a LLD de interfaces ao formato oficial aceito pelo Zabbix local
 - o próximo passo útil é fechar apenas o gap funcional, sem inflar o template com descoberta desnecessária
+
+## 2026-04-05 - ajuste tentado na LLD de interfaces MikroTik
+
+- a regra `mikrotik.if.discovery` foi simplificada para um único par macro/OID: `discovery[{#SNMPINDEX},1.3.6.1.2.1.2.2.1.1]`
+- o template foi reimportado com sucesso no Zabbix local
+- mesmo após `config_cache_reload`, o host `MikroTik RB3011` continua com a regra em estado `unsupported`
+- o erro atual permanece `Invalid SNMP OID: pairs of macro and OID are expected`
+- a coleta fixa principal continua funcionando; a LLD de interfaces segue como bloqueio isolado para a próxima correção
