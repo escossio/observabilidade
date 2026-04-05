@@ -22,6 +22,24 @@
 - A validação foi feita por API do Grafana e por captura visual do dashboard autenticado.
 - O recorte visual mostrou os painéis `Livecopilot Serviço`, `Livecopilot Apache Edge` e `Livecopilot Frontend Público` já no corpo da página.
 
+## 2026-04-05 - correção de renderização dos cards Livecopilot no Grafana
+
+- Os cards Livecopilot estavam visíveis, mas renderizando `N/A` porque os itens base eram strings HTTP/systemd e o datasource do Grafana não entregava frames úteis para a query anterior.
+- A correção mínima foi criar itens numéricos derivados no Zabbix para cada camada do Livecopilot, preservando os itens originais como fonte operacional.
+- Itens derivados criados:
+  - `Livecopilot Serviço estado` (`69631`)
+  - `Livecopilot Apache Edge estado` (`69632`)
+  - `Livecopilot Frontend Público estado` (`69633`)
+  - `Livecopilot Public Health estado` (`69634`)
+  - `Livecopilot Backend Health estado` (`69635`)
+  - `Livecopilot Backend Status estado` (`69636`)
+  - `Livecopilot Backend API estado` (`69637`)
+- O dashboard principal do Grafana foi regravado para ancorar os cards nesses `itemids` numéricos.
+- A validação por `api/ds/query` passou a retornar `frames: 1` para todos os cards do bloco Livecopilot.
+- A validação visual autenticada mostrou os cards em estado operacional real, com leitura verde e sem `N/A`.
+- O card `Livecopilot Backend Status` foi tratado como diagnóstico complementar e passou a exibir `OK` quando saudável.
+- O layout macro não foi alterado.
+
 ## Diagnóstico inicial
 
 - Diretório do projeto criado e organizado

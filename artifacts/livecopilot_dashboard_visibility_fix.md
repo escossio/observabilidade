@@ -48,3 +48,9 @@ Data: `2026-04-04`
 
 - os dados de serviço, borda e backend já estavam corretos no Zabbix
 - o ajuste necessário era de dashboard, não de coleta
+
+## Fechamento da rodada de renderização
+
+- depois da correção de visibilidade, os cards passaram a exibir `N/A` porque a query estava ancorada em itens string HTTP/systemd
+- a solução aplicada foi criar itens derivados numéricos no Zabbix e apontar os cards do Grafana para esses `itemids`
+- a seção Livecopilot agora mostra leitura operacional real em vez de `N/A`

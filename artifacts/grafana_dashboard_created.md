@@ -19,13 +19,13 @@
 - `Unbound` - `stat`
 - `PostgreSQL` - `stat`
 - `SSH` - `stat`
-- `Livecopilot Serviço` - `stat`
-- `Livecopilot Apache Edge` - `stat`
-- `Livecopilot Frontend Público` - `stat`
-- `Livecopilot Public Health` - `stat`
-- `Livecopilot Backend Health` - `stat`
-- `Livecopilot Backend Status` - `stat`
-- `Livecopilot Backend API` - `stat`
+- `Livecopilot Serviço` - `stat` (`itemid 69631`)
+- `Livecopilot Apache Edge` - `stat` (`itemid 69632`)
+- `Livecopilot Frontend Público` - `stat` (`itemid 69633`)
+- `Livecopilot Public Health` - `stat` (`itemid 69634`)
+- `Livecopilot Backend Health` - `stat` (`itemid 69635`)
+- `Livecopilot Backend Status` - `stat` (`itemid 69636`)
+- `Livecopilot Backend API` - `stat` (`itemid 69637`)
 - `Grafana Local` - `URL`
 - `Zabbix Frontend` - `URL`
 - `localhost-a` - `stat`
@@ -47,6 +47,9 @@
 - o bloco do Livecopilot foi regravado no dashboard principal e agora aparece logo abaixo do bloco superior
 - o bloco passou a incluir `Livecopilot Public Health` como camada pública complementar
 - o bloco do Livecopilot agora usa itens reais criados no runtime do Zabbix para serviço, borda, frontend público, health, status e API
+- a renderização dos cards foi corrigida com itens numéricos derivados, para evitar `N/A` em strings HTTP/systemd
+- a leitura final usa `queryType: 3` com `itemids` explícitos nos itens derivados
+- `Livecopilot Backend Status` foi mapeado como `OK`/`Down` por ser diagnóstico complementar
 - o check público foi mantido em HTTP na borda externa para validação estável do agente nesta máquina
 - a posição final dos painéis Livecopilot ficou entre `Resumo`/`Zabbix` e os painéis inferiores do host
 - a visualização padrão não exige rolagem para ver o conjunto principal

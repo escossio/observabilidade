@@ -60,6 +60,31 @@ Fonte canônica da arquitetura: `/lab/projects/livecopilot/docs/ARCHITECTURE_CUR
 - a seção foi posicionada logo abaixo do topo principal para não ficar escondida em uma dobra distante
 - o bloco inclui `Livecopilot Public Health` como checagem complementar da publicação pública
 
+## Correção da renderização dos cards
+
+- causa raiz do `N/A`: os itens originais do Livecopilot eram strings HTTP/systemd e a query anterior do Grafana não gerava frames úteis para `stat`
+- correção aplicada: itens numéricos derivados no Zabbix, um por camada, preservando os itens originais como fonte
+- itens derivados usados pelo Grafana:
+  - `69631` `Livecopilot Serviço estado`
+  - `69632` `Livecopilot Apache Edge estado`
+  - `69633` `Livecopilot Frontend Público estado`
+  - `69634` `Livecopilot Public Health estado`
+  - `69635` `Livecopilot Backend Health estado`
+  - `69636` `Livecopilot Backend Status estado`
+  - `69637` `Livecopilot Backend API estado`
+- query final do dashboard:
+  - `queryType: 3`
+  - `resultFormat: time_series`
+  - `itemids` ancorado nos itens derivados acima
+- valor operacional:
+  - `1 -> Up`
+  - `0 -> Down`
+  - `Livecopilot Backend Status` usa `1 -> OK`
+- evidência por API:
+  - `api/ds/query` voltou a responder `frames: 1` para todos os cards do bloco
+- evidência visual:
+  - captura autenticada do dashboard mostrou todos os cards do bloco em estado real, sem `N/A`
+
 ## O que não entrou
 
 - `dns_checks.yaml` não recebeu novo check
