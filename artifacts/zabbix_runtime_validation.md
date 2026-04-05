@@ -76,7 +76,7 @@
 - painéis de web e DNS foram rebatizados para `observabilidade-public`, `zabbix-frontend-alt-port`, `grafana-local`, `observabilidade-public-a` e `DNS Local`
 - a visualização padrão foi conferida para manter os blocos acima da dobra sem rolagem
 - `example.com` não aparece mais como referência principal no dashboard
-- os cards de serviço foram compactados para altura menor sem alterar queries
+- os cards de serviço ficaram com altura `2` para manter a leitura dos valores
 
 ## Rodada de saúde do host
 
@@ -108,5 +108,5 @@
 - `Memória disponível` virou `Memória Livre`
 - `localhost-a` virou `DNS Local`
 - `CPU Temp` virou `Temperatura CPU`
-- os cards stat passaram a usar altura `1`
+- os cards stat passaram a usar altura `2`
 - as queries e valores permaneceram corretos

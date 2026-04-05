@@ -130,13 +130,22 @@
 ## Fechamento da rodada de refinamento visual
 
 - títulos dos cards foram encurtados para nomes operacionais mais diretos
-- cards principais tiveram altura reduzida para ganhar densidade visual
+- a compactação anterior foi revertida parcialmente para recuperar legibilidade
+- cards principais voltaram para altura 2 para mostrar melhor o valor
 - painel `localhost-a` foi renomeado para `DNS Local`
 - `Zabbix Server` foi encurtado para `Zabbix`
 - `Apache2` foi encurtado para `Apache`
 - `Memória disponível` passou a aparecer como `Memória Livre`
 - `CPU Temp` passou a aparecer como `Temperatura CPU`
 - a grade principal permaneceu sem scroll e com as queries intactas
+- documentação desta rodada foi registrada nos artefatos do projeto
+
+## Fechamento da rodada de densidade
+
+- cards `stat` do dashboard principal voltaram para altura `2`
+- o valor voltou a ter mais protagonismo do que o título
+- a organização visual anterior foi preservada
+- queries, thresholds, cores e itens permaneceram inalterados
 - documentação desta rodada foi registrada nos artefatos do projeto
 
 ## Rodada de saúde do host

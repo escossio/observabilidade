@@ -32,7 +32,7 @@
 - o datasource Zabbix está associado ao dashboard
 - os painéis de serviço usam itens reais do Zabbix com filtro pelo nome do item
 - os painéis principais ficaram acima da dobra na grade 4x4
-- os cards foram compactados para altura menor e linha de diagnóstico reaproveitada
+- os cards foram compactados e depois parcialmente reexpandido para recuperar a leitura dos valores
 - os painéis de web e DNS foram rebatizados para a baseline atual
 - `example.com` deixou de aparecer como painel principal
 - a rodada de saúde do host adicionou uma nova linha com `CPU`, `RAM` e `CPU Temp`
@@ -72,6 +72,13 @@
 - `Memória disponível` foi encurtada para `Memória Livre`
 - `localhost-a` foi rebatizado para `DNS Local`
 - `CPU Temp` foi rebatizado para `Temperatura CPU`
-- a altura dos cards stat foi reduzida para `1`
+- a altura dos cards stat foi ajustada para `2`
 - o topo com `Resumo`, `Problemas`, `Web Público` e `DNS Público` foi preservado
 - as queries e thresholds permaneceram intactos
+
+## Rodada de densidade
+
+- a compactação extrema anterior foi revertida parcialmente
+- cards stat voltaram a exibir o valor com mais destaque
+- a organização do grid permaneceu a mesma
+- nenhum threshold ou query foi alterado
