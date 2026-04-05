@@ -1,5 +1,54 @@
 # Status
 
+## 2026-04-05 - noVNC movido para hostname dedicado
+
+- O noVNC saiu do path misturado na observabilidade e passou para hostname próprio:
+  - `novnc.escossio.dev.br`
+- O vhost antigo por path foi removido do default Apache:
+  - `/novnc/`
+  - `/novnc/websockify`
+- Foi criado vhost dedicado no Apache:
+  - `/etc/apache2/sites-available/novnc.conf`
+  - `ServerName novnc.escossio.dev.br`
+  - proxy HTTP para `10.45.0.3:6081`
+  - proxy WebSocket para `10.45.0.3:6081/websockify`
+- Proteção simples aplicada:
+  - `Basic Auth` no Apache
+  - arquivo secreto fora do repositório em `/etc/apache2/.htpasswd-novnc`
+- O `cloudflared` foi ajustado com ingress dedicada para o hostname:
+  - arquivo `/etc/cloudflared/config.yml`
+  - rota DNS criada para o tunnel `6394a032-08e8-4bc7-a957-44c77e743c49`
+- Validação local concluída:
+  - UI direta do noVNC respondeu `200`
+  - UI via Apache local com `Host: novnc.escossio.dev.br` respondeu `200`
+  - WebSocket local via Apache conectou e respondeu `RFB 003.008`
+- Validação pública concluída:
+  - `https://novnc.escossio.dev.br/vnc.html` respondeu `401` sem credencial e `200` com credencial
+  - `wss://novnc.escossio.dev.br/websockify` conectou e respondeu `RFB 003.008`
+  - navegador headless conseguiu carregar o noVNC em `autoconnect` e gerar screenshot da sessão
+- A sessão remota ficou pronta para a próxima etapa:
+  - login manual no Netflix
+  - playback real
+  - captura com `tcpdump`
+  - observação com DevTools
+
+## 2026-04-05 - noVNC publicado por proxy reverso no Apache
+
+- A sessão gráfica compartilhada da VM já existia via `x11vnc` + `websockify`.
+- Causa do acesso falhar para uso remoto:
+  - o noVNC estava exposto apenas no IP privado `10.45.0.3:6081`
+- Ajuste operacional aplicado:
+  - proxy reverso público no Apache para `/novnc/`
+  - proxy de websocket para `/novnc/websockify`
+- Arquivo de sistema alterado com backup prévio:
+  - `/etc/apache2/sites-available/000-default.conf`
+  - backup: `/etc/apache2/sites-available/000-default.conf.bak-20260405-202635`
+- Validação local:
+  - `http://127.0.0.1/novnc/vnc.html` respondeu `200`
+- Observação:
+  - o hostname público `observabilidade.escossio.dev.br` redireciona para tela de login antes do noVNC
+  - a sessão do navegador dentro da VM continua pronta em `https://www.netflix.com/`
+
 ## 2026-04-05 - domínios reais adicionados e playbook de captura preparado
 
 - Foi criada a frente `internet-observation/` para separar checagem pública simples de observação real de tráfego.
