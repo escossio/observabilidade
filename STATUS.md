@@ -352,6 +352,30 @@
   - revisar os detalhes do template para importação manual ou automação posterior
   - ajustar itens/prototypes se você quiser separar interface discovery e sinais fixos
 
+## 2026-04-05 - template Zabbix importável da MikroTik gerado
+
+- Foi gerado o export XML importável em `mikrotik-snmp/template/mikrotik_snmp_template.zabbix.xml`.
+- O XML ficou enxuto e focado no que foi validado:
+  - `sysDescr`
+  - `sysName`
+  - `sysUpTime`
+  - `ifNumber`
+  - descoberta de interfaces
+  - `ifDescr`
+  - `ifOperStatus`
+  - `ifInOctets`
+  - `ifOutOctets`
+  - memória
+  - uptime de host resources
+  - board
+  - versão do RouterOS
+  - temperatura
+  - voltagem
+  - `pppoe-out1`
+  - `wg0`
+- A exportação ainda não foi importada no runtime do Zabbix; ficou apenas versionada como artefato pronto para importação manual.
+- O XML passou por validação estrutural local e o volume final ficou em `12` itens fixos e `4` protótipos de item de descoberta.
+
 - cards `stat` do dashboard principal voltaram para altura `2`
 - o valor voltou a ter mais protagonismo do que o título
 - a organização visual anterior foi preservada

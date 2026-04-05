@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+  <version>7.4</version>
+  <template_groups>
+    <template_group>
+      <name>Templates/SNMP</name>
+    </template_group>
+  </template_groups>
+  <templates>
+    <template>
+      <template>MikroTik SNMP</template>
+      <name>MikroTik SNMP</name>
+      <description>Template SNMP inicial para MikroTik RouterOS validado no RB3011UiAS.</description>
+      <groups>
+        <group>
+          <name>Templates/SNMP</name>
+        </group>
+      </groups>
+      <macros>
+        <macro>
+          <macro>{$SNMP_COMMUNITY}</macro>
+          <value>public</value>
+        </macro>
+        <macro>
+          <macro>{$MIKROTIK_IF_TUNNELS}</macro>
+          <value>pppoe-out1,wg0</value>
+        </macro>
+      </macros>
+      <items>
+        <item>
+          <name>SNMP system description</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.1.1.0</snmp_oid>
+          <key>mikrotik.sysDescr</key>
+          <delay>1h</delay>
+          <history>90d</history>
+          <trends>0</trends>
+          <value_type>CHAR</value_type>
+          <status>ENABLED</status>
+          <description>Confirma identificação base do equipamento.</description>
+        </item>
+        <item>
+          <name>SNMP system name</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.1.5.0</snmp_oid>
+          <key>mikrotik.sysName</key>
+          <delay>1h</delay>
+          <history>90d</history>
+          <trends>0</trends>
+          <value_type>CHAR</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>SNMP uptime</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.1.3.0</snmp_oid>
+          <key>mikrotik.sysUpTime</key>
+          <delay>5m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <units>s</units>
+          <value_type>UNSIGNED</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>Interface count</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.2.1.0</snmp_oid>
+          <key>mikrotik.ifNumber</key>
+          <delay>30m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <value_type>UNSIGNED</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>Memory size</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.25.2.2.0</snmp_oid>
+          <key>mikrotik.hrMemorySize</key>
+          <delay>30m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <units>B</units>
+          <value_type>UNSIGNED</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>Host resources uptime</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.25.1.1.0</snmp_oid>
+          <key>mikrotik.hrSystemUptime</key>
+          <delay>5m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <units>s</units>
+          <value_type>UNSIGNED</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>Board name</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.4.1.14988.1.1.7.8.0</snmp_oid>
+          <key>mikrotik.boardName</key>
+          <delay>1h</delay>
+          <history>90d</history>
+          <trends>0</trends>
+          <value_type>CHAR</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>RouterOS version</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.4.1.14988.1.1.4.4.0</snmp_oid>
+          <key>mikrotik.routerosVersion</key>
+          <delay>1h</delay>
+          <history>90d</history>
+          <trends>0</trends>
+          <value_type>CHAR</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>Temperature</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.4.1.14988.1.1.3.100.1.3.14</snmp_oid>
+          <key>mikrotik.temperature</key>
+          <delay>1m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <units>C</units>
+          <value_type>FLOAT</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>Voltage</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.4.1.14988.1.1.3.100.1.3.13</snmp_oid>
+          <key>mikrotik.voltage</key>
+          <delay>1m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <units>mV</units>
+          <value_type>UNSIGNED</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>PPPoE tunnel status</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.2.2.1.8.14</snmp_oid>
+          <key>mikrotik.pppoeOut1Status</key>
+          <delay>1m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <value_type>UNSIGNED</value_type>
+          <status>ENABLED</status>
+        </item>
+        <item>
+          <name>WireGuard tunnel status</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.2.2.1.8.16</snmp_oid>
+          <key>mikrotik.wg0Status</key>
+          <delay>1m</delay>
+          <history>90d</history>
+          <trends>365d</trends>
+          <value_type>UNSIGNED</value_type>
+          <status>ENABLED</status>
+        </item>
+      </items>
+      <discovery_rules>
+        <discovery_rule>
+          <name>Interface discovery</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>1.3.6.1.2.1.2.2.1</snmp_oid>
+          <key>mikrotik.if.discovery</key>
+          <delay>1h</delay>
+          <lifetime>7d</lifetime>
+          <status>ENABLED</status>
+          <item_prototypes>
+            <item_prototype>
+              <name>Interface {#IFINDEX} description</name>
+              <type>SNMP_AGENT</type>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.2.{#IFINDEX}</snmp_oid>
+              <key>mikrotik.ifDescr[{#IFINDEX}]</key>
+              <delay>1h</delay>
+              <history>90d</history>
+              <trends>0</trends>
+              <value_type>CHAR</value_type>
+              <status>ENABLED</status>
+            </item_prototype>
+            <item_prototype>
+              <name>Interface {#IFINDEX} operational status</name>
+              <type>SNMP_AGENT</type>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.8.{#IFINDEX}</snmp_oid>
+              <key>mikrotik.ifOperStatus[{#IFINDEX}]</key>
+              <delay>1m</delay>
+              <history>90d</history>
+              <trends>365d</trends>
+              <value_type>UNSIGNED</value_type>
+              <status>ENABLED</status>
+            </item_prototype>
+            <item_prototype>
+              <name>Interface {#IFINDEX} inbound traffic</name>
+              <type>SNMP_AGENT</type>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.10.{#IFINDEX}</snmp_oid>
+              <key>mikrotik.ifInOctets[{#IFINDEX}]</key>
+              <delay>1m</delay>
+              <history>90d</history>
+              <trends>365d</trends>
+              <units>B</units>
+              <value_type>UNSIGNED</value_type>
+              <status>ENABLED</status>
+            </item_prototype>
+            <item_prototype>
+              <name>Interface {#IFINDEX} outbound traffic</name>
+              <type>SNMP_AGENT</type>
+              <snmp_oid>1.3.6.1.2.1.2.2.1.16.{#IFINDEX}</snmp_oid>
+              <key>mikrotik.ifOutOctets[{#IFINDEX}]</key>
+              <delay>1m</delay>
+              <history>90d</history>
+              <trends>365d</trends>
+              <units>B</units>
+              <value_type>UNSIGNED</value_type>
+              <status>ENABLED</status>
+            </item_prototype>
+          </item_prototypes>
+        </discovery_rule>
+      </discovery_rules>
+    </template>
+  </templates>
+</zabbix_export>
