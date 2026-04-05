@@ -19,6 +19,26 @@
    - web: `http://127.0.0.1/` e `http://127.0.0.1:8080/`
    - DNS: `example.com` via `127.0.0.1`
 
+## Livecopilot por camada
+
+Quando o objetivo for distinguir borda, frontend e backend do Livecopilot, usar os alvos abaixo:
+
+- serviço: `livecopilot-semantic-api.service`
+- borda Apache: `http://127.0.0.1:8080/`
+- frontend público: `http://livecopilot.escossio.dev.br/`
+- health público: `http://livecopilot.escossio.dev.br/health`
+- health backend: `http://127.0.0.1:8099/health`
+- status operacional: `http://127.0.0.1:8099/status`
+- API operacional: `http://127.0.0.1:8099/api/panel/summary`
+
+Base mínima de triggers:
+
+- serviço parado
+- borda indisponível
+- frontend público indisponível
+- health backend indisponível
+- rota operacional indisponível
+
 ## Serviços systemd
 
 Base mínima de triggers:

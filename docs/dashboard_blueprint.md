@@ -4,7 +4,7 @@
 
 - status por serviço `systemd`
 - contagem de serviços ativos, parados e em manutenção
-- destaque para falhas do `apache2`, `unbound` e `emby-server`
+- destaque para falhas do `apache2`, `unbound`, `emby-server` e `livecopilot-semantic-api`
 
 ## Bloco de páginas
 
@@ -12,6 +12,7 @@
 - tempo de resposta
 - página lenta versus página indisponível
 - foco nos checks reais `http://127.0.0.1/` e `http://127.0.0.1:8080/`
+- separar borda Apache, frontend público e backend health do Livecopilot em checks distintos
 
 ## Bloco de DNS
 
@@ -26,6 +27,7 @@
 - total em warning
 - total em problema
 - total em desconhecido
+- incluir uma linha dedicada ao Livecopilot com serviço, borda, frontend público e backend health
 
 ## Aplicação
 

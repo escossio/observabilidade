@@ -19,6 +19,12 @@
 - `Unbound` - `stat`
 - `PostgreSQL` - `stat`
 - `SSH` - `stat`
+- `Livecopilot Serviço` - `stat`
+- `Livecopilot Apache Edge` - `stat`
+- `Livecopilot Frontend Público` - `stat`
+- `Livecopilot Backend Health` - `stat`
+- `Livecopilot Backend Status` - `stat`
+- `Livecopilot Backend API` - `stat`
 - `Grafana Local` - `URL`
 - `Zabbix Frontend` - `URL`
 - `localhost-a` - `stat`
@@ -36,6 +42,9 @@
 - os painéis de web e DNS foram rebatizados para a baseline atual
 - `example.com` deixou de aparecer como painel principal
 - a rodada de saúde do host adicionou uma nova linha com `CPU`, `RAM` e `CPU Temp`
+- o bloco do Livecopilot foi adicionado como leitura por camada com `Serviço`, `Apache Edge`, `Frontend Público`, `Backend Health`, `Backend Status` e `Backend API`
+- o bloco do Livecopilot agora usa itens reais criados no runtime do Zabbix para serviço, borda, frontend público, health, status e API
+- o check público foi mantido em HTTP na borda externa para validação estável do agente nesta máquina
 - a visualização padrão não exige rolagem para ver o conjunto principal
 - `Emby` foi removido do layout principal
 - a semântica operacional foi refinada nesta rodada sem alterar a grade principal
@@ -51,6 +60,13 @@
 - o painel `CPU Temp` referencia o item `CPU temperature` do Zabbix
 - o painel usa a key final `cpu.temp` no backend
 - a validação final de consistência entre Zabbix e Grafana foi concluída nesta rodada
+
+## Rodada Livecopilot
+
+- o dashboard ganhou um bloco dedicado ao Livecopilot com leitura por camada
+- a ordem visual separa serviço, borda Apache, frontend público e backend
+- o bloco foi desenhado para distinguir falha de publicação de falha de aplicação
+- o check de `/status` ficou como diagnóstico complementar de segunda linha
 
 ## Rodada semântica
 

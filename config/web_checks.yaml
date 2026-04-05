@@ -1,12 +1,48 @@
 web_checks:
   # base_minima
+  - name: livecopilot-apache-edge
+    url: http://127.0.0.1:8080/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: livecopilot-public-frontend
+    url: http://livecopilot.escossio.dev.br/
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: livecopilot-public-health
+    url: http://livecopilot.escossio.dev.br/health
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: livecopilot-backend-health
+    url: http://127.0.0.1:8099/health
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: livecopilot-backend-status
+    url: http://127.0.0.1:8099/status
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  - name: livecopilot-backend-api-summary
+    url: http://127.0.0.1:8099/api/panel/summary
+    expected_status: 200
+    timeout: 5
+    follow_redirects: true
+
+  # segunda_linha
   - name: observabilidade-public
     url: https://observabilidade.escossio.dev.br/
     expected_status: 200
     timeout: 5
     follow_redirects: true
 
-  # segunda_linha
   - name: grafana-local
     url: http://127.0.0.1:3000/
     expected_status: 200

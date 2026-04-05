@@ -1,5 +1,19 @@
 # Status
 
+## 2026-04-04 - integração do Livecopilot por camada
+
+- O Livecopilot foi integrado ao escopo de observabilidade por camada sem alterar a arquitetura do serviço.
+- Checks propostos nesta rodada:
+  - serviço `livecopilot-semantic-api.service`
+  - borda Apache em `http://127.0.0.1:8080/`
+  - frontend público em `http://livecopilot.escossio.dev.br/`
+  - health backend local em `http://127.0.0.1:8099/health`
+  - status operacional em `http://127.0.0.1:8099/status`
+  - endpoint operacional de API em `http://127.0.0.1:8099/api/panel/summary`
+- O bloco do Livecopilot foi descrito para o Grafana como leitura separada de serviço, borda, frontend e backend.
+- Não houve inclusão de DNS novo porque o objetivo operacional foi cobrir publicação e aplicação, não resolução específica.
+- A escrita automática no Zabbix central ficou acessível por API local nesta máquina e os itens/triggers da camada Livecopilot foram aplicados no runtime.
+
 ## Diagnóstico inicial
 
 - Diretório do projeto criado e organizado

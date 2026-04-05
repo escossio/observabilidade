@@ -53,17 +53,17 @@ services:
     severity: medium
     notes: "Segunda linha: aplicação útil do host."
 
-  - name: livecopilot-semantic-api
-    unit: livecopilot-semantic-api.service
-    enabled: true
-    severity: medium
-    notes: "Segunda linha: API própria do host."
-
   - name: cloudflared-livecopilot
     unit: cloudflared-livecopilot.service
     enabled: true
     severity: medium
     notes: "Segunda linha: túnel adicional."
+
+  - name: livecopilot-semantic-api
+    unit: livecopilot-semantic-api.service
+    enabled: true
+    severity: medium
+    notes: "Segunda linha: backend FastAPI do Livecopilot."
 
   - name: smbd
     unit: smbd.service
