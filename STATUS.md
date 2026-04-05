@@ -424,3 +424,11 @@
 - o item `CPU temperature` foi convertido para coleta operacional no Zabbix e recebeu `lastvalue` real
 - o painel `CPU Temp` do Grafana foi validado como apontando para o item final `CPU temperature` / `cpu.temp`
 - dashboard principal do Grafana permaneceu sem alterações nesta rodada
+
+## 2026-04-05 - análise do template oficial MikroTik
+
+- foi criada a análise de lacuna do template oficial `Mikrotik by SNMP` contra a nossa base validada
+- o template oficial cobre `ICMP Ping`, `ICMP Packet Loss`, `ICMP Latency`, `SNMP Availability`, `Identity`, `Model`, `Firmware`, `Temperature`, `Voltage`, `Memory` e LLD de `CPU` e `Interfaces`
+- a nossa base já valida `sysDescr`, `sysName`, `sysUpTime`, `ifNumber`, memória, board, versão do RouterOS, temperatura, voltagem e túneis observados
+- a principal pendência técnica identificada foi alinhar a LLD de interfaces ao formato oficial aceito pelo Zabbix local
+- o próximo passo útil é fechar apenas o gap funcional, sem inflar o template com descoberta desnecessária
