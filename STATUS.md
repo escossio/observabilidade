@@ -1,5 +1,27 @@
 # Status
 
+## 2026-04-05 - raiz do noVNC finalizada sem directory listing
+
+- Causa do `Directory listing for /`:
+  - a raiz `/` do vhost `novnc` estava sendo proxied diretamente para a raiz do `websockify`
+  - o listing vinha do servidor embutido do noVNC, não de `DocumentRoot` local do Apache
+- Ajuste aplicado no vhost `novnc`:
+  - rewrite interna de `/` para `/vnc.html?autoconnect=true&path=websockify`
+  - sem redirect externo e sem depender de `http` atrás do Cloudflare
+- Resultado de UX:
+  - `/` deixou de mostrar listagem de diretório
+  - `/` passou a abrir a interface do noVNC
+  - `/vnc.html?autoconnect=true&path=websockify` continua funcional
+- Validação do websocket mantida:
+  - `wss://novnc.escossio.dev.br/websockify` conectou
+  - retorno `RFB 003.008`
+- Evidência visual:
+  - navegador headless conseguiu carregar a raiz pública do `novnc` e gerar screenshot
+- Pronto para a etapa seguinte:
+  - login manual no Netflix
+  - playback real
+  - captura de tráfego
+
 ## 2026-04-05 - noVNC movido para hostname dedicado
 
 - O noVNC saiu do path misturado na observabilidade e passou para hostname próprio:

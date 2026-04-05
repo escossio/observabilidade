@@ -32,9 +32,27 @@ Foi criado um vhost dedicado:
 
 - arquivo: `/etc/apache2/sites-available/novnc.conf`
 - `ServerName novnc.escossio.dev.br`
+- `RewriteRule` interna para que `/` entregue `vnc.html` com `autoconnect=true&path=websockify`
 - proxy HTTP da UI para `http://10.45.0.3:6081/`
 - proxy WebSocket para `ws://10.45.0.3:6081/websockify`
 - autenticação básica no Apache com `AuthType Basic`
+
+### Causa do directory listing na raiz
+
+- a raiz `/` do vhost estava sendo proxied diretamente para a raiz do `websockify`
+- o servidor embutido do noVNC responde a raiz com listagem de diretório
+- `DirectoryIndex` e `Options -Indexes` locais não resolviam isso porque a resposta vinha do upstream proxied, não de um `DocumentRoot` local
+
+### Fechamento da UX da raiz
+
+- a raiz `/` deixou de cair no listing bruto
+- o vhost agora reescreve internamente `/` para:
+
+```text
+/vnc.html?autoconnect=true&path=websockify
+```
+
+- isso mantém o hostname limpo e evita redirect externo com esquema errado atrás do Cloudflare
 
 Proteção simples aplicada:
 
@@ -69,6 +87,7 @@ cloudflared tunnel route dns 6394a032-08e8-4bc7-a957-44c77e743c49 novnc.escossio
 
 - noVNC saiu do domínio/path da observabilidade
 - a UI passou a responder em hostname dedicado
+- a raiz `/` passou a abrir a interface do noVNC em vez de listagem de diretório
 - o WebSocket passou a responder no mesmo hostname dedicado
 - a sessão ficou pronta para a etapa seguinte:
   - login manual no Netflix

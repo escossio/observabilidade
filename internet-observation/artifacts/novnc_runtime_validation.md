@@ -35,6 +35,7 @@ RFB 003.008
 UI via Apache local:
 
 ```text
+curl -H 'Host: novnc.escossio.dev.br' -u operator:*** http://127.0.0.1/ -> 200
 curl -H 'Host: novnc.escossio.dev.br' -u operator:*** http://127.0.0.1/vnc.html -> 200
 ```
 
@@ -51,12 +52,25 @@ wscat ws://127.0.0.1/websockify --host novnc.escossio.dev.br --auth operator:***
 RFB 003.008
 ```
 
+Leitura da raiz:
+
+```text
+GET / -> entrega a UI do noVNC
+```
+
+Resultado:
+
+- a raiz não mostra mais `Directory listing for /`
+- a raiz passa a servir o `vnc.html` com `autoconnect=true&path=websockify`
+
 ### 3. Hostname público via Cloudflare Tunnel
 
 UI pública:
 
 ```text
+curl -k -u operator:*** https://novnc.escossio.dev.br/ -> 200
 curl -k -u operator:*** https://novnc.escossio.dev.br/vnc.html -> 200
+curl -k https://novnc.escossio.dev.br/ -> 401
 curl -k https://novnc.escossio.dev.br/vnc.html -> 401
 ```
 
@@ -78,18 +92,23 @@ novnc.escossio.dev.br -> Cloudflare proxy ativo
 Validação feita com navegador real em modo headless:
 
 ```text
+firefox --headless --screenshot /tmp/novnc-root-public.png \
+  'https://operator:***@novnc.escossio.dev.br/?autoconnect=true&resize=remote&reconnect=false&view_only=true'
+
 firefox --headless --screenshot /tmp/novnc-public.png \
   'https://operator:***@novnc.escossio.dev.br/vnc.html?autoconnect=true&resize=remote&reconnect=false&view_only=true'
 ```
 
 Resultado:
 
+- screenshot da raiz gerado com sucesso
 - screenshot gerado com sucesso
 - arquivo PNG `1600x900`
 - handshake público de WebSocket confirmado com `RFB 003.008`
 
 Leitura operacional:
 
+- a raiz pública abre a interface do noVNC
 - a página do noVNC abre externamente
 - o WebSocket conecta externamente
 - o canvas remoto foi carregado por navegador no hostname dedicado
