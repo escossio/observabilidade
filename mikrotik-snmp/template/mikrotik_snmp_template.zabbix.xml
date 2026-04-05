@@ -179,67 +179,134 @@
           <value_type>UNSIGNED</value_type>
           <status>ENABLED</status>
         </item>
+        <item>
+          <uuid>1111111111114111811111111111110d</uuid>
+          <name>SNMP walk Interface table</name>
+          <type>SNMP_AGENT</type>
+          <snmp_oid>walk[1.3.6.1.2.1.2.2.1.2,1.3.6.1.2.1.2.2.1.8,1.3.6.1.2.1.2.2.1.10,1.3.6.1.2.1.2.2.1.16]</snmp_oid>
+          <key>mikrotik.if.walk</key>
+          <delay>1m</delay>
+          <history>0</history>
+          <trends>0</trends>
+          <value_type>TEXT</value_type>
+          <status>ENABLED</status>
+          <description>Walk bruto da tabela de interfaces para LLD dependente.</description>
+        </item>
       </items>
       <discovery_rules>
         <discovery_rule>
           <uuid>22222222222242228222222222222201</uuid>
           <name>Interface discovery</name>
-          <type>SNMP_AGENT</type>
-          <snmp_oid>discovery[{#SNMPINDEX},1.3.6.1.2.1.2.2.1.1]</snmp_oid>
+          <type>DEPENDENT</type>
           <key>mikrotik.if.discovery</key>
-          <delay>1h</delay>
           <lifetime>7d</lifetime>
           <status>ENABLED</status>
+          <preprocessing>
+            <step>
+              <type>SNMP_WALK_TO_JSON</type>
+              <parameters>
+                <parameter>{#IFDESCR}</parameter>
+                <parameter>1.3.6.1.2.1.2.2.1.2</parameter>
+                <parameter>0</parameter>
+                <parameter>{#IFOPERSTATUS}</parameter>
+                <parameter>1.3.6.1.2.1.2.2.1.8</parameter>
+                <parameter>0</parameter>
+              </parameters>
+            </step>
+          </preprocessing>
+          <master_item>
+            <key>mikrotik.if.walk</key>
+          </master_item>
           <item_prototypes>
             <item_prototype>
               <uuid>33333333333343338333333333333301</uuid>
-              <name>Interface {#SNMPINDEX} description</name>
-              <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.2.{#SNMPINDEX}</snmp_oid>
+              <name>{#IFDESCR} description</name>
+              <type>DEPENDENT</type>
               <key>mikrotik.ifDescr[{#SNMPINDEX}]</key>
-              <delay>1h</delay>
               <history>90d</history>
               <trends>0</trends>
               <value_type>CHAR</value_type>
               <status>ENABLED</status>
+              <preprocessing>
+                <step>
+                  <type>SNMP_WALK_VALUE</type>
+                  <parameters>
+                    <parameter>1.3.6.1.2.1.2.2.1.2.{#SNMPINDEX}</parameter>
+                    <parameter>0</parameter>
+                  </parameters>
+                </step>
+              </preprocessing>
+              <master_item>
+                <key>mikrotik.if.walk</key>
+              </master_item>
             </item_prototype>
             <item_prototype>
               <uuid>33333333333343338333333333333302</uuid>
-              <name>Interface {#SNMPINDEX} operational status</name>
-              <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.8.{#SNMPINDEX}</snmp_oid>
+              <name>{#IFDESCR} operational status</name>
+              <type>DEPENDENT</type>
               <key>mikrotik.ifOperStatus[{#SNMPINDEX}]</key>
-              <delay>1m</delay>
               <history>90d</history>
               <trends>365d</trends>
               <value_type>UNSIGNED</value_type>
               <status>ENABLED</status>
+              <preprocessing>
+                <step>
+                  <type>SNMP_WALK_VALUE</type>
+                  <parameters>
+                    <parameter>1.3.6.1.2.1.2.2.1.8.{#SNMPINDEX}</parameter>
+                    <parameter>0</parameter>
+                  </parameters>
+                </step>
+              </preprocessing>
+              <master_item>
+                <key>mikrotik.if.walk</key>
+              </master_item>
             </item_prototype>
             <item_prototype>
               <uuid>33333333333343338333333333333303</uuid>
-              <name>Interface {#SNMPINDEX} inbound traffic</name>
-              <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.10.{#SNMPINDEX}</snmp_oid>
+              <name>{#IFDESCR} inbound traffic</name>
+              <type>DEPENDENT</type>
               <key>mikrotik.ifInOctets[{#SNMPINDEX}]</key>
-              <delay>1m</delay>
               <history>90d</history>
               <trends>365d</trends>
               <units>B</units>
               <value_type>UNSIGNED</value_type>
               <status>ENABLED</status>
+              <preprocessing>
+                <step>
+                  <type>SNMP_WALK_VALUE</type>
+                  <parameters>
+                    <parameter>1.3.6.1.2.1.2.2.1.10.{#SNMPINDEX}</parameter>
+                    <parameter>0</parameter>
+                  </parameters>
+                </step>
+              </preprocessing>
+              <master_item>
+                <key>mikrotik.if.walk</key>
+              </master_item>
             </item_prototype>
             <item_prototype>
               <uuid>33333333333343338333333333333304</uuid>
-              <name>Interface {#SNMPINDEX} outbound traffic</name>
-              <type>SNMP_AGENT</type>
-              <snmp_oid>1.3.6.1.2.1.2.2.1.16.{#SNMPINDEX}</snmp_oid>
+              <name>{#IFDESCR} outbound traffic</name>
+              <type>DEPENDENT</type>
               <key>mikrotik.ifOutOctets[{#SNMPINDEX}]</key>
-              <delay>1m</delay>
               <history>90d</history>
               <trends>365d</trends>
               <units>B</units>
               <value_type>UNSIGNED</value_type>
               <status>ENABLED</status>
+              <preprocessing>
+                <step>
+                  <type>SNMP_WALK_VALUE</type>
+                  <parameters>
+                    <parameter>1.3.6.1.2.1.2.2.1.16.{#SNMPINDEX}</parameter>
+                    <parameter>0</parameter>
+                  </parameters>
+                </step>
+              </preprocessing>
+              <master_item>
+                <key>mikrotik.if.walk</key>
+              </master_item>
             </item_prototype>
           </item_prototypes>
         </discovery_rule>

@@ -440,3 +440,16 @@
 - mesmo após `config_cache_reload`, o host `MikroTik RB3011` continua com a regra em estado `unsupported`
 - o erro atual permanece `Invalid SNMP OID: pairs of macro and OID are expected`
 - a coleta fixa principal continua funcionando; a LLD de interfaces segue como bloqueio isolado para a próxima correção
+
+## 2026-04-05 - LLD de interfaces MikroTik corrigida
+
+- a descoberta de interfaces foi migrada de `SNMP LLD` direta para o padrão compatível com a instância local: item mestre `walk[]` + descoberta `DEPENDENT` com `SNMP_WALK_TO_JSON`
+- os protótipos de item também passaram a ser `DEPENDENT`, usando `SNMP_WALK_VALUE` sobre o mesmo walk bruto
+- o host `MikroTik RB3011` saiu do estado `unsupported` na regra `mikrotik.if.discovery`
+- a LLD gerou itens reais para interfaces como `bridge`, `ether1`, `pppoe-out1` e `wg0`
+- latest data validado após a correção:
+  - `pppoe-out1 operational status` = `1`
+  - `wg0 operational status` = `1`
+  - `ether1 inbound traffic` = `1490222658`
+  - `ether1 outbound traffic` = `540053278`
+- o `delay` do item mestre foi devolvido para `1m` após a validação inicial

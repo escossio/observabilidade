@@ -5,7 +5,7 @@
 - template importado com sucesso no Zabbix local
 - host MikroTik criado e associado ao template
 - itens SNMP principais com `latest data` real confirmados
-- descoberta de interfaces falhou por erro estrutural na LLD SNMP
+- descoberta de interfaces corrigida e validada com itens reais no host
 
 ## Host criado
 
@@ -63,14 +63,24 @@
 
 ## Descoberta de interfaces
 
-- o item de descoberta `mikrotik.if.discovery` entrou em estado `unsupported`
-- erro retornado pelo Zabbix: `Invalid SNMP OID: pairs of macro and OID are expected.`
-- conclusão: a LLD não gerou protótipos de interface nesta rodada
-- consequência: a coleta ficou válida para os itens fixos, mas a descoberta automática ainda precisa de correção estrutural em uma rodada posterior
+- a abordagem final deixou de usar `SNMP LLD` direta e passou a usar:
+  - item mestre `mikrotik.if.walk` com `walk[]`
+  - discovery rule `DEPENDENT`
+  - preprocessing `SNMP_WALK_TO_JSON`
+  - item prototypes `DEPENDENT` com `SNMP_WALK_VALUE`
+- o item `mikrotik.if.discovery` saiu do estado `unsupported`
+- a LLD gerou itens reais para interfaces como `bridge`, `ether1`, `pppoe-out1` e `wg0`
+- latest data confirmado em itens descobertos:
+  - `pppoe-out1 operational status` -> `1`
+  - `wg0 operational status` -> `1`
+  - `ether1 inbound traffic` -> `1490222658`
+  - `ether1 outbound traffic` -> `540053278`
+- o item mestre foi validado com `delay` temporariamente reduzido e depois devolvido para `1m`
 
 ## Evidência objetiva
 
 - a API do Zabbix respondeu com autenticação válida usando `Admin` e a senha rotacionada local
 - o host `MikroTik RB3011` foi criado e recebeu o template `MikroTik SNMP`
 - `item.get` passou a retornar `lastclock` e `lastvalue` reais para os itens principais
-- a descoberta de interfaces ficou documentada como bloqueio real, não como sucesso simulado
+- `discoveryrule.get` passou a retornar `state = 0` e `error` vazio para `mikrotik.if.discovery`
+- `item.get` passou a retornar itens descobertos de interface com `lastvalue` real
