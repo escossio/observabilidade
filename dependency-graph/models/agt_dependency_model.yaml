@@ -165,99 +165,20 @@ nodes:
     type: access_device
     layer: access
     criticality: critical
-    depends_on: access-mikrotik-bridge
+    depends_on: cluster-mikrotik-rb3011
     impact_scope: local-egress
     validation_source: observed
     confidence: high
     notes: Interface de saída observada no host.
-  - id: access-mikrotik-bridge
-    label: MikroTik bridge
-    type: access_device
-    layer: access
-    criticality: critical
-    depends_on: edge-next-hop-10-45-0-1
-    impact_scope: local-egress
-    validation_source: observed
-    confidence: high
-    notes: Domínio L2 observado na RB3011 via discovery de interfaces.
-  - id: edge-next-hop-10-45-0-1
-    label: next-hop 10.45.0.1
-    type: gateway
-    layer: edge
-    criticality: high
-    depends_on: access-public-ip-206-42-12-37
-    impact_scope: external-reachability
-    validation_source: observed
-    confidence: high
-    notes: Gateway padrão observado pelo AGT; coincide com o IP de gestão da RB3011.
-  - id: access-public-ip-206-42-12-37
-    label: 206.42.12.37
-    type: public_ip
-    layer: edge
-    criticality: high
-    depends_on: edge-mikrotik-pppoe-out1
-    impact_scope: external-reachability
-    validation_source: observed
-    confidence: high
-    notes: IP público de saída confirmado na cadeia principal de egress.
-  - id: edge-mikrotik-pppoe-out1
-    label: pppoe-out1
-    type: ppp_session
-    layer: edge
-    criticality: high
-    depends_on: edge-mikrotik-ether1
-    impact_scope: external-reachability
-    validation_source: observed
-    confidence: high
-    notes: Sessão WAN principal observada ativa no runtime do Zabbix.
-  - id: edge-mikrotik-ether1
-    label: ether1
-    type: access_device
-    layer: edge
-    criticality: high
-    depends_on: edge-mikrotik-rb3011
-    impact_scope: external-reachability
-    validation_source: observed
-    confidence: high
-    notes: Uplink físico observado da RB3011 para a WAN principal.
-  - id: edge-mikrotik-rb3011
-    label: MikroTik RB3011
-    type: access_device
+  - id: cluster-mikrotik-rb3011
+    label: cluster MikroTik RB3011
+    type: cluster
     layer: edge
     criticality: critical
     impact_scope: agt-edge
-    validation_source: observed
+    validation_source: documented
     confidence: high
-    notes: Entidade operacional concreta da borda do AGT, validada por SNMP/Zabbix em 10.45.0.1.
-  - id: edge-mikrotik-wg0
-    label: wg0
-    type: access_device
-    layer: edge
-    criticality: low
-    depends_on: edge-mikrotik-rb3011
-    impact_scope: overlay-connectivity
-    validation_source: observed
-    confidence: medium
-    notes: Túnel WireGuard observado ativo; mantido fora da cadeia causal principal do AGT.
-  - id: provider-as-brisanet
-    label: AS28126 BRISANET
-    type: provider
-    layer: provider
-    criticality: medium
-    impact_scope: upstream-connectivity
-    validation_source: observed
-    confidence: high
-    notes: Identidade obtida a partir do egress público observado.
-  - id: destination-cloud
-    label: nuvem / destino
-    type: destination
-    layer: destination
-    criticality: low
-    depends_on: provider-as-brisanet
-    impact_scope: external-service-reachability
-    validation_source: inferred
-    confidence: low
-    notes: Alvo final genérico; nenhum destino único foi confirmado.
+    notes: Referência explícita ao cluster dedicado da borda em dependency-graph/clusters/mikrotik-rb3011.md.
 edges:
   - from: svc-zabbix-server
     to: host-agt01
@@ -340,55 +261,10 @@ edges:
     validation_source: observed
     confidence: high
   - from: access-link-bridge-br0
-    to: access-mikrotik-bridge
+    to: cluster-mikrotik-rb3011
     relation: depends_on
-    validation_source: observed
+    validation_source: documented
     confidence: high
-  - from: access-mikrotik-bridge
-    to: edge-next-hop-10-45-0-1
-    relation: depends_on
-    validation_source: observed
-    confidence: high
-  - from: edge-next-hop-10-45-0-1
-    to: access-public-ip-206-42-12-37
-    relation: depends_on
-    validation_source: observed
-    confidence: high
-  - from: access-public-ip-206-42-12-37
-    to: edge-mikrotik-pppoe-out1
-    relation: depends_on
-    validation_source: observed
-    confidence: high
-  - from: edge-mikrotik-pppoe-out1
-    to: edge-mikrotik-ether1
-    relation: depends_on
-    validation_source: observed
-    confidence: high
-  - from: edge-mikrotik-ether1
-    to: edge-mikrotik-rb3011
-    relation: depends_on
-    validation_source: observed
-    confidence: high
-  - from: edge-mikrotik-wg0
-    to: edge-mikrotik-rb3011
-    relation: depends_on
-    validation_source: observed
-    confidence: medium
-  - from: access-link-bridge-br0
-    to: edge-mikrotik-rb3011
-    relation: depends_on
-    validation_source: observed
-    confidence: high
-  - from: access-public-ip-206-42-12-37
-    to: provider-as-brisanet
-    relation: depends_on
-    validation_source: observed
-    confidence: high
-  - from: provider-as-brisanet
-    to: destination-cloud
-    relation: depends_on
-    validation_source: inferred
-    confidence: low
 semantics:
   node_fields:
     - id

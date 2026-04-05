@@ -1,0 +1,152 @@
+version: 2
+cluster: MIKROTIK-RB3011
+host:
+  id: host-mikrotik-rb3011
+  label: MikroTik RB3011
+  type: host
+  layer: host
+  criticality: critical
+  validation_source: observed
+  confidence: high
+  notes: Equipamento de borda monitorado por SNMP no Zabbix em 10.45.0.1.
+nodes:
+  - id: access-mikrotik-bridge
+    label: bridge
+    type: access_device
+    layer: access
+    criticality: critical
+    depends_on: host-mikrotik-rb3011
+    impact_scope: agt-lan-egress
+    validation_source: observed
+    confidence: high
+    notes: Domínio L2 local observado na descoberta de interfaces da RB3011.
+  - id: access-next-hop-10-45-0-1
+    label: next-hop 10.45.0.1
+    type: gateway
+    layer: access
+    criticality: critical
+    depends_on: host-mikrotik-rb3011
+    impact_scope: agt-lan-egress
+    validation_source: observed
+    confidence: high
+    notes: Gateway padrão observado pelo AGT e exposto pela RB3011.
+  - id: edge-mikrotik-ether1
+    label: ether1
+    type: access_device
+    layer: edge
+    criticality: high
+    depends_on: host-mikrotik-rb3011
+    impact_scope: wan-uplink
+    validation_source: observed
+    confidence: high
+    notes: Uplink físico observado da WAN principal.
+  - id: edge-mikrotik-pppoe-out1
+    label: pppoe-out1
+    type: ppp_session
+    layer: edge
+    criticality: high
+    depends_on: edge-mikrotik-ether1
+    impact_scope: wan-uplink
+    validation_source: observed
+    confidence: high
+    notes: Sessão WAN principal observada ativa no runtime do Zabbix.
+  - id: edge-public-ip-206-42-12-37
+    label: 206.42.12.37
+    type: public_ip
+    layer: edge
+    criticality: high
+    depends_on: edge-mikrotik-pppoe-out1
+    impact_scope: external-reachability
+    validation_source: observed
+    confidence: high
+    notes: IP público de saída observado na cadeia principal da RB3011.
+  - id: edge-mikrotik-wg0
+    label: wg0
+    type: access_device
+    layer: edge
+    criticality: low
+    depends_on: host-mikrotik-rb3011
+    impact_scope: overlay-connectivity
+    validation_source: observed
+    confidence: medium
+    notes: Túnel WireGuard observado ativo; mantido fora da cadeia causal principal.
+  - id: provider-as-brisanet
+    label: AS28126 BRISANET
+    type: provider
+    layer: provider
+    criticality: medium
+    impact_scope: upstream-connectivity
+    validation_source: observed
+    confidence: high
+    notes: Identidade do upstream observada a partir do egress público.
+  - id: destination-cloud
+    label: nuvem / destino
+    type: destination
+    layer: destination
+    criticality: low
+    depends_on: provider-as-brisanet
+    impact_scope: external-service-reachability
+    validation_source: inferred
+    confidence: low
+    notes: Alvo final genérico; nenhum destino único foi confirmado.
+edges:
+  - from: access-mikrotik-bridge
+    to: host-mikrotik-rb3011
+    relation: depends_on
+    validation_source: observed
+    confidence: high
+  - from: access-next-hop-10-45-0-1
+    to: host-mikrotik-rb3011
+    relation: depends_on
+    validation_source: observed
+    confidence: high
+  - from: edge-mikrotik-ether1
+    to: host-mikrotik-rb3011
+    relation: depends_on
+    validation_source: observed
+    confidence: high
+  - from: edge-mikrotik-pppoe-out1
+    to: edge-mikrotik-ether1
+    relation: depends_on
+    validation_source: observed
+    confidence: high
+  - from: edge-public-ip-206-42-12-37
+    to: edge-mikrotik-pppoe-out1
+    relation: depends_on
+    validation_source: observed
+    confidence: high
+  - from: edge-public-ip-206-42-12-37
+    to: provider-as-brisanet
+    relation: depends_on
+    validation_source: observed
+    confidence: high
+  - from: edge-mikrotik-wg0
+    to: host-mikrotik-rb3011
+    relation: depends_on
+    validation_source: observed
+    confidence: medium
+  - from: provider-as-brisanet
+    to: destination-cloud
+    relation: depends_on
+    validation_source: inferred
+    confidence: low
+semantics:
+  node_fields:
+    - id
+    - label
+    - type
+    - layer
+    - criticality
+    - depends_on
+    - impact_scope
+    - validation_source
+    - confidence
+    - notes
+  confirmed_node_rule: nó com validation_source observed ou documented e confidence alta.
+  inferred_node_rule: nó com validation_source inferred quando a identidade ainda é uma dedução útil, não um fato observado.
+  pending_node_rule: nó com validation_source pending_confirmation quando a cadeia operacional existe, mas o nome final ainda não foi validado.
+  dependency_edge_definition: relação manual "depends_on" que propaga impacto do nó de origem para o nó de destino.
+  observed_dependency_rule: aresta sustentada por rota, interface, processo, item ou inventário local verificável.
+  manual_dependency_rule: aresta criada para representar a cadeia operacional antes da automação de descoberta.
+  future_auto_discovery_rule: aresta que poderá ser substituída por descoberta automática quando houver sinalização suficiente e validação cruzada.
+  impact_propagation: se um nó superior falha, tudo abaixo dele pode perder a função representada na leitura operacional.

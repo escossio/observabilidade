@@ -1,5 +1,36 @@
 # Status
 
+## 2026-04-05 - MikroTik separada em cluster próprio no dependency-graph
+
+- Foi criado o cluster dedicado `MikroTik RB3011` no `dependency-graph`.
+- Novos artefatos desta rodada:
+  - `dependency-graph/clusters/mikrotik-rb3011.md`
+  - `dependency-graph/models/mikrotik_rb3011_dependency_model.yaml`
+  - `dependency-graph/views/mikrotik_rb3011_dependency_graph.mmd`
+- O cluster `AGT` foi simplificado para manter apenas:
+  - serviços do host
+  - host `agt01`
+  - `br0`
+  - dependência explícita do cluster `MikroTik RB3011`
+- A cadeia estrutural da borda deixou de ficar repetida dentro do AGT.
+- A ligação intercluster ficou explícita como `br0 -> cluster MikroTik RB3011`.
+- O cluster dedicado da MikroTik passou a carregar:
+  - `MikroTik RB3011`
+  - `bridge`
+  - `next-hop 10.45.0.1`
+  - `ether1`
+  - `pppoe-out1`
+  - IP público `206.42.12.37`
+  - `AS28126 BRISANET`
+  - `wg0` como overlay observado
+- O que continua inferido:
+  - `nuvem / destino`
+  - a leitura causal/documental do caminho acima da RB3011
+- O `README` e a `SEMANTICS.md` foram ajustados para admitir múltiplos clusters e referência intercluster explícita.
+- Próximo passo natural:
+  - decidir se haverá um modelo agregador acima dos clusters para mapear todo o ambiente sem duplicação
+  - expandir a mesma separação para outras bordas ou outros hosts, quando houver base confirmada
+
 ## 2026-04-05 - MikroTik RB3011 integrada ao dependency-graph do AGT
 
 - O cluster `AGT` deixou de depender de uma abstração genérica de concentrador e passou a apontar para a borda concreta `MikroTik RB3011`.

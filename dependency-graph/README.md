@@ -4,9 +4,10 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 
 ## Objetivo
 
-- representar dependências por cluster, começando pelo host `AGT`
+- representar dependências por cluster, começando por `AGT` e `MikroTik RB3011`
 - separar serviços do host, serviços de aplicação, serviços de observabilidade e serviços de publicação
 - modelar a cadeia de conectividade acima do host com nós explícitos e legíveis
+- explicitar dependências entre clusters quando a borda de um ambiente estiver modelada separadamente
 - deixar a base pronta para inferência, impacto e expansão futura sem automatização pesada nesta rodada
 
 ## Estrutura
@@ -21,6 +22,7 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 ### Cluster inicial
 
 - `AGT`
+- `MikroTik RB3011`
 
 ### Camadas usadas
 
@@ -33,9 +35,10 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 ### Leitura operacional
 
 - os serviços apontam para o host
-- o host aponta para a cadeia de conectividade que o sustenta
+- o host aponta para a cadeia de conectividade que o sustenta ou para um cluster externo já modelado
 - a cadeia sobe até o destino percebido como alcançável
 - o modelo é explícito, hierárquico e ainda não tenta descobrir tudo automaticamente
+- ligações entre clusters são documentais e servem para separar responsabilidade de host versus borda
 
 ## Fontes de base usadas nesta rodada
 
@@ -48,6 +51,7 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 ## Uso futuro
 
 - cálculo de impacto por queda de host
+- cálculo de impacto entre clusters conectados
 - propagação de indisponibilidade por quebra de conectividade
 - marcação de nós inferidos versus nós confirmados
 - expansão para novos clusters quando houver base suficiente

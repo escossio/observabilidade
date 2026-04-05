@@ -4,6 +4,7 @@
 
 - `host`: máquina central do cluster
 - `service`: serviço executado diretamente no host
+- `cluster`: referência explícita a outro cluster já modelado
 - `access_device`: interface, bridge, modem ou concentrador local de saída
 - `ppp_session`: sessão PPP ou equivalente de acesso
 - `public_ip`: IP público ou dedicado observado na saída
@@ -44,6 +45,7 @@
 ## Relação
 
 - `depends_on`: a disponibilidade do nó de origem depende da disponibilidade do nó de destino
+- referências `cluster` usam a mesma relação `depends_on`, mas apontam para uma borda externa já modelada em outro arquivo
 
 ## Regra de propagação
 
