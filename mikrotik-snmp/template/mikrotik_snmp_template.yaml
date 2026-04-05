@@ -1,0 +1,184 @@
+template:
+  name: "MikroTik SNMP"
+  description: "Template SNMP inicial para MikroTik RouterOS baseado em descoberta validada no RB3011UiAS."
+  version: 1
+  vendor: "MikroTik"
+  target: "RouterOS"
+  snmp_version: "v2c"
+  macros:
+    - name: "{$SNMP_COMMUNITY}"
+      default: "public"
+      description: "Community de leitura validada nesta rodada."
+    - name: "{$MIKROTIK_IF_TUNNELS}"
+      default: "pppoe-out1,wg0"
+      description: "Interfaces de túnel observadas no walk inicial."
+  inventory:
+    model: "RB3011UiAS"
+    sysdescr: "RouterOS RB3011UiAS"
+    sysname: "MikroTik"
+    sysobjectid: ".1.3.6.1.4.1.14988.1"
+  items:
+    - id: sysDescr
+      name: "SNMP system description"
+      type: snmp
+      oid: "1.3.6.1.2.1.1.1.0"
+      key: "mikrotik.sysDescr"
+      units: ""
+      value_type: text
+      update_interval: "1h"
+      validation_source: observed
+      notes: "Confirma identificação base do equipamento."
+    - id: sysName
+      name: "SNMP system name"
+      type: snmp
+      oid: "1.3.6.1.2.1.1.5.0"
+      key: "mikrotik.sysName"
+      units: ""
+      value_type: text
+      update_interval: "1h"
+      validation_source: observed
+      notes: "Nome lógico do equipamento."
+    - id: sysUpTime
+      name: "SNMP uptime"
+      type: snmp
+      oid: "1.3.6.1.2.1.1.3.0"
+      key: "mikrotik.sysUpTime"
+      units: "s"
+      value_type: numeric
+      update_interval: "5m"
+      validation_source: observed
+      notes: "Base para disponibilidade e reinício."
+    - id: ifNumber
+      name: "Interface count"
+      type: snmp
+      oid: "1.3.6.1.2.1.2.1.0"
+      key: "mikrotik.ifNumber"
+      units: ""
+      value_type: numeric
+      update_interval: "30m"
+      validation_source: observed
+      notes: "Quantidade de interfaces visíveis."
+    - id: ifTable
+      name: "Interface table discovery"
+      type: snmp_discovery
+      oid: "1.3.6.1.2.1.2.2.1"
+      key: "mikrotik.if.discovery"
+      update_interval: "1h"
+      validation_source: observed
+      notes: "Descobre interfaces e permite montar itens por índice."
+    - id: ifDescr
+      name: "Interface description"
+      type: snmp
+      oid: "1.3.6.1.2.1.2.2.1.2.{#IFINDEX}"
+      key: "mikrotik.ifDescr[{#IFINDEX}]"
+      value_type: text
+      update_interval: "1h"
+      validation_source: observed
+      notes: "Base para nomear portas e túneis."
+    - id: ifOperStatus
+      name: "Interface operational status"
+      type: snmp
+      oid: "1.3.6.1.2.1.2.2.1.8.{#IFINDEX}"
+      key: "mikrotik.ifOperStatus[{#IFINDEX}]"
+      value_type: numeric
+      update_interval: "1m"
+      validation_source: observed
+      notes: "Item principal para link up/down."
+    - id: ifInOctets
+      name: "Interface inbound traffic"
+      type: snmp
+      oid: "1.3.6.1.2.1.2.2.1.10.{#IFINDEX}"
+      key: "mikrotik.ifInOctets[{#IFINDEX}]"
+      units: "B"
+      value_type: numeric
+      update_interval: "1m"
+      validation_source: observed
+      notes: "Tráfego de entrada por interface."
+    - id: ifOutOctets
+      name: "Interface outbound traffic"
+      type: snmp
+      oid: "1.3.6.1.2.1.2.2.1.16.{#IFINDEX}"
+      key: "mikrotik.ifOutOctets[{#IFINDEX}]"
+      units: "B"
+      value_type: numeric
+      update_interval: "1m"
+      validation_source: observed
+      notes: "Tráfego de saída por interface."
+    - id: hrMemorySize
+      name: "Memory size"
+      type: snmp
+      oid: "1.3.6.1.2.1.25.2.2.0"
+      key: "mikrotik.hrMemorySize"
+      units: "B"
+      value_type: numeric
+      update_interval: "30m"
+      validation_source: observed
+      notes: "Memória total lógica disponível via HOST-RESOURCES."
+    - id: hrSystemUptime
+      name: "Host resources uptime"
+      type: snmp
+      oid: "1.3.6.1.2.1.25.1.1.0"
+      key: "mikrotik.hrSystemUptime"
+      units: "s"
+      value_type: numeric
+      update_interval: "5m"
+      validation_source: observed
+      notes: "Complementa sysUpTime."
+    - id: boardName
+      name: "Board name"
+      type: snmp
+      oid: "1.3.6.1.4.1.14988.1.1.7.8.0"
+      key: "mikrotik.boardName"
+      units: ""
+      value_type: text
+      update_interval: "1h"
+      validation_source: observed
+      notes: "Nome da board observado no enterprise walk."
+    - id: routerosVersion
+      name: "RouterOS version"
+      type: snmp
+      oid: "1.3.6.1.4.1.14988.1.1.4.4.0"
+      key: "mikrotik.routerosVersion"
+      units: ""
+      value_type: text
+      update_interval: "1h"
+      validation_source: observed
+      notes: "Versão principal do RouterOS."
+    - id: temperature
+      name: "Temperature"
+      type: snmp
+      oid: "1.3.6.1.4.1.14988.1.1.3.100.1.3.14"
+      key: "mikrotik.temperature"
+      units: "C"
+      value_type: numeric
+      update_interval: "1m"
+      validation_source: observed
+      notes: "Sensor de temperatura observado no enterprise walk."
+    - id: voltage
+      name: "Voltage"
+      type: snmp
+      oid: "1.3.6.1.4.1.14988.1.1.3.100.1.3.13"
+      key: "mikrotik.voltage"
+      units: "mV"
+      value_type: numeric
+      update_interval: "1m"
+      validation_source: observed
+      notes: "Sensor de voltagem observado no enterprise walk."
+    - id: pppoeOut1Status
+      name: "PPPoE tunnel status"
+      type: snmp
+      oid: "1.3.6.1.2.1.2.2.1.8.14"
+      key: "mikrotik.pppoeOut1Status"
+      value_type: numeric
+      update_interval: "1m"
+      validation_source: observed
+      notes: "Interface `pppoe-out1` observada no walk inicial."
+    - id: wg0Status
+      name: "WireGuard tunnel status"
+      type: snmp
+      oid: "1.3.6.1.2.1.2.2.1.8.16"
+      key: "mikrotik.wg0Status"
+      value_type: numeric
+      update_interval: "1m"
+      validation_source: observed
+      notes: "Interface `wg0` observada no walk inicial."

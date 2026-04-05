@@ -330,6 +330,28 @@
   - `mikrotik-snmp/artifacts/snmp_validation.md`
 - O próximo passo natural é transformar essa base em template Zabbix, mas isso ainda não foi feito nesta rodada.
 
+## 2026-04-05 - template inicial SNMP da MikroTik criado
+
+- Foi criado o template inicial em `mikrotik-snmp/template/mikrotik_snmp_template.yaml`.
+- O template ficou baseado apenas em OIDs validados na rodada anterior.
+- Escopo incluído no template:
+  - identificação do equipamento
+  - uptime
+  - inventário de interfaces
+  - estado operacional das interfaces
+  - tráfego por interface
+  - memória
+  - board
+  - versão do RouterOS
+  - temperatura
+  - voltagem
+  - interfaces `pppoe-out1` e `wg0` como sinais úteis já observados
+- A community padrão ficou parametrizada como `{$SNMP_COMMUNITY}` com default `public`.
+- A frente continua sem importação para runtime do Zabbix nesta rodada.
+- Próximo passo natural:
+  - revisar os detalhes do template para importação manual ou automação posterior
+  - ajustar itens/prototypes se você quiser separar interface discovery e sinais fixos
+
 - cards `stat` do dashboard principal voltaram para altura `2`
 - o valor voltou a ter mais protagonismo do que o título
 - a organização visual anterior foi preservada
