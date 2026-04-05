@@ -219,6 +219,42 @@
 
 ## Fechamento da rodada de densidade
 
+## 2026-04-05 - frente inicial do dependency graph por cluster
+
+- Foi criada uma frente documental própria para o grafo de dependências operacionais em `dependency-graph/`.
+- O primeiro cluster modelado foi o host `AGT`, representado pelo host real `agt01`.
+- Serviços incluídos no cluster AGT nesta rodada:
+  - `zabbix-server`
+  - `zabbix-agent2`
+  - `grafana-server`
+  - `apache2`
+  - `cloudflared`
+  - `cloudflared-livecopilot`
+  - `postgresql@17-main`
+  - `unbound`
+  - `ssh`
+  - `livecopilot-semantic-api`
+  - `emby-server`
+  - `smbd`
+  - `nmbd`
+  - `winbind`
+  - `libvirtd`
+- A cadeia de conectividade acima do host foi modelada de forma explícita com:
+  - concentrador do link do host
+  - sessão PPP
+  - IP dedicado
+  - gateway / next-hop
+  - operadora / AS
+  - nuvem / destino
+- Foram criadas três representações do mesmo modelo:
+  - `dependency-graph/clusters/agt.md`
+  - `dependency-graph/models/agt_dependency_model.yaml`
+  - `dependency-graph/views/agt_dependency_graph.mmd`
+- A semântica dos nós e das relações foi documentada em `dependency-graph/SEMANTICS.md`.
+- O modelo ainda é manual e hierárquico, sem descoberta automática e sem mexer no runtime do Zabbix/Grafana.
+- Limitação atual: os nós de conectividade acima do host ainda usam nomes operacionais genéricos onde a documentação não confirmou o nome final.
+- Próximo passo provável: refinar a cadeia de conectividade com nomes reais e expandir o grafo para novos clusters quando houver base confirmada.
+
 - cards `stat` do dashboard principal voltaram para altura `2`
 - o valor voltou a ter mais protagonismo do que o título
 - a organização visual anterior foi preservada

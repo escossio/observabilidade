@@ -1,0 +1,50 @@
+flowchart TB
+  subgraph SVC["Camada de serviço"]
+    zabbix_server["zabbix-server"]
+    zabbix_agent2["zabbix-agent2"]
+    grafana_server["grafana-server"]
+    apache2["apache2"]
+    cloudflared["cloudflared"]
+    cloudflared_livecopilot["cloudflared-livecopilot"]
+    postgresql["postgresql@17-main"]
+    unbound["unbound"]
+    ssh["ssh"]
+    livecopilot_api["livecopilot-semantic-api"]
+    emby["emby-server"]
+    smbd["smbd"]
+    nmbd["nmbd"]
+    winbind["winbind"]
+    libvirtd["libvirtd"]
+  end
+
+  host["Host AGT / agt01"]
+
+  concentrator["Concentrador do link do host"]
+  ppp["Sessão PPP"]
+  dedicated_ip["IP dedicado"]
+  nexthop["Gateway / next-hop"]
+  provider["Operadora / AS"]
+  destination["Nuvem / destino"]
+
+  zabbix_server --> host
+  zabbix_agent2 --> host
+  grafana_server --> host
+  apache2 --> host
+  cloudflared --> host
+  cloudflared_livecopilot --> host
+  postgresql --> host
+  unbound --> host
+  ssh --> host
+  livecopilot_api --> host
+  emby --> host
+  smbd --> host
+  nmbd --> host
+  winbind --> host
+  libvirtd --> host
+
+  host --> concentrator
+  concentrator --> ppp
+  ppp --> dedicated_ip
+  dedicated_ip --> nexthop
+  nexthop --> provider
+  provider --> destination

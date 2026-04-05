@@ -1,0 +1,218 @@
+version: 1
+cluster: AGT
+host:
+  id: host-agt01
+  name: agt01
+  type: host
+  layer: host
+nodes:
+  - id: svc-zabbix-server
+    name: zabbix-server
+    type: service
+    layer: service
+    category: observability
+    direct: true
+    inferred: false
+  - id: svc-zabbix-agent2
+    name: zabbix-agent2
+    type: service
+    layer: service
+    category: observability
+    direct: true
+    inferred: false
+  - id: svc-grafana-server
+    name: grafana-server
+    type: service
+    layer: service
+    category: observability
+    direct: true
+    inferred: false
+  - id: svc-apache2
+    name: apache2
+    type: service
+    layer: service
+    category: publication
+    direct: true
+    inferred: false
+  - id: svc-cloudflared
+    name: cloudflared
+    type: service
+    layer: service
+    category: publication
+    direct: true
+    inferred: false
+  - id: svc-cloudflared-livecopilot
+    name: cloudflared-livecopilot
+    type: service
+    layer: service
+    category: publication
+    direct: true
+    inferred: false
+  - id: svc-postgresql-17-main
+    name: postgresql@17-main
+    type: service
+    layer: service
+    category: infrastructure
+    direct: true
+    inferred: false
+  - id: svc-unbound
+    name: unbound
+    type: service
+    layer: service
+    category: infrastructure
+    direct: true
+    inferred: false
+  - id: svc-ssh
+    name: ssh
+    type: service
+    layer: service
+    category: infrastructure
+    direct: true
+    inferred: false
+  - id: svc-livecopilot-semantic-api
+    name: livecopilot-semantic-api
+    type: service
+    layer: service
+    category: application
+    direct: true
+    inferred: false
+  - id: svc-emby-server
+    name: emby-server
+    type: service
+    layer: service
+    category: application
+    direct: true
+    inferred: false
+  - id: svc-smbd
+    name: smbd
+    type: service
+    layer: service
+    category: application
+    direct: true
+    inferred: false
+  - id: svc-nmbd
+    name: nmbd
+    type: service
+    layer: service
+    category: application
+    direct: true
+    inferred: false
+  - id: svc-winbind
+    name: winbind
+    type: service
+    layer: service
+    category: application
+    direct: true
+    inferred: false
+  - id: svc-libvirtd
+    name: libvirtd
+    type: service
+    layer: service
+    category: application
+    direct: true
+    inferred: false
+  - id: access-link-concentrator
+    name: concentrador do link do host
+    type: access
+    layer: access
+    direct: false
+    inferred: true
+  - id: access-ppp-session
+    name: sessão PPP
+    type: access
+    layer: access
+    direct: false
+    inferred: true
+  - id: access-dedicated-ip
+    name: IP dedicado
+    type: access
+    layer: access
+    direct: false
+    inferred: true
+  - id: edge-next-hop
+    name: gateway / next-hop
+    type: edge
+    layer: edge
+    direct: false
+    inferred: true
+  - id: provider-as
+    name: operadora / AS
+    type: provider
+    layer: provider
+    direct: false
+    inferred: true
+  - id: destination-cloud
+    name: nuvem / destino
+    type: destination
+    layer: destination
+    direct: false
+    inferred: true
+edges:
+  - from: svc-zabbix-server
+    to: host-agt01
+    relation: depends_on
+  - from: svc-zabbix-agent2
+    to: host-agt01
+    relation: depends_on
+  - from: svc-grafana-server
+    to: host-agt01
+    relation: depends_on
+  - from: svc-apache2
+    to: host-agt01
+    relation: depends_on
+  - from: svc-cloudflared
+    to: host-agt01
+    relation: depends_on
+  - from: svc-cloudflared-livecopilot
+    to: host-agt01
+    relation: depends_on
+  - from: svc-postgresql-17-main
+    to: host-agt01
+    relation: depends_on
+  - from: svc-unbound
+    to: host-agt01
+    relation: depends_on
+  - from: svc-ssh
+    to: host-agt01
+    relation: depends_on
+  - from: svc-livecopilot-semantic-api
+    to: host-agt01
+    relation: depends_on
+  - from: svc-emby-server
+    to: host-agt01
+    relation: depends_on
+  - from: svc-smbd
+    to: host-agt01
+    relation: depends_on
+  - from: svc-nmbd
+    to: host-agt01
+    relation: depends_on
+  - from: svc-winbind
+    to: host-agt01
+    relation: depends_on
+  - from: svc-libvirtd
+    to: host-agt01
+    relation: depends_on
+  - from: host-agt01
+    to: access-link-concentrator
+    relation: depends_on
+  - from: access-link-concentrator
+    to: access-ppp-session
+    relation: depends_on
+  - from: access-ppp-session
+    to: access-dedicated-ip
+    relation: depends_on
+  - from: access-dedicated-ip
+    to: edge-next-hop
+    relation: depends_on
+  - from: edge-next-hop
+    to: provider-as
+    relation: depends_on
+  - from: provider-as
+    to: destination-cloud
+    relation: depends_on
+semantics:
+  direct_node_definition: nó confirmado por documentação ou inventário local.
+  inferred_node_definition: nó operacional necessário para explicar o encadeamento, mas ainda sem confirmação de nome final.
+  dependency_edge_definition: uma relação "depende de" que propaga impacto do dependente para a dependência.
+  impact_propagation: se um nó superior falha, todos os nós abaixo dele podem perder a função representada na leitura operacional.
