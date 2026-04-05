@@ -81,6 +81,13 @@
 - `DNS Local` ficou como diagnóstico complementar em cinza
 - a alteração não tocou em consultas, itens ou thresholds do Zabbix
 
+## Rodada de proveniência `agt01`
+
+- os cards estatísticos passaram a exibir um badge visual `agt01` no cabeçalho
+- a proveniência do dado ficou explícita sem mudar a coluna de telemetria
+- o nome do serviço continua no corpo do card
+- a origem do host ficou marcada de forma consistente em todo o dashboard
+
 ## Rodada de saúde do host
 
 - o dashboard principal do Grafana foi expandido com `CPU`, `RAM` e `CPU Temp`

@@ -71,6 +71,12 @@
 - A mudança foi puramente de apresentação no Grafana, sem tocar na baseline do Zabbix.
 - O refinamento final reduziu a tipografia dos cards de serviço para deixar a leitura mais compacta.
 
+## 2026-04-05 - proveniência visual do host `agt01`
+
+- Os cards estatísticos passaram a exibir um badge visual `agt01` no cabeçalho para deixar explícito que as informações vêm do host monitorado.
+- O badge foi aplicado sem alterar a coluna de telemetria.
+- O conteúdo principal do card continua sendo o serviço ou a métrica, e a origem passou a ficar marcada visualmente no topo do card.
+
 ## Diagnóstico inicial
 
 - Diretório do projeto criado e organizado
