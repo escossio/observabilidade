@@ -1,5 +1,43 @@
 # Status
 
+## 2026-04-05 - bindings pendentes reduzidos e cobertura mínima consolidada
+
+- A camada de binding foi refinada para distinguir `complete`, `partial` e `pending`.
+- Artefatos atualizados:
+  - `dependency-graph/ZABBIX_BINDINGS.md`
+  - `dependency-graph/ZABBIX_BINDING_README.md`
+  - `dependency-graph/models/zabbix_graph_bindings.yaml`
+- Cobertura mínima obrigatória já consolidada:
+  - `agt01`
+  - `apache2`
+  - `unbound`
+  - Livecopilot por camada
+  - MikroTik RB3011
+  - `bridge`, `ether1`, `pppoe-out1` e `wg0`
+- Bindings com IDs exatos já fechados:
+  - `CPU temperature` / `cpu.temp` / `69621`
+  - `Service apache2 running` / `69485`
+  - `Web apache 127.0.0.1` / `69488`
+  - `Service unbound running` / `69486`
+  - `Livecopilot Serviço estado` / `69631`
+  - `Livecopilot Apache Edge estado` / `69632`
+  - `Livecopilot Frontend Público estado` / `69633`
+  - `Livecopilot Public Health estado` / `69634`
+  - `Livecopilot Backend Health estado` / `69635`
+  - `Livecopilot Backend Status estado` / `69636`
+  - `Livecopilot Backend API estado` / `69637`
+  - triggers `32506`, `32507`, `32537`
+- Ainda parcialmente pendente:
+  - `zabbix-server`
+  - `zabbix-agent2`
+  - `cloudflared`
+  - `postgresql@17-main`
+  - `ssh`
+  - IDs SNMP exatos da MikroTik
+  - upstream `AS28126 BRISANET`
+- Regra de fechamento:
+  - manter o binding útil e legível mesmo quando alguns `itemid` ainda não puderem ser extraídos
+
 ## 2026-04-05 - binding Zabbix -> dependency-graph iniciado
 
 - Foi criada a camada explícita de binding entre itens/triggers do Zabbix e nós do `dependency-graph`.

@@ -18,44 +18,61 @@ Este documento liga sinais reais do Zabbix aos nós do `dependency-graph`.
 
 ## Bindings confirmados
 
+### Convenção de estado
+
+- `complete`: item e trigger exatos documentados
+- `partial`: item real confirmado, mas `itemid` ou `triggerid` ainda pendente
+- `pending`: vínculo útil ainda não fechado
+
 ### Host e serviços do AGT
 
 - `host-agt01`
   - host Zabbix: `agt01`
   - item: `CPU temperature` / `cpu.temp` / `69621`
   - semântica: `host_failure`
+  - estado: `complete`
 - `svc-zabbix-server`
   - item: `Service zabbix-server running`
   - trigger: `zabbix-server parado` `pending`
+  - estado: `partial`
 - `svc-zabbix-agent2`
   - item: `Service zabbix-agent2 running`
   - trigger: `zabbix-agent2 parado` `pending`
+  - estado: `partial`
 - `svc-apache2`
   - item: `Service apache2 running` / `proc.num[apache2]` / `69485`
   - item web: `Web apache 127.0.0.1` / `web.page.get[127.0.0.1,/,80]` / `69488`
   - triggers: `Apache2 parado` `32506`, `Web 127.0.0.1 indisponivel` `32507`
+  - estado: `complete`
 - `svc-cloudflared`
   - item: `Service cloudflared running`
+  - estado: `partial`
 - `svc-unbound`
   - item: `Service unbound running` / `proc.num[unbound]` / `69486`
   - trigger: `unbound parado` `32537`
+  - estado: `complete`
 - `svc-postgresql-17-main`
   - item: `Service postgresql running`
+  - estado: `partial`
 - `svc-ssh`
   - item: `Service ssh running`
+  - estado: `partial`
 
 ### Livecopilot
 
 - `svc-livecopilot-semantic-api`
   - item: `Livecopilot Serviço estado` / `69631`
+  - estado: `complete`
 - `svc-livecopilot-apache-edge`
   - items: `69632`, `69633`, `69634`
   - cobertura: Apache edge, frontend público, health público
   - semântica: `public_access_failure`
+  - estado: `complete`
 - `svc-livecopilot-backend-health`
   - items: `69635`, `69636`, `69637`
   - cobertura: health, status e API do backend
   - semântica: `service_failure`
+  - estado: `complete`
 
 ### MikroTik RB3011
 
@@ -63,18 +80,23 @@ Este documento liga sinais reais do Zabbix aos nós do `dependency-graph`.
   - host Zabbix: `MikroTik RB3011`
   - itens: `SNMP system name`, `SNMP uptime`, `Memory size`, `Temperature`, `Voltage`, `PPPoE tunnel status`, `WireGuard tunnel status`
   - semântica: `external_edge_failure`
+  - estado: `partial`
 - `access-mikrotik-bridge`
   - item: `Interface operational status` da bridge
   - semântica: `local_edge_failure`
+  - estado: `partial`
 - `edge-mikrotik-ether1`
   - itens: `Interface operational status`, `Interface traffic in`, `Interface traffic out`
   - semântica: `wan_uplink_failure`
+  - estado: `partial`
 - `edge-mikrotik-pppoe-out1`
   - item: `PPPoE tunnel status`
   - semântica: `wan_primary_failure`
+  - estado: `partial`
 - `edge-mikrotik-wg0`
   - item: `WireGuard tunnel status`
   - semântica: `overlay_failure`
+  - estado: `partial`
 
 ## Pendente nesta rodada
 

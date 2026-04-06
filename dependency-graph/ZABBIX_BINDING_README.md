@@ -20,6 +20,12 @@ Explicar como a observabilidade real do Zabbix se conecta aos nós do `dependenc
 - `observed_delivery_node`: endpoint observado em captura real
 - `observed_auxiliary_node`: log, telemetria ou infra auxiliar capturada
 
+## Estado do binding
+
+- `complete`: item e, quando existir, trigger exatos já documentados
+- `partial`: item real confirmado, mas `itemid` ou `triggerid` ainda pendente
+- `pending`: o nó ainda não tem vínculo útil suficiente nesta rodada
+
 ## Como a trigger entra no modelo
 
 - trigger de serviço parado vira leitura de `service_failure`
@@ -33,6 +39,30 @@ Explicar como a observabilidade real do Zabbix se conecta aos nós do `dependenc
 - serviços centrais do AGT com itens reais de serviço e web
 - Livecopilot com itens derivados numéricos no Grafana e no Zabbix
 - MikroTik RB3011 com inventário SNMP, PPPoE e WireGuard
+
+## Cobertura nesta rodada
+
+- `complete`
+  - `host-agt01`
+  - `svc-apache2`
+  - `svc-unbound`
+  - `svc-livecopilot-semantic-api`
+  - `svc-livecopilot-apache-edge`
+  - `svc-livecopilot-backend-health`
+- `partial`
+  - `svc-zabbix-server`
+  - `svc-zabbix-agent2`
+  - `svc-cloudflared`
+  - `svc-postgresql-17-main`
+  - `svc-ssh`
+  - `host-mikrotik-rb3011`
+  - `access-mikrotik-bridge`
+  - `edge-mikrotik-ether1`
+  - `edge-mikrotik-pppoe-out1`
+  - `edge-mikrotik-wg0`
+- `pending`
+  - upstream `AS28126 BRISANET`
+  - Netflix delivery recorrente
 
 ## O que ainda não está coberto
 
