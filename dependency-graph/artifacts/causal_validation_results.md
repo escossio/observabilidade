@@ -6,6 +6,10 @@
 - Cenário B: PARTIAL
 - Cenário C: FAIL
 - Cenário D: PARTIAL
+- Follow-up desta rodada:
+  - Apache2 e unbound receberam janela maior e tiveram ida/volta observadas no systemd
+  - o Zabbix mostrou a transição de queda, mas o fechamento completo ainda ficou atrasado no último snapshot analisado
+  - `wg0` foi fechado como alvo do cluster MikroTik RB3011, não como injeção local neste host
 
 ## Cenário A - Apache2 parado
 
@@ -22,6 +26,13 @@
 - blast radius obtido: `service-local`
 - resultado: `PARTIAL`
 - observação curta: a leitura causal bateu no serviço certo, mas o trigger não foi observado como aberto no snapshot consultado
+- follow-up de janela maior:
+  - stop em `2026-04-05T22:23:52-03:00`
+  - snapshot em queda em `2026-04-05T22:25:13-03:00`
+  - recovery no systemd em `2026-04-05T22:25:13-03:00`
+  - snapshot final em `2026-04-05T22:28:06-03:00`
+  - item `69485` voltou para `10`
+  - trigger `32506` abriu na queda, mas permaneceu sem fechamento no último snapshot visto
 
 ## Cenário B - unbound parado
 
@@ -38,6 +49,13 @@
 - blast radius obtido: `service-local`
 - resultado: `PARTIAL`
 - observação curta: o item e o trigger confirmaram a leitura local, mas o retorno para estado saudável não havia sido refletido no banco no momento do último snapshot
+- follow-up de janela maior:
+  - stop em `2026-04-05T22:25:53-03:00`
+  - snapshot em queda em `2026-04-05T22:27:13-03:00`
+  - recovery no systemd em `2026-04-05T22:27:14-03:00`
+  - snapshot final em `2026-04-05T22:28:06-03:00`
+  - item `69486` ainda estava em `0` no snapshot final
+  - trigger `32537` abriu na queda, mas também permaneceu sem fechamento no último snapshot visto
 
 ## Cenário C - superfície pública do Livecopilot
 
@@ -70,3 +88,8 @@
 - blast radius obtido: `overlay-only` documental
 - resultado: `PARTIAL`
 - observação curta: não houve como provocar com segurança no host atual; a validação fica como confirmação documental do mapeamento, não como prova dinâmica
+- follow-up de localização:
+  - o `wg0` do grafo pertence ao cluster `MikroTik RB3011`
+  - o nó correspondente é `edge-mikrotik-wg0`
+  - o host atual não possui interface `wg0`
+  - não houve alvo seguro para injeção local nesta máquina

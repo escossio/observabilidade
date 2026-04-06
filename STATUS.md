@@ -1,5 +1,30 @@
 # Status
 
+## 2026-04-05 - follow-up dos PARTIAL da validação causal
+
+- Foi executado follow-up com janela maior para os cenários que ainda estavam `PARTIAL`.
+- Artefatos novos:
+  - `dependency-graph/artifacts/causal_validation_followup.md`
+- Cenários revisitados:
+  - `Apache2 parado`
+  - `unbound parado`
+  - `wg0`
+- Resultado honesto após o follow-up:
+  - `Apache2 parado` permaneceu `PARTIAL`
+  - `unbound parado` permaneceu `PARTIAL`
+  - `wg0` permaneceu `PARTIAL`
+- O que melhorou:
+  - Apache2 e unbound tiveram ida/volta confirmadas no systemd
+  - o Zabbix registrou a queda corretamente
+  - o `wg0` foi finalmente fechado como alvo do cluster `MikroTik RB3011`, não como algo testável neste host local
+- O que ainda impede `PASS` completo:
+  - a recuperação no Zabbix ainda não fechou de forma limpa no último snapshot consultado
+  - `wg0` exige o host/edge correto para injeção segura
+- Conclusão desta rodada:
+  - a camada causal continua correta
+  - o gargalo restante é de janela/latência de observação, não de modelagem
+
+
 ## 2026-04-05 - superfície pública do Livecopilot alinhada ao runtime real
 
 - A hipótese anterior do cenário público falhou porque o fault injection usou `cloudflared.service`, que publica outros domínios.
