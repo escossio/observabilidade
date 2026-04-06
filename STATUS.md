@@ -1,5 +1,50 @@
 # Status
 
+# Status
+
+## 2026-04-06 - leitura causal/NOC adicionada ao dashboard principal do Grafana
+
+- Foi adicionado ao dashboard principal `Observabilidade Zabbix - Grafana` um bloco compacto `Leitura Causal / NOC`.
+- Dashboard alterado:
+  - uid `observabilidade-grafana`
+  - versão `24 -> 25`
+- Estratégia adotada:
+  - painel nativo `text` em Markdown
+  - sem plugin novo
+  - sem serviço contínuo novo
+  - sem mexer nos painéis atuais de serviço/infra
+- Datasource usado no dashboard principal:
+  - `alexanderzobnin-zabbix-datasource`
+  - mantido intacto para os cards já existentes
+- O novo bloco mostra:
+  - eventos no período
+  - explicados
+  - sem binding
+  - eventos abertos
+  - semântica dominante
+  - cluster dominante
+  - host dominante
+- Valores exibidos nesta rodada validada:
+  - eventos no período: `6`
+  - explicados: `6`
+  - sem binding: `0`
+  - eventos abertos: `0`
+  - semântica dominante: `service_failure`
+  - cluster dominante: `AGT`
+  - host dominante: `agt01`
+- Leitura complementar registrada:
+  - sem evidência de problema público ou WAN principal nesta rodada
+- Artefato novo:
+  - `dependency-graph/artifacts/grafana_causal_noc_panel_validation.md`
+- Validação:
+  - dashboard regravado com sucesso via API do Grafana
+  - painel novo confirmado no JSON do dashboard
+  - dashboard antigo permaneceu íntegro
+- Limitação:
+  - nesta primeira versão, a leitura é snapshot validado e não cálculo ao vivo dentro do Grafana
+- Próximo passo natural:
+  - automatizar a regravação do bloco quando uma nova rodada do `noc_shift_summary` for validada
+
 ## 2026-04-06 - resumo operacional de turno/NOC adicionado
 
 - Foi criada a CLI `dependency-graph/tools/noc_shift_summary.py`.
