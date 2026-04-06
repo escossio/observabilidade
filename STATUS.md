@@ -1,5 +1,33 @@
 # Status
 
+## 2026-04-05 - validação curta da correlação causal executada
+
+- Foi executada uma bateria curta de validação reversível para a camada mínima de correlação causal.
+- Artefatos novos:
+  - `dependency-graph/artifacts/causal_validation_plan.md`
+  - `dependency-graph/artifacts/causal_validation_results.md`
+- Cenários executados nesta rodada:
+  - `Apache2 parado`
+  - `unbound parado`
+  - `Livecopilot superfície pública` via `cloudflared`
+- Cenário apenas documental nesta rodada:
+  - `wg0`
+- Resultados registrados com honestidade:
+  - `Apache2 parado` -> `PARTIAL`
+  - `unbound parado` -> `PARTIAL`
+  - `Livecopilot superfície pública` -> `FAIL`
+  - `wg0` -> `PARTIAL`
+- O que a bateria confirmou:
+  - a leitura de `service_failure` bateu no serviço certo para Apache2 e unbound
+  - o blast radius local ficou contido como esperado
+  - a hipótese de `public_access_failure` para Livecopilot não ficou comprovada nesta rodada
+  - `wg0` não pôde ser provocado com segurança no host atual
+- O que ainda falta validar:
+  - confirmar o acoplamento exato entre superfície pública do Livecopilot e os itens derivados corretos
+  - validar um evento dinâmico real de `wg0` no host/edge correto
+  - acompanhar a latência de atualização do Zabbix após rollback para fechar `PASS` em cenários de serviço
+
+
 ## 2026-04-05 - camada mínima de correlação causal criada
 
 - Foi criada a primeira camada explícita de correlação causal por cima dos bindings reais do Zabbix.
