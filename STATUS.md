@@ -1,5 +1,29 @@
 # Status
 
+## 2026-04-05 - sessão XFCE do noVNC restaurada
+
+- A camada de publicação do noVNC permaneceu intacta.
+- A correção foi feita apenas na sessão gráfica da VM.
+- Causa raiz identificada:
+  - sessão `liveui` iniciando com `DBUS_SESSION_BUS_ADDRESS` e `XDG_RUNTIME_DIR` herdados do root
+  - ownership incorreto em `~/.config` e `~/.vnc`
+  - `light-locker` entrando na sessão sem contexto de LightDM
+- Correções aplicadas:
+  - criado `/home/liveui/.vnc/xstartup`
+  - sessão sobe com `dbus-run-session -- startxfce4`
+  - ownership de `~/.config` e `~/.vnc` corrigido para `liveui`
+  - `light-locker` desabilitado para a sessão VNC
+- Resultado local:
+  - `xfce4-session` sobe
+  - `xfsettingsd` sobe
+  - `xfce4-panel` sobe
+  - `Thunar --daemon` sobe
+  - `xfdesktop` sobe
+- Resultado visual:
+  - o noVNC passou a exibir a área de trabalho XFCE da VM
+- Observação:
+  - ainda existem warnings menores de `at-spi`, mas eles não impedem a sessão gráfica de funcionar
+
 ## 2026-04-05 - raiz do noVNC finalizada sem directory listing
 
 - Causa do `Directory listing for /`:

@@ -7,11 +7,24 @@ Processos ativos:
 - `Xvfb :20`
 - `x11vnc` em `127.0.0.1:5901`
 - `websockify` em `10.45.0.3:6081`
+- `dbus-run-session -- startxfce4`
+- `xfce4-session`
+- `xfsettingsd`
+- `xfce4-panel`
+- `Thunar --daemon`
+- `xfdesktop`
 
 Sessão gráfica:
 
 - desktop XFCE ativo no usuário `liveui`
 - navegador já aberto dentro da sessão gráfica para uso posterior com Netflix
+
+Ambiente corrigido:
+
+- `DBUS_SESSION_BUS_ADDRESS` passou a ser gerado por `dbus-run-session` da própria sessão
+- `XDG_RUNTIME_DIR` foi fixado para `/srv/liveui/session/runtime`
+- `~/.config` e `~/.vnc` ficaram com ownership de `liveui`
+- `light-locker` foi desabilitado para a sessão VNC
 
 ## Validação em camadas
 
@@ -102,7 +115,7 @@ firefox --headless --screenshot /tmp/novnc-public.png \
 Resultado:
 
 - screenshot da raiz gerado com sucesso
-- screenshot gerado com sucesso
+- screenshot da área gráfica gerado com sucesso
 - arquivo PNG `1600x900`
 - handshake público de WebSocket confirmado com `RFB 003.008`
 
@@ -112,6 +125,7 @@ Leitura operacional:
 - a página do noVNC abre externamente
 - o WebSocket conecta externamente
 - o canvas remoto foi carregado por navegador no hostname dedicado
+- a área de trabalho XFCE voltou a aparecer na sessão
 
 ## Limites e segurança mínima
 
