@@ -58,6 +58,10 @@ Validar a troca do bloco textual por uma árvore causal visual no dashboard prin
 - resposta da API do Grafana retornou `status=success`
 - o JSON do dashboard passou a conter o painel 26 como HTML/SVG
 - o painel textual antigo deixou de ser a peça principal
+- a sessão gráfica XFCE da VM em `DISPLAY=:20` abriu uma janela Chromium real do dashboard
+- o título da janela ficou `Observabilidade Zabbix - Grafana - Dashboards - Grafana - Chromium`
+- a aba carregada na sessão gráfica ficou na URL do dashboard `observabilidade-grafana`
+- a inspeção via DevTools da própria instância Chromium confirmou o painel `Árvore Causal / Dependência` no DOM renderizado
 
 ## Validação visual
 
@@ -65,6 +69,7 @@ Validar a troca do bloco textual por uma árvore causal visual no dashboard prin
 - o desenho separa AGT, MikroTik RB3011 e Livecopilot em blocos distintos
 - `wg0` aparece como overlay separado da cadeia principal
 - Livecopilot aparece como cadeia própria com túnel, edge HTTP e backend
+- a validação final foi reforçada no ambiente gráfico da VM, não só por HTML isolado
 
 ## Limitações
 
@@ -75,4 +80,3 @@ Validar a troca do bloco textual por uma árvore causal visual no dashboard prin
 ## Próximo passo natural
 
 - calcular cor por estado a partir dos bindings do `dependency-graph` e gerar a árvore automaticamente a cada nova rodada validada
-

@@ -57,6 +57,11 @@
   - painel 26 confirmado como `text/html` com SVG embutido
   - dashboard antigo permaneceu íntegro
   - render local do SVG confirmou a árvore visual
+  - validação reforçada no ambiente gráfico da VM:
+    - sessão XFCE em `DISPLAY=:20`
+    - janela Chromium aberta no dashboard principal
+    - título da janela confirmando `Observabilidade Zabbix - Grafana`
+    - painel `Árvore Causal / Dependência` presente no DOM da página renderizada
 - Limitações:
   - a árvore V1 ainda é majoritariamente estrutural e não calcula estado em tempo real dentro do Grafana
   - a leitura fina de falha por nó ainda depende da camada causal já validada fora do painel
