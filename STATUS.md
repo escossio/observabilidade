@@ -1,49 +1,67 @@
 # Status
 
-# Status
+## 2026-04-06 - árvore causal substituiu o bloco textual no Grafana
 
-## 2026-04-06 - leitura causal/NOC adicionada ao dashboard principal do Grafana
-
-- Foi adicionado ao dashboard principal `Observabilidade Zabbix - Grafana` um bloco compacto `Leitura Causal / NOC`.
+- O dashboard principal `Observabilidade Zabbix - Grafana` deixou de usar o bloco textual como peça principal da leitura causal/NOC.
+- O painel 26 foi regravado como uma árvore causal visual em SVG embutido.
 - Dashboard alterado:
   - uid `observabilidade-grafana`
-  - versão `24 -> 25`
+  - versão `25 -> 27`
 - Estratégia adotada:
-  - painel nativo `text` em Markdown
+  - painel nativo `text`
+  - modo `html`
+  - SVG embutido direto no conteúdo do painel
   - sem plugin novo
   - sem serviço contínuo novo
-  - sem mexer nos painéis atuais de serviço/infra
-- Datasource usado no dashboard principal:
-  - `alexanderzobnin-zabbix-datasource`
-  - mantido intacto para os cards já existentes
-- O novo bloco mostra:
-  - eventos no período
-  - explicados
-  - sem binding
-  - eventos abertos
-  - semântica dominante
-  - cluster dominante
-  - host dominante
-- Valores exibidos nesta rodada validada:
-  - eventos no período: `6`
-  - explicados: `6`
-  - sem binding: `0`
-  - eventos abertos: `0`
-  - semântica dominante: `service_failure`
-  - cluster dominante: `AGT`
-  - host dominante: `agt01`
-- Leitura complementar registrada:
-  - sem evidência de problema público ou WAN principal nesta rodada
-- Artefato novo:
-  - `dependency-graph/artifacts/grafana_causal_noc_panel_validation.md`
+  - sem tocar nos painéis atuais de serviço/infra
+- Clusters/árvores incluídos na V1:
+  - `AGT`
+  - `MikroTik RB3011`
+  - `Livecopilot`
+- A árvore mostra:
+  - `agt01`
+  - `br0`
+  - `apache2`
+  - `cloudflared`
+  - `unbound`
+  - `grafana-server`
+  - `zabbix-server`
+  - `zabbix-agent2`
+  - `postgresql`
+  - `ssh`
+  - `bridge`
+  - `ether1`
+  - `pppoe-out1`
+  - `wg0`
+  - `206.42.12.37`
+  - `AS28126 BRISANET`
+  - `Livecopilot Frontend Público`
+  - `cloudflared-livecopilot`
+  - `Apache Edge`
+  - `Backend FastAPI`
+- Convenção visual usada:
+  - verde = saudável
+  - amarelo = atenção / degradação
+  - cinza = estrutural ou snapshot
+- O que ficou estrutural nesta V1:
+  - a posição dos nós e as relações principais entre clusters
+  - `wg0` como overlay separado da cadeia principal
+- O que ficou refletindo estado real já validado:
+  - os nós e bindings já conhecidos no `dependency-graph`
+  - os serviços e saltos reais documentados para AGT, MikroTik e Livecopilot
+- Artefatos novos:
+  - `dependency-graph/artifacts/causal_tree_grafana_design.md`
+  - `dependency-graph/artifacts/grafana_causal_tree_validation.md`
 - Validação:
   - dashboard regravado com sucesso via API do Grafana
-  - painel novo confirmado no JSON do dashboard
+  - painel 26 confirmado como `text/html` com SVG embutido
   - dashboard antigo permaneceu íntegro
-- Limitação:
-  - nesta primeira versão, a leitura é snapshot validado e não cálculo ao vivo dentro do Grafana
+  - render local do SVG confirmou a árvore visual
+- Limitações:
+  - a árvore V1 ainda é majoritariamente estrutural e não calcula estado em tempo real dentro do Grafana
+  - a leitura fina de falha por nó ainda depende da camada causal já validada fora do painel
 - Próximo passo natural:
-  - automatizar a regravação do bloco quando uma nova rodada do `noc_shift_summary` for validada
+  - evoluir a V1 para um mapa dinâmico por estado dos nós, se a operação quiser calcular cores e destaques a partir dos bindings em cada rodada
 
 ## 2026-04-06 - resumo operacional de turno/NOC adicionado
 
