@@ -1,5 +1,32 @@
 # Status
 
+## 2026-04-05 - modelagem observacional da entrega Netflix consolidada
+
+- Foi criada uma camada observacional para separar os destinos capturados na reprodução real da Netflix.
+- Artefato novo:
+  - `internet-observation/artifacts/netflix_observed_delivery_model.md`
+- Classificação aplicada:
+  - entrega de vídeo observada
+  - log/telemetria
+  - infraestrutura auxiliar
+- Endpoint classificado como melhor candidato à entrega de vídeo observada:
+  - `ipv4-c010-jdo001-brisanet-isp.1.oca.nflxvideo.net`
+- Endpoints classificados como log/telemetria:
+  - `nrdp.logs.netflix.com`
+  - `logs.dradis.netflix.com`
+  - `logs.us-east-1.internal.dradis.netflix.com`
+  - `apiproxy-logging-s3-5c4574073964ceac.elb.us-east-1.amazonaws.com`
+- Endpoints classificados como infra auxiliar:
+  - `region1.v2.argotunnel.com`
+  - `livecopilot.escossio.dev.br`
+- Regra de promoção futura:
+  - nenhum hostname observado uma única vez entrou na cadeia causal principal
+  - a promoção depende de repetição em novas capturas
+- Ajuste mínimo de semântica também foi registrado para suportar:
+  - `observed_delivery_endpoint`
+  - `observed_auxiliary_endpoint`
+  - `repeated_observation`
+
 ## 2026-04-05 - captura real de Netflix iniciada e consolidada
 
 - A fase de captura real foi iniciada sem mexer na sessão gráfica nem na publicação do noVNC.

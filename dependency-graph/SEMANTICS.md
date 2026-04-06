@@ -39,6 +39,9 @@
 - `validation_source`: origem da validação do nó
 - `confidence`: nível de confiança da classificação
 - `notes`: observação curta sobre o porquê da classificação
+- `observed_delivery_endpoint`: verdadeiro quando o nó veio de captura real como endpoint de entrega observado
+- `observed_auxiliary_endpoint`: verdadeiro quando o nó veio de captura real, mas atua como telemetria, log ou infra auxiliar
+- `repeated_observation`: verdadeiro quando o mesmo nó já apareceu em mais de uma captura independente
 
 ## Classificação de validação
 
