@@ -6,8 +6,9 @@ Definir como a árvore causal do Grafana sai da estrutura fixa e passa a refleti
 
 ## Estratégia usada
 
-- a árvore continua em SVG inline no painel 26
-- o SVG é gerado já com classes de estado resolvidas antes de ser gravado no Grafana
+- a árvore continua sendo gerada em SVG, mas agora sai para arquivo estático publicado no próprio Grafana
+- o painel 26 deixou de carregar XML inline e passou a embutir a árvore por `<img src="/public/img/observabilidade-zabbix/causal-tree-state.svg?...">`
+- o SVG é gerado já com classes de estado resolvidas antes de ser salvo no caminho estático e referenciado pelo painel
 - a fonte de verdade é o runtime atual do Zabbix via API local
 - a classificação final cai em quatro classes:
   - `up`
@@ -69,4 +70,3 @@ Definir como a árvore causal do Grafana sai da estrutura fixa e passa a refleti
 - a cor é resolvida antes da gravação do painel
 - `br0`, `cloudflared-livecopilot`, IP público e AS continuam cinza até existir binding real explícito
 - a classe `down` fica disponível, mas não apareceu neste snapshot específico
-

@@ -18,6 +18,9 @@ GRAFANA_DASHBOARD_UID = "observabilidade-grafana"
 GRAFANA_PANEL_ID = 26
 GRAFANA_URL = "http://127.0.0.1:3000"
 GRAFANA_HOST = "observabilidade.escossio.dev.br"
+GRAFANA_STATIC_SVG_DIR = Path("/usr/share/grafana/public/img/observabilidade-zabbix")
+GRAFANA_STATIC_SVG_FILE = GRAFANA_STATIC_SVG_DIR / "causal-tree-state.svg"
+GRAFANA_STATIC_SVG_URL_PATH = "/public/img/observabilidade-zabbix/causal-tree-state.svg"
 ZABBIX_DS_FILE = Path("/etc/grafana/provisioning/datasources/zabbix.yml")
 ZABBIX_API_URL = "http://127.0.0.1:8081/api_jsonrpc.php"
 STALE_SECONDS = 900
@@ -354,6 +357,25 @@ def render_svg(state_map: dict[str, dict]) -> str:
     return "".join(parts)
 
 
+def write_static_svg(svg: str) -> Path:
+    GRAFANA_STATIC_SVG_DIR.mkdir(parents=True, exist_ok=True)
+    temp_file = GRAFANA_STATIC_SVG_FILE.with_suffix(".svg.tmp")
+    temp_file.write_text(svg, encoding="utf-8")
+    temp_file.replace(GRAFANA_STATIC_SVG_FILE)
+    return GRAFANA_STATIC_SVG_FILE
+
+
+def render_panel_html(cache_bust: int) -> str:
+    src = f"{GRAFANA_STATIC_SVG_URL_PATH}?v={cache_bust}"
+    return (
+        "<div style='width:100%;height:100%;display:flex;align-items:center;justify-content:center;"
+        "padding:12px;background:#0b1220;border-radius:20px;overflow:auto'>"
+        f"<img src='{src}' alt='Árvore causal AGT, MikroTik RB3011 e Livecopilot com estado' "
+        "style='display:block;width:100%;height:100%;object-fit:contain' />"
+        "</div>"
+    )
+
+
 def grafana_headers(password: str) -> dict[str, str]:
     token = base64.b64encode(f"admin:{password}".encode()).decode()
     return {"Host": GRAFANA_HOST, "X-Forwarded-Proto": "https", "Authorization": f"Basic {token}"}
@@ -366,19 +388,19 @@ def load_dashboard(password: str) -> dict:
         return json.load(response)
 
 
-def update_dashboard(password: str, svg: str) -> dict:
+def update_dashboard(password: str, cache_bust: int) -> dict:
     headers = grafana_headers(password)
     dashboard = load_dashboard(password)["dashboard"]
     for panel in dashboard["panels"]:
         if panel["id"] == GRAFANA_PANEL_ID:
             panel["title"] = "Árvore Causal / Dependência"
             panel["type"] = "text"
-            panel["options"] = {"mode": "html", "content": svg}
+            panel["options"] = {"mode": "html", "content": render_panel_html(cache_bust)}
             panel["gridPos"] = {"h": 10, "w": 24, "x": 0, "y": 20}
             panel["pluginVersion"] = "12.4.2"
             panel["transparent"] = False
             break
-    payload = {"dashboard": dashboard, "folderId": 0, "overwrite": True, "message": "feat: add runtime state styling to grafana causal tree"}
+    payload = {"dashboard": dashboard, "folderId": 0, "overwrite": True, "message": "fix: render grafana causal tree via static svg embed"}
     req = urllib.request.Request(
         f"{GRAFANA_URL}/api/dashboards/db",
         data=json.dumps(payload).encode(),
@@ -403,10 +425,11 @@ def main() -> int:
 
     state_map = build_snapshot()
     svg = render_svg(state_map)
+    write_static_svg(svg)
 
     if args.apply_grafana:
         password = GRAFANA_PASSWORD_FILE.read_text().strip()
-        result = update_dashboard(password, svg)
+        result = update_dashboard(password, int(time.time()))
         print(json.dumps(result, ensure_ascii=False, indent=2))
     if args.print_json:
         print(json.dumps(state_map, ensure_ascii=False, indent=2, sort_keys=True))

@@ -1,5 +1,40 @@
 # Status
 
+## 2026-04-06 - árvore causal do Grafana saiu de SVG inline para embed estático
+
+- Causa raiz confirmada:
+  - o painel 26 guardava o XML/SVG inteiro em `options.content`
+  - no acesso real/mobile o Grafana passou a expor esse XML cru como texto
+  - o SVG em si estava válido; a falha era de entrega/renderização no `Text panel`
+- Correção aplicada:
+  - helper `dependency-graph/tools/render_grafana_causal_tree.py` passou a publicar a árvore em arquivo estático
+  - caminho local publicado: `/usr/share/grafana/public/img/observabilidade-zabbix/causal-tree-state.svg`
+  - URL estável usada pelo painel: `/public/img/observabilidade-zabbix/causal-tree-state.svg`
+  - painel 26 trocado de SVG inline para wrapper HTML com `<img ...>`
+- Dashboard alterado:
+  - uid `observabilidade-grafana`
+  - painel `26`
+  - versão `28 -> 29`
+- Validação:
+  - `py_compile` do helper passou sem erro
+  - `HEAD` autenticado do asset público respondeu `200` com `content-type: image/svg+xml`
+  - `GET /api/dashboards/uid/observabilidade-grafana` confirmou o painel 26 com `<img src='/public/img/observabilidade-zabbix/causal-tree-state.svg?...'>`
+  - sessão Chromium autenticada confirmou no DOM real:
+    - `imageFound: true`
+    - `rawSvgTextVisible: false`
+  - `d-solo` mobile autenticado confirmou:
+    - `imageFound: true`
+    - `complete: true`
+    - `rawSvgTextVisible: false`
+  - screenshot mobile salvo em `/tmp/grafana-causal-tree-mobile-devtools.png`
+- Artefatos novos:
+  - `dependency-graph/artifacts/grafana_causal_tree_svg_embed_fix.md`
+- Limitações:
+  - o SVG publicado fica dentro do estático do Grafana e pode precisar ser regravado após upgrade de pacote
+  - a imagem continua snapshot-driven
+- Próximo passo natural:
+  - se a operação quiser mais legibilidade no celular, aumentar a altura do painel 26 sem mexer no restante da grade
+
 ## 2026-04-06 - árvore causal do Grafana passou a refletir estado real por nó
 
 - O dashboard principal `Observabilidade Zabbix - Grafana` manteve a árvore causal SVG no painel 26, mas saiu de uma V1 estrutural para uma V1 com estado real por cor.
