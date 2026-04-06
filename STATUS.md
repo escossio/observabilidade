@@ -1,5 +1,44 @@
 # Status
 
+## 2026-04-05 - camada mínima de correlação causal criada
+
+- Foi criada a primeira camada explícita de correlação causal por cima dos bindings reais do Zabbix.
+- Artefatos novos:
+  - `dependency-graph/CORRELATION.md`
+  - `dependency-graph/models/causal_correlation_rules.yaml`
+  - `dependency-graph/artifacts/causal_reading_examples.md`
+- O que essa camada faz:
+  - correlaciona evento Zabbix com nó do grafo
+  - lê semântica de falha já existente
+  - traduz a falha em escopo provável, blast radius e próximos testes
+  - separa leitura de host, serviço, borda, WAN, overlay e upstream
+- Semânticas cobertas nesta rodada:
+  - `host_failure`
+  - `service_failure`
+  - `public_access_failure`
+  - `local_edge_failure`
+  - `wan_uplink_failure`
+  - `wan_primary_failure`
+  - `overlay_failure`
+  - `external_edge_failure`
+  - `upstream_provider_failure`
+- Exemplos concretos materializados:
+  - `Apache2 parado`
+  - `Web 127.0.0.1 indisponivel`
+  - `unbound parado`
+  - `PPPoE tunnel status down`
+  - `wg0 down`
+  - `bridge down`
+  - `Livecopilot Frontend Público indisponível`
+- Limites explícitos desta rodada:
+  - ainda não é engine automática online
+  - ainda não é RCA completo
+  - ainda não cruza múltiplos eventos simultâneos de forma avançada
+  - ainda depende da qualidade do binding e da semântica já documentada
+  - ainda não usa histórico temporal profundo
+- Próximo passo natural:
+  - usar essa camada como base para correlação incremental de múltiplos sinais e priorização operacional
+
 ## 2026-04-05 - bindings fechados no runtime do Zabbix
 
 - A consulta ao banco do Zabbix fechou os `itemid` exatos pendentes dos serviços base e da MikroTik.

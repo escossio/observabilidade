@@ -12,6 +12,7 @@ Explicar como a observabilidade real do Zabbix se conecta aos nós do `dependenc
 4. localizar `bound_triggers`
 5. ler `failure_semantics_mapped`
 6. decidir se a observação é de função, transporte ou entrega observada
+7. aplicar a camada de correlação mínima em `CORRELATION.md`
 
 ## Tipos de binding
 
@@ -19,6 +20,7 @@ Explicar como a observabilidade real do Zabbix se conecta aos nós do `dependenc
 - `transport_node`: bridge, WAN, PPPoE, interface, gateway ou AS
 - `observed_delivery_node`: endpoint observado em captura real
 - `observed_auxiliary_node`: log, telemetria ou infra auxiliar capturada
+- `correlation_profile`: perfil de correlação sugerido pela semântica do nó
 
 ## Estado do binding
 
@@ -39,6 +41,7 @@ Explicar como a observabilidade real do Zabbix se conecta aos nós do `dependenc
 - serviços centrais do AGT com itens reais de serviço e web
 - Livecopilot com itens derivados numéricos no Grafana e no Zabbix
 - MikroTik RB3011 com inventário SNMP, PPPoE e WireGuard
+- camada de correlação causal mínima documentada em `CORRELATION.md`
 
 ## Cobertura nesta rodada
 

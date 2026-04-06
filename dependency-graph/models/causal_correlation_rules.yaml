@@ -1,0 +1,139 @@
+version: 1
+scope: minimal_causal_correlation
+notes: >
+  Regras mínimas de leitura operacional causal por semântica.
+  Este arquivo liga falhas semânticas a escopo provável, blast radius
+  e próximos testes recomendados, sem tentar fechar RCA completo.
+profiles:
+  host_failure:
+    failure_semantics: host_failure
+    node_roles_compatible:
+      - functional_node
+    impact_scope_default: host-local
+    blast_radius_default: cluster-local
+    interpretation_template: >
+      O host base falhou ou degradou. Serviços abaixo podem ser efeito
+      secundário. Não culpar a borda por padrão.
+    next_checks_recommended:
+      - verificar processo e disponibilidade local do host
+      - validar saúde dos serviços dependentes
+      - confirmar se a perda é geral ou apenas do nó base
+
+  service_failure:
+    failure_semantics: service_failure
+    node_roles_compatible:
+      - functional_node
+    impact_scope_default: service-local
+    blast_radius_default: service-local
+    interpretation_template: >
+      O serviço específico falhou. O host pode continuar saudável e a
+      borda não deve ser implicada automaticamente.
+    next_checks_recommended:
+      - verificar processo e porta do serviço
+      - validar dependências diretas do serviço
+      - diferenciar falha interna de falha de publicação
+
+  public_access_failure:
+    failure_semantics: public_access_failure
+    node_roles_compatible:
+      - functional_node
+    impact_scope_default: public-entry
+    blast_radius_default: publication-surface
+    interpretation_template: >
+      A superfície pública falhou. O serviço interno pode continuar
+      ativo. Isso não prova falha do host nem da WAN inteira.
+    next_checks_recommended:
+      - verificar edge HTTP
+      - validar frontend público
+      - conferir health público e publicação
+
+  local_edge_failure:
+    failure_semantics: local_edge_failure
+    node_roles_compatible:
+      - transport_node
+      - access_device
+    impact_scope_default: local-egress-domain
+    blast_radius_default: intercluster-edge
+    interpretation_template: >
+      O domínio local de saída foi perdido ou degradado. O host atrás
+      da borda pode seguir vivo.
+    next_checks_recommended:
+      - verificar bridge e acesso local
+      - conferir domínios L2 e next-hop
+      - separar falha de acesso de falha de serviço
+
+  wan_uplink_failure:
+    failure_semantics: wan_uplink_failure
+    node_roles_compatible:
+      - transport_node
+      - access_device
+    impact_scope_default: wan-physical-link
+    blast_radius_default: wan-uplink
+    interpretation_template: >
+      O enlace físico ou o caminho de uplink degradou. A sessão
+      principal pode ainda não ter caído, mas o transporte já está em risco.
+    next_checks_recommended:
+      - verificar interface física
+      - validar estatísticas de tráfego e link
+      - conferir se a PPPoE já foi impactada
+
+  wan_primary_failure:
+    failure_semantics: wan_primary_failure
+    node_roles_compatible:
+      - transport_node
+      - ppp_session
+    impact_scope_default: internet-primary-path
+    blast_radius_default: wan-primary
+    interpretation_template: >
+      A sessão principal de internet caiu. A conectividade externa
+      principal está comprometida, mas isso não derruba automaticamente
+      o host local nem o equipamento de borda.
+    next_checks_recommended:
+      - verificar sessão PPPoE
+      - conferir autenticação e link físico
+      - validar rotas e saída externa
+
+  overlay_failure:
+    failure_semantics: overlay_failure
+    node_roles_compatible:
+      - transport_node
+      - observed_auxiliary_node
+    impact_scope_default: overlay-only
+    blast_radius_default: overlay-only
+    interpretation_template: >
+      O túnel sobreposto caiu. A cadeia principal não deve ser marcada
+      como caída por isso sozinho.
+    next_checks_recommended:
+      - verificar WireGuard ou overlay equivalente
+      - confirmar se a cadeia principal segue estável
+      - identificar quais dependentes realmente usam o overlay
+
+  external_edge_failure:
+    failure_semantics: external_edge_failure
+    node_roles_compatible:
+      - functional_node
+      - transport_node
+    impact_scope_default: edge-shared
+    blast_radius_default: edge-shared
+    interpretation_template: >
+      A borda externa falhou ou perdeu condição de saída. O host
+      local não deve ser reclassificado como morto sem outro sinal.
+    next_checks_recommended:
+      - verificar borda da RB3011
+      - conferir WAN, PPPoE e upstream
+      - separar problema local de problema de operadora
+
+  upstream_provider_failure:
+    failure_semantics: upstream_provider_failure
+    node_roles_compatible:
+      - transport_node
+      - provider
+    impact_scope_default: upstream-connectivity
+    blast_radius_default: upstream
+    interpretation_template: >
+      O problema está acima da borda local, no provedor ou no caminho
+      externo. O host e a borda podem seguir saudáveis.
+    next_checks_recommended:
+      - verificar continuidade do upstream
+      - validar reachability externa
+      - comparar com o estado da WAN principal

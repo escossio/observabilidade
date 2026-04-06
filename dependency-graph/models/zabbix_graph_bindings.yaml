@@ -18,6 +18,7 @@ bindings:
     bound_triggers: []
     observation_kind: host_health
     failure_semantics_mapped: host_failure
+    correlation_profile: host_failure
     observed_by_zabbix: true
     notes: Item real confirmado por latest data e uso no Grafana.
 
@@ -33,6 +34,7 @@ bindings:
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item real fechado no runtime; trigger dedicado não existe na base consultada.
     binding_state: complete
@@ -49,6 +51,7 @@ bindings:
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item real fechado no runtime; trigger dedicado não existe na base consultada.
     binding_state: complete
@@ -73,6 +76,7 @@ bindings:
         triggerid: 32507
     observation_kind: service_and_web
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Binding forte com item e trigger reais.
     binding_state: complete
@@ -89,6 +93,7 @@ bindings:
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item real fechado no runtime; trigger dedicado não foi localizado.
     binding_state: complete
@@ -105,6 +110,7 @@ bindings:
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item real fechado no runtime; trigger dedicado não foi localizado.
     binding_state: complete
@@ -123,6 +129,7 @@ bindings:
         triggerid: 32537
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item e trigger existentes em runtime.
     binding_state: complete
@@ -139,6 +146,7 @@ bindings:
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item real fechado no runtime; trigger dedicado não foi localizado.
     binding_state: complete
@@ -155,6 +163,7 @@ bindings:
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item real fechado no runtime; trigger dedicado não foi localizado.
     binding_state: complete
@@ -171,6 +180,7 @@ bindings:
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Item numérico derivado usado pelo Grafana.
 
@@ -194,6 +204,7 @@ bindings:
     bound_triggers: []
     observation_kind: public_delivery
     failure_semantics_mapped: public_access_failure
+    correlation_profile: public_access_failure
     observed_by_zabbix: true
     notes: Borda pública e frontend separados em itens derivados.
     binding_state: complete
@@ -218,6 +229,7 @@ bindings:
     bound_triggers: []
     observation_kind: backend_health
     failure_semantics_mapped: service_failure
+    correlation_profile: service_failure
     observed_by_zabbix: true
     notes: Camada de backend com itens derivados reais.
     binding_state: complete
@@ -258,6 +270,7 @@ bindings:
     bound_triggers: []
     observation_kind: device_health
     failure_semantics_mapped: external_edge_failure
+    correlation_profile: external_edge_failure
     observed_by_zabbix: true
     notes: Host Zabbix e template SNMP fechados com itemids exatos.
     binding_state: complete
@@ -274,6 +287,7 @@ bindings:
     bound_triggers: []
     observation_kind: transport_link
     failure_semantics_mapped: wan_primary_failure
+    correlation_profile: wan_primary_failure
     observed_by_zabbix: true
     notes: Item SNMP exato fechado no runtime.
     binding_state: complete
@@ -290,6 +304,7 @@ bindings:
     bound_triggers: []
     observation_kind: overlay_link
     failure_semantics_mapped: overlay_failure
+    correlation_profile: overlay_failure
     observed_by_zabbix: true
     notes: Item SNMP exato fechado no runtime.
     binding_state: complete
@@ -314,6 +329,7 @@ bindings:
     bound_triggers: []
     observation_kind: transport_link
     failure_semantics_mapped: wan_uplink_failure
+    correlation_profile: wan_uplink_failure
     observed_by_zabbix: true
     notes: Interface LLD fechada com itemids exatos.
     binding_state: complete
@@ -330,6 +346,7 @@ bindings:
     bound_triggers: []
     observation_kind: transport_link
     failure_semantics_mapped: local_edge_failure
+    correlation_profile: local_edge_failure
     observed_by_zabbix: true
     notes: Interface LLD fechada com itemid exato.
     binding_state: complete
@@ -342,5 +359,6 @@ bindings:
     bound_triggers: []
     observation_kind: upstream_identity
     failure_semantics_mapped: upstream_provider_failure
+    correlation_profile: upstream_provider_failure
     observed_by_zabbix: false
     notes: Identidade do AS está no grafo e na captura, mas não há item Zabbix dedicado nesta rodada.

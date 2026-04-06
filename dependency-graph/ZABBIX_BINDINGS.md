@@ -15,6 +15,7 @@ Este documento liga sinais reais do Zabbix aos nós do `dependency-graph`.
 - `observation_kind`: tipo de observação, por exemplo serviço, transporte, saúde do host ou entrega pública
 - `failure_semantics_mapped`: semântica de falha do grafo acionada por esse binding
 - `observed_by_zabbix`: indica binding real já documentado
+- `correlation_profile`: perfil mínimo de correlação associado ao nó
 
 ## Bindings confirmados
 
@@ -115,3 +116,5 @@ Este documento liga sinais reais do Zabbix aos nós do `dependency-graph`.
 - um item do Zabbix aponta para o nó que ele observa
 - uma trigger representa a falha semântica que deve ser lida no grafo
 - o binding é documental e pode ser refinado com novas extrações sem alterar a estrutura do grafo
+- a interpretação causal mínima vive em `CORRELATION.md`
+- as regras mínimas de leitura estão em `models/causal_correlation_rules.yaml`
