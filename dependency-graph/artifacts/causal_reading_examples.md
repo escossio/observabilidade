@@ -83,9 +83,9 @@ Exemplos concretos de como ler sinais reais do Zabbix usando o binding já fecha
 - tipo do nó: `functional_node`
 - semântica: `public_access_failure`
 - blast radius provável: `publication-surface`
-- hipótese principal: a superfície pública do Livecopilot está indisponível
-- hipótese alternativa: o backend pode seguir saudável enquanto a borda pública ou o frontend falham
-- o que verificar em seguida: edge HTTP, frontend público, health público e publicação externa
+- hipótese principal: o túnel dedicado `cloudflared-livecopilot.service` ou a borda pública deixou de publicar o site
+- hipótese alternativa: o backend pode seguir saudável enquanto a publicação pública cai
+- o que verificar em seguida: túnel dedicado, edge HTTP, frontend público, health público e publicação externa
 - o que não implica automaticamente: falha do backend, falha da RB3011 ou falha total do host
 
 ## Leitura comparativa

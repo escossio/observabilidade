@@ -69,18 +69,22 @@ Este documento liga sinais reais do Zabbix aos nós do `dependency-graph`.
 ### Livecopilot
 
 - `svc-livecopilot-semantic-api`
-  - item: `Livecopilot Serviço estado` / `69631`
+  - item base: `Livecopilot Servico` / `systemd.unit.info[livecopilot-semantic-api.service,ActiveState]` / `69623`
+  - item derivado: `Livecopilot Serviço estado` / `69631`
   - estado: `complete`
 - `svc-livecopilot-apache-edge`
-  - items: `69632`, `69633`, `69634`
+  - itens brutos: `Livecopilot Apache Edge` / `69624`, `Livecopilot Frontend Publico` / `69625`, `Livecopilot Public Health` / `69630`
+  - itens derivados: `69632`, `69633`, `69634`
   - cobertura: Apache edge, frontend público, health público
   - semântica: `public_access_failure`
   - estado: `complete`
 - `svc-livecopilot-backend-health`
-  - items: `69635`, `69636`, `69637`
+  - itens brutos: `Livecopilot Backend Health` / `69626`, `Livecopilot Backend Status` / `69627`, `Livecopilot Backend API` / `69628`
+  - itens derivados: `69635`, `69636`, `69637`
   - cobertura: health, status e API do backend
   - semântica: `service_failure`
   - estado: `complete`
+  - nota: o ponto de falha da superfície pública é o túnel dedicado `cloudflared-livecopilot.service`, que derruba `69625` e `69630` quando cai
 
 ### MikroTik RB3011
 

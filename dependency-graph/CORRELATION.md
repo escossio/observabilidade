@@ -71,6 +71,7 @@ Quando a semântica é `public_access_failure`:
 - a borda pública ou o frontend exposto falhou
 - o serviço interno pode continuar saudável
 - a indisponibilidade externa não prova falha do host nem da WAN inteira
+- no Livecopilot, o ponto de falha observado é o túnel dedicado `cloudflared-livecopilot.service`, enquanto `frontend público` e `public health` são os sinais de saída
 
 ### Falha de borda local
 

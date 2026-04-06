@@ -1,5 +1,38 @@
 # Status
 
+## 2026-04-05 - superfície pública do Livecopilot alinhada ao runtime real
+
+- A hipótese anterior do cenário público falhou porque o fault injection usou `cloudflared.service`, que publica outros domínios.
+- A investigação mostrou o caminho real da superfície pública do Livecopilot:
+  - `livecopilot.escossio.dev.br`
+  - `cloudflared-livecopilot.service`
+  - `http://127.0.0.1:8080`
+  - `livecopilot-semantic-api.service`
+  - `http://127.0.0.1:8099`
+- Checks Zabbix que representam a superfície pública real:
+  - `69624` `Livecopilot Apache Edge`
+  - `69625` `Livecopilot Frontend Publico`
+  - `69630` `Livecopilot Public Health`
+  - derivados `69632`, `69633`, `69634`
+- Checks Zabbix de backend que ficaram preservados no teste:
+  - `69626` `Livecopilot Backend Health`
+  - `69627` `Livecopilot Backend Status`
+  - `69628` `Livecopilot Backend API`
+  - derivados `69635`, `69636`, `69637`
+- Fault injection realista validado nesta rodada:
+  - `systemctl stop cloudflared-livecopilot`
+- Efeito observado:
+  - `frontend público` e `public health` caíram
+  - `apache edge` ficou estável
+  - `backend health`, `backend status` e `backend API` ficaram estáveis
+- Conclusão operacional:
+  - `public_access_failure` continua válida
+  - o ponto real de falha observável é o túnel dedicado `cloudflared-livecopilot.service`
+  - derrubar `cloudflared.service` genérico era hipótese errada para este cenário
+- Resultado da nova validação pública:
+  - `PASS`
+
+
 ## 2026-04-05 - validação curta da correlação causal executada
 
 - Foi executada uma bateria curta de validação reversível para a camada mínima de correlação causal.
