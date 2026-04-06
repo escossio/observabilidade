@@ -230,5 +230,24 @@ def main(argv: list[str]) -> int:
     return 0
 
 
+def explain_signal(*, itemid: str | None = None, triggerid: str | None = None, item_name: str | None = None, trigger_name: str | None = None) -> dict[str, Any]:
+    """Return the structured causal reading for a single binding lookup."""
+
+    data = load_yaml(BINDINGS_PATH)
+    bindings = build_bindings(data)
+    models = index_models()
+    rules = load_yaml(RULES_PATH)
+    namespace = argparse.Namespace(
+        itemid=itemid,
+        triggerid=triggerid,
+        item_name=item_name,
+        trigger_name=trigger_name,
+    )
+    match = find_match(bindings, namespace)
+    if not match:
+        raise KeyError("Nenhum binding encontrado para a entrada informada.")
+    return build_reading(match, models, rules)
+
+
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv[1:]))

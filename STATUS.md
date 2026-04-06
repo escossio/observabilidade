@@ -1,5 +1,34 @@
 # Status
 
+## 2026-04-06 - utilitário de resumo causal para eventos recentes do Zabbix
+
+- Foi criada a CLI `dependency-graph/tools/explain_recent_events.py`.
+- Artefatos novos:
+  - `dependency-graph/tools/README_EXPLAIN_RECENT_EVENTS.md`
+  - `dependency-graph/artifacts/explain_recent_events_validation.md`
+- Entradas aceitas:
+  - `--minutes`
+  - `--limit`
+  - `--host`
+  - `--severity`
+  - `--open-only`
+  - `--json`
+- Como a ferramenta funciona:
+  - consulta problemas recentes do Zabbix via PostgreSQL
+  - extrai `triggerid` de cada problema
+  - reaproveita `causal_explain` para resolver o binding e a semântica
+  - consolida leitura por evento e resumo final
+- Validação real executada:
+  - `--minutes 720 --limit 8` -> 6 eventos explicados, todos `service_failure`
+  - `--minutes 720 --limit 3 --host agt01` -> 3 eventos explicados
+  - `--minutes 120 --limit 5 --open-only` -> consulta válida, sem eventos abertos recentes
+- Limitações assumidas:
+  - a consulta depende do conteúdo recente do runtime do Zabbix
+  - eventos sem binding não são explicados
+  - a ferramenta é de triagem e resumo, não de RCA completo
+- Próximo passo natural:
+  - usar o utilitário para leitura rápida de problemas recentes, mantendo `causal_explain` como motor central
+
 ## 2026-04-05 - ferramenta executável de explicação causal adicionada
 
 - Foi criada a CLI local `dependency-graph/tools/causal_explain.py`.
