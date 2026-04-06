@@ -2,14 +2,15 @@
 
 ## Resumo
 
-- Cenário A: PARTIAL
-- Cenário B: PARTIAL
+- Cenário A: PASS
+- Cenário B: PASS
 - Cenário C: FAIL
 - Cenário D: PARTIAL
 - Follow-up desta rodada:
-  - Apache2 e unbound receberam janela maior e tiveram ida/volta observadas no systemd
-  - o Zabbix mostrou a transição de queda, mas o fechamento completo ainda ficou atrasado no último snapshot analisado
-  - `wg0` foi fechado como alvo do cluster MikroTik RB3011, não como injeção local neste host
+  - Apache2 e unbound receberam calibração temporal seriada com polling a cada 15s
+  - o runtime do Zabbix mostrou queda, recuperação e fechamento completos em ambos os serviços
+  - a janela curta das rodadas anteriores explicava os `PARTIAL`: o fechamento ainda não tinha sido observado antes do snapshot final
+  - `wg0` segue fechado como alvo do cluster MikroTik RB3011, não como injeção local neste host
 
 ## Cenário A - Apache2 parado
 
@@ -24,15 +25,16 @@
 - semântica obtida: `service_failure` parcialmente corroborada
 - blast radius esperado: `service-local`
 - blast radius obtido: `service-local`
-- resultado: `PARTIAL`
-- observação curta: a leitura causal bateu no serviço certo, mas o trigger não foi observado como aberto no snapshot consultado
-- follow-up de janela maior:
-  - stop em `2026-04-05T22:23:52-03:00`
-  - snapshot em queda em `2026-04-05T22:25:13-03:00`
-  - recovery no systemd em `2026-04-05T22:25:13-03:00`
-  - snapshot final em `2026-04-05T22:28:06-03:00`
-  - item `69485` voltou para `10`
-  - trigger `32506` abriu na queda, mas permaneceu sem fechamento no último snapshot visto
+- resultado: `PASS`
+- observação curta: a leitura causal bateu no serviço certo e a calibração temporal capturou queda, recuperação e fechamento completos
+- follow-up de calibração:
+  - stop em `2026-04-05T22:43:03-03:00`
+  - primeiro reflexo de queda no item em `2026-04-05T22:43:05-03:00`
+  - abertura da trigger em `2026-04-05T22:43:05-03:00`
+  - recovery no systemd em `2026-04-05T22:45:04-03:00`
+  - primeiro reflexo de recuperação no item em `2026-04-05T22:45:05-03:00`
+  - fechamento da trigger em `2026-04-05T22:45:05-03:00`
+  - item `69485` voltou ao estado saudável observado no Zabbix
 
 ## Cenário B - unbound parado
 
@@ -47,15 +49,16 @@
 - semântica obtida: `service_failure`
 - blast radius esperado: `service-local`
 - blast radius obtido: `service-local`
-- resultado: `PARTIAL`
-- observação curta: o item e o trigger confirmaram a leitura local, mas o retorno para estado saudável não havia sido refletido no banco no momento do último snapshot
-- follow-up de janela maior:
-  - stop em `2026-04-05T22:25:53-03:00`
-  - snapshot em queda em `2026-04-05T22:27:13-03:00`
-  - recovery no systemd em `2026-04-05T22:27:14-03:00`
-  - snapshot final em `2026-04-05T22:28:06-03:00`
-  - item `69486` ainda estava em `0` no snapshot final
-  - trigger `32537` abriu na queda, mas também permaneceu sem fechamento no último snapshot visto
+- resultado: `PASS`
+- observação curta: o item e o trigger confirmaram a leitura local, e a rodada seriada capturou fechamento completo dentro da janela observada
+- follow-up de calibração:
+  - stop em `2026-04-05T22:46:50-03:00`
+  - primeiro reflexo de queda no item em `2026-04-05T22:48:06-03:00`
+  - abertura da trigger em `2026-04-05T22:48:06-03:00`
+  - recovery no systemd em `2026-04-05T22:48:51-03:00`
+  - fechamento da trigger em `2026-04-05T22:49:06-03:00`
+  - primeiro reflexo de recuperação no item em `2026-04-05T22:50:06-03:00`
+  - o item `69486` voltou ao estado saudável observado no Zabbix
 
 ## Cenário C - superfície pública do Livecopilot
 

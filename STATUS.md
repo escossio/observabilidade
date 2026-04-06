@@ -1,5 +1,24 @@
 # Status
 
+## 2026-04-05 - calibração temporal do Zabbix para Apache2 e unbound
+
+- Foi executada uma rodada de calibração temporal com polling seriado de 15s para medir a janela real de convergência do Zabbix.
+- Artefato novo:
+  - `dependency-graph/artifacts/zabbix_timing_calibration.md`
+- O que foi medido:
+  - Apache2 (`69485` / `32506`)
+  - unbound (`69486` / `32537`)
+- Tempos observados:
+  - Apache2: queda em `2s`, abertura da trigger em `2s`, recuperação do item em `2m02s`, fechamento da trigger em `2m02s`
+  - unbound: queda em `1m16s`, abertura da trigger em `1m16s`, fechamento da trigger em `15s`, recuperação do item em `1m15s`
+- Janela recomendada para futuras validações:
+  - pelo menos `2m30s` após o start
+  - idealmente `3m00s` para evitar falso `PARTIAL`
+- Reclassificação honesta desta rodada:
+  - Apache2 -> `PASS`
+  - unbound -> `PASS`
+- A conclusão desta frente é que o gargalo anterior era de janela/latência de observação, não de semântica causal.
+
 ## 2026-04-05 - follow-up dos PARTIAL da validação causal
 
 - Foi executado follow-up com janela maior para os cenários que ainda estavam `PARTIAL`.
