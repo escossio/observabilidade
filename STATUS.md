@@ -1,5 +1,73 @@
 # Status
 
+## 2026-04-06 - árvore causal do Grafana passou a refletir estado real por nó
+
+- O dashboard principal `Observabilidade Zabbix - Grafana` manteve a árvore causal SVG no painel 26, mas saiu de uma V1 estrutural para uma V1 com estado real por cor.
+- Dashboard alterado:
+  - uid `observabilidade-grafana`
+  - painel `26`
+  - versão `27 -> 28`
+- Estratégia adotada:
+  - helper local `dependency-graph/tools/render_grafana_causal_tree.py`
+  - leitura do runtime atual do Zabbix via API local
+  - classificação local em `up`, `down`, `warn` e `unknown`
+  - regravação do SVG já colorido no painel Grafana
+  - sem plugin novo
+  - sem serviço contínuo novo
+  - sem mexer no restante do dashboard
+- Convenção visual desta rodada:
+  - verde = saudável
+  - vermelho = falha
+  - amarelo = atenção / parcial
+  - cinza = sem leitura / sem binding
+- Nós verdes no snapshot validado:
+  - `apache2`
+  - `cloudflared`
+  - `unbound`
+  - `grafana-server`
+  - `zabbix-server`
+  - `zabbix-agent2`
+  - `postgresql`
+  - `ssh`
+  - `MikroTik RB3011`
+  - `bridge`
+  - `ether1`
+  - `pppoe-out1`
+  - `wg0`
+  - `Frontend Público`
+  - `Apache Edge`
+  - `Backend FastAPI`
+- Nós amarelos no snapshot validado:
+  - `Livecopilot`
+- Nós cinzas no snapshot validado:
+  - `agt01`
+  - `br0`
+  - `cloudflared-livecopilot`
+  - `206.42.12.37`
+  - `AS28126 BRISANET`
+- Nós vermelhos no snapshot validado:
+  - nenhum nesta rodada
+- Leitura operacional relevante:
+  - `agt01` ficou cinza porque o binding atual do host aponta para `69621` e o item veio sem `lastclock` útil
+  - `Livecopilot` ficou amarelo porque frontend, edge e backend estão verdes, mas o nó causal do túnel dedicado ainda não tem binding direto fechado
+  - `wg0` continua separado como overlay, mas agora reflete o estado operacional real do item SNMP
+- Artefatos novos:
+  - `dependency-graph/tools/render_grafana_causal_tree.py`
+  - `dependency-graph/artifacts/causal_tree_state_mapping.md`
+  - `dependency-graph/artifacts/grafana_causal_tree_state_validation.md`
+- Validação:
+  - regravação do dashboard confirmada via API do Grafana
+  - painel 26 confirmado com classes `state-up`, `state-down`, `state-warn` e `state-unknown`
+  - screenshot headless confirmou a árvore colorida
+  - validação no ambiente gráfico da VM confirmou o dashboard real aberto no Chromium em `DISPLAY=:20`
+- Limitações:
+  - a cor ainda é snapshot-driven
+  - o helper precisa ser executado de novo para refletir nova rodada
+  - nós sem binding direto continuam cinza por honestidade estrutural
+- Próximo passo natural:
+  - fechar binding direto do `cloudflared-livecopilot`
+  - trocar o sinal de host de `agt01` por um binding mais confiável para saúde do host
+
 ## 2026-04-06 - árvore causal substituiu o bloco textual no Grafana
 
 - O dashboard principal `Observabilidade Zabbix - Grafana` deixou de usar o bloco textual como peça principal da leitura causal/NOC.
