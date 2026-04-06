@@ -1,5 +1,38 @@
 # Status
 
+## 2026-04-06 - resumo operacional de turno/NOC adicionado
+
+- Foi criada a CLI `dependency-graph/tools/noc_shift_summary.py`.
+- Artefatos novos:
+  - `dependency-graph/tools/README_NOC_SHIFT_SUMMARY.md`
+  - `dependency-graph/artifacts/noc_shift_summary_validation.md`
+- Entradas aceitas:
+  - `--minutes`
+  - `--limit`
+  - `--host`
+  - `--severity`
+  - `--open-only`
+  - `--json`
+- Como a ferramenta funciona:
+  - reaproveita `explain_recent_events`
+  - consolida por semântica, cluster, host e top triggers
+  - produz leitura final resumida para turno/NOC
+- Validação real executada:
+  - janela ampla `--minutes 720 --limit 8` -> 6 eventos explicados
+  - janela filtrada por host `--minutes 720 --limit 3 --host agt01` -> 3 eventos explicados
+  - `--open-only` em 120 minutos -> retorno vazio válido
+- Leitura operacional obtida:
+  - semântica dominante: `service_failure`
+  - cluster dominante: `AGT`
+  - host dominante: `agt01`
+  - sem evidência de problema público ou WAN principal nessa janela
+- Limitações assumidas:
+  - depende do runtime recente do Zabbix
+  - problemas sem binding não entram na leitura causal
+  - não substitui RCA completo nem operação contínua
+- Próximo passo natural:
+  - usar o resumo de turno como visão de entrada para triagem diária e correlação rápida
+
 ## 2026-04-06 - utilitário de resumo causal para eventos recentes do Zabbix
 
 - Foi criada a CLI `dependency-graph/tools/explain_recent_events.py`.
