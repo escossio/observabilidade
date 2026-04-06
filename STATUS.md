@@ -1,5 +1,36 @@
 # Status
 
+## 2026-04-05 - ferramenta executável de explicação causal adicionada
+
+- Foi criada a CLI local `dependency-graph/tools/causal_explain.py`.
+- Artefatos novos:
+  - `dependency-graph/tools/README_CAUSAL_EXPLAIN.md`
+  - `dependency-graph/artifacts/causal_explain_validation.md`
+- Entradas aceitas na primeira versão:
+  - `--itemid`
+  - `--triggerid`
+  - `--item-name`
+  - `--trigger-name`
+  - `--json`
+- O que a ferramenta faz:
+  - resolve o binding real do Zabbix
+  - localiza o nó do grafo
+  - aplica a semântica mínima da camada causal
+  - imprime leitura operacional curta com próximos checks e limites
+- Casos testados com sucesso:
+  - Apache2 `69485` e `32506`
+  - unbound `69486`
+  - Livecopilot público `69633`
+  - wg0 `69689`
+- Ajuste importante feito na base:
+  - o binding de `wg0` foi alinhado para `69689` no YAML consolidado
+- Limitações assumidas:
+  - ferramenta offline
+  - não faz RCA completo
+  - não substitui a leitura humana da camada causal
+- Próximo passo natural:
+  - usar a CLI como utilitário de apoio para leitura rápida e triagem de sinais do Zabbix
+
 ## 2026-04-05 - validação final do wg0 no alvo MikroTik bloqueada
 
 - Foi confirmada a identificação correta do cenário `wg0`:

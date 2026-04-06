@@ -297,9 +297,9 @@ bindings:
     node_role: observed_auxiliary_node
     zabbix_host: MikroTik RB3011
     bound_items:
-      - item_name: WireGuard tunnel status
-        item_key: mikrotik.wg0Status
-        itemid: 69666
+      - item_name: wg0 operational status
+        item_key: mikrotik.ifOperStatus[16]
+        itemid: 69689
         item_type: snmp
     bound_triggers: []
     observation_kind: overlay_link
