@@ -133,3 +133,9 @@ Leitura operacional:
 - o segredo não foi registrado no repositório
 - a publicação atual é suficiente para uso operacional controlado
 - se a sessão precisar ficar exposta por mais tempo, vale considerar camada adicional fora do Apache
+
+## Observação sobre DevTools
+
+- a coleta desta rodada ficou centrada em `tcpdump` e na consolidação do tráfego real
+- não havia um canal de DevTools remoto exposto para instrumentar sem mexer na sessão já validada
+- a evidência de rede foi suficiente para registrar hostnames, IPs e endpoints de entrega observados durante a reprodução

@@ -1,5 +1,37 @@
 # Status
 
+## 2026-04-05 - captura real de Netflix iniciada e consolidada
+
+- A fase de captura real foi iniciada sem mexer na sessão gráfica nem na publicação do noVNC.
+- A coleta foi feita com `tcpdump` no host da observabilidade.
+- Artefatos gerados na captura:
+  - `internet-observation/captures/20260405-211611-netflix/netflix-session-live.log`
+  - `internet-observation/captures/20260405-211611-netflix/netflix-session.pcap`
+- Endpoints/hosts relevantes observados no tráfego:
+  - `ipv4-c010-jdo001-brisanet-isp.1.oca.nflxvideo.net`
+  - `nrdp.logs.netflix.com`
+  - `logs.dradis.netflix.com`
+  - `logs.us-east-1.internal.dradis.netflix.com`
+  - `apiproxy-logging-s3-5c4574073964ceac.elb.us-east-1.amazonaws.com`
+  - `region1.v2.argotunnel.com`
+- IPs remotos relevantes observados:
+  - `177.37.221.42`
+  - `104.18.32.47`
+  - `104.21.4.50`
+  - `172.67.131.172`
+  - `45.57.8.1`
+  - `45.57.9.1`
+  - `205.251.193.25`
+  - `98.85.148.156`
+  - `54.160.93.182`
+  - `3.211.157.115`
+- Leitura prática:
+  - a entrega observável passou por infraestrutura `nflxvideo.net`
+  - a observação veio do tráfego real, não de inferência de catálogo
+- Observação sobre DevTools:
+  - não havia canal remoto de DevTools exposto nesta rodada sem mexer na sessão
+  - a evidência principal ficou no `network capture`
+
 ## 2026-04-05 - sessão XFCE do noVNC restaurada
 
 - A camada de publicação do noVNC permaneceu intacta.
