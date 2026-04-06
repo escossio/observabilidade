@@ -1,5 +1,40 @@
 # Status
 
+## 2026-04-05 - binding Zabbix -> dependency-graph iniciado
+
+- Foi criada a camada explícita de binding entre itens/triggers do Zabbix e nós do `dependency-graph`.
+- Artefatos novos:
+  - `dependency-graph/ZABBIX_BINDINGS.md`
+  - `dependency-graph/ZABBIX_BINDING_README.md`
+  - `dependency-graph/models/zabbix_graph_bindings.yaml`
+- O binding inicial cobre:
+  - `agt01`
+  - serviços centrais do AGT
+  - Livecopilot por camada
+  - MikroTik RB3011
+  - bridge, ether1, pppoe-out1 e wg0
+- Mapeamentos reais já ligados a IDs conhecidos:
+  - `CPU temperature` / `cpu.temp` / `69621`
+  - itens derivados do Livecopilot `69631` a `69637`
+  - `Service apache2 running` / `69485`
+  - `Web apache 127.0.0.1` / `69488`
+  - `Service unbound running` / `69486`
+  - triggers `32506`, `32507` e `32537`
+- A semântica de falha agora conversa com o binding:
+  - `host_failure`
+  - `service_failure`
+  - `public_access_failure`
+  - `wan_primary_failure`
+  - `wan_uplink_failure`
+  - `overlay_failure`
+- O que ficou pendente nesta rodada:
+  - `itemid`/`triggerid` exatos dos serviços base ainda não extraídos
+  - IDs SNMP do MikroTik ainda não coletados
+  - binding do upstream `AS28126 BRISANET`
+  - binding de endpoints observados da Netflix como sinal recorrente
+- Próximo passo natural:
+  - completar itemids/triggers pendentes sem inflar o escopo
+
 ## 2026-04-05 - árvore de transporte por salto formalizada
 
 - O `dependency-graph` passou a distinguir explicitamente:

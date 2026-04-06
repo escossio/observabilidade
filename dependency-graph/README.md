@@ -19,6 +19,8 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 - `SEMANTICS.md`: semântica de nós, arestas e estados
 - `IMPACT_RULES.md`: regras documentais de impacto direto e propagado
 - `TRANSPORT_TREE.md`: leitura por salto da cadeia funcional, de transporte e observacional
+- `ZABBIX_BINDINGS.md`: binding entre itens/triggers reais e nós do grafo
+- `ZABBIX_BINDING_README.md`: guia curto de leitura do binding
 
 ## Modelo inicial
 

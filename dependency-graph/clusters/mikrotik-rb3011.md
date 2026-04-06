@@ -6,6 +6,8 @@ Cluster dedicado da borda de conectividade consumida pelo `AGT`.
 
 O objetivo deste cluster é separar o que pertence ao host `agt01` do que pertence estruturalmente ao equipamento de borda e à cadeia WAN observada.
 
+O binding real com o Zabbix está documentado em `dependency-graph/ZABBIX_BINDINGS.md`.
+
 ## Equipamento principal
 
 - `MikroTik RB3011`
@@ -89,3 +91,4 @@ O objetivo deste cluster é separar o que pertence ao host `agt01` do que perten
 - `wg0` permanece como overlay observado
 - overlay e cadeia causal principal continuam separados explicitamente
 - `nuvem / destino` continua inferido porque não há um destino único confirmado
+- os sinais reais do Zabbix ficam concentrados no binding dedicado para evitar tabela grande neste markdown

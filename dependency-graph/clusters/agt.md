@@ -6,6 +6,8 @@ Cluster inicial do grafo de dependências operacionais do host `AGT`.
 
 O cluster está organizado da borda de serviço para cima, com o host no centro da leitura.
 
+O binding real com o Zabbix está documentado em `dependency-graph/ZABBIX_BINDINGS.md`.
+
 ## Host principal
 
 - `agt01`
@@ -98,3 +100,4 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 - o destino final continua genérico porque a confirmação operacional ainda não existe e agora fica documentado no cluster da MikroTik
 - esta versão não faz descoberta automática nem tenta inferir dependências ocultas
 - `observed_delivery_node` continua fora da cadeia principal do AGT até haver repetição observada suficiente
+- a camada de binding real com itens e triggers do Zabbix fica fora deste arquivo para manter a leitura curta

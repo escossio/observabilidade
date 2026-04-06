@@ -20,6 +20,13 @@
 - `observed_delivery_node`: nó observado em captura real como destino efetivo de entrega de aplicação, por exemplo endpoint de vídeo
 - `observed_auxiliary_node`: nó observado em captura real, mas ligado a log, telemetria, edge auxiliar ou tráfego paralelo
 
+## Binding com observabilidade
+
+- `observed_by_zabbix`: verdadeiro quando o nó já possui item ou trigger real no Zabbix ligado a ele
+- `bound_item`: item do Zabbix associado ao nó do grafo
+- `bound_trigger`: trigger do Zabbix associado ao nó do grafo
+- `monitoring_binding`: associação documentada entre item/trigger reais e um nó do dependency-graph
+
 ## Regra de leitura dos papéis
 
 - `functional_node` descreve o que o ambiente faz
@@ -55,6 +62,7 @@
 - `confidence`: nível de confiança da classificação
 - `notes`: observação curta sobre o porquê da classificação
 - `role`: papel semântico do nó na leitura do grafo
+- `observed_by_zabbix`: indica que existe binding real com a observabilidade local
 - `observed_delivery_endpoint`: verdadeiro quando o nó veio de captura real como endpoint de entrega observado
 - `observed_auxiliary_endpoint`: verdadeiro quando o nó veio de captura real, mas atua como telemetria, log ou infra auxiliar
 - `repeated_observation`: verdadeiro quando o mesmo nó já apareceu em mais de uma captura independente

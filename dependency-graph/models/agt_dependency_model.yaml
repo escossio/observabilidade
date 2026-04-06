@@ -6,6 +6,9 @@ host:
   type: host
   layer: host
   role: functional_node
+  monitoring:
+    source: zabbix
+    binding_ref: host-agt01
   criticality: critical
   impact_scope: agt-cluster
   impact_targets:
@@ -25,6 +28,9 @@ nodes:
     type: service
     layer: service
     role: functional_node
+    monitoring:
+      source: zabbix
+      binding_ref: svc-zabbix-server
     criticality: critical
     depends_on: host-agt01
     impact_scope: monitoring-platform
@@ -36,6 +42,9 @@ nodes:
     type: service
     layer: service
     role: functional_node
+    monitoring:
+      source: zabbix
+      binding_ref: svc-zabbix-agent2
     criticality: critical
     depends_on: host-agt01
     impact_scope: monitoring-platform
@@ -47,6 +56,9 @@ nodes:
     type: service
     layer: service
     role: functional_node
+    monitoring:
+      source: zabbix
+      binding_ref: svc-grafana-server
     criticality: high
     depends_on: host-agt01
     impact_scope: observability-ui
@@ -58,6 +70,9 @@ nodes:
     type: service
     layer: service
     role: functional_node
+    monitoring:
+      source: zabbix
+      binding_ref: svc-apache2
     criticality: high
     depends_on: host-agt01
     impact_scope: publication
@@ -69,6 +84,9 @@ nodes:
     type: service
     layer: service
     role: functional_node
+    monitoring:
+      source: zabbix
+      binding_ref: svc-cloudflared
     criticality: high
     depends_on: host-agt01
     impact_scope: publication
@@ -102,6 +120,9 @@ nodes:
     type: service
     layer: service
     role: functional_node
+    monitoring:
+      source: zabbix
+      binding_ref: svc-unbound
     criticality: medium
     depends_on: host-agt01
     impact_scope: infrastructure
@@ -124,6 +145,9 @@ nodes:
     type: service
     layer: service
     role: functional_node
+    monitoring:
+      source: zabbix
+      binding_ref: svc-livecopilot-semantic-api
     criticality: high
     depends_on: host-agt01
     impact_scope: application
@@ -190,6 +214,9 @@ nodes:
     type: access_device
     layer: access
     role: transport_node
+    monitoring:
+      source: zabbix
+      binding_ref: access-link-bridge-br0
     criticality: critical
     depends_on: cluster-mikrotik-rb3011
     impact_scope: local-egress
@@ -208,6 +235,9 @@ nodes:
     type: cluster
     layer: edge
     role: transport_node
+    monitoring:
+      source: zabbix
+      binding_ref: cluster-mikrotik-rb3011
     criticality: critical
     impact_scope: agt-edge
     impact_targets:

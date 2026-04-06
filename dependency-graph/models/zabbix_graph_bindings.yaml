@@ -1,0 +1,320 @@
+version: 1
+source: zabbix
+scope: initial
+notes: >
+  Binding inicial entre itens/triggers reais do Zabbix e nós do dependency-graph.
+  A lista prioriza nós funcionais, nós de transporte e folhas observacionais com
+  evidência explícita. Campos sem id real ficam como pending até nova extração.
+bindings:
+  - graph_node_id: host-agt01
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: CPU temperature
+        item_key: cpu.temp
+        itemid: "69621"
+        item_type: agent
+    bound_triggers: []
+    observation_kind: host_health
+    failure_semantics_mapped: host_failure
+    observed_by_zabbix: true
+    notes: Item real confirmado por latest data e uso no Grafana.
+
+  - graph_node_id: svc-zabbix-server
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service zabbix-server running
+        item_key: proc.num[zabbix-server]
+        itemid: pending
+        item_type: agent
+    bound_triggers:
+      - trigger_name: zabbix-server parado
+        triggerid: pending
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Item documentado em runtime; trigger específico não foi extraído nesta rodada.
+
+  - graph_node_id: svc-zabbix-agent2
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service zabbix-agent2 running
+        item_key: proc.num[zabbix-agent2]
+        itemid: pending
+        item_type: agent
+    bound_triggers:
+      - trigger_name: zabbix-agent2 parado
+        triggerid: pending
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Item documentado em runtime; trigger específico ainda pendente.
+
+  - graph_node_id: svc-apache2
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service apache2 running
+        item_key: proc.num[apache2]
+        itemid: 69485
+        item_type: agent
+      - item_name: Web apache 127.0.0.1
+        item_key: web.page.get[127.0.0.1,/,80]
+        itemid: 69488
+        item_type: web
+    bound_triggers:
+      - trigger_name: Apache2 parado
+        triggerid: 32506
+      - trigger_name: Web 127.0.0.1 indisponivel
+        triggerid: 32507
+    observation_kind: service_and_web
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Binding forte com item e trigger reais.
+
+  - graph_node_id: svc-cloudflared
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service cloudflared running
+        item_key: proc.num[cloudflared]
+        itemid: pending
+        item_type: agent
+    bound_triggers: []
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Item real documentado no runtime; ids pendentes.
+
+  - graph_node_id: svc-unbound
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service unbound running
+        item_key: proc.num[unbound]
+        itemid: 69486
+        item_type: agent
+    bound_triggers:
+      - trigger_name: unbound parado
+        triggerid: 32537
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Item e trigger existentes em runtime.
+
+  - graph_node_id: svc-postgresql-17-main
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service postgresql running
+        item_key: proc.num[postgresql]
+        itemid: pending
+        item_type: agent
+    bound_triggers: []
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Binding real documentado como item de serviço, id ainda não coletado.
+
+  - graph_node_id: svc-ssh
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service ssh running
+        item_key: proc.num[sshd]
+        itemid: pending
+        item_type: agent
+    bound_triggers: []
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Binding real documentado como item de serviço, id ainda não coletado.
+
+  - graph_node_id: svc-livecopilot-semantic-api
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Livecopilot Serviço estado
+        item_key: derived.status.livecopilot.service
+        itemid: 69631
+        item_type: derived_stat
+    bound_triggers: []
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Item numérico derivado usado pelo Grafana.
+
+  - graph_node_id: svc-livecopilot-apache-edge
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Livecopilot Apache Edge estado
+        item_key: derived.status.livecopilot.apache
+        itemid: 69632
+        item_type: derived_stat
+      - item_name: Livecopilot Frontend Público estado
+        item_key: derived.status.livecopilot.frontend_public
+        itemid: 69633
+        item_type: derived_stat
+      - item_name: Livecopilot Public Health estado
+        item_key: derived.status.livecopilot.public_health
+        itemid: 69634
+        item_type: derived_stat
+    bound_triggers: []
+    observation_kind: public_delivery
+    failure_semantics_mapped: public_access_failure
+    observed_by_zabbix: true
+    notes: Borda pública e frontend separados em itens derivados.
+
+  - graph_node_id: svc-livecopilot-backend-health
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Livecopilot Backend Health estado
+        item_key: derived.status.livecopilot.backend_health
+        itemid: 69635
+        item_type: derived_stat
+      - item_name: Livecopilot Backend Status estado
+        item_key: derived.status.livecopilot.backend_status
+        itemid: 69636
+        item_type: derived_stat
+      - item_name: Livecopilot Backend API estado
+        item_key: derived.status.livecopilot.backend_api
+        itemid: 69637
+        item_type: derived_stat
+    bound_triggers: []
+    observation_kind: backend_health
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Camada de backend com itens derivados reais.
+
+  - graph_node_id: host-mikrotik-rb3011
+    cluster: MIKROTIK-RB3011
+    node_role: functional_node
+    zabbix_host: MikroTik RB3011
+    bound_items:
+      - item_name: SNMP system name
+        item_key: mikrotik.sysName
+        itemid: pending
+        item_type: snmp
+      - item_name: SNMP uptime
+        item_key: mikrotik.sysUpTime
+        itemid: pending
+        item_type: snmp
+      - item_name: Memory size
+        item_key: mikrotik.hrMemorySize
+        itemid: pending
+        item_type: snmp
+      - item_name: Temperature
+        item_key: mikrotik.temperature
+        itemid: pending
+        item_type: snmp
+      - item_name: Voltage
+        item_key: mikrotik.voltage
+        itemid: pending
+        item_type: snmp
+      - item_name: PPPoE tunnel status
+        item_key: mikrotik.pppoeOut1Status
+        itemid: pending
+        item_type: snmp
+      - item_name: WireGuard tunnel status
+        item_key: mikrotik.wg0Status
+        itemid: pending
+        item_type: snmp
+    bound_triggers: []
+    observation_kind: device_health
+    failure_semantics_mapped: external_edge_failure
+    observed_by_zabbix: true
+    notes: Host Zabbix e template SNMP documentados; ids não coletados nesta rodada.
+
+  - graph_node_id: edge-mikrotik-pppoe-out1
+    cluster: MIKROTIK-RB3011
+    node_role: transport_node
+    zabbix_host: MikroTik RB3011
+    bound_items:
+      - item_name: PPPoE tunnel status
+        item_key: mikrotik.pppoeOut1Status
+        itemid: pending
+        item_type: snmp
+    bound_triggers: []
+    observation_kind: transport_link
+    failure_semantics_mapped: wan_primary_failure
+    observed_by_zabbix: true
+    notes: Bind documental já validado pelo template MikroTik.
+
+  - graph_node_id: edge-mikrotik-wg0
+    cluster: MIKROTIK-RB3011
+    node_role: observed_auxiliary_node
+    zabbix_host: MikroTik RB3011
+    bound_items:
+      - item_name: WireGuard tunnel status
+        item_key: mikrotik.wg0Status
+        itemid: pending
+        item_type: snmp
+    bound_triggers: []
+    observation_kind: overlay_link
+    failure_semantics_mapped: overlay_failure
+    observed_by_zabbix: true
+    notes: Overlay observado e mantido fora da cadeia principal.
+
+  - graph_node_id: edge-mikrotik-ether1
+    cluster: MIKROTIK-RB3011
+    node_role: transport_node
+    zabbix_host: MikroTik RB3011
+    bound_items:
+      - item_name: Interface operational status
+        item_key: mikrotik.ifOperStatus[ether1]
+        itemid: pending
+        item_type: snmp
+      - item_name: Interface traffic in
+        item_key: mikrotik.ifInOctets[ether1]
+        itemid: pending
+        item_type: snmp
+      - item_name: Interface traffic out
+        item_key: mikrotik.ifOutOctets[ether1]
+        itemid: pending
+        item_type: snmp
+    bound_triggers: []
+    observation_kind: transport_link
+    failure_semantics_mapped: wan_uplink_failure
+    observed_by_zabbix: true
+    notes: Interface descoberta em LLD e validada no template SNMP.
+
+  - graph_node_id: access-mikrotik-bridge
+    cluster: MIKROTIK-RB3011
+    node_role: transport_node
+    zabbix_host: MikroTik RB3011
+    bound_items:
+      - item_name: Interface operational status
+        item_key: mikrotik.ifOperStatus[bridge]
+        itemid: pending
+        item_type: snmp
+    bound_triggers: []
+    observation_kind: transport_link
+    failure_semantics_mapped: local_edge_failure
+    observed_by_zabbix: true
+    notes: Bridge aparece na descoberta de interfaces do RB3011.
+
+  - graph_node_id: provider-as-brisanet
+    cluster: MIKROTIK-RB3011
+    node_role: transport_node
+    zabbix_host: MikroTik RB3011
+    bound_items: []
+    bound_triggers: []
+    observation_kind: upstream_identity
+    failure_semantics_mapped: upstream_provider_failure
+    observed_by_zabbix: false
+    notes: Identidade do AS está no grafo e na captura, mas não há item Zabbix dedicado nesta rodada.

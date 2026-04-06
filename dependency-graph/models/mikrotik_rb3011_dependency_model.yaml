@@ -6,6 +6,9 @@ host:
   type: host
   layer: host
   role: functional_node
+  monitoring:
+    source: zabbix
+    binding_ref: host-mikrotik-rb3011
   criticality: critical
   impact_scope: edge-shared
   impact_targets:
@@ -25,6 +28,9 @@ nodes:
     type: access_device
     layer: access
     role: transport_node
+    monitoring:
+      source: zabbix
+      binding_ref: access-mikrotik-bridge
     criticality: critical
     depends_on: host-mikrotik-rb3011
     impact_scope: agt-lan-egress
@@ -43,6 +49,9 @@ nodes:
     type: gateway
     layer: access
     role: transport_node
+    monitoring:
+      source: zabbix
+      binding_ref: access-next-hop-10-45-0-1
     criticality: critical
     depends_on: host-mikrotik-rb3011
     impact_scope: agt-lan-egress
@@ -61,6 +70,9 @@ nodes:
     type: access_device
     layer: edge
     role: transport_node
+    monitoring:
+      source: zabbix
+      binding_ref: edge-mikrotik-ether1
     criticality: high
     depends_on: host-mikrotik-rb3011
     impact_scope: wan-uplink
@@ -79,6 +91,9 @@ nodes:
     type: ppp_session
     layer: edge
     role: transport_node
+    monitoring:
+      source: zabbix
+      binding_ref: edge-mikrotik-pppoe-out1
     criticality: high
     depends_on: edge-mikrotik-ether1
     impact_scope: wan-uplink
@@ -116,6 +131,9 @@ nodes:
     type: access_device
     layer: edge
     role: observed_auxiliary_node
+    monitoring:
+      source: zabbix
+      binding_ref: edge-mikrotik-wg0
     criticality: low
     depends_on: host-mikrotik-rb3011
     impact_scope: overlay-connectivity
