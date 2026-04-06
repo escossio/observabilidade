@@ -9,6 +9,7 @@ O objetivo deste cluster é separar o que pertence ao host `agt01` do que perten
 ## Equipamento principal
 
 - `MikroTik RB3011`
+- papel: `functional_node`
 - IP de gestão / next-hop observado: `10.45.0.1`
 - host no Zabbix: `MikroTik RB3011`
 - hostid: `10778`
@@ -19,19 +20,21 @@ O objetivo deste cluster é separar o que pertence ao host `agt01` do que perten
 
 ## Interfaces e papéis observados
 
-- `bridge`: domínio L2 local usado como borda imediata do AGT
-- `ether1`: uplink físico observado da WAN principal
-- `pppoe-out1`: sessão WAN principal observada ativa
-- `wg0`: túnel / overlay observado ativo, fora da cadeia causal principal
+- `bridge`: `transport_node`, domínio L2 local usado como borda imediata do AGT
+- `ether1`: `transport_node`, uplink físico observado da WAN principal
+- `pppoe-out1`: `transport_node`, sessão WAN principal observada ativa
+- `wg0`: `observed_auxiliary_node`, túnel / overlay observado ativo, fora da cadeia causal principal
 
 ## Cadeia operacional principal
 
 - equipamento `MikroTik RB3011`
+- nó funcional de borda, não destino final
 - `ether1`
 - `pppoe-out1`
 - IP público `206.42.12.37`
 - operadora / AS `AS28126 BRISANET`
 - nuvem / destino
+- `Netflix delivery observado` como folha observacional separada, não como cadeia principal
 
 ## Relações de dependência
 
@@ -77,6 +80,8 @@ O objetivo deste cluster é separar o que pertence ao host `agt01` do que perten
 - se `wg0` cair, a conectividade overlay pode ser afetada sem caracterizar perda da WAN principal
 - se a operadora / AS degradar, a borda pode permanecer ativa localmente e ainda assim perder alcance externo
 - se `nuvem / destino` falhar, a quebra é externa ao ambiente local
+- na árvore por salto, a MikroTik é funcional na borda e os demais elementos são transporte
+- a folha observacional da Netflix fica fora da cadeia principal até repetição em capturas adicionais
 
 ## Observação
 

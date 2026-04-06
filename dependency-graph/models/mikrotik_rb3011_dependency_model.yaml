@@ -5,6 +5,7 @@ host:
   label: MikroTik RB3011
   type: host
   layer: host
+  role: functional_node
   criticality: critical
   impact_scope: edge-shared
   impact_targets:
@@ -23,6 +24,7 @@ nodes:
     label: bridge
     type: access_device
     layer: access
+    role: transport_node
     criticality: critical
     depends_on: host-mikrotik-rb3011
     impact_scope: agt-lan-egress
@@ -40,6 +42,7 @@ nodes:
     label: next-hop 10.45.0.1
     type: gateway
     layer: access
+    role: transport_node
     criticality: critical
     depends_on: host-mikrotik-rb3011
     impact_scope: agt-lan-egress
@@ -57,6 +60,7 @@ nodes:
     label: ether1
     type: access_device
     layer: edge
+    role: transport_node
     criticality: high
     depends_on: host-mikrotik-rb3011
     impact_scope: wan-uplink
@@ -74,6 +78,7 @@ nodes:
     label: pppoe-out1
     type: ppp_session
     layer: edge
+    role: transport_node
     criticality: high
     depends_on: edge-mikrotik-ether1
     impact_scope: wan-uplink
@@ -92,6 +97,7 @@ nodes:
     label: 206.42.12.37
     type: public_ip
     layer: edge
+    role: transport_node
     criticality: high
     depends_on: edge-mikrotik-pppoe-out1
     impact_scope: external-reachability
@@ -109,6 +115,7 @@ nodes:
     label: wg0
     type: access_device
     layer: edge
+    role: observed_auxiliary_node
     criticality: low
     depends_on: host-mikrotik-rb3011
     impact_scope: overlay-connectivity
@@ -125,6 +132,7 @@ nodes:
     label: AS28126 BRISANET
     type: provider
     layer: provider
+    role: transport_node
     criticality: medium
     impact_scope: upstream-connectivity
     impact_targets:
@@ -141,6 +149,7 @@ nodes:
     label: nuvem / destino
     type: destination
     layer: destination
+    role: transport_node
     criticality: low
     depends_on: provider-as-brisanet
     impact_scope: external-service-reachability
@@ -153,6 +162,23 @@ nodes:
     validation_source: inferred
     confidence: low
     notes: Alvo final genérico; nenhum destino único foi confirmado.
+  - id: observed-netflix-delivery
+    label: Netflix delivery observado
+    type: destination
+    layer: destination
+    role: observed_delivery_node
+    criticality: low
+    depends_on: provider-as-brisanet
+    impact_scope: observed-streaming
+    impact_targets:
+      - netflix-delivery-observation
+    failure_semantics: observed_delivery_failure
+    blast_radius: external-destination
+    severity_if_failed: medium
+    propagation_mode: external
+    validation_source: observed
+    confidence: medium
+    notes: Folha observacional da entrega real capturada; não promove a cadeia principal.
 edges:
   - from: access-mikrotik-bridge
     to: host-mikrotik-rb3011
@@ -194,12 +220,18 @@ edges:
     relation: depends_on
     validation_source: inferred
     confidence: low
+  - from: provider-as-brisanet
+    to: observed-netflix-delivery
+    relation: depends_on
+    validation_source: observed
+    confidence: medium
 semantics:
   node_fields:
     - id
     - label
     - type
     - layer
+    - role
     - criticality
     - depends_on
     - impact_scope
@@ -219,3 +251,4 @@ semantics:
   manual_dependency_rule: aresta criada para representar a cadeia operacional antes da automação de descoberta.
   future_auto_discovery_rule: aresta que poderá ser substituída por descoberta automática quando houver sinalização suficiente e validação cruzada.
   impact_propagation: se um nó superior falha, tudo abaixo dele pode perder a função representada na leitura operacional.
+  role_rule: o campo `role` separa função, transporte e observação sem substituir `type` nem `layer`.

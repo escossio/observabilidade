@@ -8,6 +8,7 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 - separar serviços do host, serviços de aplicação, serviços de observabilidade e serviços de publicação
 - modelar a cadeia de conectividade acima do host com nós explícitos e legíveis
 - explicitar dependências entre clusters quando a borda de um ambiente estiver modelada separadamente
+- distinguir nós funcionais, nós de transporte e folhas observacionais capturadas em tráfego real
 - deixar a base pronta para inferência, impacto e expansão futura sem automatização pesada nesta rodada
 
 ## Estrutura
@@ -17,6 +18,7 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 - `views/`: diagrama versionável do mesmo modelo
 - `SEMANTICS.md`: semântica de nós, arestas e estados
 - `IMPACT_RULES.md`: regras documentais de impacto direto e propagado
+- `TRANSPORT_TREE.md`: leitura por salto da cadeia funcional, de transporte e observacional
 
 ## Modelo inicial
 
@@ -38,6 +40,8 @@ Esta frente documenta o grafo inicial de dependências operacionais do ambiente.
 - os serviços apontam para o host
 - o host aponta para a cadeia de conectividade que o sustenta ou para um cluster externo já modelado
 - a cadeia sobe até o destino percebido como alcançável
+- a árvore por salto separa o que é função do que é simples transporte
+- endpoints observados em captura real entram como folhas observacionais até repetição suficiente
 - o modelo é explícito, hierárquico e ainda não tenta descobrir tudo automaticamente
 - ligações entre clusters são documentais e servem para separar responsabilidade de host versus borda
 

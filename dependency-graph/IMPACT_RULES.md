@@ -11,6 +11,8 @@ Nesta rodada, o foco é explicitar como a falha se propaga entre:
 - upstream `AS28126 BRISANET`
 - `nuvem / destino`
 
+A leitura nesta rodada usa a distinção entre nós funcionais, nós de transporte e folhas observacionais capturadas em tráfego real.
+
 ## Regras do cluster AGT
 
 ### Falha em `agt01`

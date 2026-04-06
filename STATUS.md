@@ -1,5 +1,29 @@
 # Status
 
+## 2026-04-05 - árvore de transporte por salto formalizada
+
+- O `dependency-graph` passou a distinguir explicitamente:
+  - `functional_node`
+  - `transport_node`
+  - `observed_delivery_node`
+  - `observed_auxiliary_node`
+- Foi criado o artefato:
+  - `dependency-graph/TRANSPORT_TREE.md`
+- Os modelos do `AGT` e da `MikroTik RB3011` foram enriquecidos com `role` por nó para deixar clara a leitura por salto.
+- A cadeia de transporte ficou explícita como leitura separada da função:
+  - `agt01` como função operacional
+  - `br0` como transporte
+  - `MikroTik RB3011` como função de borda
+  - `bridge`, `ether1`, `pppoe-out1`, `206.42.12.37` e `AS28126 BRISANET` como transporte
+- A folha observacional da Netflix foi mantida separada:
+  - `ipv4-c010-jdo001-brisanet-isp.1.oca.nflxvideo.net`
+- O que continua fora da cadeia principal:
+  - endpoints de log e telemetria
+  - endpoints auxiliares de edge
+  - a folha Netflix sem repetição observada suficiente
+- Regra futura:
+  - só promover observação pontual depois de repetição em novas capturas
+
 ## 2026-04-05 - modelagem observacional da entrega Netflix consolidada
 
 - Foi criada uma camada observacional para separar os destinos capturados na reprodução real da Netflix.

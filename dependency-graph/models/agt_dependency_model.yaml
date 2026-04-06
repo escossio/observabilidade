@@ -5,6 +5,7 @@ host:
   label: agt01
   type: host
   layer: host
+  role: functional_node
   criticality: critical
   impact_scope: agt-cluster
   impact_targets:
@@ -23,6 +24,7 @@ nodes:
     label: zabbix-server
     type: service
     layer: service
+    role: functional_node
     criticality: critical
     depends_on: host-agt01
     impact_scope: monitoring-platform
@@ -33,6 +35,7 @@ nodes:
     label: zabbix-agent2
     type: service
     layer: service
+    role: functional_node
     criticality: critical
     depends_on: host-agt01
     impact_scope: monitoring-platform
@@ -43,6 +46,7 @@ nodes:
     label: grafana-server
     type: service
     layer: service
+    role: functional_node
     criticality: high
     depends_on: host-agt01
     impact_scope: observability-ui
@@ -53,6 +57,7 @@ nodes:
     label: apache2
     type: service
     layer: service
+    role: functional_node
     criticality: high
     depends_on: host-agt01
     impact_scope: publication
@@ -63,6 +68,7 @@ nodes:
     label: cloudflared
     type: service
     layer: service
+    role: functional_node
     criticality: high
     depends_on: host-agt01
     impact_scope: publication
@@ -73,6 +79,7 @@ nodes:
     label: cloudflared-livecopilot
     type: service
     layer: service
+    role: functional_node
     criticality: medium
     depends_on: host-agt01
     impact_scope: publication
@@ -83,6 +90,7 @@ nodes:
     label: postgresql@17-main
     type: service
     layer: service
+    role: functional_node
     criticality: critical
     depends_on: host-agt01
     impact_scope: platform-data
@@ -93,6 +101,7 @@ nodes:
     label: unbound
     type: service
     layer: service
+    role: functional_node
     criticality: medium
     depends_on: host-agt01
     impact_scope: infrastructure
@@ -103,6 +112,7 @@ nodes:
     label: ssh
     type: service
     layer: service
+    role: functional_node
     criticality: medium
     depends_on: host-agt01
     impact_scope: administration
@@ -113,6 +123,7 @@ nodes:
     label: livecopilot-semantic-api
     type: service
     layer: service
+    role: functional_node
     criticality: high
     depends_on: host-agt01
     impact_scope: application
@@ -123,6 +134,7 @@ nodes:
     label: emby-server
     type: service
     layer: service
+    role: functional_node
     criticality: low
     depends_on: host-agt01
     impact_scope: application
@@ -133,6 +145,7 @@ nodes:
     label: smbd
     type: service
     layer: service
+    role: functional_node
     criticality: low
     depends_on: host-agt01
     impact_scope: application
@@ -143,6 +156,7 @@ nodes:
     label: nmbd
     type: service
     layer: service
+    role: functional_node
     criticality: low
     depends_on: host-agt01
     impact_scope: application
@@ -153,6 +167,7 @@ nodes:
     label: winbind
     type: service
     layer: service
+    role: functional_node
     criticality: low
     depends_on: host-agt01
     impact_scope: application
@@ -163,6 +178,7 @@ nodes:
     label: libvirtd
     type: service
     layer: service
+    role: functional_node
     criticality: low
     depends_on: host-agt01
     impact_scope: virtualization
@@ -173,6 +189,7 @@ nodes:
     label: bridge br0
     type: access_device
     layer: access
+    role: transport_node
     criticality: critical
     depends_on: cluster-mikrotik-rb3011
     impact_scope: local-egress
@@ -190,6 +207,7 @@ nodes:
     label: cluster MikroTik RB3011
     type: cluster
     layer: edge
+    role: transport_node
     criticality: critical
     impact_scope: agt-edge
     impact_targets:

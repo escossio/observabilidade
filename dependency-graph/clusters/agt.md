@@ -9,7 +9,9 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 ## Host principal
 
 - `agt01`
+- papel: `functional_node`
 - interface de saída observada: `br0`
+- papel da interface: `transport_node`
 - borda externa dependente: cluster `MikroTik RB3011`
 - ligação intercluster principal: `br0 -> cluster MikroTik RB3011`
 
@@ -45,6 +47,7 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 ## Cadeia de conectividade acima do host
 
 - bridge `br0`
+- nó de transporte, não serviço nem telemetria
 - dependência explícita do cluster `MikroTik RB3011`
 - cadeia superior delegada ao cluster dedicado da MikroTik:
   - `bridge`
@@ -83,6 +86,8 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 - se `br0` falhar, o host perde a ligação local com a borda
 - se o cluster `MikroTik RB3011` falhar, o AGT perde a borda concreta acima do host mesmo com o host ainda saudável
 - falhas de operadora, IP público ou WAN principal agora são lidas no cluster dedicado da MikroTik, não mais dentro do AGT
+- na árvore por salto, `agt01` é funcional e `br0` é transporte obrigatório
+- a leitura do AGT termina no transporte imediato; a entrega observada da Netflix fica em camada separada
 
 ## Observação
 
@@ -92,3 +97,4 @@ O cluster está organizado da borda de serviço para cima, com o host no centro 
 - falha local de host e falha de borda agora ficam separadas explicitamente no modelo
 - o destino final continua genérico porque a confirmação operacional ainda não existe e agora fica documentado no cluster da MikroTik
 - esta versão não faz descoberta automática nem tenta inferir dependências ocultas
+- `observed_delivery_node` continua fora da cadeia principal do AGT até haver repetição observada suficiente

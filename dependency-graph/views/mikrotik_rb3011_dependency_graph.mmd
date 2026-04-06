@@ -1,14 +1,15 @@
 flowchart TB
-  host["MikroTik RB3011<br/>10.45.0.1"]
+  host["MikroTik RB3011<br/>(functional)"]
 
-  bridge["bridge<br/>(borda local)"]
-  nexthop["Next-hop 10.45.0.1<br/>(gateway local)"]
-  ether1["ether1<br/>(uplink físico)"]
-  pppoe["pppoe-out1<br/>(WAN principal)"]
-  public_ip["206.42.12.37<br/>(caminho público)"]
-  wg0["wg0<br/>(overlay observado)"]
-  provider["AS28126 BRISANET<br/>(upstream)"]
-  destination["Nuvem / destino<br/>(externo inferido)"]
+  bridge["bridge<br/>(transport)"]
+  nexthop["Next-hop 10.45.0.1<br/>(transport)"]
+  ether1["ether1<br/>(transport)"]
+  pppoe["pppoe-out1<br/>(transport)"]
+  public_ip["206.42.12.37<br/>(transport)"]
+  wg0["wg0<br/>(observed auxiliary)"]
+  provider["AS28126 BRISANET<br/>(transport)"]
+  destination["Nuvem / destino<br/>(transport)"]
+  netflix_delivery["Netflix delivery observado<br/>(observed leaf)"]
 
   bridge --> host
   nexthop --> host
@@ -18,9 +19,15 @@ flowchart TB
   public_ip --> provider
   wg0 --> host
   provider --> destination
+  provider --> netflix_delivery
 
-  classDef observed fill:#dff7e7,stroke:#2f855a,color:#1f2937,stroke-width:1px;
+  classDef functional fill:#dff7e7,stroke:#2f855a,color:#1f2937,stroke-width:1px;
+  classDef transport fill:#fef3c7,stroke:#d97706,color:#1f2937,stroke-width:1px;
+  classDef delivery fill:#e0f2fe,stroke:#0284c7,color:#1f2937,stroke-width:1px;
+  classDef auxiliary fill:#ede9fe,stroke:#7c3aed,color:#1f2937,stroke-width:1px;
   classDef inferred fill:#fff4cc,stroke:#b7791f,color:#1f2937,stroke-width:1px,stroke-dasharray: 4 3;
 
-  class host,bridge,nexthop,ether1,pppoe,public_ip,wg0,provider observed;
-  class destination inferred;
+  class host functional;
+  class bridge,nexthop,ether1,pppoe,public_ip,provider,destination transport;
+  class wg0 auxiliary;
+  class netflix_delivery delivery;
