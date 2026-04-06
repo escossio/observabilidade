@@ -1,5 +1,28 @@
 # Status
 
+## 2026-04-05 - validação final do wg0 no alvo MikroTik bloqueada
+
+- Foi confirmada a identificação correta do cenário `wg0`:
+  - nó `edge-mikrotik-wg0`
+  - host Zabbix `MikroTik RB3011`
+  - itemid `69689`
+  - key `mikrotik.ifOperStatus[16]`
+- A rota até `10.45.0.1` existe, mas a execução dinâmica ficou bloqueada:
+  - `22/tcp` recusou conexão
+  - não havia caminho administrativo seguro para provocar a mudança em `wg0`
+- Artefato novo:
+  - `dependency-graph/artifacts/wg0_overlay_validation.md`
+- Resultado final desta frente:
+  - `wg0` -> `BLOCKED`
+- Leitura causal mantida:
+  - `overlay_failure`
+  - impacto restrito ao overlay
+  - sem promoção para `pppoe-out1`, `ether1`, `bridge` ou host
+- Conclusão prática:
+  - Apache2, unbound e a superfície pública do Livecopilot já estão fechados
+  - a bateria causal fica fechada operacionalmente para os cenários validáveis nesta máquina
+  - `wg0` permanece bloqueado por falta de acesso administrativo seguro ao alvo MikroTik
+
 ## 2026-04-05 - calibração temporal do Zabbix para Apache2 e unbound
 
 - Foi executada uma rodada de calibração temporal com polling seriado de 15s para medir a janela real de convergência do Zabbix.

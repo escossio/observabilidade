@@ -5,12 +5,12 @@
 - Cenário A: PASS
 - Cenário B: PASS
 - Cenário C: FAIL
-- Cenário D: PARTIAL
+- Cenário D: BLOCKED
 - Follow-up desta rodada:
   - Apache2 e unbound receberam calibração temporal seriada com polling a cada 15s
   - o runtime do Zabbix mostrou queda, recuperação e fechamento completos em ambos os serviços
   - a janela curta das rodadas anteriores explicava os `PARTIAL`: o fechamento ainda não tinha sido observado antes do snapshot final
-  - `wg0` segue fechado como alvo do cluster MikroTik RB3011, não como injeção local neste host
+  - `wg0` foi confirmado como item do cluster MikroTik RB3011, mas a execução dinâmica ficou bloqueada por falta de caminho administrativo seguro
 
 ## Cenário A - Apache2 parado
 
@@ -78,21 +78,24 @@
 
 ## Cenário D - wg0
 
-- evento reutilizado: evidência já documentada no grafo e runtime do MikroTik
-- timestamp de snapshot: `2026-04-05T22:10:06-03:00`
-- rollback: não aplicável neste host; a interface `wg0` não existe localmente
+- itemid confirmado: `69689`
+- host Zabbix: `MikroTik RB3011`
+- trigger dedicada: inexistente na base consultada
+- evento real provocado: não executado
+- rollback: não aplicável; a execução foi bloqueada antes de qualquer alteração no RouterOS
 - evidência no runtime do Zabbix:
   - item `69689` (`wg0 operational status`) está presente no binding do grafo
-  - o host atual não possui `wg0`, então não houve evento local reversível nesta rodada
+  - `lastvalue` observado: `1`
+  - `lastclock` observado: `1775440813`
 - nó correlacionado: `edge-mikrotik-wg0`
 - semântica esperada: `overlay_failure`
 - semântica obtida: `overlay_failure` apenas documental nesta rodada
 - blast radius esperado: `overlay-only`
 - blast radius obtido: `overlay-only` documental
-- resultado: `PARTIAL`
-- observação curta: não houve como provocar com segurança no host atual; a validação fica como confirmação documental do mapeamento, não como prova dinâmica
+- resultado: `BLOCKED`
+- observação curta: o alvo correto foi identificado, mas não havia caminho administrativo seguro para provocar a alteração em `wg0` nesta frente
 - follow-up de localização:
   - o `wg0` do grafo pertence ao cluster `MikroTik RB3011`
   - o nó correspondente é `edge-mikrotik-wg0`
-  - o host atual não possui interface `wg0`
-  - não houve alvo seguro para injeção local nesta máquina
+  - a rota até `10.45.0.1` existe a partir deste host
+  - o acesso administrativo em `22/tcp` foi recusado e não havia caminho seguro para executar a mudança
