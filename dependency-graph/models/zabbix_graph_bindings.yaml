@@ -28,15 +28,14 @@ bindings:
     bound_items:
       - item_name: Service zabbix-server running
         item_key: proc.num[zabbix-server]
-        itemid: pending
+        itemid: 69615
         item_type: agent
-    bound_triggers:
-      - trigger_name: zabbix-server parado
-        triggerid: pending
+    bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
-    notes: Item documentado em runtime; trigger específico não foi extraído nesta rodada.
+    notes: Item real fechado no runtime; trigger dedicado não existe na base consultada.
+    binding_state: complete
 
   - graph_node_id: svc-zabbix-agent2
     cluster: AGT
@@ -45,15 +44,14 @@ bindings:
     bound_items:
       - item_name: Service zabbix-agent2 running
         item_key: proc.num[zabbix-agent2]
-        itemid: pending
+        itemid: 69616
         item_type: agent
-    bound_triggers:
-      - trigger_name: zabbix-agent2 parado
-        triggerid: pending
+    bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
-    notes: Item documentado em runtime; trigger específico ainda pendente.
+    notes: Item real fechado no runtime; trigger dedicado não existe na base consultada.
+    binding_state: complete
 
   - graph_node_id: svc-apache2
     cluster: AGT
@@ -77,6 +75,23 @@ bindings:
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
     notes: Binding forte com item e trigger reais.
+    binding_state: complete
+
+  - graph_node_id: svc-grafana-server
+    cluster: AGT
+    node_role: functional_node
+    zabbix_host: agt01
+    bound_items:
+      - item_name: Service grafana-server running
+        item_key: proc.num[grafana]
+        itemid: 69617
+        item_type: agent
+    bound_triggers: []
+    observation_kind: service_state
+    failure_semantics_mapped: service_failure
+    observed_by_zabbix: true
+    notes: Item real fechado no runtime; trigger dedicado não foi localizado.
+    binding_state: complete
 
   - graph_node_id: svc-cloudflared
     cluster: AGT
@@ -85,13 +100,14 @@ bindings:
     bound_items:
       - item_name: Service cloudflared running
         item_key: proc.num[cloudflared]
-        itemid: pending
+        itemid: 69618
         item_type: agent
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
-    notes: Item real documentado no runtime; ids pendentes.
+    notes: Item real fechado no runtime; trigger dedicado não foi localizado.
+    binding_state: complete
 
   - graph_node_id: svc-unbound
     cluster: AGT
@@ -109,6 +125,7 @@ bindings:
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
     notes: Item e trigger existentes em runtime.
+    binding_state: complete
 
   - graph_node_id: svc-postgresql-17-main
     cluster: AGT
@@ -117,13 +134,14 @@ bindings:
     bound_items:
       - item_name: Service postgresql running
         item_key: proc.num[postgresql]
-        itemid: pending
+        itemid: 69619
         item_type: agent
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
-    notes: Binding real documentado como item de serviço, id ainda não coletado.
+    notes: Item real fechado no runtime; trigger dedicado não foi localizado.
+    binding_state: complete
 
   - graph_node_id: svc-ssh
     cluster: AGT
@@ -132,13 +150,14 @@ bindings:
     bound_items:
       - item_name: Service ssh running
         item_key: proc.num[sshd]
-        itemid: pending
+        itemid: 69620
         item_type: agent
     bound_triggers: []
     observation_kind: service_state
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
-    notes: Binding real documentado como item de serviço, id ainda não coletado.
+    notes: Item real fechado no runtime; trigger dedicado não foi localizado.
+    binding_state: complete
 
   - graph_node_id: svc-livecopilot-semantic-api
     cluster: AGT
@@ -177,6 +196,7 @@ bindings:
     failure_semantics_mapped: public_access_failure
     observed_by_zabbix: true
     notes: Borda pública e frontend separados em itens derivados.
+    binding_state: complete
 
   - graph_node_id: svc-livecopilot-backend-health
     cluster: AGT
@@ -200,6 +220,7 @@ bindings:
     failure_semantics_mapped: service_failure
     observed_by_zabbix: true
     notes: Camada de backend com itens derivados reais.
+    binding_state: complete
 
   - graph_node_id: host-mikrotik-rb3011
     cluster: MIKROTIK-RB3011
@@ -208,37 +229,38 @@ bindings:
     bound_items:
       - item_name: SNMP system name
         item_key: mikrotik.sysName
-        itemid: pending
+        itemid: 69656
         item_type: snmp
       - item_name: SNMP uptime
         item_key: mikrotik.sysUpTime
-        itemid: pending
+        itemid: 69657
         item_type: snmp
       - item_name: Memory size
         item_key: mikrotik.hrMemorySize
-        itemid: pending
+        itemid: 69659
         item_type: snmp
       - item_name: Temperature
         item_key: mikrotik.temperature
-        itemid: pending
+        itemid: 69663
         item_type: snmp
       - item_name: Voltage
         item_key: mikrotik.voltage
-        itemid: pending
+        itemid: 69664
         item_type: snmp
       - item_name: PPPoE tunnel status
         item_key: mikrotik.pppoeOut1Status
-        itemid: pending
+        itemid: 69665
         item_type: snmp
       - item_name: WireGuard tunnel status
         item_key: mikrotik.wg0Status
-        itemid: pending
+        itemid: 69666
         item_type: snmp
     bound_triggers: []
     observation_kind: device_health
     failure_semantics_mapped: external_edge_failure
     observed_by_zabbix: true
-    notes: Host Zabbix e template SNMP documentados; ids não coletados nesta rodada.
+    notes: Host Zabbix e template SNMP fechados com itemids exatos.
+    binding_state: complete
 
   - graph_node_id: edge-mikrotik-pppoe-out1
     cluster: MIKROTIK-RB3011
@@ -247,13 +269,14 @@ bindings:
     bound_items:
       - item_name: PPPoE tunnel status
         item_key: mikrotik.pppoeOut1Status
-        itemid: pending
+        itemid: 69665
         item_type: snmp
     bound_triggers: []
     observation_kind: transport_link
     failure_semantics_mapped: wan_primary_failure
     observed_by_zabbix: true
-    notes: Bind documental já validado pelo template MikroTik.
+    notes: Item SNMP exato fechado no runtime.
+    binding_state: complete
 
   - graph_node_id: edge-mikrotik-wg0
     cluster: MIKROTIK-RB3011
@@ -262,13 +285,14 @@ bindings:
     bound_items:
       - item_name: WireGuard tunnel status
         item_key: mikrotik.wg0Status
-        itemid: pending
+        itemid: 69666
         item_type: snmp
     bound_triggers: []
     observation_kind: overlay_link
     failure_semantics_mapped: overlay_failure
     observed_by_zabbix: true
-    notes: Overlay observado e mantido fora da cadeia principal.
+    notes: Item SNMP exato fechado no runtime.
+    binding_state: complete
 
   - graph_node_id: edge-mikrotik-ether1
     cluster: MIKROTIK-RB3011
@@ -277,21 +301,22 @@ bindings:
     bound_items:
       - item_name: Interface operational status
         item_key: mikrotik.ifOperStatus[ether1]
-        itemid: pending
+        itemid: 69692
         item_type: snmp
       - item_name: Interface traffic in
         item_key: mikrotik.ifInOctets[ether1]
-        itemid: pending
+        itemid: 69707
         item_type: snmp
       - item_name: Interface traffic out
         item_key: mikrotik.ifOutOctets[ether1]
-        itemid: pending
+        itemid: 69722
         item_type: snmp
     bound_triggers: []
     observation_kind: transport_link
     failure_semantics_mapped: wan_uplink_failure
     observed_by_zabbix: true
-    notes: Interface descoberta em LLD e validada no template SNMP.
+    notes: Interface LLD fechada com itemids exatos.
+    binding_state: complete
 
   - graph_node_id: access-mikrotik-bridge
     cluster: MIKROTIK-RB3011
@@ -300,13 +325,14 @@ bindings:
     bound_items:
       - item_name: Interface operational status
         item_key: mikrotik.ifOperStatus[bridge]
-        itemid: pending
+        itemid: 69690
         item_type: snmp
     bound_triggers: []
     observation_kind: transport_link
     failure_semantics_mapped: local_edge_failure
     observed_by_zabbix: true
-    notes: Bridge aparece na descoberta de interfaces do RB3011.
+    notes: Interface LLD fechada com itemid exato.
+    binding_state: complete
 
   - graph_node_id: provider-as-brisanet
     cluster: MIKROTIK-RB3011

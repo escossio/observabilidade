@@ -23,6 +23,7 @@
 ## Binding com observabilidade
 
 - `observed_by_zabbix`: verdadeiro quando o nó já possui item ou trigger real no Zabbix ligado a ele
+- `binding_state`: estado do vínculo, por exemplo `complete`, `partial` ou `pending`
 - `bound_item`: item do Zabbix associado ao nó do grafo
 - `bound_trigger`: trigger do Zabbix associado ao nó do grafo
 - `monitoring_binding`: associação documentada entre item/trigger reais e um nó do dependency-graph
@@ -63,6 +64,7 @@
 - `notes`: observação curta sobre o porquê da classificação
 - `role`: papel semântico do nó na leitura do grafo
 - `observed_by_zabbix`: indica que existe binding real com a observabilidade local
+- `binding_state`: estado do vínculo, por exemplo `complete`, `partial` ou `pending`
 - `observed_delivery_endpoint`: verdadeiro quando o nó veio de captura real como endpoint de entrega observado
 - `observed_auxiliary_endpoint`: verdadeiro quando o nó veio de captura real, mas atua como telemetria, log ou infra auxiliar
 - `repeated_observation`: verdadeiro quando o mesmo nó já apareceu em mais de uma captura independente

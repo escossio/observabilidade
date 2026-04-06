@@ -32,31 +32,38 @@ Este documento liga sinais reais do Zabbix aos nós do `dependency-graph`.
   - semântica: `host_failure`
   - estado: `complete`
 - `svc-zabbix-server`
-  - item: `Service zabbix-server running`
-  - trigger: `zabbix-server parado` `pending`
-  - estado: `partial`
+  - item: `Service zabbix-server running` / `proc.num[zabbix_server]` / `69615`
+  - trigger: inexistente na base consultada
+  - estado: `complete`
 - `svc-zabbix-agent2`
-  - item: `Service zabbix-agent2 running`
-  - trigger: `zabbix-agent2 parado` `pending`
-  - estado: `partial`
+  - item: `Service zabbix-agent2 running` / `proc.num[zabbix_agent2]` / `69616`
+  - trigger: inexistente na base consultada
+  - estado: `complete`
 - `svc-apache2`
   - item: `Service apache2 running` / `proc.num[apache2]` / `69485`
   - item web: `Web apache 127.0.0.1` / `web.page.get[127.0.0.1,/,80]` / `69488`
   - triggers: `Apache2 parado` `32506`, `Web 127.0.0.1 indisponivel` `32507`
   - estado: `complete`
+- `svc-grafana-server`
+  - item: `Service grafana-server running` / `proc.num[grafana]` / `69617`
+  - trigger: inexistente na base consultada
+  - estado: `complete`
 - `svc-cloudflared`
-  - item: `Service cloudflared running`
-  - estado: `partial`
+  - item: `Service cloudflared running` / `proc.num[cloudflared]` / `69618`
+  - trigger: inexistente na base consultada
+  - estado: `complete`
 - `svc-unbound`
   - item: `Service unbound running` / `proc.num[unbound]` / `69486`
   - trigger: `unbound parado` `32537`
   - estado: `complete`
 - `svc-postgresql-17-main`
-  - item: `Service postgresql running`
-  - estado: `partial`
+  - item: `Service postgresql running` / `proc.num[postgres]` / `69619`
+  - trigger: inexistente na base consultada
+  - estado: `complete`
 - `svc-ssh`
-  - item: `Service ssh running`
-  - estado: `partial`
+  - item: `Service ssh running` / `proc.num[sshd]` / `69620`
+  - trigger: inexistente na base consultada
+  - estado: `complete`
 
 ### Livecopilot
 
@@ -78,30 +85,28 @@ Este documento liga sinais reais do Zabbix aos nós do `dependency-graph`.
 
 - `host-mikrotik-rb3011`
   - host Zabbix: `MikroTik RB3011`
-  - itens: `SNMP system name`, `SNMP uptime`, `Memory size`, `Temperature`, `Voltage`, `PPPoE tunnel status`, `WireGuard tunnel status`
+  - itens: `SNMP system name` / `69656`, `SNMP uptime` / `69657`, `Memory size` / `69659`, `Board name` / `69661`, `RouterOS version` / `69662`, `Temperature` / `69663`, `Voltage` / `69664`, `PPPoE tunnel status` / `69665`, `WireGuard tunnel status` / `69666`
   - semântica: `external_edge_failure`
-  - estado: `partial`
+  - estado: `complete`
 - `access-mikrotik-bridge`
-  - item: `Interface operational status` da bridge
+  - item: `bridge operational status` / `mikrotik.ifOperStatus[13]` / `69690`
   - semântica: `local_edge_failure`
-  - estado: `partial`
+  - estado: `complete`
 - `edge-mikrotik-ether1`
-  - itens: `Interface operational status`, `Interface traffic in`, `Interface traffic out`
+  - itens: `ether1 operational status` / `69692`, `ether1 inbound traffic` / `69707`, `ether1 outbound traffic` / `69722`
   - semântica: `wan_uplink_failure`
-  - estado: `partial`
+  - estado: `complete`
 - `edge-mikrotik-pppoe-out1`
-  - item: `PPPoE tunnel status`
+  - item: `pppoe-out1 operational status` / `69701`
   - semântica: `wan_primary_failure`
-  - estado: `partial`
+  - estado: `complete`
 - `edge-mikrotik-wg0`
-  - item: `WireGuard tunnel status`
+  - item: `wg0 operational status` / `69689`
   - semântica: `overlay_failure`
-  - estado: `partial`
+  - estado: `complete`
 
 ## Pendente nesta rodada
 
-- `itemid` e `triggerid` exatos dos serviços `zabbix-server`, `zabbix-agent2`, `cloudflared`, `postgresql` e `ssh`
-- `itemid` e `triggerid` exatos dos itens SNMP do MikroTik
 - item de observabilidade para o upstream `AS28126 BRISANET`
 - sinal Zabbix dedicado para `observed_delivery_node` da Netflix
 

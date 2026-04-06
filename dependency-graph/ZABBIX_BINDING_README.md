@@ -44,29 +44,30 @@ Explicar como a observabilidade real do Zabbix se conecta aos nós do `dependenc
 
 - `complete`
   - `host-agt01`
-  - `svc-apache2`
-  - `svc-unbound`
-  - `svc-livecopilot-semantic-api`
-  - `svc-livecopilot-apache-edge`
-  - `svc-livecopilot-backend-health`
-- `partial`
   - `svc-zabbix-server`
   - `svc-zabbix-agent2`
+  - `svc-apache2`
+  - `svc-grafana-server`
+  - `svc-unbound`
   - `svc-cloudflared`
   - `svc-postgresql-17-main`
   - `svc-ssh`
+  - `svc-livecopilot-semantic-api`
+  - `svc-livecopilot-apache-edge`
+  - `svc-livecopilot-backend-health`
   - `host-mikrotik-rb3011`
   - `access-mikrotik-bridge`
   - `edge-mikrotik-ether1`
   - `edge-mikrotik-pppoe-out1`
   - `edge-mikrotik-wg0`
+- `partial`
+  - nenhum binding estrutural crítico nesta rodada
 - `pending`
   - upstream `AS28126 BRISANET`
   - Netflix delivery recorrente
 
 ## O que ainda não está coberto
 
-- itemid e triggerid exatos de todos os serviços base
 - binding do upstream `AS28126 BRISANET`
 - binding de endpoints observados da Netflix como sinal monitorável recorrente
 

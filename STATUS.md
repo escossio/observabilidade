@@ -1,5 +1,45 @@
 # Status
 
+## 2026-04-05 - bindings fechados no runtime do Zabbix
+
+- A consulta ao banco do Zabbix fechou os `itemid` exatos pendentes dos serviços base e da MikroTik.
+- Artefatos atualizados:
+  - `dependency-graph/ZABBIX_BINDINGS.md`
+  - `dependency-graph/ZABBIX_BINDING_README.md`
+  - `dependency-graph/models/zabbix_graph_bindings.yaml`
+- Serviços base agora com itemid exato:
+  - `zabbix-server` -> `69615`
+  - `zabbix-agent2` -> `69616`
+  - `grafana-server` -> `69617`
+  - `cloudflared` -> `69618`
+  - `postgresql@17-main` -> `69619`
+  - `ssh` -> `69620`
+- MikroTik agora com itemids exatos para:
+  - `SNMP system name` -> `69656`
+  - `SNMP uptime` -> `69657`
+  - `Memory size` -> `69659`
+  - `Board name` -> `69661`
+  - `RouterOS version` -> `69662`
+  - `Temperature` -> `69663`
+  - `Voltage` -> `69664`
+  - `PPPoE tunnel status` -> `69665`
+  - `WireGuard tunnel status` -> `69666`
+  - `bridge operational status` -> `69690`
+  - `ether1 operational status` -> `69692`
+  - `pppoe-out1 operational status` -> `69701`
+  - `wg0 operational status` -> `69689`
+  - `ether1 inbound traffic` -> `69707`
+  - `ether1 outbound traffic` -> `69722`
+- Cobertura mínima obrigatória ficou praticamente inteira:
+  - AGT base
+  - Livecopilot por camada
+  - MikroTik RB3011 e trilha principal de transporte
+- O que continua pendente por falta de sinal real dedicado:
+  - binding Zabbix do upstream `AS28126 BRISANET`
+  - binding Zabbix recorrente do endpoint Netflix observado
+- O que ficou para revisão futura:
+  - triggers dedicadas para alguns serviços base não existem na base consultada
+
 ## 2026-04-05 - bindings pendentes reduzidos e cobertura mínima consolidada
 
 - A camada de binding foi refinada para distinguir `complete`, `partial` e `pending`.
