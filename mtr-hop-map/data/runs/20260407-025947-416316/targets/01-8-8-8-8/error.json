@@ -1,0 +1,4 @@
+{
+  "target": "8.8.8.8",
+  "error": "list indices must be integers or slices, not str"
+}

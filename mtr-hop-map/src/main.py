@@ -12,7 +12,7 @@ from .config import ROOT_DIR, load_config
 from .hop_policy import slugify
 from .mtr_parser import parse_hops
 from .mtr_runner import load_mtr_json, run_mtr
-from .report import write_batch_artifacts, write_target_artifacts, write_target_failure_artifacts
+from .report import write_batch_artifacts, write_target_artifacts, write_target_branch_analysis, write_target_failure_artifacts
 from .zabbix_api import ZabbixAPI
 from .zabbix_reconcile import ensure_map_for_destination
 
@@ -352,6 +352,7 @@ def run_batch(
         "specs": [{"target": target, "replay_path": replay_path} for target, replay_path in specs],
     }
     write_batch_artifacts(run_root, batch_execution, target_results)
+    write_target_branch_analysis(run_root, _build_target_branch_analysis(target_results))
 
     return {
         "run_id": run_id,
@@ -359,6 +360,89 @@ def run_batch(
         "targets": target_results,
         **batch_execution,
     }
+
+
+def _build_target_branch_analysis(target_results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    paths: list[tuple[dict[str, Any], list[str], list[dict[str, Any]]]] = []
+    for result in target_results:
+        target_dir = Path(result["target_dir"])
+        normalized_path = target_dir / "mtr_normalized.json"
+        if not normalized_path.exists():
+            paths.append((result, [], []))
+            continue
+        hops = json.loads(normalized_path.read_text())
+        path = [hop["ip"] for hop in hops if hop.get("ip")]
+        paths.append((result, path, hops))
+
+    shared_trunk: list[str] = []
+    valid_paths = [path for result, path, hops in paths if result["status"] == "ok" and path]
+    if valid_paths:
+        shared_trunk = list(valid_paths[0])
+        for path in valid_paths[1:]:
+            prefix: list[str] = []
+            for left, right in zip(shared_trunk, path):
+                if left != right:
+                    break
+                prefix.append(left)
+            shared_trunk = prefix
+
+    analysis: list[dict[str, Any]] = []
+    for result, path, hops in paths:
+        if result["status"] != "ok" or not path:
+            analysis.append(
+                {
+                    "target": result["target"],
+                    "run_source": result["mode"],
+                    "path_detected": path,
+                    "intersects_backbone": False,
+                    "shared_trunk_until": shared_trunk,
+                    "new_branch_detected": False,
+                    "new_nodes": [],
+                    "new_edges": [],
+                    "external_family_detected": "unknown",
+                    "notes": result.get("error", "no normalized trace"),
+                }
+            )
+            continue
+
+        prefix_len = 0
+        for left, right in zip(shared_trunk, path):
+            if left != right:
+                break
+            prefix_len += 1
+        branch_nodes = path[prefix_len:]
+        branch_edges = [{"source": a, "target": b} for a, b in zip(path[max(0, prefix_len - 1) :], path[prefix_len:])]
+        last_company = str(hops[-1].get("company", "")).lower() if hops else ""
+        family = "unknown"
+        for needle, label in [
+            ("google", "google"),
+            ("quad9", "quad9"),
+            ("dell", "dell"),
+            ("mikrotik", "mikrotik"),
+            ("att", "att"),
+            ("at&t", "att"),
+            ("twelve99", "twelve99"),
+            ("telia", "twelve99"),
+        ]:
+            if needle in last_company:
+                family = label
+                break
+        analysis.append(
+            {
+                "target": result["target"],
+                "run_source": result["mode"],
+                "path_detected": path,
+                "intersects_backbone": prefix_len > 0,
+                "shared_trunk_until": shared_trunk,
+                "new_branch_detected": bool(branch_nodes),
+                "new_nodes": branch_nodes,
+                "new_edges": branch_edges,
+                "external_family_detected": family,
+                "notes": f"prefix_len={prefix_len}; branch_len={len(branch_nodes)}",
+            }
+        )
+
+    return analysis
 
 
 def main() -> None:

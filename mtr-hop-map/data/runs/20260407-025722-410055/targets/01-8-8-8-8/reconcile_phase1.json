@@ -1,0 +1,126 @@
+{
+  "target": "8.8.8.8",
+  "map_name": "MTR ASN - 8.8.8.8",
+  "sysmapid": "11",
+  "host_groupid": "25",
+  "templateid": "10564",
+  "hostids": [
+    "10780",
+    "10781",
+    "10782",
+    "10783",
+    "10784",
+    "10785",
+    "10795",
+    "10796",
+    "10797",
+    "10798"
+  ],
+  "selementids": [
+    "120",
+    "121",
+    "122",
+    "123",
+    "124",
+    "125",
+    "126",
+    "127",
+    "128",
+    "129"
+  ],
+  "linkids": [
+    "159",
+    "160",
+    "161",
+    "162",
+    "163",
+    "164",
+    "165",
+    "166",
+    "167"
+  ],
+  "created_map": true,
+  "host_actions": [
+    {
+      "ip": "10.45.0.1",
+      "hostid": "10780",
+      "hostname": "hop-ip-10-45-0-1",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "100.65.77.1",
+      "hostid": "10781",
+      "hostname": "hop-ip-100-65-77-1",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.221",
+      "hostid": "10782",
+      "hostname": "hop-ip-172-16-128-221",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.133.150",
+      "hostid": "10783",
+      "hostname": "hop-ip-172-16-133-150",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.113",
+      "hostid": "10784",
+      "hostname": "hop-ip-172-16-128-113",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.181",
+      "hostid": "10785",
+      "hostname": "hop-ip-172-16-128-181",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "142.250.166.72",
+      "hostid": "10795",
+      "hostname": "hop-ip-142-250-166-72",
+      "action": "created",
+      "match_source": "created",
+      "warnings": []
+    },
+    {
+      "ip": "108.170.226.233",
+      "hostid": "10796",
+      "hostname": "hop-ip-108-170-226-233",
+      "action": "created",
+      "match_source": "created",
+      "warnings": []
+    },
+    {
+      "ip": "192.178.110.171",
+      "hostid": "10797",
+      "hostname": "hop-ip-192-178-110-171",
+      "action": "created",
+      "match_source": "created",
+      "warnings": []
+    },
+    {
+      "ip": "8.8.8.8",
+      "hostid": "10798",
+      "hostname": "hop-ip-8-8-8-8",
+      "action": "created",
+      "match_source": "created",
+      "warnings": []
+    }
+  ],
+  "plan": null
+}

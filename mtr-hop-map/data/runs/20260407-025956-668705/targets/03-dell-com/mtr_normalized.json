@@ -1,0 +1,245 @@
+[
+  {
+    "order": 1,
+    "ip": "10.45.0.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "10.45.0.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 2,
+    "ip": "100.65.77.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "100.65.77.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 3,
+    "ip": "172.16.128.221",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.221\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 4,
+    "ip": "172.16.133.150",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.133.150\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 5,
+    "ip": "172.16.128.113",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.113\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 6,
+    "ip": "172.16.128.181",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.181\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 7,
+    "ip": "172.16.128.182",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.182\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 8,
+    "ip": "172.16.128.62",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.62\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 9,
+    "ip": "172.16.128.178",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.178\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 10,
+    "ip": "84.16.6.34",
+    "asn": "AS12956",
+    "company": "TELXIUS TELXIUS Cable",
+    "category": "public",
+    "label": "84.16.6.34\nAS12956\nTELXIUS TELXIUS Cable",
+    "source": "cache-ip"
+  },
+  {
+    "order": 11,
+    "ip": "94.142.98.175",
+    "asn": "AS12956",
+    "company": "TELXIUS TELXIUS Cable",
+    "category": "public",
+    "label": "94.142.98.175\nAS12956\nTELXIUS TELXIUS Cable",
+    "source": "cache-ip"
+  },
+  {
+    "order": 12,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 13,
+    "ip": "192.205.32.109",
+    "asn": "AS7018",
+    "company": "AT&T Enterprises, LLC",
+    "category": "public",
+    "label": "192.205.32.109\nAS7018\nAT&T Enterprises, LLC",
+    "source": "cache-ip"
+  },
+  {
+    "order": 14,
+    "ip": "32.130.89.4",
+    "asn": "AS7018",
+    "company": "AT&T Enterprises, LLC",
+    "category": "public",
+    "label": "32.130.89.4\nAS7018\nAT&T Enterprises, LLC",
+    "source": "cache-ip"
+  },
+  {
+    "order": 15,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 16,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 17,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 18,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 19,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 20,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 21,
+    "ip": "12.123.154.54",
+    "asn": "AS7018",
+    "company": "AT&T Enterprises, LLC",
+    "category": "public",
+    "label": "12.123.154.54\nAS7018\nAT&T Enterprises, LLC",
+    "source": "cache-ip"
+  },
+  {
+    "order": 22,
+    "ip": "12.122.153.181",
+    "asn": "AS7018",
+    "company": "AT&T Enterprises, LLC",
+    "category": "public",
+    "label": "12.122.153.181\nAS7018\nAT&T Enterprises, LLC",
+    "source": "cache-ip"
+  },
+  {
+    "order": 23,
+    "ip": "12.252.89.6",
+    "asn": "AS7018",
+    "company": "AT&T Enterprises, LLC",
+    "category": "public",
+    "label": "12.252.89.6\nAS7018\nAT&T Enterprises, LLC",
+    "source": "cache-ip"
+  },
+  {
+    "order": 24,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 25,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 26,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 27,
+    "ip": "143.166.30.172",
+    "asn": "AS3614",
+    "company": "Dell, Inc.",
+    "category": "public",
+    "label": "143.166.30.172\nAS3614\nDell, Inc.",
+    "source": "cache-ip"
+  }
+]

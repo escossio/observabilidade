@@ -1,0 +1,164 @@
+[
+  {
+    "order": 1,
+    "ip": "10.45.0.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "10.45.0.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 2,
+    "ip": "100.65.77.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "100.65.77.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 3,
+    "ip": "172.16.128.221",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.221\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 4,
+    "ip": "172.16.133.150",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.133.150\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 5,
+    "ip": "172.16.128.113",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.113\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 6,
+    "ip": "172.16.128.181",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.181\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 7,
+    "ip": "138.204.238.149",
+    "asn": "AS52320",
+    "company": "GlobeNet Cabos Submarinos Colombia, S.A.S.",
+    "category": "public",
+    "label": "138.204.238.149\nAS52320\nGlobeNet Cabos Submarinos Colombia, S.A.S.",
+    "source": "cache-ip"
+  },
+  {
+    "order": 8,
+    "ip": "200.16.69.2",
+    "asn": "AS52320",
+    "company": "GlobeNet Cabos Submarinos Colombia, S.A.S.",
+    "category": "public",
+    "label": "200.16.69.2\nAS52320\nGlobeNet Cabos Submarinos Colombia, S.A.S.",
+    "source": "cache-ip"
+  },
+  {
+    "order": 9,
+    "ip": "62.115.50.180",
+    "asn": "AS1299",
+    "company": "TWELVE99 Arelion, fka Telia Carrier",
+    "category": "public",
+    "label": "62.115.50.180\nAS1299\nTWELVE99 Arelion, fka Telia Carrier",
+    "source": "cache-ip"
+  },
+  {
+    "order": 10,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 11,
+    "ip": "80.91.254.90",
+    "asn": "AS1299",
+    "company": "TWELVE99 Arelion, fka Telia Carrier",
+    "category": "public",
+    "label": "80.91.254.90\nAS1299\nTWELVE99 Arelion, fka Telia Carrier",
+    "source": "cache-ip"
+  },
+  {
+    "order": 12,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 13,
+    "ip": "62.115.142.191",
+    "asn": "AS1299",
+    "company": "TWELVE99 Arelion, fka Telia Carrier",
+    "category": "public",
+    "label": "62.115.142.191\nAS1299\nTWELVE99 Arelion, fka Telia Carrier",
+    "source": "cache-ip"
+  },
+  {
+    "order": 14,
+    "ip": "213.248.84.33",
+    "asn": "AS1299",
+    "company": "TWELVE99 Arelion, fka Telia Carrier",
+    "category": "public",
+    "label": "213.248.84.33\nAS1299\nTWELVE99 Arelion, fka Telia Carrier",
+    "source": "cache-ip"
+  },
+  {
+    "order": 15,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 16,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 17,
+    "ip": "",
+    "asn": "AS???",
+    "company": "No response",
+    "category": "no-response",
+    "label": "*\nAS???\nNo response",
+    "source": "mtr-no-response"
+  },
+  {
+    "order": 18,
+    "ip": "159.148.147.244",
+    "asn": "AS51894",
+    "company": "AS_MIKROTIKLS",
+    "category": "public",
+    "label": "159.148.147.244\nAS51894\nAS_MIKROTIKLS",
+    "source": "cache-ip"
+  }
+]

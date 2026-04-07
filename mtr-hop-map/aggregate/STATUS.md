@@ -1,5 +1,21 @@
 # Status
 
+## 2026-04-07 - mapa unificado expandido com novos ramos publicados
+
+- o mapa único `MTR Unified - Brisanet Observed` foi atualizado in-place no `sysmapid 10`
+- a rodada anexou novos ramos para:
+  - `8.8.8.8` / Google
+  - `9.9.9.9` / Quad9
+  - `dell.com` / Dell
+  - `wiki.mikrotik.com` / Mikrotik
+- o snapshot final do Zabbix ficou com:
+  - `39` elementos
+  - `38` links
+- o tronco comum permaneceu único e sem duplicação de IPs equivalentes
+- a borda candidata `187.19.161.199` continuou visível como candidato forte
+- `177.37.220.17` e `177.37.220.18` continuam fora do backbone por ausência de evidência no corpus
+
+
 ## 2026-04-07 - mapa agregado unificado publicado no Zabbix
 
 - o mapa agregado passou a ser único e canônico:

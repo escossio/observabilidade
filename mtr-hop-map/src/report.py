@@ -186,3 +186,8 @@ def write_batch_artifacts(run_dir: Path, batch_execution: dict, target_results: 
         report.append(line)
 
     (run_dir / "report.md").write_text("\n".join(report) + "\n")
+
+
+def write_target_branch_analysis(run_dir: Path, analysis: list[dict[str, Any]]) -> None:
+    run_dir.mkdir(parents=True, exist_ok=True)
+    (run_dir / "target_branch_analysis.json").write_text(json.dumps(analysis, indent=2, ensure_ascii=False))

@@ -1,5 +1,29 @@
 # Status
 
+## 2026-04-07 - mapa unificado expandido com novos ramos
+
+- o mapa canônico único `MTR Unified - Brisanet Observed` foi expandido in-place no `sysmapid 10`
+- os alvos desta rodada trouxeram novos ramos para o mesmo grafo:
+  - `8.8.8.8` -> Google
+  - `9.9.9.9` -> Quad9
+  - `dell.com` -> Dell
+  - `wiki.mikrotik.com` -> Mikrotik
+- o grafo final manteve:
+  - tronco comum recorrente
+  - borda candidata `187.19.161.199`
+  - saídas externas/CDN relevantes
+  - watchlist DNS sem promoção indevida
+- estado final publicado:
+  - `39` elementos
+  - `38` links
+- artefatos novos relevantes:
+  - `data/runs/20260407-030220-957449/target_branch_analysis.json`
+  - `aggregate/data/runs/20260407-030253-324917/unified_nodes.json`
+  - `aggregate/data/runs/20260407-030253-324917/unified_edges.json`
+  - `aggregate/data/runs/20260407-030253-324917/unified_map_plan.json`
+  - `aggregate/data/runs/20260407-030253-324917/zabbix_map_snapshot.json`
+
+
 ## 2026-04-07 - mapa agregado unificado publicado
 
 - a camada de agregação passou a consolidar o corpus em um único mapa canônico:

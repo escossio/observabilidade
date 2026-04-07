@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "8.8.8.8",
+  "target_slug": "8-8-8-8",
+  "mode": "replay",
+  "last_trace": "20260407-025956-668705",
+  "dry_run": true,
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - 8.8.8.8",
+  "sysmapid": "11"
+}

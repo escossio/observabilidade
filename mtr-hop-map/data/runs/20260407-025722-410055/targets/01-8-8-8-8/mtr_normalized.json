@@ -1,0 +1,92 @@
+[
+  {
+    "order": 1,
+    "ip": "10.45.0.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "10.45.0.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 2,
+    "ip": "100.65.77.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "100.65.77.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 3,
+    "ip": "172.16.128.221",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.221\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 4,
+    "ip": "172.16.133.150",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.133.150\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 5,
+    "ip": "172.16.128.113",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.113\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 6,
+    "ip": "172.16.128.181",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.181\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 7,
+    "ip": "142.250.166.72",
+    "asn": "AS15169",
+    "company": "Google LLC",
+    "category": "public",
+    "label": "142.250.166.72\nAS15169\nGoogle LLC",
+    "source": "whois-cymru"
+  },
+  {
+    "order": 8,
+    "ip": "108.170.226.233",
+    "asn": "AS15169",
+    "company": "Google LLC",
+    "category": "public",
+    "label": "108.170.226.233\nAS15169\nGoogle LLC",
+    "source": "whois-cymru"
+  },
+  {
+    "order": 9,
+    "ip": "192.178.110.171",
+    "asn": "AS15169",
+    "company": "Google LLC",
+    "category": "public",
+    "label": "192.178.110.171\nAS15169\nGoogle LLC",
+    "source": "whois-cymru"
+  },
+  {
+    "order": 10,
+    "ip": "8.8.8.8",
+    "asn": "AS15169",
+    "company": "Google LLC",
+    "category": "public",
+    "label": "8.8.8.8\nAS15169\nGoogle LLC",
+    "source": "whois-cymru"
+  }
+]

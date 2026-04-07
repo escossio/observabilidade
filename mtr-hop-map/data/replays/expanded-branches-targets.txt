@@ -1,0 +1,4 @@
+8.8.8.8	/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-025722-410055/targets/01-8-8-8-8/mtr_raw.json
+9.9.9.9	/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-025722-410055/targets/02-9-9-9-9/mtr_raw.json
+dell.com	/srv/observabilidade-zabbix/mtr-hop-map/data/replays/dell-com-route.json
+wiki.mikrotik.com	/srv/observabilidade-zabbix/mtr-hop-map/data/replays/wiki-mikrotik-com-route.json

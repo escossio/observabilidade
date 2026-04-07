@@ -1,0 +1,17 @@
+{
+  "lookup_mode": "online",
+  "timeout_seconds": 5,
+  "cache_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/cache/asn_company_cache.json",
+  "stats": {
+    "whois_success": 2,
+    "cache_ip_hit": 0,
+    "cache_asn_hit": 0,
+    "hint_fallback": 0,
+    "unknown_fallback": 1,
+    "private_shortcut": 6
+  },
+  "events": [
+    "whois sem linha util para 187.16.223.64",
+    "fallback sem ASN para 187.16.223.64"
+  ]
+}

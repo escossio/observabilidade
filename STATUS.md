@@ -1,5 +1,24 @@
 # Status
 
+## 2026-04-07 - mapa unificado expandido com 4 novos destinos
+
+- a camada `mtr-hop-map/aggregate` incorporou os destinos `8.8.8.8`, `9.9.9.9`, `dell.com` e `wiki.mikrotik.com`
+- o mapa canônico único continua sendo:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- o mapa final publicado no Zabbix está com:
+  - `39` nós
+  - `38` links
+- o tronco comum permaneceu intacto e os novos ramos foram anexados ao mesmo grafo:
+  - Google para `8.8.8.8`
+  - Quad9 para `9.9.9.9`
+  - Dell para `dell.com`
+  - Mikrotik para `wiki.mikrotik.com`
+- a borda candidata `187.19.161.199` permaneceu no mesmo mapa como candidato forte, sem promoção indevida
+- os mapas por destino continuam intactos
+- os IPs `177.37.220.17` e `177.37.220.18` continuam sem evidência observada no corpus atual
+
+
 ## 2026-04-07 - mapa agregado unificado do MTR publicado
 
 - a camada `mtr-hop-map/aggregate` consolidou a topologia observada em um único mapa canônico no Zabbix:

@@ -1,0 +1,115 @@
+{
+  "target": "9.9.9.9",
+  "map_name": "MTR ASN - 9.9.9.9",
+  "sysmapid": "12",
+  "host_groupid": "25",
+  "templateid": "10564",
+  "hostids": [
+    "10780",
+    "10781",
+    "10782",
+    "10783",
+    "10784",
+    "10785",
+    "10799",
+    "10800",
+    "10801"
+  ],
+  "selementids": [
+    "130",
+    "131",
+    "132",
+    "133",
+    "134",
+    "135",
+    "136",
+    "137",
+    "138"
+  ],
+  "linkids": [
+    "168",
+    "169",
+    "170",
+    "171",
+    "172",
+    "173",
+    "174",
+    "175"
+  ],
+  "created_map": true,
+  "host_actions": [
+    {
+      "ip": "10.45.0.1",
+      "hostid": "10780",
+      "hostname": "hop-ip-10-45-0-1",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "100.65.77.1",
+      "hostid": "10781",
+      "hostname": "hop-ip-100-65-77-1",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.221",
+      "hostid": "10782",
+      "hostname": "hop-ip-172-16-128-221",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.133.150",
+      "hostid": "10783",
+      "hostname": "hop-ip-172-16-133-150",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.113",
+      "hostid": "10784",
+      "hostname": "hop-ip-172-16-128-113",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.181",
+      "hostid": "10785",
+      "hostname": "hop-ip-172-16-128-181",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "187.16.223.64",
+      "hostid": "10799",
+      "hostname": "hop-ip-187-16-223-64",
+      "action": "created",
+      "match_source": "created",
+      "warnings": []
+    },
+    {
+      "ip": "200.25.56.83",
+      "hostid": "10800",
+      "hostname": "hop-ip-200-25-56-83",
+      "action": "created",
+      "match_source": "created",
+      "warnings": []
+    },
+    {
+      "ip": "9.9.9.9",
+      "hostid": "10801",
+      "hostname": "hop-ip-9-9-9-9",
+      "action": "created",
+      "match_source": "created",
+      "warnings": []
+    }
+  ],
+  "plan": null
+}

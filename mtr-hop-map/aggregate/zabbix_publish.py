@@ -137,6 +137,52 @@ def _node_for_plan(node: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _class_role(class_name: str) -> str:
+    return {
+        "internal_brisanet": "backbone_observed",
+        "edge_brisanet_candidate": "edge_brisanet_candidate",
+        "cdn_candidate": "cdn_candidate",
+        "dns_infra_candidate": "dns_watchlist",
+        "destination": "destination",
+        "unknown": "unknown",
+        "ix_ptt_candidate": "ix_ptt_candidate",
+    }.get(class_name, "unknown")
+
+
+def _image_role(role: str) -> str:
+    return {
+        "backbone_observed": "backbone_observed",
+        "edge_brisanet_candidate": "edge_brisanet_candidate",
+        "cdn_candidate": "cdn_candidate",
+        "dns_watchlist": "dns_watchlist",
+        "destination": "backbone_observed",
+        "unknown": "backbone_observed",
+        "ix_ptt_candidate": "cdn_candidate",
+    }.get(role, "backbone_observed")
+
+
+def _branch_paths(aggregate: dict[str, Any]) -> list[list[str]]:
+    canonical = tuple(aggregate["promote"]["canonical_path"])
+    paths = []
+    for path, count in aggregate["path_counter"].items():
+        if tuple(path) == canonical:
+            continue
+        if count <= 0:
+            continue
+        paths.append(list(path))
+    paths.sort(key=lambda path: (-len(path), path))
+    return paths
+
+
+def _common_prefix_len(left: list[str], right: list[str]) -> int:
+    length = 0
+    for l, r in zip(left, right):
+        if l != r:
+            break
+        length += 1
+    return length
+
+
 def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
     promoted = aggregate["promote"]
     backbone = promoted["promoted_nodes"]["backbone_observed"]
@@ -145,46 +191,127 @@ def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
     backbone_edges = promoted["promoted_edges"]["backbone_observed"]
     candidate_edges = promoted["promoted_edges"]["candidate_edges"]
     canonical_path = promoted["canonical_path"]
+    inventory = {row["ip"]: row for row in aggregate["inventory"]}
+    branch_paths = _branch_paths(aggregate)
 
-    unified_nodes = [_node_for_plan(node) for node in backbone]
-    unified_nodes.extend(_node_for_plan(node) for node in candidates)
-    unified_nodes.extend(_node_for_plan(node) for node in watchlist)
-    unified_edges = [
-        {
-            "source": edge["source"],
-            "target": edge["target"],
-            "role": edge["role"],
-            "label": edge["label"],
-            "confidence": edge["confidence"],
-            "evidence": edge["evidence"],
-            "observations": edge["observations"],
-            "target_count": edge["target_count"],
-            "run_count": edge["run_count"],
-            "stability_ratio": edge["stability_ratio"],
+    node_by_ip: dict[str, dict[str, Any]] = {}
+    edge_by_pair: dict[tuple[str, str], dict[str, Any]] = {}
+
+    def add_node(ip: str, role: str | None = None) -> None:
+        if ip in node_by_ip:
+            return
+        row = inventory.get(ip, {})
+        classification = row.get("classification", {})
+        label = row.get("ip", ip)
+        if role == "backbone_observed" and row:
+            label = f"{ip}\nbackbone observed\nruns {row['run_count']}/{row['target_count']}"
+        elif role == "edge_brisanet_candidate" and row:
+            label = f"{ip}\n[candidate]\nedge {row['edge_count']} conf {classification.get('confidence', 'low')}"
+        elif role == "cdn_candidate" and row:
+            label = f"{ip}\nCDN candidate\n{row['company']}\nconf {classification.get('confidence', 'low')}"
+        elif role == "dns_watchlist" and row:
+            label = f"{ip}\nDNS watchlist\nconf {classification.get('confidence', 'low')}"
+        elif role == "destination" and row:
+            label = f"{ip}\n{row['company']}\ndestination"
+        elif role == "unknown" and row:
+            label = f"{ip}\nunknown"
+        elif row and row.get("hostname") and row.get("company"):
+            label = f"{ip}\n{row['company']}"
+        node_by_ip[ip] = {
+            "ip": ip,
+            "role": role or _class_role(classification.get("primary_class", "unknown")),
+            "class_name": classification.get("primary_class", "unknown"),
+            "label": label,
+            "company": row.get("company", "Unknown"),
+            "confidence": classification.get("confidence", "low"),
+            "evidence": classification.get("evidence", []),
+            "observations": row.get("observations", 0),
+            "target_count": row.get("target_count", 0),
+            "run_count": row.get("run_count", 0),
+            "recurrence_ratio": row.get("recurrence_ratio", 0.0),
+            "edge_count": row.get("edge_count", 0),
+            "last_internal_count": row.get("last_internal_count", 0),
         }
-        for edge in backbone_edges + candidate_edges
-    ]
+
+    def add_edge(source: str, target: str, role: str | None = None, label: str | None = None) -> None:
+        key = (source, target)
+        if key in edge_by_pair:
+            return
+        src_row = inventory.get(source, {})
+        dst_row = inventory.get(target, {})
+        classification = dst_row.get("classification", {})
+        edge_by_pair[key] = {
+            "source": source,
+            "target": target,
+            "role": role or classification.get("primary_class", "unknown"),
+            "label": label or f"{source} -> {target}",
+            "confidence": classification.get("confidence", "low"),
+            "evidence": classification.get("evidence", []),
+            "observations": min(src_row.get("observations", 0), dst_row.get("observations", 0)) if src_row and dst_row else 0,
+            "target_count": min(src_row.get("target_count", 0), dst_row.get("target_count", 0)) if src_row and dst_row else 0,
+            "run_count": min(src_row.get("run_count", 0), dst_row.get("run_count", 0)) if src_row and dst_row else 0,
+            "stability_ratio": min(src_row.get("recurrence_ratio", 0.0), dst_row.get("recurrence_ratio", 0.0)) if src_row and dst_row else 0.0,
+        }
+
+    for path in [canonical_path] + branch_paths:
+        for ip in path:
+            row = inventory.get(ip)
+            role = None
+            if row:
+                class_name = row.get("classification", {}).get("primary_class", "unknown")
+                role = _class_role(class_name)
+                if ip in {node["ip"] for node in backbone}:
+                    role = "backbone_observed"
+                elif ip in {node["ip"] for node in candidates}:
+                    role = _class_role(class_name)
+                elif ip in {node["ip"] for node in watchlist}:
+                    role = "dns_watchlist"
+            add_node(ip, role)
+        for left, right in zip(path, path[1:]):
+            left_role = node_by_ip.get(left, {}).get("role")
+            right_role = node_by_ip.get(right, {}).get("role")
+            edge_role = "backbone_observed" if left in canonical_path and right in canonical_path else "branch"
+            if right_role == "edge_brisanet_candidate":
+                edge_role = "candidate_edge"
+            elif right_role == "cdn_candidate":
+                edge_role = "cdn_exit"
+            elif right_role == "destination":
+                edge_role = "destination_edge"
+            add_edge(left, right, edge_role)
+
+    unified_nodes = list(node_by_ip.values())
+    unified_nodes.sort(key=lambda node: (
+        0 if node["role"] == "backbone_observed" else 1 if node["role"] == "edge_brisanet_candidate" else 2 if node["role"] == "cdn_candidate" else 3 if node["role"] == "destination" else 4,
+        node["ip"],
+    ))
+    unified_edges = list(edge_by_pair.values())
+    unified_edges.sort(key=lambda edge: (edge["source"], edge["target"]))
 
     placements: list[dict[str, Any]] = []
-    x = 40
-    for idx, node in enumerate(backbone):
-        placements.append({"ip": node["ip"], "role": node["role"], "x": x, "y": 120, "zindex": idx, "label": node["label"]})
-        x += 155
+    trunk_positions = {ip: (40 + idx * 155, 120) for idx, ip in enumerate(canonical_path)}
+    for idx, ip in enumerate(canonical_path):
+        node = node_by_ip.get(ip)
+        if not node:
+            continue
+        placements.append({"ip": ip, "role": node["role"], "x": trunk_positions[ip][0], "y": trunk_positions[ip][1], "zindex": idx, "label": node["label"]})
 
-    if candidates:
-        candidate_edge = next((node for node in candidates if node["role"] == "edge_brisanet_candidate"), None)
-    else:
-        candidate_edge = None
-    if candidate_edge:
-        placements.append({"ip": candidate_edge["ip"], "role": candidate_edge["role"], "x": x, "y": 120, "zindex": len(placements), "label": candidate_edge["label"]})
-        x += 155
-
-    cdn_nodes = [node for node in candidates if node["role"] == "cdn_candidate"]
-    for idx, node in enumerate(cdn_nodes):
-        placements.append({"ip": node["ip"], "role": node["role"], "x": 40 + idx * 185, "y": 285, "zindex": 50 + idx, "label": node["label"]})
-
-    for idx, node in enumerate(watchlist):
-        placements.append({"ip": node["ip"], "role": node["role"], "x": 40 + idx * 185, "y": 410, "zindex": 60 + idx, "label": node["label"]})
+    branch_index = 0
+    for path in branch_paths:
+        split = _common_prefix_len(list(canonical_path), path)
+        anchor_ip = canonical_path[max(0, split - 1)] if split else canonical_path[0]
+        anchor_x, _anchor_y = trunk_positions.get(anchor_ip, (40, 120))
+        branch_y = 280 + branch_index * 120
+        branch_index += 1
+        x = anchor_x
+        for offset, ip in enumerate(path[split:]):
+            node = node_by_ip.get(ip)
+            if not node:
+                continue
+            if ip in trunk_positions:
+                x, _ = trunk_positions[ip]
+                continue
+            x += 155 if offset > 0 else 155
+            placements.append({"ip": ip, "role": node["role"], "x": x, "y": branch_y, "zindex": 40 + branch_index * 10 + offset, "label": node["label"]})
 
     return {
         "map_name": UNIFIED_MAP_NAME,
@@ -202,6 +329,8 @@ def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
             "watchlist_nodes": len(watchlist),
             "backbone_edges": len(backbone_edges),
             "candidate_edges": len(candidate_edges),
+            "unified_nodes": len(unified_nodes),
+            "unified_edges": len(unified_edges),
         },
     }
 
@@ -220,6 +349,9 @@ def publish_unified_map(plan: dict[str, Any]) -> dict[str, Any]:
         "edge_brisanet_candidate": _resolve_image(api, ["Router_(96)", "Server_(96)"], fallback=config.map_icon_name),
         "cdn_candidate": _resolve_image(api, ["Cloud_(96)", "Server_(96)"], fallback=config.map_icon_name),
         "dns_watchlist": _resolve_image(api, ["Notebook_(96)", "Server_(96)"], fallback=config.map_icon_name),
+        "destination": _resolve_image(api, ["Server_(96)", "Router_(96)"], fallback=config.map_icon_name),
+        "unknown": _resolve_image(api, ["Server_(96)", "Router_(96)"], fallback=config.map_icon_name),
+        "ix_ptt_candidate": _resolve_image(api, ["Cloud_(96)", "Router_(96)"], fallback=config.map_icon_name),
     }
 
     selements: list[dict[str, Any]] = []
@@ -272,30 +404,24 @@ def publish_unified_map(plan: dict[str, Any]) -> dict[str, Any]:
                 existing_by_hostid[element["hostid"]] = selement
 
     links: list[dict[str, Any]] = []
-    for edge in plan["promoted_edges"]["backbone_observed"]:
+    for edge in plan["unified_edges"]:
         src = host_lookup.get(edge["source"])
         dst = host_lookup.get(edge["target"])
         if not src or not dst or src not in existing_by_hostid or dst not in existing_by_hostid:
             continue
+        edge_color = {
+            "backbone_observed": "00A651",
+            "candidate_edge": "E67E22",
+            "cdn_exit": "7F8C8D",
+            "destination_edge": "2980B9",
+            "branch": "5B6B7A",
+        }.get(edge["role"], "5B6B7A")
         links.append(
             {
                 "selementid1": existing_by_hostid[src]["selementid"],
                 "selementid2": existing_by_hostid[dst]["selementid"],
                 "drawtype": "2",
-                "color": "00A651",
-            }
-        )
-    for edge in plan["promoted_edges"]["candidate_edges"]:
-        src = host_lookup.get(edge["source"])
-        dst = host_lookup.get(edge["target"])
-        if not src or not dst or src not in existing_by_hostid or dst not in existing_by_hostid:
-            continue
-        links.append(
-            {
-                "selementid1": existing_by_hostid[src]["selementid"],
-                "selementid2": existing_by_hostid[dst]["selementid"],
-                "drawtype": "2",
-                "color": "E67E22",
+                "color": edge_color,
             }
         )
 

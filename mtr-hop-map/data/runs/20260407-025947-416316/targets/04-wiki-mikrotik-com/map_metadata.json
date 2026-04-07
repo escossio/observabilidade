@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "wiki.mikrotik.com",
+  "target_slug": "wiki-mikrotik-com",
+  "mode": "replay",
+  "last_trace": "20260407-025947-416316",
+  "dry_run": true,
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - wiki.mikrotik.com",
+  "sysmapid": null
+}

@@ -1,0 +1,29 @@
+{
+  "run_id": "20260407-025956-668705",
+  "started_at": "2026-04-07T02:59:56.669018",
+  "finished_at": "2026-04-07T03:00:06.129486",
+  "requested_targets": 4,
+  "processed_targets": 4,
+  "successful_targets": 4,
+  "failed_targets": 0,
+  "dry_run": true,
+  "host_identity_model": "global-ip",
+  "specs": [
+    {
+      "target": "8.8.8.8",
+      "replay_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-025722-410055/targets/01-8-8-8-8/mtr_raw.json"
+    },
+    {
+      "target": "9.9.9.9",
+      "replay_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-025722-410055/targets/02-9-9-9-9/mtr_raw.json"
+    },
+    {
+      "target": "dell.com",
+      "replay_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/replays/dell-com-route.json"
+    },
+    {
+      "target": "wiki.mikrotik.com",
+      "replay_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/replays/wiki-mikrotik-com-route.json"
+    }
+  ]
+}
