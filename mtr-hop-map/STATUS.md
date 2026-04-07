@@ -25,6 +25,7 @@
   - `aggregate/data/runs/20260407-030253-324917/unified_edges.json`
   - `aggregate/data/runs/20260407-030253-324917/unified_map_plan.json`
   - `aggregate/data/runs/20260407-030253-324917/zabbix_map_snapshot.json`
+- validação final cruzada manteve o mapa canônico `sysmapid 10` intacto e sem duplicação de IPs equivalentes
 
 
 ## 2026-04-07 - mapa agregado unificado publicado

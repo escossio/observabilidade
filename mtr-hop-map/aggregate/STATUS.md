@@ -17,6 +17,7 @@
 - o tronco comum permaneceu único e sem duplicação de IPs equivalentes
 - a borda candidata `187.19.161.199` continuou visível como candidato forte
 - `177.37.220.17` e `177.37.220.18` continuam fora do backbone por ausência de evidência no corpus
+- o snapshot e o plano unificado foram conferidos no diretório `data/runs/20260407-030253-324917/`
 
 
 ## 2026-04-07 - mapa agregado unificado publicado no Zabbix

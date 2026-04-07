@@ -20,6 +20,7 @@
 - a borda candidata `187.19.161.199` permaneceu no mesmo mapa como candidato forte, sem promoção indevida
 - os mapas por destino continuam intactos
 - os IPs `177.37.220.17` e `177.37.220.18` continuam sem evidência observada no corpus atual
+- validação final cruzada confirmou os artefatos da rodada em `mtr-hop-map/data/runs/20260407-030220-957449/` e o snapshot consolidado em `mtr-hop-map/aggregate/data/runs/20260407-030253-324917/`
 
 
 ## 2026-04-07 - mapa agregado unificado do MTR publicado
