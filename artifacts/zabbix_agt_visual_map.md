@@ -6,10 +6,14 @@
 - `sysmapid`: `2`
 - host principal: `agt01`
 - host adicional solto: `MikroTik RB3011`
+- estado atual do mapa:
+  - AGT `selementid` `5`
+  - RB3011 `selementid` `3`
+  - link `linkid` `3`
 
 ## Link AGT -> RB3011
 
-- `linkid`: `1`
+- `linkid`: `3`
 - origem: `AGT / 10.45.0.3`
 - destino: `MikroTik RB3011`
 - tipo: `trigger`
@@ -50,10 +54,10 @@
 - host Zabbix: `MikroTik RB3011`
 - `hostid`: `10778`
 - label: `MikroTik RB3011`
-- ícone: `Router_(96)`
-- `imageid`: `126`
+- ícone atual: `RB3011 official mapfit`
+- `imageid`: `189`
 - comportamento: elemento solto, sem ligação com o AGT
-- porte visual: equivalente ao do AGT por usar a mesma família de ícone `_(96)`
+- porte visual: ajustado para leitura real no mapa, mantendo a foto oficial em formato compacto
 
 ## Navegação
 
@@ -69,4 +73,5 @@
 - `trigger.get` confirmou os quatro gatilhos do link
 - o frontend autenticado em `zabbix.php?action=map.view&sysmapid=2` exibiu o label resolvido em duas linhas e a linha mais grossa
 - o AGT permaneceu intacto
-- a RB3011 apareceu sem link/dependência nesta rodada
+- a RB3011 apareceu com o novo ícone pequeno e legível
+- o link e os triggers permaneceram intactos

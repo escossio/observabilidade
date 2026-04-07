@@ -91,6 +91,15 @@ Escolher `01b_official_rb3011_photo_iconfit.png` como ícone principal da RB3011
 
 Motivo: é o único candidato que combina fidelidade ao modelo, transparência, preparo em canvas quadrado e leitura aceitável em tamanho pequeno.
 
+## Aplicação no Zabbix
+
+- O frontend do Zabbix renderiza o arquivo na dimensão nativa do PNG.
+- A versão `01b_official_rb3011_photo_iconfit.png` ficou grande demais para o mapa real.
+- Para a aplicação final foi criada a derivação `01c_official_rb3011_photo_mapfit.png` em `240x33`.
+- A derivação mantém a foto oficial, mas entra no mapa com leitura limpa e sem estourar a área visível.
+- O `imageid` aplicado no mapa foi `189`.
+- Isso preserva a escolha do asset principal, mas adapta o formato ao comportamento real do Zabbix.
+
 ## Reserva
 
 Se a imagem oficial ficar visualmente pesada no slot do mapa, a segunda opção prática é `03_mikrotik_logo.svg` por legibilidade. Se a prioridade mudar para iconografia neutra, a melhor opção genérica é `04_generic_router_flat_label_colour.svg`.

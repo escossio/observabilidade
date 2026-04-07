@@ -1,5 +1,28 @@
 # Status
 
+## 2026-04-06 - ícone da RB3011 ajustado no mapa AGT do Zabbix
+
+- Alteração aplicada:
+  - o elemento `MikroTik RB3011` passou a usar o novo ícone `RB3011 official mapfit`
+  - `imageid`: `189`
+- Motivo técnico:
+  - a versão quadrada grande gerava renderização fora de escala no frontend
+  - a versão `mapfit` preserva a foto oficial, mas entra no mapa com tamanho legível
+- Estado validado no runtime:
+  - `sysmapid`: `2`
+  - AGT atual: `selementid` `5`
+  - RB3011 atual: `selementid` `3`
+  - link atual: `linkid` `3`
+  - os dois elementos continuaram ligados
+  - o link manteve triggers e label de tráfego
+- Validação visual:
+  - o frontend autenticado exibiu o RB3011 com o novo ícone pequeno e legível
+  - o AGT permaneceu intacto
+  - não houve alteração no Grafana
+- Artefatos tocados:
+  - `artifacts/zabbix_agt_visual_map.md`
+  - `artifacts/rb3011_icon_research.md`
+
 ## 2026-04-06 - pesquisa e shortlist de ícones para RB3011 no mapa do Zabbix
 
 - Objetivo desta rodada:
