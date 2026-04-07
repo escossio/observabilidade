@@ -1,5 +1,37 @@
 # Status
 
+## 2026-04-06 - nova captura Netflix com tcpdump e DevTools na VM
+
+- Sessão gráfica validada:
+  - o Firefox da VM já estava autenticado no Netflix
+  - o browse abriu sem pedir credencial novamente
+- Captura desta rodada:
+  - diretório: `internet-observation/captures/20260406-230119-netflix-session/`
+  - pcap: `netflix-session.pcap`
+  - evidência visual do DevTools: `devtools-network-home.png` e `devtools-network-watch.png`
+- Leituras confirmadas na página:
+  - `web.prod.cloud.netflix.com`
+  - `web.ws.prod.cloud.netflix.com`
+  - `logs.netflix.com`
+  - `assets.nflxext.com`
+  - `help.nflxext.com`
+  - `occ-0-1119-3851.1.nflxso.net`
+  - `ae.nflximg.net`
+  - `push.prod.netflix.com`
+  - `ichnaea-web.netflix.com`
+- Classificação operacional:
+  - `occ-0-1119-3851.1.nflxso.net` continua sendo o melhor candidato de entrega/edge na sessão repetida
+  - `assets.nflxext.com` entrou como CDN de assets da Netflix
+  - `logs.netflix.com`, `push.prod.netflix.com` e `ichnaea-web.netflix.com` ficaram na camada auxiliar/telemetria
+- ASN associado quando aplicável:
+  - `AS28126` para `177.37.221.41` ligado ao `occ-0-1119-3851.1.nflxso.net`
+  - `AS40027` para `45.57.90.1` ligado a `assets.nflxext.com`
+- Limitação:
+  - o plugin Widevine do Firefox crashou durante a navegação, então a reprodução não chegou a um stream de vídeo estável nesta rodada
+  - a classificação foi fechada com tcpdump + DevTools + repetição da família de hosts de entrega
+- Artefato novo:
+  - `internet-observation/artifacts/netflix_session_ip_classification.md`
+
 ## 2026-04-06 - notebook note-leo ligado ao RB3011 no mapa visual do Zabbix
 
 - Mapa alterado:
