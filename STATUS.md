@@ -1,5 +1,40 @@
 # Status
 
+## 2026-04-06 - link AGT -> RB3011 adicionado ao mapa visual do Zabbix
+
+- Mapa alterado:
+  - `sysmapid`: `2`
+  - nome: `AGT - Visão Visual`
+- Elementos usados:
+  - AGT: `selementid` `2`
+  - MikroTik RB3011: `selementid` `3`
+- Link criado:
+  - `linkid`: `1`
+  - direção visual: `AGT / 10.45.0.3` -> `MikroTik RB3011`
+  - tipo: `trigger`
+  - cor OK: `00AA00`
+  - label: `DL {agt01:net.if.in["br0"].last(0)} | UL {agt01:net.if.out["br0"].last(0)}`
+  - `show_label`: `always`
+- Gatilhos associados ao link:
+  - `32532` - `Linux: Interface br0: Link down`
+  - `32566` - `RB3011 bridge down`
+  - `32567` - `RB3011 ether1 down`
+  - `32568` - `RB3011 pppoe-out1 down`
+- Itens usados para download/upload:
+  - download: `69515` - `Interface br0: Bits received` (`net.if.in["br0"]`)
+  - upload: `69527` - `Interface br0: Bits sent` (`net.if.out["br0"]`)
+  - unidade dos itens: `bps`
+- Validação:
+  - `map.update` respondeu com sucesso
+  - `map.get` confirmou o link entre os dois elementos
+  - `trigger.get` confirmou os quatro gatilhos associados
+  - os dois elementos anteriores permaneceram intactos
+  - não houve alteração no Grafana
+- Limitação documentada:
+  - o tráfego do enlace é mostrado no rótulo via macro do `br0` do AGT; o Zabbix não oferece um indicador nativo único que some download/upload e triggerização no mesmo campo sem criar estrutura adicional
+- Artefato atualizado:
+  - `artifacts/zabbix_agt_visual_map.md`
+
 ## 2026-04-06 - RB3011 adicionada como segundo elemento solto no mapa AGT
 
 - Mapa alterado:
