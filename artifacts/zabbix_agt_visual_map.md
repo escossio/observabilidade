@@ -10,6 +10,7 @@
   - AGT `selementid` `5`
   - RB3011 `selementid` `3`
   - link `linkid` `3`
+  - RB3011 tamanho: `170x170`
 
 ## Link AGT -> RB3011
 
@@ -56,6 +57,7 @@
 - label: `MikroTik RB3011`
 - ícone atual: `RB3011 official mapfit`
 - `imageid`: `189`
+- tamanho atual no mapa: `170x170`
 - comportamento: elemento solto, sem ligação com o AGT
 - porte visual: ajustado para leitura real no mapa, mantendo a foto oficial em formato compacto
 
@@ -75,3 +77,4 @@
 - o AGT permaneceu intacto
 - a RB3011 apareceu com o novo ícone pequeno e legível
 - o link e os triggers permaneceram intactos
+- o frontend autenticado exibiu a RB3011 um pouco menor após a redução para `170x170`

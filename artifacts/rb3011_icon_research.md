@@ -98,6 +98,7 @@ Motivo: é o único candidato que combina fidelidade ao modelo, transparência, 
 - Para a aplicação final foi criada a derivação `01c_official_rb3011_photo_mapfit.png` em `240x33`.
 - A derivação mantém a foto oficial, mas entra no mapa com leitura limpa e sem estourar a área visível.
 - O `imageid` aplicado no mapa foi `189`.
+- O elemento da RB3011 foi ajustado depois para `170x170` no mapa.
 - Isso preserva a escolha do asset principal, mas adapta o formato ao comportamento real do Zabbix.
 
 ## Reserva

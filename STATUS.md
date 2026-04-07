@@ -1,5 +1,28 @@
 # Status
 
+## 2026-04-06 - RB3011 reduzida um pouco no mapa AGT do Zabbix
+
+- Ajuste aplicado:
+  - o ícone da `MikroTik RB3011` foi reduzido de `200x200` para `170x170`
+  - o `imageid` continua `189`
+- Efeito visual:
+  - a RB3011 ficou um pouco menor sem perder a foto oficial
+  - o link e o AGT permaneceram intactos
+  - a leitura do mapa ficou mais equilibrada
+- Estado validado no runtime:
+  - `sysmapid`: `2`
+  - AGT: `selementid` `5`
+  - RB3011: `selementid` `3`
+  - link: `linkid` `3`
+- Validação:
+  - `map.update` respondeu com sucesso
+  - `map.get` confirmou o novo tamanho do elemento
+  - o frontend autenticado exibiu a RB3011 menor e legível
+  - não houve alteração no Grafana
+- Artefatos tocados:
+  - `artifacts/zabbix_agt_visual_map.md`
+  - `artifacts/rb3011_icon_research.md`
+
 ## 2026-04-06 - ícone da RB3011 ajustado no mapa AGT do Zabbix
 
 - Alteração aplicada:
