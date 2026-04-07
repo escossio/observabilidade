@@ -1,0 +1,8 @@
+{
+  "target": "observabilidade.escossio.dev.br-replay-validation",
+  "mtr_source_kind": "replay",
+  "mtr_source_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/replays/observabilidade-route-a.json",
+  "host_identity_model": "global-ip",
+  "asn_lookup_mode": "online",
+  "asn_cache_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/cache/asn_company_cache.json"
+}

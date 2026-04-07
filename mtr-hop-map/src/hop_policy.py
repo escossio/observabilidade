@@ -23,19 +23,19 @@ def normalize_ip(ip: str) -> str:
     return ip.replace(".", "-").replace(":", "-")
 
 
-def build_hostname(target: str, hop: Hop) -> str:
-    return f"hop-{slugify(target)}-{hop.order:02d}-{normalize_ip(hop.ip)}"
+def build_hostname(hop: Hop) -> str:
+    return f"hop-ip-{normalize_ip(hop.ip)}"
 
 
-def build_identity(target: str, hop: Hop) -> HopIdentity:
+def build_identity(hop: Hop) -> HopIdentity:
     return HopIdentity(
-        hostname=build_hostname(target, hop),
-        visible_name=f"{hop.ip} / {hop.asn} / {hop.company}",
+        hostname=build_hostname(hop),
+        visible_name=f"Transit Hop {hop.ip}",
         tags=[
             {"tag": "role", "value": "transit-hop"},
-            {"tag": "target", "value": target},
-            {"tag": "hop_index", "value": str(hop.order)},
             {"tag": "source", "value": "mtr-asn-map"},
+            {"tag": "identity_scope", "value": "global-ip"},
+            {"tag": "canonical_ip", "value": hop.ip},
             {"tag": "hop_category", "value": hop.category},
         ],
     )

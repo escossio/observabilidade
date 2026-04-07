@@ -1,5 +1,22 @@
 # Status
 
+## 2026-04-07 - endurecimento da frente MTR hop map
+
+- decisao de arquitetura fechada:
+  - host de hop agora e `global por IP`
+  - mapas continuam especificos por destino
+- endurecimento implementado:
+  - reuso de host por IP no grupo `Transit / Hop`
+  - replay controlado de MTR por `--mtr-json`
+  - cache persistente de ASN em `mtr-hop-map/data/cache/`
+  - modo `offline` para fallback de enrichment
+- validacao real:
+  - mapa canonico `sysmapid 5` preservado com `13` selements e `12` links
+  - mapa de replay `sysmapid 6` confirmou troca de rota sem apagar host antigo
+  - mapa de fallback `sysmapid 7` confirmou execucao sem `whois`
+- template ICMP:
+  - a frente passou a reutilizar o template oficial `ICMP Ping` (`templateid 10564`) quando ele existe no ambiente
+
 ## 2026-04-06 - frente MTR hop map estabilizada no Zabbix
 
 - POC executada contra `observabilidade.escossio.dev.br`

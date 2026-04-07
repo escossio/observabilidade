@@ -1,0 +1,8 @@
+{
+  "target": "observabilidade.escossio.dev.br",
+  "mtr_source_kind": "live",
+  "mtr_source_path": null,
+  "host_identity_model": "global-ip",
+  "asn_lookup_mode": "online",
+  "asn_cache_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/cache/asn_company_cache.json"
+}

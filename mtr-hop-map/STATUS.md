@@ -1,5 +1,55 @@
 # Status
 
+## 2026-04-07 - identidade global por IP, replay de rota e fallback ASN validados
+
+- decisao de arquitetura fechada:
+  - host de hop agora e `global por IP`
+  - mapa continua `especifico por destino`
+  - ordem de hop fica na execucao e no mapa, nao na identidade do host
+- mudancas de codigo aplicadas:
+  - hostname canônico mudou para `hop-ip-{ip_normalizado}`
+  - reuso de host passou a procurar pelo IP no grupo `Transit / Hop`
+  - hosts antigos da POC foram migrados in-place para a identidade canônica global
+  - enrichment ASN ganhou cache persistente em `data/cache/asn_company_cache.json`
+  - enrichment ASN ganhou modo `offline` e fallback por hint do MTR
+  - a frente passou a aceitar replay com `--mtr-json`
+- validacao real executada:
+  - rota estavel no mapa canonico:
+    - run: `data/runs/20260407-001513/`
+    - mapa: `sysmapid 5`
+    - resultado: hosts migrados para `global-ip` e segunda fase toda em `reused`
+  - rota alterada por replay controlado:
+    - snapshot A: `data/replays/observabilidade-route-a.json`
+    - snapshot B: `data/replays/observabilidade-route-b.json`
+    - runs: `data/runs/20260407-001546/` e `data/runs/20260407-001556/`
+    - mapa de validacao: `sysmapid 6`
+    - resultado: o mapa trocou o ultimo hop de `104.21.4.50` para `172.67.131.172`, sem apagar o host antigo `10793`
+  - fallback ASN:
+    - run: `data/runs/20260407-001611/`
+    - modo: `offline`
+    - resultado: execucao seguiu com `AS28126` e `AS13335` vindos do hint do MTR e empresa `Unknown ASN`
+- estado final no runtime:
+  - grupo `Transit / Hop`: `14` hosts
+  - todos os hosts do grupo com tags `identity_scope=global-ip` e `canonical_ip=<ip>`
+  - mapa canonico `sysmapid 5`: `13` selements e `12` links
+  - mapa replay `sysmapid 6`: `13` selements e `12` links
+  - mapa fallback `sysmapid 7`: `13` selements e `12` links
+- template ICMP:
+  - o ambiente tem `ICMP Ping` oficial da Zabbix (`templateid 10564`)
+  - a frente agora reutiliza esse template como padrao
+  - criacao de template local so acontece se o ambiente nao tiver o template oficial
+
+## 2026-04-07 - hipótese de endurecimento da frente
+
+- risco principal identificado:
+  - a identidade do host ainda está acoplada a `destino + ordem + ip`, o que não é canônico para reuso global por IP
+- risco de reconciliação:
+  - a frente já reconcilia o mapa atual, mas ainda não tem replay controlado para provar rota mutável de forma reproduzível
+- risco de enrichment ASN:
+  - o lookup em `whois.cymru.com` ainda pode falhar de forma abrupta porque não há cache persistente nem modo degradado explícito
+- risco de template:
+  - o template `ICMP Ping` existe e funciona, mas ainda não está documentado como padrão local reutilizável da solução
+
 ## 2026-04-06 - POC MTR hop map executada e estabilizada
 
 - destino validado na POC:

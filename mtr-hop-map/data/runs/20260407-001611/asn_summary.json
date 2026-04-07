@@ -1,0 +1,17 @@
+{
+  "lookup_mode": "offline",
+  "timeout_seconds": 5,
+  "cache_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/cache/offline-empty-cache.json",
+  "stats": {
+    "whois_success": 0,
+    "cache_ip_hit": 0,
+    "cache_asn_hit": 0,
+    "hint_fallback": 2,
+    "unknown_fallback": 0,
+    "private_shortcut": 11
+  },
+  "events": [
+    "fallback ASN hint usado para 187.19.161.199: AS28126",
+    "fallback ASN hint usado para 172.67.131.172: AS13335"
+  ]
+}

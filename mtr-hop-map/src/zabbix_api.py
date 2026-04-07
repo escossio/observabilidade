@@ -7,6 +7,14 @@ from typing import Any
 import requests
 
 
+@dataclass(frozen=True)
+class HostEnsureResult:
+    host: dict[str, Any]
+    action: str
+    match_source: str
+    warnings: list[str]
+
+
 @dataclass
 class ZabbixAPI:
     url: str
@@ -23,7 +31,7 @@ class ZabbixAPI:
         self.token = result
         return result
 
-    def call(self, method: str, params: dict, include_auth: bool = True) -> dict:
+    def call(self, method: str, params: Any, include_auth: bool = True) -> Any:
         headers = {"Content-Type": "application/json-rpc"}
         payload = {"jsonrpc": "2.0", "method": method, "params": params, "id": self._request_id}
         self._request_id += 1
@@ -65,22 +73,27 @@ class ZabbixAPI:
         return result[0] if result else None
 
     def ensure_icmp_template(self, template_name: str, template_group_name: str) -> dict:
+        template = self.get_template(template_name)
+        if template is not None:
+            return template
+
         self.ensure_template_group(template_group_name)
+        group = self.get_template_group(template_group_name)
+        templateid = self.call(
+            "template.create",
+            {
+                "host": template_name,
+                "name": template_name,
+                "groups": [{"groupid": group["groupid"]}],
+                "tags": [
+                    {"tag": "source", "value": "mtr-hop-map"},
+                    {"tag": "role", "value": "transit-hop-icmp"},
+                ],
+            },
+        )["templateids"][0]
         template = self.get_template(template_name)
         if template is None:
-            group = self.get_template_group(template_group_name)
-            templateid = self.call(
-                "template.create",
-                {
-                    "host": template_name,
-                    "name": template_name,
-                    "groups": [{"groupid": group["groupid"]}],
-                },
-            )["templateids"][0]
-            template = self.get_template(template_name)
-            if template is None:
-                template = {"templateid": templateid, "host": template_name, "name": template_name}
-        templateid = template["templateid"]
+            template = {"templateid": templateid, "host": template_name, "name": template_name}
         self._ensure_icmp_template_items(templateid)
         self._ensure_icmp_template_trigger(templateid, template_name)
         return self.get_template(template_name) or template
@@ -151,8 +164,53 @@ class ZabbixAPI:
             )
 
     def get_host(self, hostname: str) -> dict | None:
-        result = self.call("host.get", {"output": "extend", "filter": {"host": [hostname]}})
+        result = self.call(
+            "host.get",
+            {
+                "output": "extend",
+                "filter": {"host": [hostname]},
+                "selectInterfaces": ["interfaceid", "ip", "main", "type", "useip", "port"],
+                "selectTags": "extend",
+                "selectParentTemplates": ["templateid", "host"],
+                "selectHostGroups": ["groupid", "name"],
+            },
+        )
         return result[0] if result else None
+
+    def get_hosts_by_ip(self, ip: str, groupid: str) -> list[dict]:
+        interfaces = self.call("hostinterface.get", {"output": ["hostid", "ip"], "filter": {"ip": [ip]}})
+        hostids = sorted({row["hostid"] for row in interfaces})
+        if not hostids:
+            return []
+        return self.call(
+            "host.get",
+            {
+                "output": "extend",
+                "hostids": hostids,
+                "groupids": [groupid],
+                "selectInterfaces": ["interfaceid", "ip", "main", "type", "useip", "port"],
+                "selectTags": "extend",
+                "selectParentTemplates": ["templateid", "host"],
+                "selectHostGroups": ["groupid", "name"],
+                "sortfield": "hostid",
+            },
+        )
+
+    def get_host_by_id(self, hostid: str) -> dict:
+        result = self.call(
+            "host.get",
+            {
+                "output": "extend",
+                "hostids": [hostid],
+                "selectInterfaces": ["interfaceid", "ip", "main", "type", "useip", "port"],
+                "selectTags": "extend",
+                "selectParentTemplates": ["templateid", "host"],
+                "selectHostGroups": ["groupid", "name"],
+            },
+        )
+        if not result:
+            raise RuntimeError(f"Host inexistente: {hostid}")
+        return result[0]
 
     def ensure_host(
         self,
@@ -162,22 +220,27 @@ class ZabbixAPI:
         templateid: str,
         ip: str,
         tags: list[dict[str, str]],
-    ) -> dict:
+    ) -> HostEnsureResult:
+        warnings: list[str] = []
         existing = self.get_host(hostname)
+        match_source = "hostname"
+        if existing is None:
+            candidates = self.get_hosts_by_ip(ip, groupid)
+            if candidates:
+                if len(candidates) > 1:
+                    warnings.append(f"mais de um host encontrado para {ip}; menor hostid reaproveitado")
+                existing = self._choose_host_candidate(candidates, hostname)
+                match_source = "ip"
+
         if existing:
-            updates: dict[str, object] = {"hostid": existing["hostid"]}
-            if existing.get("name") != visible_name:
-                updates["name"] = visible_name
-            if tags:
-                existing_tags = existing.get("tags") or []
-                existing_pairs = {(item.get("tag"), item.get("value")) for item in existing_tags}
-                desired_pairs = {(item.get("tag"), item.get("value")) for item in tags}
-                if not desired_pairs.issubset(existing_pairs):
-                    updates["tags"] = tags
-            if len(updates) > 1:
-                self.call("host.update", updates)
-                return self.get_host(hostname) or existing
-            return existing
+            action = self._update_existing_host(existing, hostname, visible_name, groupid, templateid, ip, tags)
+            return HostEnsureResult(
+                host=self.get_host_by_id(existing["hostid"]),
+                action=action,
+                match_source=match_source,
+                warnings=warnings,
+            )
+
         result = self.call(
             "host.create",
             {
@@ -199,29 +262,95 @@ class ZabbixAPI:
             },
         )
         hostid = result["hostids"][0]
-        return self.call("host.get", {"output": "extend", "hostids": hostid})[0]
+        return HostEnsureResult(
+            host=self.get_host_by_id(hostid),
+            action="created",
+            match_source="created",
+            warnings=warnings,
+        )
+
+    def _choose_host_candidate(self, candidates: list[dict], canonical_hostname: str) -> dict:
+        def rank(item: dict) -> tuple[int, int, int]:
+            tags = {(tag.get("tag"), tag.get("value")) for tag in item.get("tags", [])}
+            has_global_identity = ("identity_scope", "global-ip") in tags
+            return (
+                0 if has_global_identity else 1,
+                0 if item.get("host") == canonical_hostname else 1,
+                int(item["hostid"]),
+            )
+
+        return sorted(candidates, key=rank)[0]
+
+    def _update_existing_host(
+        self,
+        existing: dict,
+        hostname: str,
+        visible_name: str,
+        groupid: str,
+        templateid: str,
+        ip: str,
+        tags: list[dict[str, str]],
+    ) -> str:
+        updates: dict[str, Any] = {"hostid": existing["hostid"]}
+
+        if existing.get("host") != hostname:
+            updates["host"] = hostname
+        if existing.get("name") != visible_name:
+            updates["name"] = visible_name
+
+        current_tags = {(item.get("tag"), item.get("value")) for item in existing.get("tags", [])}
+        desired_tags = {(item.get("tag"), item.get("value")) for item in tags}
+        if current_tags != desired_tags:
+            updates["tags"] = tags
+
+        current_groups = existing.get("hostgroups", [])
+        groupids = {row["groupid"] for row in current_groups}
+        if groupid not in groupids:
+            updates["groups"] = [{"groupid": row["groupid"]} for row in current_groups] + [{"groupid": groupid}]
+
+        current_templates = existing.get("parentTemplates", [])
+        templateids = {row["templateid"] for row in current_templates}
+        if templateid not in templateids:
+            updates["templates"] = [{"templateid": row["templateid"]} for row in current_templates] + [{"templateid": templateid}]
+
+        interface = next((row for row in existing.get("interfaces", []) if row.get("main") == "1"), None)
+        if interface is None:
+            updates["interfaces"] = [
+                {
+                    "type": 1,
+                    "main": 1,
+                    "useip": 1,
+                    "ip": ip,
+                    "dns": "",
+                    "port": "10050",
+                }
+            ]
+        elif interface.get("ip") != ip or interface.get("port") != "10050":
+            updates["interfaces"] = [
+                {
+                    "interfaceid": interface["interfaceid"],
+                    "type": 1,
+                    "main": 1,
+                    "useip": 1,
+                    "ip": ip,
+                    "dns": "",
+                    "port": "10050",
+                }
+            ]
+
+        if len(updates) == 1:
+            return "reused"
+
+        self.call("host.update", updates)
+        return "updated"
 
     def get_image(self, name: str) -> dict | None:
         result = self.call("image.get", {"output": "extend", "filter": {"name": [name]}})
         return result[0] if result else None
 
     def get_map(self, name: str) -> dict | None:
-        result = self.call("map.get", {"output": "extend", "selectSelements": "extend", "selectLinks": "extend", "filter": {"name": [name]}})
+        result = self.call(
+            "map.get",
+            {"output": "extend", "selectSelements": "extend", "selectLinks": "extend", "filter": {"name": [name]}},
+        )
         return result[0] if result else None
-
-    def create_or_update_map(self, params: dict[str, Any]) -> dict:
-        existing = self.get_map(params["name"])
-        if existing is None:
-            result = self.call("map.create", params)
-            sysmapid = result["sysmapids"][0]
-            created = self.get_map(params["name"])
-            if created is None:
-                raise RuntimeError(f"Falha ao recuperar mapa criado: {params['name']}")
-            return created
-        params = {k: v for k, v in params.items() if k != "name"}
-        params["sysmapid"] = existing["sysmapid"]
-        self.call("map.update", params)
-        updated = self.get_map(existing["name"])
-        if updated is None:
-            raise RuntimeError(f"Falha ao recuperar mapa atualizado: {existing['name']}")
-        return updated

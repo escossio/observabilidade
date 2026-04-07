@@ -4,10 +4,10 @@ from dataclasses import dataclass
 from typing import Any
 
 from .config import Config
-from .hop_policy import HopIdentity, build_identity
+from .hop_policy import build_identity
 from .map_layout import build_layout, compute_map_size
 from .mtr_parser import Hop
-from .zabbix_api import ZabbixAPI
+from .zabbix_api import HostEnsureResult, ZabbixAPI
 
 
 @dataclass(frozen=True)
@@ -21,6 +21,7 @@ class ReconcileResult:
     selementids: list[str]
     linkids: list[str]
     created_map: bool
+    host_actions: list[dict[str, Any]]
 
 
 @dataclass(frozen=True)
@@ -36,7 +37,6 @@ def _map_label(hop: Hop) -> str:
 
 def _build_host_element(
     hop: Hop,
-    identity: HopIdentity,
     imageid: str,
     x: int,
     y: int,
@@ -97,18 +97,19 @@ def _build_nodes(
     imageid: str,
     host_groupid: str,
     templateid: str,
-) -> tuple[list[MapNode], list[str]]:
+) -> tuple[list[MapNode], list[str], list[dict[str, Any]]]:
     layout = build_layout(len(hops), config.left_margin, config.top_margin, config.hop_spacing)
     nodes: list[MapNode] = []
     hostids: list[str] = []
+    host_actions: list[dict[str, Any]] = []
 
     for hop, (x, y) in zip(_ordered_hops(hops), layout):
         if hop.category == "no-response" or not hop.ip or hop.ip in {"*", ""}:
             nodes.append(MapNode(hop=hop, element=_build_placeholder_element(hop.label, imageid, x, y, hop.order), hostid=None))
             continue
 
-        identity = build_identity(config.target, hop)
-        host = api.ensure_host(
+        identity = build_identity(hop)
+        host_result: HostEnsureResult = api.ensure_host(
             hostname=identity.hostname,
             visible_name=identity.visible_name,
             groupid=host_groupid,
@@ -116,11 +117,21 @@ def _build_nodes(
             ip=hop.ip,
             tags=identity.tags,
         )
-        hostid = host["hostid"]
+        hostid = host_result.host["hostid"]
         hostids.append(hostid)
-        nodes.append(MapNode(hop=hop, element=_build_host_element(hop, identity, imageid, x, y, hostid), hostid=hostid))
+        host_actions.append(
+            {
+                "ip": hop.ip,
+                "hostid": hostid,
+                "hostname": host_result.host["host"],
+                "action": host_result.action,
+                "match_source": host_result.match_source,
+                "warnings": host_result.warnings,
+            }
+        )
+        nodes.append(MapNode(hop=hop, element=_build_host_element(hop, imageid, x, y, hostid), hostid=hostid))
 
-    return nodes, hostids
+    return nodes, hostids, host_actions
 
 
 def _merge_selements(existing_by_hostid: dict[str, str], desired_nodes: list[MapNode]) -> list[dict[str, Any]]:
@@ -168,7 +179,14 @@ def ensure_map_for_destination(
         raise RuntimeError(f"Imagem do mapa ausente: {config.map_icon_name}")
 
     map_name = f"{config.map_prefix}{config.target}"
-    desired_nodes, hostids = _build_nodes(api, config, hops, image["imageid"], host_group["groupid"], template["templateid"])
+    desired_nodes, _hostids, host_actions = _build_nodes(
+        api,
+        config,
+        hops,
+        image["imageid"],
+        host_group["groupid"],
+        template["templateid"],
+    )
     existing_map = api.get_map(map_name)
     created_map = existing_map is None
 
@@ -237,7 +255,14 @@ def ensure_map_for_destination(
     if current_map is None:
         raise RuntimeError(f"Falha ao recuperar mapa atualizado: {map_name}")
 
-    links = _build_links(merged_selements, current_map.get("links", []))
+    current_by_hostid: dict[str, dict[str, Any]] = {}
+    for selement in current_map.get("selements", []):
+        for element in selement.get("elements", []):
+            if "hostid" in element:
+                current_by_hostid[element["hostid"]] = selement
+    ordered_current_selements = [current_by_hostid[node.hostid] for node in desired_nodes if node.hostid and node.hostid in current_by_hostid]
+
+    links = _build_links(ordered_current_selements, current_map.get("links", []))
     if links:
         api.call("map.update", {"sysmapid": current_map["sysmapid"], "links": links})
 
@@ -263,4 +288,5 @@ def ensure_map_for_destination(
         selementids=selementids,
         linkids=linkids,
         created_map=created_map,
+        host_actions=host_actions,
     )
