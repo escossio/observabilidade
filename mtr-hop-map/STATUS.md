@@ -2,6 +2,9 @@
 
 ## 2026-04-07 - mapa unificado expandido com novos ramos
 
+- fonte de verdade desta rodada:
+  - `replay` controlado para os 4 alvos
+  - run consolidado em `data/runs/20260407-030220-957449/`
 - o mapa canônico único `MTR Unified - Brisanet Observed` foi expandido in-place no `sysmapid 10`
 - os alvos desta rodada trouxeram novos ramos para o mesmo grafo:
   - `8.8.8.8` -> Google

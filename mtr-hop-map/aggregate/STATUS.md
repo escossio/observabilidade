@@ -2,6 +2,9 @@
 
 ## 2026-04-07 - mapa unificado expandido com novos ramos publicados
 
+- fonte de verdade da rodada:
+  - `replay` controlado para `8.8.8.8`, `9.9.9.9`, `dell.com` e `wiki.mikrotik.com`
+  - corpus consolidado no run `20260407-030220-957449`
 - o mapa único `MTR Unified - Brisanet Observed` foi atualizado in-place no `sysmapid 10`
 - a rodada anexou novos ramos para:
   - `8.8.8.8` / Google

@@ -2,6 +2,9 @@
 
 ## 2026-04-07 - mapa unificado expandido com 4 novos destinos
 
+- fonte de verdade desta rodada:
+  - `replay` controlado para os 4 alvos
+  - os runs consolidados já estavam salvos em `mtr-hop-map/data/runs/20260407-030220-957449/`
 - a camada `mtr-hop-map/aggregate` incorporou os destinos `8.8.8.8`, `9.9.9.9`, `dell.com` e `wiki.mikrotik.com`
 - o mapa canônico único continua sendo:
   - `MTR Unified - Brisanet Observed`

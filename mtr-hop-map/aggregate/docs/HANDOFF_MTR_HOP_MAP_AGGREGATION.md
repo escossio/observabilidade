@@ -2,6 +2,9 @@
 
 ## Rodada atual
 
+- fonte de verdade:
+  - replay controlado para os 4 alvos desta rodada
+  - corpus consolidado em `data/runs/20260407-030220-957449/`
 - o mapa canônico único foi expandido no Zabbix:
   - `MTR Unified - Brisanet Observed`
   - `sysmapid 10`
