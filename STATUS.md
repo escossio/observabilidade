@@ -1,5 +1,24 @@
 # Status
 
+## 2026-04-06 - pesquisa e shortlist de ícones para RB3011 no mapa do Zabbix
+
+- Objetivo desta rodada:
+  - pesquisar e preparar ativos visuais próximos da MikroTik RB3011 para uso interno no mapa `AGT - Visão Visual`
+  - não aplicar nada no mapa ainda
+- Resultado da pesquisa:
+  - 5 opções relevantes foram consolidadas
+  - melhor opção principal: `01b_official_rb3011_photo_iconfit.png`
+  - reserva prática: `03_mikrotik_logo.svg`
+  - fallback genérico: `04_generic_router_flat_label_colour.svg`
+- Candidatos salvos em:
+  - `artifacts/rb3011_icon_candidates/`
+- Artefato novo:
+  - `artifacts/rb3011_icon_research.md`
+- Observação:
+  - a imagem oficial do RB3011 segue como a opção mais fiel ao equipamento
+  - a versão `iconfit` é a mais equilibrada para uso em mapa pequeno no Zabbix
+  - não houve alteração no Grafana nem no mapa nesta rodada
+
 ## 2026-04-06 - acabamento visual do link AGT -> RB3011 no mapa visual do Zabbix
 
 - Mapa alterado:
