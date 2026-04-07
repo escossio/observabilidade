@@ -1,5 +1,28 @@
 # Status
 
+## 2026-04-06 - frente MTR hop map estabilizada no Zabbix
+
+- POC executada contra `observabilidade.escossio.dev.br`
+- mapa canônico criado:
+  - `MTR ASN - observabilidade.escossio.dev.br`
+  - `sysmapid 5`
+- estado final validado:
+  - `13` nós com IP real
+  - `12` links em cadeia
+  - labels com `IP / ASN / empresa`
+- política aplicada:
+  - hostname `hop-{destino_slug}-{ordem:02d}-{ip_normalizado}`
+  - grupo `Transit / Hop`
+  - template `ICMP Ping`
+  - ícone `Cloud_(96)`
+- idempotência provada:
+  - primeira execução criou o mapa
+  - segunda e terceira execuções reaproveitaram o mesmo mapa sem crescer a cardinalidade
+- artefatos da frente:
+  - `mtr-hop-map/data/runs/20260406-235600/`
+  - `mtr-hop-map/data/runs/20260406-235616/`
+  - `mtr-hop-map/data/runs/20260406-235641/`
+
 ## 2026-04-06 - nova captura Netflix com tcpdump e DevTools na VM
 
 - Sessão gráfica validada:
