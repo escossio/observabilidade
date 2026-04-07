@@ -1,6 +1,6 @@
 # Status
 
-## 2026-04-06 - link AGT -> RB3011 adicionado ao mapa visual do Zabbix
+## 2026-04-06 - acabamento visual do link AGT -> RB3011 no mapa visual do Zabbix
 
 - Mapa alterado:
   - `sysmapid`: `2`
@@ -13,8 +13,12 @@
   - direção visual: `AGT / 10.45.0.3` -> `MikroTik RB3011`
   - tipo: `trigger`
   - cor OK: `00AA00`
-  - label: `DL {?last(/agt01/net.if.in["br0"])} | UL {?last(/agt01/net.if.out["br0"])}`
+  - label final:
+    - `Down {?last(/agt01/net.if.in["br0"])}`
+    - `Up {?last(/agt01/net.if.out["br0"])}`
+  - label multilinha: funcionou
   - `show_label`: `always`
+  - `drawtype`: `2` (`DRAWTYPE_BOLD_LINE`)
 - Gatilhos associados ao link:
   - `32532` - `Linux: Interface br0: Link down`
   - `32566` - `RB3011 bridge down`
@@ -28,11 +32,14 @@
   - `map.update` respondeu com sucesso
   - `map.get` confirmou o link entre os dois elementos
   - `trigger.get` confirmou os quatro gatilhos associados
-  - o frontend autenticado em `zabbix.php?action=map.view&sysmapid=2` exibiu o link com `DL 13.18 Kbps | UL 1.41 Mbps`
+  - o frontend autenticado em `zabbix.php?action=map.view&sysmapid=2` exibiu o link com o label resolvido em duas linhas
+  - a linha apareceu mais grossa com `DRAWTYPE_BOLD_LINE`
+  - o label ficou acima da linha de forma aproximada, que é o melhor equivalente nativo suportado nesta versão do Zabbix
   - os dois elementos anteriores permaneceram intactos
   - não houve alteração no Grafana
 - Limitação documentada:
-  - o tráfego do enlace é mostrado no rótulo via expression macros do `br0` do AGT; a triggerização segue no próprio link, sem campo nativo único que combine os dois modos de leitura
+  - o Zabbix não expõe posicionamento nativo separado para o rótulo de link; a aproximação ficou por label multilinha + linha bold
+  - esta combinação passa a ser o padrão visual para os próximos links do mapa
 - Artefato atualizado:
   - `artifacts/zabbix_agt_visual_map.md`
 
