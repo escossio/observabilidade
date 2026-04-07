@@ -10,8 +10,8 @@ from typing import Any
 from .graph_build import build_aggregate
 from .loader import load_samples
 from .promote import promote_structure
-from .report import write_outputs, write_promotion_outputs
-from .zabbix_publish import build_backbone_plan, publish_backbone_map
+from .report import write_outputs, write_unified_outputs
+from .zabbix_publish import build_unified_plan, publish_unified_map
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -150,13 +150,12 @@ def main() -> None:
     output_dir = Path(args.output_dir) if args.output_dir else DEFAULT_OUTPUT_ROOT / _now_run_id()
     output = build_output(samples, aggregate, output_dir)
     write_outputs(output_dir, output)
+    unified_plan = build_unified_plan(aggregate)
     if args.publish_zabbix:
-        backbone_plan = build_backbone_plan(aggregate)
-        zabbix_snapshot = publish_backbone_map(backbone_plan)
-        write_promotion_outputs(output_dir, backbone_plan, zabbix_snapshot)
+        zabbix_snapshot = publish_unified_map(unified_plan)
+        write_unified_outputs(output_dir, unified_plan, zabbix_snapshot)
     else:
-        backbone_plan = build_backbone_plan(aggregate)
-        write_promotion_outputs(output_dir, backbone_plan, None)
+        write_unified_outputs(output_dir, unified_plan, None)
     print(json.dumps(output["summary"], indent=2, ensure_ascii=False))
 
 

@@ -1,0 +1,309 @@
+{
+  "total_runs_lidos": 19,
+  "total_targets": 22,
+  "total_unique_hops": 15,
+  "total_unique_paths": 3,
+  "hops_mais_recorrentes": [
+    {
+      "ip": "10.45.0.1",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "100.65.77.1",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.128.113",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.128.181",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.128.182",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.128.221",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.128.42",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.130.122",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.133.150",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.134.242",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.16.135.209",
+      "observations": 22,
+      "asn": "AS private",
+      "company": "Private / local network",
+      "primary_class": "internal_brisanet",
+      "confidence": "medium",
+      "evidence": [
+        "asn=AS private",
+        "company=Private / local network"
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "187.19.161.199",
+      "observations": 22,
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "primary_class": "edge_brisanet_candidate",
+      "confidence": "high",
+      "evidence": [
+        "asn=AS28126",
+        "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+        "edge_count=22",
+        "last_internal_count=22"
+      ],
+      "last_internal_count": 22
+    },
+    {
+      "ip": "104.21.4.50",
+      "observations": 10,
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "primary_class": "cdn_candidate",
+      "confidence": "high",
+      "evidence": [
+        "asn=AS13335",
+        "company=Cloudflare, Inc."
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "172.67.131.172",
+      "observations": 10,
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "primary_class": "cdn_candidate",
+      "confidence": "high",
+      "evidence": [
+        "asn=AS13335",
+        "company=Cloudflare, Inc."
+      ],
+      "last_internal_count": 0
+    },
+    {
+      "ip": "1.0.0.1",
+      "observations": 2,
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "primary_class": "dns_infra_candidate",
+      "confidence": "high",
+      "evidence": [
+        "known_dns_ip=1.0.0.1",
+        "asn=AS13335",
+        "company=Cloudflare, Inc."
+      ],
+      "last_internal_count": 0
+    }
+  ],
+  "candidatos_borda_brisanet": [
+    {
+      "ip": "187.19.161.199",
+      "observations": 22,
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "primary_class": "edge_brisanet_candidate",
+      "confidence": "high",
+      "evidence": [
+        "asn=AS28126",
+        "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+        "edge_count=22",
+        "last_internal_count=22"
+      ],
+      "edge_count": 22,
+      "last_internal_count": 22
+    }
+  ],
+  "candidatos_ix_ptt": [],
+  "candidatos_cdn": [
+    {
+      "ip": "104.21.4.50",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "confidence": "high",
+      "evidence": [
+        "asn=AS13335",
+        "company=Cloudflare, Inc."
+      ],
+      "observations": 10
+    },
+    {
+      "ip": "172.67.131.172",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "confidence": "high",
+      "evidence": [
+        "asn=AS13335",
+        "company=Cloudflare, Inc."
+      ],
+      "observations": 10
+    }
+  ],
+  "analise_dns_177_37_220_17": {
+    "ip": "177.37.220.17",
+    "status": "absent_from_current_corpus",
+    "confidence": "low",
+    "observations": 0,
+    "evidence": [
+      "not_observed_in_current_runs"
+    ],
+    "source_type": "external_hint"
+  },
+  "analise_dns_177_37_220_18": {
+    "ip": "177.37.220.18",
+    "status": "absent_from_current_corpus",
+    "confidence": "low",
+    "observations": 0,
+    "evidence": [
+      "not_observed_in_current_runs"
+    ],
+    "source_type": "external_hint"
+  },
+  "top_targets": {
+    "observabilidade.escossio.dev.br": 9,
+    "observabilidade.escossio.dev.br-replay-validation": 3,
+    "observabilidade.escossio.dev.br-fallback-validation": 2,
+    "20260406-235350": 1,
+    "20260406-235426": 1,
+    "20260406-235520": 1,
+    "20260406-235600": 1,
+    "20260406-235616": 1,
+    "20260406-235641": 1,
+    "one.one.one.one": 1,
+    "one.one.one.one-replay-validation": 1
+  },
+  "top_runs": {
+    "20260407-003511": 3,
+    "20260407-003427": 2,
+    "20260406-235350": 1,
+    "20260406-235426": 1,
+    "20260406-235520": 1,
+    "20260406-235600": 1,
+    "20260406-235616": 1,
+    "20260406-235641": 1,
+    "20260407-001513": 1,
+    "20260407-001546": 1,
+    "20260407-001556": 1,
+    "20260407-001611": 1,
+    "20260407-011709-053093": 1,
+    "20260407-011709-189689": 1,
+    "20260407-011709-215487": 1,
+    "20260407-012335-795488": 1,
+    "20260407-012348-643846": 1,
+    "20260407-012413-670377": 1,
+    "20260407-012413-692261": 1
+  },
+  "class_counter": {
+    "internal_brisanet": 11,
+    "edge_brisanet_candidate": 1,
+    "cdn_candidate": 2,
+    "dns_infra_candidate": 1
+  }
+}

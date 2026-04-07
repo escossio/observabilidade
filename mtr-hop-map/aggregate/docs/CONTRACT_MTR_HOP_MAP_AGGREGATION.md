@@ -4,6 +4,10 @@
 
 Agregação offline dos runs do `mtr-hop-map` para descobrir recorrência, bordas prováveis e classes heurísticas de nós.
 
+Na publicação agregada, a camada passa a consolidar tudo em um único mapa canônico:
+
+- `MTR Unified - Brisanet Observed`
+
 ## Fonte principal
 
 - `data/runs/` da frente `mtr-hop-map`
@@ -63,4 +67,7 @@ Se não aparecerem no corpus, o output precisa registrar ausência observada, n�
 - `hops_inventory.csv`
 - `edge_candidates.csv`
 - `report.md`
-
+- `unified_nodes.json`
+- `unified_edges.json`
+- `unified_map_plan.json`
+- `zabbix_map_snapshot.json` quando publicado

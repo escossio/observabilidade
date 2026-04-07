@@ -1,5 +1,26 @@
 # Status
 
+## 2026-04-07 - mapa agregado unificado do MTR publicado
+
+- a camada `mtr-hop-map/aggregate` consolidou a topologia observada em um único mapa canônico no Zabbix:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- o mapa unificado mantém no mesmo grafo:
+  - tronco comum recorrente
+  - borda Brisanet candidata
+  - saídas externas/CDN
+  - watchlist DNS
+- artefatos da rodada:
+  - `unified_nodes.json`
+  - `unified_edges.json`
+  - `unified_map_plan.json`
+  - `report.md`
+  - `zabbix_map_snapshot.json`
+- validação real:
+  - `15` nós e `13` links no mapa final
+  - `187.19.161.199` segue como candidato fortíssimo de borda Brisanet
+  - `177.37.220.17` e `177.37.220.18` não foram promovidos por ausência de evidência no corpus
+
 ## 2026-04-07 - camada de agregacao de traces adicionada
 
 - foi criada a frente `mtr-hop-map/aggregate` para correlacionar varios runs já coletados

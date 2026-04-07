@@ -8,7 +8,8 @@ from src.hop_policy import normalize_ip
 from src.zabbix_api import ZabbixAPI
 
 
-MAP_NAME = "MTR Backbone - Brisanet Observed"
+UNIFIED_MAP_NAME = "MTR Unified - Brisanet Observed"
+LEGACY_MAP_NAME = "MTR Backbone - Brisanet Observed"
 
 
 def _resolve_image(api: ZabbixAPI, names: list[str], fallback: str | None = None) -> dict[str, Any]:
@@ -118,7 +119,25 @@ def _create_map_payload(name: str, width: int, height: int, selements: list[dict
     }
 
 
-def build_backbone_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
+def _node_for_plan(node: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "ip": node["ip"],
+        "role": node["role"],
+        "class_name": node["class_name"],
+        "label": node["label"],
+        "company": node["company"],
+        "confidence": node["confidence"],
+        "evidence": node["evidence"],
+        "observations": node["observations"],
+        "target_count": node["target_count"],
+        "run_count": node["run_count"],
+        "recurrence_ratio": node["recurrence_ratio"],
+        "edge_count": node["edge_count"],
+        "last_internal_count": node["last_internal_count"],
+    }
+
+
+def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
     promoted = aggregate["promote"]
     backbone = promoted["promoted_nodes"]["backbone_observed"]
     candidates = promoted["promoted_nodes"]["candidate_nodes"]
@@ -127,10 +146,29 @@ def build_backbone_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
     candidate_edges = promoted["promoted_edges"]["candidate_edges"]
     canonical_path = promoted["canonical_path"]
 
+    unified_nodes = [_node_for_plan(node) for node in backbone]
+    unified_nodes.extend(_node_for_plan(node) for node in candidates)
+    unified_nodes.extend(_node_for_plan(node) for node in watchlist)
+    unified_edges = [
+        {
+            "source": edge["source"],
+            "target": edge["target"],
+            "role": edge["role"],
+            "label": edge["label"],
+            "confidence": edge["confidence"],
+            "evidence": edge["evidence"],
+            "observations": edge["observations"],
+            "target_count": edge["target_count"],
+            "run_count": edge["run_count"],
+            "stability_ratio": edge["stability_ratio"],
+        }
+        for edge in backbone_edges + candidate_edges
+    ]
+
     placements: list[dict[str, Any]] = []
     x = 40
     for idx, node in enumerate(backbone):
-        placements.append({"ip": node["ip"], "role": node["role"], "x": x, "y": 130, "zindex": idx, "label": node["label"]})
+        placements.append({"ip": node["ip"], "role": node["role"], "x": x, "y": 120, "zindex": idx, "label": node["label"]})
         x += 155
 
     if candidates:
@@ -138,7 +176,7 @@ def build_backbone_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
     else:
         candidate_edge = None
     if candidate_edge:
-        placements.append({"ip": candidate_edge["ip"], "role": candidate_edge["role"], "x": x, "y": 130, "zindex": len(placements), "label": candidate_edge["label"]})
+        placements.append({"ip": candidate_edge["ip"], "role": candidate_edge["role"], "x": x, "y": 120, "zindex": len(placements), "label": candidate_edge["label"]})
         x += 155
 
     cdn_nodes = [node for node in candidates if node["role"] == "cdn_candidate"]
@@ -149,10 +187,13 @@ def build_backbone_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
         placements.append({"ip": node["ip"], "role": node["role"], "x": 40 + idx * 185, "y": 410, "zindex": 60 + idx, "label": node["label"]})
 
     return {
-        "map_name": MAP_NAME,
+        "map_name": UNIFIED_MAP_NAME,
+        "legacy_map_name": LEGACY_MAP_NAME,
         "canonical_path": canonical_path,
         "promoted_nodes": promoted["promoted_nodes"],
         "promoted_edges": promoted["promoted_edges"],
+        "unified_nodes": unified_nodes,
+        "unified_edges": unified_edges,
         "placements": placements,
         "meta": promoted["meta"],
         "counts": {
@@ -165,7 +206,7 @@ def build_backbone_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def publish_backbone_map(plan: dict[str, Any]) -> dict[str, Any]:
+def publish_unified_map(plan: dict[str, Any]) -> dict[str, Any]:
     config = load_config("aggregate")
     api = ZabbixAPI(config.zabbix_api_url, config.zabbix_user, config.zabbix_password)
     api.login()
@@ -194,14 +235,17 @@ def publish_backbone_map(plan: dict[str, Any]) -> dict[str, Any]:
         host_lookup[ip] = host["hostid"]
         selements.append(_build_element(images[role]["imageid"], placement["x"], placement["y"], placement["label"], host["hostid"], placement["zindex"]))
 
-    existing = api.get_map(plan["map_name"])
-    width = max(1600, 40 * 2 + max(1, len([node for node in plan["placements"] if node["y"] == 130]) - 1) * 155 + 96)
-    height = 520
+    existing = api.get_map(plan["map_name"]) or api.get_map(plan.get("legacy_map_name", ""))
+    width = max(1900, 40 * 2 + max(1, len([node for node in plan["placements"] if node["y"] == 120]) - 1) * 155 + 96)
+    height = 560
 
     if existing is None:
         api.call("map.create", _create_map_payload(plan["map_name"], width, height, selements))
         existing = api.get_map(plan["map_name"])
     else:
+        if existing.get("name") != plan["map_name"]:
+            api.call("map.update", {"sysmapid": existing["sysmapid"], "name": plan["map_name"]})
+            existing = api.get_map(plan["map_name"]) or existing
         existing_by_hostid: dict[str, str] = {}
         for selement in existing.get("selements", []):
             for element in selement.get("elements", []):
@@ -268,3 +312,11 @@ def publish_backbone_map(plan: dict[str, Any]) -> dict[str, Any]:
         "skipped": skipped,
     }
     return snapshot
+
+
+def build_backbone_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
+    return build_unified_plan(aggregate)
+
+
+def publish_backbone_map(plan: dict[str, Any]) -> dict[str, Any]:
+    return publish_unified_map(plan)

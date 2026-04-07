@@ -2,6 +2,10 @@
 
 Camada de correlação offline sobre os runs já gerados pela frente `mtr-hop-map`.
 
+Nesta etapa, a publicação no Zabbix consolida tudo em um único mapa canônico:
+
+- `MTR Unified - Brisanet Observed`
+
 ## O que ela lê
 
 - `data/runs/<run_id>/...`
@@ -15,6 +19,10 @@ Camada de correlação offline sobre os runs já gerados pela frente `mtr-hop-ma
 - `hops_inventory.csv`
 - `edge_candidates.csv`
 - `report.md`
+- `unified_nodes.json`
+- `unified_edges.json`
+- `unified_map_plan.json`
+- `zabbix_map_snapshot.json` quando a publicação no Zabbix é acionada
 
 ## Uso
 
@@ -30,4 +38,3 @@ python3 -m aggregate.main --output-dir aggregate/data/runs/demo
 - `fato observado`: aparece diretamente em `mtr_normalized.json`
 - `inferência heurística`: vem da classificação e dos rankings
 - `hipótese fraca`: qualquer classe com confiança `low`
-

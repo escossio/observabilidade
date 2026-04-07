@@ -1,0 +1,202 @@
+[
+  {
+    "source": "10.45.0.1",
+    "target": "100.65.77.1",
+    "role": "backbone_observed",
+    "label": "10.45.0.1 -> 100.65.77.1",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "100.65.77.1",
+    "target": "172.16.128.221",
+    "role": "backbone_observed",
+    "label": "100.65.77.1 -> 172.16.128.221",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.128.113",
+    "target": "172.16.128.181",
+    "role": "backbone_observed",
+    "label": "172.16.128.113 -> 172.16.128.181",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "172.16.128.182",
+    "role": "backbone_observed",
+    "label": "172.16.128.181 -> 172.16.128.182",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.128.182",
+    "target": "172.16.130.122",
+    "role": "backbone_observed",
+    "label": "172.16.128.182 -> 172.16.130.122",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.128.221",
+    "target": "172.16.133.150",
+    "role": "backbone_observed",
+    "label": "172.16.128.221 -> 172.16.133.150",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.130.122",
+    "target": "172.16.134.242",
+    "role": "backbone_observed",
+    "label": "172.16.130.122 -> 172.16.134.242",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.133.150",
+    "target": "172.16.128.113",
+    "role": "backbone_observed",
+    "label": "172.16.133.150 -> 172.16.128.113",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.134.242",
+    "target": "172.16.135.209",
+    "role": "backbone_observed",
+    "label": "172.16.134.242 -> 172.16.135.209",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.135.209",
+    "target": "172.16.128.42",
+    "role": "backbone_observed",
+    "label": "172.16.135.209 -> 172.16.128.42",
+    "confidence": "high",
+    "evidence": [
+      "dominant_path",
+      "pair_runs=19"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.128.42",
+    "target": "187.19.161.199",
+    "role": "candidate_edge",
+    "label": "172.16.128.42 -> 187.19.161.199",
+    "confidence": "high",
+    "evidence": [
+      "edge_brisanet_candidate",
+      "asn=AS28126",
+      "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "edge_count=22",
+      "last_internal_count=22"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "187.19.161.199",
+    "target": "104.21.4.50",
+    "role": "cdn_exit",
+    "label": "187.19.161.199 -> 104.21.4.50",
+    "confidence": "high",
+    "evidence": [
+      "cdn_candidate",
+      "asn=AS13335",
+      "company=Cloudflare, Inc."
+    ],
+    "observations": 10,
+    "target_count": 6,
+    "run_count": 10,
+    "stability_ratio": 0.5263157894736842
+  },
+  {
+    "source": "187.19.161.199",
+    "target": "172.67.131.172",
+    "role": "cdn_exit",
+    "label": "187.19.161.199 -> 172.67.131.172",
+    "confidence": "high",
+    "evidence": [
+      "cdn_candidate",
+      "asn=AS13335",
+      "company=Cloudflare, Inc."
+    ],
+    "observations": 10,
+    "target_count": 5,
+    "run_count": 10,
+    "stability_ratio": 0.5263157894736842
+  }
+]

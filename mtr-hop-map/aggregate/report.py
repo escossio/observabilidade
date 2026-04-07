@@ -23,14 +23,18 @@ def write_outputs(output_dir: Path, aggregate: dict[str, Any]) -> None:
     (output_dir / "report.md").write_text(_render_report(aggregate))
 
 
-def write_promotion_outputs(output_dir: Path, promotion: dict[str, Any], zabbix_snapshot: dict[str, Any] | None = None) -> None:
+def write_unified_outputs(output_dir: Path, unified: dict[str, Any], zabbix_snapshot: dict[str, Any] | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "promoted_nodes.json").write_text(json.dumps(promotion["promoted_nodes"], indent=2, ensure_ascii=False))
-    (output_dir / "promoted_edges.json").write_text(json.dumps(promotion["promoted_edges"], indent=2, ensure_ascii=False))
-    (output_dir / "backbone_map_plan.json").write_text(json.dumps(promotion, indent=2, ensure_ascii=False))
+    (output_dir / "unified_nodes.json").write_text(json.dumps(unified["unified_nodes"], indent=2, ensure_ascii=False))
+    (output_dir / "unified_edges.json").write_text(json.dumps(unified["unified_edges"], indent=2, ensure_ascii=False))
+    (output_dir / "unified_map_plan.json").write_text(json.dumps(unified, indent=2, ensure_ascii=False))
     if zabbix_snapshot is not None:
         (output_dir / "zabbix_map_snapshot.json").write_text(json.dumps(zabbix_snapshot, indent=2, ensure_ascii=False))
-    (output_dir / "report.md").write_text(_render_promotion_report(promotion, zabbix_snapshot))
+    (output_dir / "report.md").write_text(_render_unified_report(unified, zabbix_snapshot))
+
+
+def write_promotion_outputs(output_dir: Path, promotion: dict[str, Any], zabbix_snapshot: dict[str, Any] | None = None) -> None:
+    write_unified_outputs(output_dir, promotion, zabbix_snapshot)
 
 
 def _write_hops_inventory(path: Path, inventory: list[dict[str, Any]]) -> None:
@@ -81,14 +85,14 @@ def _write_edge_candidates(path: Path, inventory: list[dict[str, Any]]) -> None:
     )
 
 
-def _render_promotion_report(promotion: dict[str, Any], zabbix_snapshot: dict[str, Any] | None) -> str:
+def _render_unified_report(promotion: dict[str, Any], zabbix_snapshot: dict[str, Any] | None) -> str:
     backbone = promotion["promoted_nodes"]["backbone_observed"]
     candidates = promotion["promoted_nodes"]["candidate_nodes"]
     watchlist = promotion["promoted_nodes"]["watchlist_nodes"]
     backbone_edges = promotion["promoted_edges"]["backbone_observed"]
     candidate_edges = promotion["promoted_edges"]["candidate_edges"]
     lines = [
-        "# MTR Hop Map - Promoção Estrutural",
+        "# MTR Hop Map - Mapa Unificado",
         "",
         "## Critérios",
         "",
@@ -157,6 +161,12 @@ def _render_promotion_report(promotion: dict[str, Any], zabbix_snapshot: dict[st
         "- backbone observado: nós e arestas com recorrência alta e estável",
         "- candidatos: nós/arestas com evidência forte mas ainda heurística",
         "- watchlist: itens observáveis ou ausentes que precisam de monitoramento separado",
+        "",
+        "## Artefatos",
+        "",
+        "- `unified_nodes.json`",
+        "- `unified_edges.json`",
+        "- `unified_map_plan.json`",
     ]
     return "\n".join(lines) + "\n"
 

@@ -1,5 +1,21 @@
 # Status
 
+## 2026-04-07 - mapa agregado unificado publicado
+
+- a camada de agregação passou a consolidar o corpus em um único mapa canônico:
+  - `MTR Unified - Brisanet Observed`
+- a publicação foi feita in-place no `sysmapid 10`
+- o mapa único preserva:
+  - backbone observado
+  - borda candidata
+  - saídas externas/CDN
+  - watchlist DNS
+- artefatos novos da rodada:
+  - `aggregate/unified_nodes.json`
+  - `aggregate/unified_edges.json`
+  - `aggregate/unified_map_plan.json`
+  - `aggregate/zabbix_map_snapshot.json`
+
 ## 2026-04-07 - camada de agregacao de traces criada
 
 - nova camada `aggregate/` para ler os runs já gerados e montar uma visão agregada de recorrência e fronteira
