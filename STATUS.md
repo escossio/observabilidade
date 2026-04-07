@@ -13,7 +13,7 @@
   - direção visual: `AGT / 10.45.0.3` -> `MikroTik RB3011`
   - tipo: `trigger`
   - cor OK: `00AA00`
-  - label: `DL {agt01:net.if.in["br0"].last(0)} | UL {agt01:net.if.out["br0"].last(0)}`
+  - label: `DL {?last(/agt01/net.if.in["br0"])} | UL {?last(/agt01/net.if.out["br0"])}`
   - `show_label`: `always`
 - Gatilhos associados ao link:
   - `32532` - `Linux: Interface br0: Link down`
@@ -28,10 +28,11 @@
   - `map.update` respondeu com sucesso
   - `map.get` confirmou o link entre os dois elementos
   - `trigger.get` confirmou os quatro gatilhos associados
+  - o frontend autenticado em `zabbix.php?action=map.view&sysmapid=2` exibiu o link com `DL 13.18 Kbps | UL 1.41 Mbps`
   - os dois elementos anteriores permaneceram intactos
   - não houve alteração no Grafana
 - Limitação documentada:
-  - o tráfego do enlace é mostrado no rótulo via macro do `br0` do AGT; o Zabbix não oferece um indicador nativo único que some download/upload e triggerização no mesmo campo sem criar estrutura adicional
+  - o tráfego do enlace é mostrado no rótulo via expression macros do `br0` do AGT; a triggerização segue no próprio link, sem campo nativo único que combine os dois modos de leitura
 - Artefato atualizado:
   - `artifacts/zabbix_agt_visual_map.md`
 
