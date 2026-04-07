@@ -1,5 +1,25 @@
 # Status
 
+## 2026-04-07 - dry-run de reconciliação implementado
+
+- comportamento fechado:
+  - `--dry-run` executa a pipeline inteira de `mtr`, parsing, enrichment, matching e diff
+  - a escrita no Zabbix fica bloqueada no ponto único `ZabbixAPI.call()` para métodos de create/update
+  - o plano completo é salvo em `reconciliation_plan.json`
+  - o resumo humano fica em `report.md`
+- validação real desta rodada:
+  - destino único dry-run: `observabilidade.escossio.dev.br`
+  - lote dry-run: `observabilidade.escossio.dev.br`, `one.one.one.one`, `invalid.invalid`
+  - replay dry-run: `observabilidade.escossio.dev.br` com `observabilidade-route-b.json`
+  - nenhum dos dry-runs alterou o estado do Zabbix; leitura antes/depois permaneceu igual
+- evidências principais:
+  - run dry-run de destino único: `data/runs/20260407-011601-018210/`
+  - run dry-run de lote: `data/runs/20260407-011617-903048/`
+  - run dry-run de replay: `data/runs/20260407-011601-018210/`
+- decisão de saída:
+  - exit code continua `0` quando a execução técnica termina sem erro, mesmo com mudanças previstas
+  - falhas reais continuam retornando código não zero
+
 ## 2026-04-07 - generalizacao controlada para multiplos destinos
 
 - decisao de execucao fechada:

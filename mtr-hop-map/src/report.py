@@ -30,10 +30,16 @@ def write_target_artifacts(
     (target_dir / "execution.json").write_text(json.dumps(execution, indent=2, ensure_ascii=False))
     (target_dir / "asn_summary.json").write_text(json.dumps(asn_summary, indent=2, ensure_ascii=False))
     (target_dir / "map_metadata.json").write_text(json.dumps(map_metadata, indent=2, ensure_ascii=False))
+    if reconcile_1.plan is not None:
+        (target_dir / "reconciliation_plan.json").write_text(json.dumps(reconcile_1.plan, indent=2, ensure_ascii=False))
 
-    created = [row["hostid"] for row in reconcile_1.host_actions if row["action"] == "created"]
-    reused = [row["hostid"] for row in reconcile_1.host_actions if row["action"] == "reused"]
-    updated = [row["hostid"] for row in reconcile_1.host_actions if row["action"] == "updated"]
+    dry_run = bool(execution.get("dry_run", False))
+    created_actions = {"created", "planned-create"}
+    reused_actions = {"reused", "planned-reuse"}
+    updated_actions = {"updated", "planned-update"}
+    created = [row["hostid"] for row in reconcile_1.host_actions if row["action"] in created_actions]
+    reused = [row["hostid"] for row in reconcile_1.host_actions if row["action"] in reused_actions]
+    updated = [row["hostid"] for row in reconcile_1.host_actions if row["action"] in updated_actions]
 
     report = [
         f"# MTR Hop Map - {target}",
@@ -45,11 +51,13 @@ def write_target_artifacts(
         f"- arquivo de replay: `{execution.get('mtr_source_path') or '-'}`",
         f"- run_id do lote: `{execution['run_id']}`",
         f"- slug do destino: `{execution['target_slug']}`",
+        f"- dry_run: `{execution.get('dry_run', False)}`",
         f"- modelo de identidade: `{execution['host_identity_model']}`",
         f"- mapa canônico: `{reconcile_1.map_name}`",
         f"- sysmapid: `{reconcile_1.sysmapid}`",
         f"- grupo de hosts: `{reconcile_1.host_groupid}`",
         f"- template: `{reconcile_1.templateid}`",
+        f"- nenhuma escrita foi executada: `{dry_run}`",
         "",
         "## Metadata operacional do mapa",
         "",
@@ -58,7 +66,18 @@ def write_target_artifacts(
         f"- target_slug: `{map_metadata['target_slug']}`",
         f"- mode: `{map_metadata['mode']}`",
         f"- last_trace: `{map_metadata['last_trace']}`",
+        f"- dry_run: `{map_metadata.get('dry_run', False)}`",
         f"- tags nativas no sysmap: `{map_metadata['native_tags_supported']}`",
+        "",
+        "## Plano de reconciliação",
+        "",
+        f"- hosts cria: `{reconcile_1.plan['counters']['host_create'] if reconcile_1.plan else 0}`",
+        f"- hosts reutiliza: `{reconcile_1.plan['counters']['host_reuse'] if reconcile_1.plan else 0}`",
+        f"- hosts atualiza: `{reconcile_1.plan['counters']['host_update'] if reconcile_1.plan else 0}`",
+        f"- hosts saem do mapa: `{reconcile_1.plan['counters']['host_detach'] if reconcile_1.plan else 0}`",
+        f"- links cria: `{reconcile_1.plan['counters']['link_create'] if reconcile_1.plan else 0}`",
+        f"- links reutiliza: `{reconcile_1.plan['counters']['link_reuse'] if reconcile_1.plan else 0}`",
+        f"- links saem do mapa: `{reconcile_1.plan['counters']['link_detach'] if reconcile_1.plan else 0}`",
         "",
         "## Hops normalizados",
         "",
@@ -108,6 +127,7 @@ def write_target_artifacts(
         "- `mtr_normalized.json`",
         "- `reconcile_phase1.json`",
         "- `reconcile_phase2.json`",
+        "- `reconciliation_plan.json`",
         "- `execution.json`",
         "- `asn_summary.json`",
         "- `map_metadata.json`",

@@ -1,0 +1,509 @@
+{
+  "target": "observabilidade.escossio.dev.br",
+  "map_name": "MTR ASN - observabilidade.escossio.dev.br",
+  "dry_run": true,
+  "current_map": {
+    "sysmapid": "5",
+    "name": "MTR ASN - observabilidade.escossio.dev.br",
+    "selementids": [
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "90"
+    ],
+    "hostids": [
+      "10780",
+      "10781",
+      "10782",
+      "10783",
+      "10784",
+      "10785",
+      "10786",
+      "10787",
+      "10788",
+      "10789",
+      "10790",
+      "10791",
+      "10792"
+    ],
+    "linkids": [
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "77",
+      "119"
+    ]
+  },
+  "predicted_actions": {
+    "hosts": {
+      "create": [],
+      "reuse": [
+        {
+          "ip": "10.45.0.1",
+          "hostid": "10780",
+          "hostname": "hop-ip-10-45-0-1",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "100.65.77.1",
+          "hostid": "10781",
+          "hostname": "hop-ip-100-65-77-1",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.221",
+          "hostid": "10782",
+          "hostname": "hop-ip-172-16-128-221",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.133.150",
+          "hostid": "10783",
+          "hostname": "hop-ip-172-16-133-150",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.113",
+          "hostid": "10784",
+          "hostname": "hop-ip-172-16-128-113",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.181",
+          "hostid": "10785",
+          "hostname": "hop-ip-172-16-128-181",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.182",
+          "hostid": "10786",
+          "hostname": "hop-ip-172-16-128-182",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.130.122",
+          "hostid": "10787",
+          "hostname": "hop-ip-172-16-130-122",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.134.242",
+          "hostid": "10788",
+          "hostname": "hop-ip-172-16-134-242",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.135.209",
+          "hostid": "10789",
+          "hostname": "hop-ip-172-16-135-209",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.42",
+          "hostid": "10790",
+          "hostname": "hop-ip-172-16-128-42",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "187.19.161.199",
+          "hostid": "10791",
+          "hostname": "hop-ip-187-19-161-199",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "104.21.4.50",
+          "hostid": "10793",
+          "hostname": "hop-ip-104-21-4-50",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        }
+      ],
+      "update": []
+    },
+    "selements": {
+      "reuse": [
+        {
+          "ip": "10.45.0.1",
+          "hostid": "10780",
+          "hostname": "hop-ip-10-45-0-1",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "100.65.77.1",
+          "hostid": "10781",
+          "hostname": "hop-ip-100-65-77-1",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.221",
+          "hostid": "10782",
+          "hostname": "hop-ip-172-16-128-221",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.133.150",
+          "hostid": "10783",
+          "hostname": "hop-ip-172-16-133-150",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.113",
+          "hostid": "10784",
+          "hostname": "hop-ip-172-16-128-113",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.181",
+          "hostid": "10785",
+          "hostname": "hop-ip-172-16-128-181",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.182",
+          "hostid": "10786",
+          "hostname": "hop-ip-172-16-128-182",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.130.122",
+          "hostid": "10787",
+          "hostname": "hop-ip-172-16-130-122",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.134.242",
+          "hostid": "10788",
+          "hostname": "hop-ip-172-16-134-242",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.135.209",
+          "hostid": "10789",
+          "hostname": "hop-ip-172-16-135-209",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "172.16.128.42",
+          "hostid": "10790",
+          "hostname": "hop-ip-172-16-128-42",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "187.19.161.199",
+          "hostid": "10791",
+          "hostname": "hop-ip-187-19-161-199",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        },
+        {
+          "ip": "104.21.4.50",
+          "hostid": "10793",
+          "hostname": "hop-ip-104-21-4-50",
+          "action": "planned-reuse",
+          "match_source": "hostname",
+          "warnings": [],
+          "planned": true
+        }
+      ],
+      "create": [],
+      "detach_from_map": [
+        "10792"
+      ],
+      "keep": [
+        "10780",
+        "10781",
+        "10782",
+        "10783",
+        "10784",
+        "10785",
+        "10786",
+        "10787",
+        "10788",
+        "10789",
+        "10790",
+        "10791"
+      ]
+    },
+    "links": {
+      "reuse": [
+        {
+          "left": 1,
+          "right": 2,
+          "left_hostid": "10780",
+          "right_hostid": "10781",
+          "status": "reuse"
+        },
+        {
+          "left": 2,
+          "right": 3,
+          "left_hostid": "10781",
+          "right_hostid": "10782",
+          "status": "reuse"
+        },
+        {
+          "left": 3,
+          "right": 4,
+          "left_hostid": "10782",
+          "right_hostid": "10783",
+          "status": "reuse"
+        },
+        {
+          "left": 4,
+          "right": 5,
+          "left_hostid": "10783",
+          "right_hostid": "10784",
+          "status": "reuse"
+        },
+        {
+          "left": 5,
+          "right": 6,
+          "left_hostid": "10784",
+          "right_hostid": "10785",
+          "status": "reuse"
+        },
+        {
+          "left": 6,
+          "right": 7,
+          "left_hostid": "10785",
+          "right_hostid": "10786",
+          "status": "reuse"
+        },
+        {
+          "left": 7,
+          "right": 8,
+          "left_hostid": "10786",
+          "right_hostid": "10787",
+          "status": "reuse"
+        },
+        {
+          "left": 8,
+          "right": 9,
+          "left_hostid": "10787",
+          "right_hostid": "10788",
+          "status": "reuse"
+        },
+        {
+          "left": 9,
+          "right": 10,
+          "left_hostid": "10788",
+          "right_hostid": "10789",
+          "status": "reuse"
+        },
+        {
+          "left": 10,
+          "right": 11,
+          "left_hostid": "10789",
+          "right_hostid": "10790",
+          "status": "reuse"
+        },
+        {
+          "left": 11,
+          "right": 12,
+          "left_hostid": "10790",
+          "right_hostid": "10791",
+          "status": "reuse"
+        }
+      ],
+      "create": [
+        {
+          "left": 12,
+          "right": 13,
+          "left_hostid": "10791",
+          "right_hostid": "10793",
+          "status": "create"
+        }
+      ],
+      "detach_from_map": [
+        {
+          "linkid": "119",
+          "selementid1": "45",
+          "selementid2": "90"
+        }
+      ],
+      "keep": [
+        {
+          "left": 1,
+          "right": 2,
+          "left_hostid": "10780",
+          "right_hostid": "10781",
+          "status": "reuse"
+        },
+        {
+          "left": 2,
+          "right": 3,
+          "left_hostid": "10781",
+          "right_hostid": "10782",
+          "status": "reuse"
+        },
+        {
+          "left": 3,
+          "right": 4,
+          "left_hostid": "10782",
+          "right_hostid": "10783",
+          "status": "reuse"
+        },
+        {
+          "left": 4,
+          "right": 5,
+          "left_hostid": "10783",
+          "right_hostid": "10784",
+          "status": "reuse"
+        },
+        {
+          "left": 5,
+          "right": 6,
+          "left_hostid": "10784",
+          "right_hostid": "10785",
+          "status": "reuse"
+        },
+        {
+          "left": 6,
+          "right": 7,
+          "left_hostid": "10785",
+          "right_hostid": "10786",
+          "status": "reuse"
+        },
+        {
+          "left": 7,
+          "right": 8,
+          "left_hostid": "10786",
+          "right_hostid": "10787",
+          "status": "reuse"
+        },
+        {
+          "left": 8,
+          "right": 9,
+          "left_hostid": "10787",
+          "right_hostid": "10788",
+          "status": "reuse"
+        },
+        {
+          "left": 9,
+          "right": 10,
+          "left_hostid": "10788",
+          "right_hostid": "10789",
+          "status": "reuse"
+        },
+        {
+          "left": 10,
+          "right": 11,
+          "left_hostid": "10789",
+          "right_hostid": "10790",
+          "status": "reuse"
+        },
+        {
+          "left": 11,
+          "right": 12,
+          "left_hostid": "10790",
+          "right_hostid": "10791",
+          "status": "reuse"
+        }
+      ]
+    },
+    "metadata": {
+      "source": "mtr-hop-map",
+      "target": "observabilidade.escossio.dev.br",
+      "target_slug": "observabilidade-escossio-dev-br",
+      "mode": "dry-run",
+      "last_trace": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-011709-189689/targets/01-observabilidade-escossio-dev-br"
+    }
+  },
+  "counters": {
+    "host_create": 0,
+    "host_reuse": 13,
+    "host_update": 0,
+    "host_detach": 1,
+    "link_create": 0,
+    "link_reuse": 11,
+    "link_detach": 1
+  }
+}

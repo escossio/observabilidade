@@ -1,0 +1,4 @@
+{
+  "target": "invalid.invalid",
+  "error": "saida JSON invalida do mtr para invalid.invalid: mtr: Failed to resolve host: invalid.invalid: Name or service not known"
+}

@@ -1,5 +1,16 @@
 # Status
 
+## 2026-04-07 - dry-run da frente MTR hop map implementado
+
+- `--dry-run` agora planeja a reconciliação completa sem escrever no Zabbix
+- o bloqueio de escrita ficou centralizado no cliente da API e vale para `create` e `update`
+- o plano é gravado em `reconciliation_plan.json`
+- a validação cobriu:
+  - destino único
+  - lote com falha parcial
+  - replay
+- o estado do Zabbix permaneceu inalterado nos dry-runs
+
 ## 2026-04-07 - frente MTR hop map generalizada para multiplos destinos
 
 - generalizacao implementada:

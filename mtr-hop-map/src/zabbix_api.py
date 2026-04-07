@@ -20,6 +20,7 @@ class ZabbixAPI:
     url: str
     user: str
     password: str
+    dry_run: bool = False
 
     def __post_init__(self) -> None:
         self.session = requests.Session()
@@ -32,6 +33,18 @@ class ZabbixAPI:
         return result
 
     def call(self, method: str, params: Any, include_auth: bool = True) -> Any:
+        if self.dry_run and method in {
+            "hostgroup.create",
+            "templategroup.create",
+            "template.create",
+            "item.create",
+            "trigger.create",
+            "host.create",
+            "host.update",
+            "map.create",
+            "map.update",
+        }:
+            raise RuntimeError(f"dry-run bloqueou escrita no Zabbix: {method}")
         headers = {"Content-Type": "application/json-rpc"}
         payload = {"jsonrpc": "2.0", "method": method, "params": params, "id": self._request_id}
         self._request_id += 1
@@ -54,6 +67,8 @@ class ZabbixAPI:
         group = self.get_host_group(name)
         if group:
             return group
+        if self.dry_run:
+            return {"groupid": None, "name": name}
         groupid = self.call("hostgroup.create", {"name": name})["groupids"][0]
         return self.get_host_group(name) or {"groupid": groupid, "name": name}
 
@@ -65,6 +80,8 @@ class ZabbixAPI:
         group = self.get_template_group(name)
         if group:
             return group
+        if self.dry_run:
+            return {"groupid": None, "name": name}
         groupid = self.call("templategroup.create", {"name": name})["groupids"][0]
         return self.get_template_group(name) or {"groupid": groupid, "name": name}
 
@@ -76,6 +93,9 @@ class ZabbixAPI:
         template = self.get_template(template_name)
         if template is not None:
             return template
+
+        if self.dry_run:
+            return {"templateid": None, "host": template_name, "name": template_name, "dry_run": True}
 
         self.ensure_template_group(template_group_name)
         group = self.get_template_group(template_group_name)
@@ -233,6 +253,14 @@ class ZabbixAPI:
                 match_source = "ip"
 
         if existing:
+            if self.dry_run:
+                action = self._preview_existing_host_action(existing, hostname, visible_name, groupid, templateid, ip, tags)
+                return HostEnsureResult(
+                    host=existing,
+                    action=action,
+                    match_source=match_source,
+                    warnings=warnings,
+                )
             action = self._update_existing_host(existing, hostname, visible_name, groupid, templateid, ip, tags)
             return HostEnsureResult(
                 host=self.get_host_by_id(existing["hostid"]),
@@ -240,6 +268,16 @@ class ZabbixAPI:
                 match_source=match_source,
                 warnings=warnings,
             )
+
+        if self.dry_run:
+            synthetic_host = {
+                "hostid": None,
+                "host": hostname,
+                "name": visible_name,
+                "interfaces": [{"ip": ip, "main": "1", "type": "1", "useip": "1", "port": "10050"}],
+                "tags": tags,
+            }
+            return HostEnsureResult(host=synthetic_host, action="planned-create", match_source="dry-run", warnings=warnings)
 
         result = self.call(
             "host.create",
@@ -268,6 +306,38 @@ class ZabbixAPI:
             match_source="created",
             warnings=warnings,
         )
+
+    def _preview_existing_host_action(
+        self,
+        existing: dict,
+        hostname: str,
+        visible_name: str,
+        groupid: str,
+        templateid: str,
+        ip: str,
+        tags: list[dict[str, str]],
+    ) -> str:
+        planned = existing.get("host") != hostname or existing.get("name") != visible_name
+
+        current_tags = {(item.get("tag"), item.get("value")) for item in existing.get("tags", [])}
+        desired_tags = {(item.get("tag"), item.get("value")) for item in tags}
+        planned = planned or current_tags != desired_tags
+
+        current_groups = existing.get("hostgroups", [])
+        groupids = {row["groupid"] for row in current_groups}
+        planned = planned or groupid not in groupids
+
+        current_templates = existing.get("parentTemplates", [])
+        templateids = {row["templateid"] for row in current_templates}
+        planned = planned or templateid not in templateids
+
+        interface = next((row for row in existing.get("interfaces", []) if row.get("main") == "1"), None)
+        if interface is None:
+            planned = True
+        elif interface.get("ip") != ip or interface.get("port") != "10050":
+            planned = True
+
+        return "planned-update" if planned else "planned-reuse"
 
     def _choose_host_candidate(self, candidates: list[dict], canonical_hostname: str) -> dict:
         def rank(item: dict) -> tuple[int, int, int]:
@@ -343,6 +413,21 @@ class ZabbixAPI:
 
         self.call("host.update", updates)
         return "updated"
+
+    def plan_host(
+        self,
+        hostname: str,
+        visible_name: str,
+        groupid: str,
+        templateid: str,
+        ip: str,
+        tags: list[dict[str, str]],
+    ) -> HostEnsureResult:
+        dry_run_api = ZabbixAPI(self.url, self.user, self.password, dry_run=True)
+        dry_run_api.session = self.session
+        dry_run_api.token = self.token
+        dry_run_api._request_id = self._request_id
+        return dry_run_api.ensure_host(hostname, visible_name, groupid, templateid, ip, tags)
 
     def get_image(self, name: str) -> dict | None:
         result = self.call("image.get", {"output": "extend", "filter": {"name": [name]}})

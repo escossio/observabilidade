@@ -20,11 +20,16 @@ from .zabbix_reconcile import ensure_map_for_destination
 DEFAULT_TARGET = "observabilidade.escossio.dev.br"
 
 
+def _new_run_id() -> str:
+    return datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+
+
 def run_poc(
     target: str | None,
     mtr_json_path: str | None = None,
     asn_lookup_mode: str | None = None,
     asn_cache_path: str | None = None,
+    dry_run: bool = False,
     run_root: Path | None = None,
     run_id: str | None = None,
     target_index: int = 1,
@@ -35,7 +40,7 @@ def run_poc(
     if asn_cache_path:
         config = replace(config, asn_cache_path=Path(asn_cache_path))
 
-    batch_run_id = run_id or datetime.now().strftime("%Y%m%d-%H%M%S")
+    batch_run_id = run_id or _new_run_id()
     run_dir = run_root or (ROOT_DIR / "data" / "runs" / batch_run_id)
 
     if mtr_json_path:
@@ -56,11 +61,11 @@ def run_poc(
     )
     hops = parse_hops(mtr.parsed, resolver)
 
-    api = ZabbixAPI(config.zabbix_api_url, config.zabbix_user, config.zabbix_password)
+    api = ZabbixAPI(config.zabbix_api_url, config.zabbix_user, config.zabbix_password, dry_run=dry_run)
     api.login()
 
-    reconcile_1 = ensure_map_for_destination(api, config, hops)
-    reconcile_2 = ensure_map_for_destination(api, config, hops)
+    reconcile_1 = ensure_map_for_destination(api, config, hops, run_dir=str(target_dir), dry_run=dry_run)
+    reconcile_2 = ensure_map_for_destination(api, config, hops, run_dir=str(target_dir), dry_run=dry_run)
 
     map_metadata = {
         "source": "mtr-hop-map",
@@ -68,6 +73,7 @@ def run_poc(
         "target_slug": target_slug,
         "mode": mtr.source_kind,
         "last_trace": batch_run_id,
+        "dry_run": dry_run,
         "native_tags_supported": False,
         "map_name": reconcile_1.map_name,
         "sysmapid": reconcile_1.sysmapid,
@@ -76,6 +82,7 @@ def run_poc(
         "run_id": batch_run_id,
         "target": config.target,
         "target_slug": target_slug,
+        "dry_run": dry_run,
         "mtr_source_kind": mtr.source_kind,
         "mtr_source_path": mtr.source_path,
         "host_identity_model": config.host_identity_model,
@@ -108,6 +115,7 @@ def run_poc(
         "mtr_source_kind": mtr.source_kind,
         "mtr_source_path": mtr.source_path,
         "host_identity_model": config.host_identity_model,
+        "dry_run": dry_run,
         "asn_summary": asn_summary,
         "map_name": reconcile_1.map_name,
         "sysmapid": reconcile_1.sysmapid,
@@ -161,8 +169,9 @@ def run_batch(
     specs: list[tuple[str, str | None]],
     asn_lookup_mode: str | None = None,
     asn_cache_path: str | None = None,
+    dry_run: bool = False,
 ) -> dict[str, Any]:
-    run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_id = _new_run_id()
     run_root = ROOT_DIR / "data" / "runs" / run_id
     (run_root / "targets").mkdir(parents=True, exist_ok=True)
 
@@ -176,6 +185,7 @@ def run_batch(
                 mtr_json_path=replay_path,
                 asn_lookup_mode=asn_lookup_mode,
                 asn_cache_path=asn_cache_path,
+                dry_run=dry_run,
                 run_root=run_root,
                 run_id=run_id,
                 target_index=index,
@@ -198,6 +208,7 @@ def run_batch(
                     "run_id": run_id,
                     "target_dir": str(target_dir),
                     "mode": execution["mtr_source_kind"],
+                    "dry_run": dry_run,
                     "error": str(exc),
                 }
             )
@@ -208,7 +219,7 @@ def run_batch(
         "processed_targets": len(target_results),
         "successful_targets": sum(1 for row in target_results if row["status"] == "ok"),
         "failed_targets": sum(1 for row in target_results if row["status"] == "error"),
-        "dry_run": False,
+        "dry_run": dry_run,
         "host_identity_model": "global-ip",
         "specs": [{"target": target, "replay_path": replay_path} for target, replay_path in specs],
     }
@@ -228,12 +239,13 @@ def main() -> None:
     parser.add_argument("--targets-file", help="Arquivo texto com um destino por linha ou destino<TAB>replay.json")
     parser.add_argument("--replay", required=False, help="Alias de --mtr-json para replay de um destino único")
     parser.add_argument("--mtr-json", required=False, help="Arquivo JSON de replay para um destino único")
+    parser.add_argument("--dry-run", action="store_true", help="Planeja a reconciliação sem escrever no Zabbix")
     parser.add_argument("--asn-lookup-mode", choices=["online", "offline"], required=False, help="Modo do enrichment ASN")
     parser.add_argument("--asn-cache-path", required=False, help="Caminho do cache local de ASN/empresa")
     args = parser.parse_args()
 
     specs = _collect_targets(args)
-    result = run_batch(specs, asn_lookup_mode=args.asn_lookup_mode, asn_cache_path=args.asn_cache_path)
+    result = run_batch(specs, asn_lookup_mode=args.asn_lookup_mode, asn_cache_path=args.asn_cache_path, dry_run=args.dry_run)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     if result["failed_targets"]:
         raise SystemExit(1)

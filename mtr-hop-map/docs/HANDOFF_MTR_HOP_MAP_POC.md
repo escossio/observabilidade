@@ -14,6 +14,7 @@ Frente nova para transformar MTR com ASN em hosts e mapa Zabbix persistentes.
 - execução em lote com tolerância a falha por destino
 - replay controlado de snapshots MTR
 - relatório local agregado por execução e detalhado por destino
+- dry-run com plano completo e escrita bloqueada
 - validação de idempotência
 
 ## Decisões fechadas na prática
@@ -36,6 +37,10 @@ Frente nova para transformar MTR com ASN em hosts e mapa Zabbix persistentes.
   - Zabbix 7.4 sem tags nativas de `sysmap`, então a metadata fica nos artefatos da automação
 - falha de destino invalido:
   - retorna erro operacional legível sem interromper os outros destinos do lote
+- dry-run:
+  - bloqueia escrita no `ZabbixAPI.call()` para `create` e `update`
+  - grava `reconciliation_plan.json`
+  - mantém `exit code 0` quando o processamento termina sem erro técnico
 
 ## Evidência real
 
@@ -67,6 +72,11 @@ Frente nova para transformar MTR com ASN em hosts e mapa Zabbix persistentes.
     - `data/replays/replay-suite-targets.txt`
   - mapa novo:
     - `MTR ASN - one.one.one.one-replay-validation` -> `sysmapid 9`
+- dry-run validado:
+  - destino único
+  - lote com falha parcial
+  - replay individual
+  - nenhuma escrita observada no Zabbix antes/depois
 
 ## Próximo passo
 

@@ -24,6 +24,7 @@ Transformar uma rota observada com `mtr --aslookup` em uma topologia persistente
 9. O layout é linear horizontal.
 10. Falha em um destino não pode derrubar a execução dos demais destinos do lote.
 11. O `sysmap` do Zabbix 7.4 não tem tags nativas; a metadata operacional do mapa fica registrada pela automação.
+12. `--dry-run` deve bloquear toda escrita no Zabbix e produzir o plano completo de reconciliação.
 
 ## Política de nome
 
@@ -39,8 +40,16 @@ Transformar uma rota observada com `mtr --aslookup` em uma topologia persistente
 - `target_slug=<slug>`
 - `mode=live|replay`
 - `last_trace=<run_id>`
+- `dry_run=true|false`
 
 Esses campos ficam em `map_metadata.json` e no relatório agregado do run.
+
+## Dry-run
+
+- lê o estado atual do Zabbix
+- calcula host, selement, link e metadata que seriam alterados
+- grava `reconciliation_plan.json`
+- bloqueia qualquer método de escrita no cliente da API
 
 ## Persistência
 

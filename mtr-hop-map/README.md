@@ -23,6 +23,7 @@ Frente para transformar uma rota observada com `mtr --aslookup` em objetos persi
 - cache ASN/empresa: `data/cache/asn_company_cache.json`
 - layout do mapa: linear horizontal
 - execução em lote: tolerante a falha por destino
+- `--dry-run`: calcula o plano completo sem escrever no Zabbix
 - metadata de mapa: `source`, `target`, `target_slug`, `mode`, `last_trace`
 - limitação do Zabbix: `sysmap` não tem tags nativas; a metadata fica em `map_metadata.json` e no relatório agregado
 
@@ -47,6 +48,8 @@ pip install -r requirements.txt
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br --target one.one.one.one
 ./scripts/run_poc.sh --targets-file data/replays/replay-suite-targets.txt --asn-lookup-mode offline
+./scripts/run_poc.sh --dry-run --target observabilidade.escossio.dev.br
+./scripts/run_poc.sh --dry-run --targets-file data/replays/replay-suite-targets.txt
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br-replay-validation --mtr-json data/replays/observabilidade-route-a.json
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br-fallback-validation --mtr-json data/replays/observabilidade-route-b.json --asn-lookup-mode offline
 ```
@@ -58,6 +61,7 @@ pip install -r requirements.txt
   - uma linha com `destino` para modo live
   - uma linha com `destino<TAB>/caminho/replay.json` para replay controlado
 - `--replay` e `--mtr-json` valem para um único destino explícito
+- `--dry-run` bloqueia toda escrita no Zabbix e grava `reconciliation_plan.json`
 
 ## Convenção final do mapa
 
@@ -88,6 +92,7 @@ Cada rodada cria uma pasta em `data/runs/<run_id>/` com:
   - `execution.json`
   - `asn_summary.json`
   - `map_metadata.json`
+  - `reconciliation_plan.json` quando `--dry-run` estiver ativo
   - `report.md`
 
 ## Validado nesta rodada
@@ -98,6 +103,7 @@ Cada rodada cria uma pasta em `data/runs/<run_id>/` com:
 - reuso global por IP entre mapas diferentes
 - execução live com múltiplos destinos e falha parcial sem derrubar o lote
 - replay em lote com três destinos
+- dry-run com destino único, replay e lote com falha parcial
 
 ## Limites atuais
 

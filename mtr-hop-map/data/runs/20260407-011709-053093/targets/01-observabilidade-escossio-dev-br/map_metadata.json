@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "observabilidade.escossio.dev.br",
+  "target_slug": "observabilidade-escossio-dev-br",
+  "mode": "live",
+  "last_trace": "20260407-011709-053093",
+  "dry_run": true,
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - observabilidade.escossio.dev.br",
+  "sysmapid": "5"
+}
