@@ -24,6 +24,7 @@ Frente para transformar uma rota observada com `mtr --aslookup` em objetos persi
 - layout do mapa: linear horizontal
 - execução em lote: tolerante a falha por destino
 - `--dry-run`: calcula o plano completo sem escrever no Zabbix
+- `--json`: emite um JSON canônico consolidado da execução no stdout
 - metadata de mapa: `source`, `target`, `target_slug`, `mode`, `last_trace`
 - limitação do Zabbix: `sysmap` não tem tags nativas; a metadata fica em `map_metadata.json` e no relatório agregado
 
@@ -50,6 +51,8 @@ pip install -r requirements.txt
 ./scripts/run_poc.sh --targets-file data/replays/replay-suite-targets.txt --asn-lookup-mode offline
 ./scripts/run_poc.sh --dry-run --target observabilidade.escossio.dev.br
 ./scripts/run_poc.sh --dry-run --targets-file data/replays/replay-suite-targets.txt
+./scripts/run_poc.sh --json --target observabilidade.escossio.dev.br
+./scripts/run_poc.sh --json --dry-run --targets-file data/replays/replay-suite-targets.txt
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br-replay-validation --mtr-json data/replays/observabilidade-route-a.json
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br-fallback-validation --mtr-json data/replays/observabilidade-route-b.json --asn-lookup-mode offline
 ```
@@ -62,6 +65,7 @@ pip install -r requirements.txt
   - uma linha com `destino<TAB>/caminho/replay.json` para replay controlado
 - `--replay` e `--mtr-json` valem para um único destino explícito
 - `--dry-run` bloqueia toda escrita no Zabbix e grava `reconciliation_plan.json`
+- `--json` imprime no stdout um JSON canônico com resumo agregado, resultados por destino e caminhos dos artifacts
 
 ## Convenção final do mapa
 

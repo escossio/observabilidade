@@ -1,5 +1,11 @@
 # Handoff - MTR Hop Map
 
+## 2026-04-07 - JSON stdout canônico
+
+- A CLI ganhou `--json` para consumo automático.
+- O stdout JSON ficou separado do plano profundo em `reconciliation_plan.json`.
+- A validação cobriu destino único, lote, replay e dry-run, incluindo falha parcial em lote.
+
 ## O que foi construído
 
 Frente nova para transformar MTR com ASN em hosts e mapa Zabbix persistentes.

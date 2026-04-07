@@ -1,5 +1,12 @@
 # Status
 
+## 2026-04-07 - JSON stdout canônico implementado
+
+- A CLI ganhou `--json` para emissão de um contrato estável de stdout.
+- O JSON de stdout ficou separado do `reconciliation_plan.json` e do `report.md`.
+- A validação cobriu destino único, dry-run, lote com falha parcial e replay.
+- A execução dry-run seguiu sem escrita no Zabbix.
+
 ## 2026-04-07 - dry-run de reconciliação implementado
 
 - comportamento fechado:

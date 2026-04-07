@@ -1,5 +1,12 @@
 # Status
 
+## 2026-04-07 - JSON stdout canônico da frente MTR hop map
+
+- `--json` passou a emitir um contrato estável de stdout para automação.
+- O JSON de stdout foi separado do `reconciliation_plan.json` e do `report.md`.
+- A validação cobriu destino único, dry-run, lote com falha parcial e replay.
+- O dry-run continuou sem escrita no Zabbix durante a validação desta rodada.
+
 ## 2026-04-07 - dry-run da frente MTR hop map implementado
 
 - `--dry-run` agora planeja a reconciliação completa sem escrever no Zabbix

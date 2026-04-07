@@ -25,6 +25,7 @@ Transformar uma rota observada com `mtr --aslookup` em uma topologia persistente
 10. Falha em um destino não pode derrubar a execução dos demais destinos do lote.
 11. O `sysmap` do Zabbix 7.4 não tem tags nativas; a metadata operacional do mapa fica registrada pela automação.
 12. `--dry-run` deve bloquear toda escrita no Zabbix e produzir o plano completo de reconciliação.
+13. `--json` deve emitir um JSON canônico estável no stdout para automação.
 
 ## Política de nome
 
@@ -50,6 +51,18 @@ Esses campos ficam em `map_metadata.json` e no relatório agregado do run.
 - calcula host, selement, link e metadata que seriam alterados
 - grava `reconciliation_plan.json`
 - bloqueia qualquer método de escrita no cliente da API
+
+## Saída JSON
+
+- `--json` ativa a saída canônica em stdout
+- o JSON de stdout é o resumo consolidado da execução
+- o JSON salvo em `reconciliation_plan.json` continua sendo o plano técnico profundo por destino
+- `report.md` continua sendo o resumo humano
+- em lote, a saída JSON precisa explicitar sucesso, falha parcial e caminhos dos artifacts por destino
+- contrato mínimo do stdout:
+  - `run_id`, `mode`, `dry_run`, `started_at`, `finished_at`
+  - `summary` agregado com contadores
+  - `results[]` com `target`, `status`, `map`, `actions`, `counters`, `artifacts` e `error`
 
 ## Persistência
 

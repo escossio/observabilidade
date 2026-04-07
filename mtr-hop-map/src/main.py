@@ -119,11 +119,136 @@ def run_poc(
         "asn_summary": asn_summary,
         "map_name": reconcile_1.map_name,
         "sysmapid": reconcile_1.sysmapid,
+        "created_map": reconcile_1.created_map,
         "hostids": reconcile_1.hostids,
         "selementids": reconcile_1.selementids,
         "linkids": reconcile_1.linkids,
         "host_actions": reconcile_1.host_actions,
         "map_metadata": map_metadata,
+    }
+
+
+def _target_artifact_paths(target_dir: str) -> dict[str, str]:
+    path = Path(target_dir)
+    return {
+        "target_dir": str(path),
+        "report_md": str(path / "report.md"),
+        "execution_json": str(path / "execution.json"),
+        "reconciliation_plan_json": str(path / "reconciliation_plan.json") if (path / "reconciliation_plan.json").exists() else None,
+        "map_metadata_json": str(path / "map_metadata.json"),
+        "batch_failure_json": str(path / "error.json") if (path / "error.json").exists() else None,
+    }
+
+
+def _target_stdout_result(result: dict[str, Any], run_dir: str) -> dict[str, Any]:
+    artifacts = _target_artifact_paths(result["target_dir"])
+    return {
+        "target": result["target"],
+        "status": result["status"],
+        "dry_run": result["dry_run"],
+        "mode": result["mode"],
+        "map": (
+            {
+                "name": result["map_name"],
+                "sysmapid": result["sysmapid"],
+                "created": result.get("created_map", False),
+            }
+            if result["status"] == "ok"
+            else None
+        ),
+        "actions": {
+            "hosts": {
+                "reused": len([row for row in result.get("host_actions", []) if row["action"] in {"reused", "planned-reuse"}]),
+                "created": len([row for row in result.get("host_actions", []) if row["action"] in {"created", "planned-create"}]),
+                "updated": len([row for row in result.get("host_actions", []) if row["action"] in {"updated", "planned-update"}]),
+            },
+            "selements": {
+                "reused": len(result.get("selementids", [])),
+                "created": max(0, len(result.get("hostids", [])) - len(result.get("selementids", []))),
+                "detached": 0,
+            },
+            "links": {
+                "reused": len(result.get("linkids", [])),
+                "created": 0,
+                "detached": 0,
+            },
+            "metadata": result.get("map_metadata", {}),
+        },
+        "counters": {
+            "hop_count": result.get("hop_count", 0),
+            "host_count": len(result.get("hostids", [])),
+            "selement_count": len(result.get("selementids", [])),
+            "link_count": len(result.get("linkids", [])),
+        },
+        "artifacts": artifacts,
+        "error": None,
+    }
+
+
+def _failed_stdout_result(result: dict[str, Any], run_dir: str) -> dict[str, Any]:
+    artifacts = _target_artifact_paths(result["target_dir"])
+    return {
+        "target": result["target"],
+        "status": "failed",
+        "dry_run": result["dry_run"],
+        "mode": result["mode"],
+        "map": None,
+        "actions": {
+            "hosts": {"reused": 0, "created": 0, "updated": 0},
+            "selements": {"reused": 0, "created": 0, "detached": 0},
+            "links": {"reused": 0, "created": 0, "detached": 0},
+            "metadata": {},
+        },
+        "counters": {
+            "hop_count": 0,
+            "host_count": 0,
+            "selement_count": 0,
+            "link_count": 0,
+        },
+        "artifacts": artifacts,
+        "error": result.get("error"),
+    }
+
+
+def build_stdout_json(batch_result: dict[str, Any]) -> dict[str, Any]:
+    run_dir = batch_result["run_dir"]
+    results: list[dict[str, Any]] = []
+    for target_result in batch_result["targets"]:
+        if target_result["status"] == "ok":
+            results.append(_target_stdout_result(target_result, run_dir))
+        elif target_result["status"] == "error":
+            results.append(_failed_stdout_result(target_result, run_dir))
+        else:
+            results.append(target_result)
+
+    summary = {
+        "targets_total": batch_result["requested_targets"],
+        "targets_succeeded": batch_result["successful_targets"],
+        "targets_failed": batch_result["failed_targets"],
+        "maps_created": sum(1 for row in results if row.get("map") and row["status"] == "ok" and row["map"].get("created")),
+        "maps_updated": sum(1 for row in results if row.get("map") and row["status"] == "ok" and not row["map"].get("created")),
+        "hosts_reused": sum(row["actions"]["hosts"]["reused"] for row in results),
+        "hosts_created": sum(row["actions"]["hosts"]["created"] for row in results),
+        "writes_executed": 0 if batch_result.get("dry_run") else sum(1 for row in results if row["status"] == "ok"),
+    }
+    mode_set = {row["mode"] for row in results if row.get("mode")}
+    mode = "mixed" if len(mode_set) > 1 else (next(iter(mode_set)) if mode_set else "live")
+    started_at = batch_result.get("started_at")
+    finished_at = batch_result.get("finished_at")
+    return {
+        "run_id": batch_result["run_id"],
+        "mode": mode,
+        "dry_run": batch_result["dry_run"],
+        "started_at": started_at,
+        "finished_at": finished_at,
+        "summary": summary,
+        "results": results,
+        "artifacts": {
+            "run_dir": run_dir,
+            "batch_execution_json": str(Path(run_dir) / "batch_execution.json"),
+            "batch_summary_json": str(Path(run_dir) / "batch_summary.json"),
+            "report_md": str(Path(run_dir) / "report.md"),
+        },
     }
 
 
@@ -174,6 +299,7 @@ def run_batch(
     run_id = _new_run_id()
     run_root = ROOT_DIR / "data" / "runs" / run_id
     (run_root / "targets").mkdir(parents=True, exist_ok=True)
+    started_at = datetime.now().isoformat()
 
     target_results: list[dict[str, Any]] = []
     for index, (target, replay_path) in enumerate(specs, start=1):
@@ -215,6 +341,8 @@ def run_batch(
 
     batch_execution = {
         "run_id": run_id,
+        "started_at": started_at,
+        "finished_at": datetime.now().isoformat(),
         "requested_targets": len(specs),
         "processed_targets": len(target_results),
         "successful_targets": sum(1 for row in target_results if row["status"] == "ok"),
@@ -240,13 +368,15 @@ def main() -> None:
     parser.add_argument("--replay", required=False, help="Alias de --mtr-json para replay de um destino único")
     parser.add_argument("--mtr-json", required=False, help="Arquivo JSON de replay para um destino único")
     parser.add_argument("--dry-run", action="store_true", help="Planeja a reconciliação sem escrever no Zabbix")
+    parser.add_argument("--json", action="store_true", help="Emite um JSON canônico de saída para automação")
     parser.add_argument("--asn-lookup-mode", choices=["online", "offline"], required=False, help="Modo do enrichment ASN")
     parser.add_argument("--asn-cache-path", required=False, help="Caminho do cache local de ASN/empresa")
     args = parser.parse_args()
 
     specs = _collect_targets(args)
     result = run_batch(specs, asn_lookup_mode=args.asn_lookup_mode, asn_cache_path=args.asn_cache_path, dry_run=args.dry_run)
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    output = build_stdout_json(result) if args.json else result
+    print(json.dumps(output, ensure_ascii=False, indent=2))
     if result["failed_targets"]:
         raise SystemExit(1)
 
