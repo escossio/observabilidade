@@ -6,10 +6,13 @@
 - `sysmapid`: `2`
 - host principal: `agt01`
 - host adicional solto: `MikroTik RB3011`
+- host adicional solto: `note-leo`
 - estado atual do mapa:
   - AGT `selementid` `5`
   - RB3011 `selementid` `3`
+  - notebook `selementid` `6`
   - link `linkid` `3`
+  - notebook -> RB3011 `linkid` `4`
   - RB3011 tamanho: `170x170`
 
 ## Link AGT -> RB3011
@@ -41,6 +44,35 @@
   - a linha ficou visualmente mais grossa com `DRAWTYPE_BOLD_LINE`
   - este formato passa a ser o padrão visual para os próximos links
 
+## Link note-leo -> RB3011
+
+- `linkid`: `4`
+- origem: `note-leo / 10.45.0.10`
+- destino: `MikroTik RB3011`
+- tipo: `trigger`
+- cor OK: `00AA00`
+- label final:
+  - `Down {?last(/note-leo/net.if.in["wlp42s0"])}`
+  - `Up {?last(/note-leo/net.if.out["wlp42s0"])}`
+- `show_label`: `always`
+- `drawtype`: `2` (`DRAWTYPE_BOLD_LINE`)
+- item base do tráfego: `wlp42s0` do host `note-leo`
+- download: `Interface wlp42s0: Bits received` / `69831`
+- upload: `Interface wlp42s0: Bits sent` / `69846`
+- unidade: `bps`
+- gatilhos associados:
+  - `32621` - `Linux: Interface wlp42s0: Link down`
+  - `32566` - `RB3011 bridge down`
+  - `32567` - `RB3011 ether1 down`
+  - `32568` - `RB3011 pppoe-out1 down`
+- leitura operacional:
+  - o link replica o padrão visual usado em `AGT -> RB3011`
+  - o tráfego do notebook aparece pelo enlace `wlp42s0`
+  - a linha ficou mais grossa com `DRAWTYPE_BOLD_LINE`
+  - o label em duas linhas manteve a leitura limpa no frontend
+  - o notebook foi posicionado no canto superior esquerdo para evitar sobreposição com AGT e RB3011
+  - a validação no frontend autenticado mostrou os três hosts do mapa na sessão real do Chromium
+
 ## AGT
 
 - host Zabbix: `agt01`
@@ -60,6 +92,17 @@
 - tamanho atual no mapa: `170x170`
 - comportamento: elemento solto, sem ligação com o AGT
 - porte visual: ajustado para leitura real no mapa, mantendo a foto oficial em formato compacto
+
+## Notebook
+
+- host Zabbix: `note-leo`
+- `hostid`: `10779`
+- label: `note-leo / 10.45.0.10`
+- ícone: `Notebook_(96)`
+- `imageid`: `70`
+- tamanho atual no mapa: `170x170`
+- comportamento: elemento ligado ao host real do Zabbix
+- posição visual: `x=100`, `y=20`
 
 ## Navegação
 

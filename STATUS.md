@@ -1,5 +1,49 @@
 # Status
 
+## 2026-04-06 - notebook note-leo ligado ao RB3011 no mapa visual do Zabbix
+
+- Mapa alterado:
+  - `sysmapid`: `2`
+  - nome: `AGT - Visão Visual`
+- Novo elemento no mapa:
+  - host Zabbix: `note-leo`
+  - `hostid`: `10779`
+  - visible name: `note-leo / 10.45.0.10`
+  - ícone: `Notebook_(96)`
+  - `imageid`: `70`
+  - `selementid`: `6`
+  - posição visual: `x=100`, `y=20`, com porte `170x170`
+- Novo link:
+  - `linkid`: `4`
+  - direção visual: `note-leo / 10.45.0.10` -> `MikroTik RB3011`
+  - linha: `DRAWTYPE_BOLD_LINE` (`drawtype=2`)
+  - cor OK: `00AA00`
+  - label final:
+    - `Down {?last(/note-leo/net.if.in["wlp42s0"])}`
+    - `Up {?last(/note-leo/net.if.out["wlp42s0"])}`
+  - label multilinha: funcionou
+  - `show_label`: `always`
+- Gatilhos associados ao novo link:
+  - `32621` - `Linux: Interface wlp42s0: Link down`
+  - `32566` - `RB3011 bridge down`
+  - `32567` - `RB3011 ether1 down`
+  - `32568` - `RB3011 pppoe-out1 down`
+- Itens usados para tráfego:
+  - download: `69831` - `Interface wlp42s0: Bits received` (`net.if.in["wlp42s0"]`)
+  - upload: `69846` - `Interface wlp42s0: Bits sent` (`net.if.out["wlp42s0"]`)
+- Validação:
+  - `map.update` respondeu com sucesso para o novo elemento
+  - `map.update` respondeu com sucesso para o novo link
+  - `map.get` confirmou o `selementid 6` do notebook e o `linkid 4`
+  - o frontend autenticado do Zabbix, carregado em Chromium com sessão real, exibiu o mapa com `note-leo / 10.45.0.10`, `MikroTik RB3011` e `AGT / 10.45.0.3`
+  - o padrão visual do link anterior foi replicado para o notebook
+  - o AGT e o RB3011 permaneceram intactos
+  - não houve alteração no Grafana
+- Limitação:
+  - o notebook ainda não tem triggers próprios de discovery de interface materializados além do `wlp42s0 Link down`, então o link reutiliza os gatilhos reais disponíveis no host e na borda
+- Artefato atualizado:
+  - `artifacts/zabbix_agt_visual_map.md`
+
 ## 2026-04-06 - notebook note-leo onboardado no Zabbix
 
 - Identidade real validada no notebook:
