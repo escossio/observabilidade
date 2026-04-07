@@ -1,0 +1,16 @@
+ip,asn,company,hostname,observations,sample_count,path_count,last_hop_count,last_internal_count,edge_count,primary_class,confidence,source_type,evidence
+10.45.0.1,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+100.65.77.1,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.113,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.181,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.182,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.221,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.42,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.130.122,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.133.150,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.134.242,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.135.209,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+187.19.161.199,AS28126,BRISANET SERVICOS DE TELECOMUNICACOES S.A,,22,11,11,0,22,22,edge_brisanet_candidate,high,observed,asn=AS28126 | company=BRISANET SERVICOS DE TELECOMUNICACOES S.A | edge_count=22 | last_internal_count=22
+104.21.4.50,AS13335,"Cloudflare, Inc.",,10,6,6,10,0,0,cdn_candidate,high,observed,"asn=AS13335 | company=Cloudflare, Inc."
+172.67.131.172,AS13335,"Cloudflare, Inc.",,10,5,5,10,0,0,cdn_candidate,high,observed,"asn=AS13335 | company=Cloudflare, Inc."
+1.0.0.1,AS13335,"Cloudflare, Inc.",,2,2,2,2,0,0,dns_infra_candidate,high,observed,"known_dns_ip=1.0.0.1 | asn=AS13335 | company=Cloudflare, Inc."

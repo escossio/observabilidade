@@ -1,5 +1,28 @@
 # Status
 
+## 2026-04-07 - camada de agregacao de traces adicionada
+
+- foi criada a frente `mtr-hop-map/aggregate` para correlacionar varios runs já coletados
+- o inventário agregado já distingue:
+  - hops recorrentes
+  - candidatos a borda Brisanet
+  - candidatos a CDN
+  - candidatos a IX/PTT
+  - watchlist explícita para `177.37.220.17` e `177.37.220.18`
+- saídas geradas na rodada:
+  - `aggregate_summary.json`
+  - `classification_summary.json`
+  - `hops_inventory.csv`
+  - `edge_candidates.csv`
+  - `report.md`
+- validação real:
+- corpus lido com `19` runs e `22` targets
+  - `15` hops únicos
+  - `3` paths únicos
+  - borda Brisanet mais forte: `187.19.161.199`
+  - não houve candidato forte de IX/PTT no corpus atual
+  - os IPs `177.37.220.17` e `177.37.220.18` não apareceram nos traces e ficaram como watchlist ausente
+
 ## 2026-04-07 - JSON stdout canônico da frente MTR hop map
 
 - `--json` passou a emitir um contrato estável de stdout para automação.

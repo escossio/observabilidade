@@ -1,5 +1,37 @@
 # Status
 
+## 2026-04-07 - camada de agregacao de traces criada
+
+- nova camada `aggregate/` para ler os runs já gerados e montar uma visão agregada de recorrência e fronteira
+- heurísticas iniciais implementadas:
+  - `internal_brisanet`
+  - `edge_brisanet_candidate`
+  - `ix_ptt_candidate`
+  - `cdn_candidate`
+  - `dns_infra_candidate`
+  - `destination`
+  - `unknown`
+- leitura explícita para:
+  - `177.37.220.17`
+  - `177.37.220.18`
+- saídas estruturadas:
+  - `aggregate_summary.json`
+  - `classification_summary.json`
+  - `hops_inventory.csv`
+  - `edge_candidates.csv`
+  - `report.md`
+- corpus agregado nesta rodada:
+  - `19` runs
+  - `22` targets
+  - `15` hops únicos
+  - `3` paths únicos
+- principal candidato a borda Brisanet:
+  - `187.19.161.199`
+- IX/PTT:
+  - nenhum candidato forte no corpus atual
+- DNS watchlist:
+  - os IPs `177.37.220.17` e `177.37.220.18` não apareceram nos traces analisados
+
 ## 2026-04-07 - JSON stdout canônico implementado
 
 - A CLI ganhou `--json` para emissão de um contrato estável de stdout.

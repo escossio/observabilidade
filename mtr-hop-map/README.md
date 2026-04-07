@@ -24,7 +24,7 @@ Frente para transformar uma rota observada com `mtr --aslookup` em objetos persi
 - layout do mapa: linear horizontal
 - execução em lote: tolerante a falha por destino
 - `--dry-run`: calcula o plano completo sem escrever no Zabbix
-- `--json`: emite um JSON canônico consolidado da execução no stdout
+- `--json`: emite contrato canônico de stdout para automação
 - metadata de mapa: `source`, `target`, `target_slug`, `mode`, `last_trace`
 - limitação do Zabbix: `sysmap` não tem tags nativas; a metadata fica em `map_metadata.json` e no relatório agregado
 
@@ -36,6 +36,7 @@ Frente para transformar uma rota observada com `mtr --aslookup` em objetos persi
 - `data/runs/`: evidências de cada execução
 - `docs/`: contrato e handoff da frente
 - `data/runs/<run_id>/targets/<ordem>-<target_slug>/`: artefatos por destino dentro do lote
+- `aggregate/`: camada de correlação e classificação sobre os runs já coletados
 
 ## Uso
 
@@ -55,6 +56,9 @@ pip install -r requirements.txt
 ./scripts/run_poc.sh --json --dry-run --targets-file data/replays/replay-suite-targets.txt
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br-replay-validation --mtr-json data/replays/observabilidade-route-a.json
 ./scripts/run_poc.sh --target observabilidade.escossio.dev.br-fallback-validation --mtr-json data/replays/observabilidade-route-b.json --asn-lookup-mode offline
+python3 -m aggregate.main
+python3 -m aggregate.main --runs-root data/runs
+python3 -m aggregate.main --output-dir aggregate/data/runs/demo
 ```
 
 ## Formato de entrada para lote
@@ -99,6 +103,17 @@ Cada rodada cria uma pasta em `data/runs/<run_id>/` com:
   - `reconciliation_plan.json` quando `--dry-run` estiver ativo
   - `report.md`
 
+## Agregação de traces
+
+A camada de agregação em `aggregate/` lê os runs já produzidos pela CLI para montar:
+
+- inventário de hops por IP
+- recorrência de caminhos
+- candidatos a borda Brisanet
+- candidatos a IX/PTT
+- candidatos a CDN
+- leitura dedicada para `177.37.220.17` e `177.37.220.18`
+
 ## Validado nesta rodada
 
 - idempotência com rota estável
@@ -108,9 +123,14 @@ Cada rodada cria uma pasta em `data/runs/<run_id>/` com:
 - execução live com múltiplos destinos e falha parcial sem derrubar o lote
 - replay em lote com três destinos
 - dry-run com destino único, replay e lote com falha parcial
+- stdout JSON canônico com single, replay, dry-run e lote com falha parcial
 
 ## Limites atuais
 
 - hosts antigos não são apagados automaticamente quando saem de uma rota
 - o replay usa snapshots locais, não agenda contínua
 - `sysmap` não oferece tags nativas; a correlação operacional do mapa fica nos artefatos do run
+- a classificação da camada agregada é heurística e traz confiança explícita
+- o corpus atual não mostra os IPs `177.37.220.17` e `177.37.220.18`; eles ficam como watchlist ausente até aparecerem em novas coletas
+- `IX/PTT` e `CDN` ficam como candidatos, não como verdade final
+
