@@ -1,4 +1,4 @@
-# Handoff - MTR Hop Map POC
+# Handoff - MTR Hop Map
 
 ## O que foi construído
 
@@ -11,8 +11,9 @@ Frente nova para transformar MTR com ASN em hosts e mapa Zabbix persistentes.
 - lookup ASN/empresa com cache local e fallback
 - criação/reuso de grupo, template, hosts e mapa
 - mapa linear por destino
+- execução em lote com tolerância a falha por destino
 - replay controlado de snapshots MTR
-- relatório local por execução
+- relatório local agregado por execução e detalhado por destino
 - validação de idempotência
 
 ## Decisões fechadas na prática
@@ -27,6 +28,14 @@ Frente nova para transformar MTR com ASN em hosts e mapa Zabbix persistentes.
 - falha de `whois`: usar cache local e depois hint ASN do MTR
 - layout: horizontal linear, com um nó por hop real
 - rótulo de nó: somente IP, ASN e empresa
+- entrada de lote:
+  - `--target` repetido
+  - `--targets-file` com `destino` ou `destino<TAB>replay.json`
+- metadata operacional do mapa:
+  - `source`, `target`, `target_slug`, `mode`, `last_trace`
+  - Zabbix 7.4 sem tags nativas de `sysmap`, então a metadata fica nos artefatos da automação
+- falha de destino invalido:
+  - retorna erro operacional legível sem interromper os outros destinos do lote
 
 ## Evidência real
 
@@ -43,7 +52,22 @@ Frente nova para transformar MTR com ASN em hosts e mapa Zabbix persistentes.
   - `data/runs/20260407-001546/`
   - `data/runs/20260407-001556/`
   - `data/runs/20260407-001611/`
+- generalização live validada:
+  - `data/runs/20260407-003427/`
+  - mapas:
+    - `MTR ASN - observabilidade.escossio.dev.br` -> `sysmapid 5`
+    - `MTR ASN - one.one.one.one` -> `sysmapid 8`
+  - falha isolada:
+    - `invalid.invalid` falhou sem criar mapa
+  - hostids compartilhados entre os mapas `5` e `8`:
+    - `10780` até `10791`
+- replay em lote validado:
+  - `data/runs/20260407-003511/`
+  - suite:
+    - `data/replays/replay-suite-targets.txt`
+  - mapa novo:
+    - `MTR ASN - one.one.one.one-replay-validation` -> `sysmapid 9`
 
 ## Próximo passo
 
-Generalizar a frente para múltiplos destinos depois de fechar a POC de um único alvo.
+Adicionar suíte mais ampla de churn de rota e, se fizer sentido, uma camada de agenda/orquestração leve acima desta CLI.

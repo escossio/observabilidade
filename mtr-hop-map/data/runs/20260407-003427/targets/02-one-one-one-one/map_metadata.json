@@ -1,0 +1,10 @@
+{
+  "source": "mtr-hop-map",
+  "target": "one.one.one.one",
+  "target_slug": "one-one-one-one",
+  "mode": "live",
+  "last_trace": "20260407-003427",
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - one.one.one.one",
+  "sysmapid": "8"
+}

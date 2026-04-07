@@ -1,0 +1,3 @@
+observabilidade.escossio.dev.br-replay-validation	/srv/observabilidade-zabbix/mtr-hop-map/data/replays/observabilidade-route-a.json
+observabilidade.escossio.dev.br-fallback-validation	/srv/observabilidade-zabbix/mtr-hop-map/data/replays/observabilidade-route-b.json
+one.one.one.one-replay-validation	/srv/observabilidade-zabbix/mtr-hop-map/data/replays/one-one-one-one-route-a.json

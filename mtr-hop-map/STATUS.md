@@ -1,5 +1,37 @@
 # Status
 
+## 2026-04-07 - generalizacao controlada para multiplos destinos
+
+- decisao de execucao fechada:
+  - destino unico: `--target <destino>`
+  - lote simples: repetir `--target`
+  - lote por arquivo: `--targets-file <arquivo>`
+  - replay/teste: `--target <destino> --replay <json>` ou linha `destino<TAB>replay.json` no arquivo
+- convencao final de mapa:
+  - nome canonico: `MTR ASN - <destino>`
+  - metadata operacional: `source`, `target`, `target_slug`, `mode`, `last_trace`
+  - Zabbix 7.4 nao expõe tags nativas em `sysmap`; por isso a metadata do mapa fica versionada em `map_metadata.json` e no resumo agregado do run
+- estrutura de artefatos atual:
+  - run agregado: `data/runs/<run_id>/`
+  - por destino: `data/runs/<run_id>/targets/<ordem>-<target_slug>/`
+  - relatorio agregado: `data/runs/<run_id>/report.md`
+- validacao live desta rodada:
+  - run: `data/runs/20260407-003427/`
+  - destinos: `observabilidade.escossio.dev.br`, `one.one.one.one`, `invalid.invalid`
+  - mapas confirmados:
+    - `MTR ASN - observabilidade.escossio.dev.br` -> `sysmapid 5`
+    - `MTR ASN - one.one.one.one` -> `sysmapid 8`
+    - `invalid.invalid` nao criou mapa
+  - lote tolerante a falha: um destino falhou sem derrubar os outros dois
+  - reuso global por IP confirmado entre os mapas `5` e `8` com hostids compartilhados `10780..10791`
+- replay automatizado ampliado:
+  - fixture nova: `data/replays/one-one-one-one-route-a.json`
+  - suite nova: `data/replays/replay-suite-targets.txt`
+  - run: `data/runs/20260407-003511/`
+  - mapa novo de replay: `MTR ASN - one.one.one.one-replay-validation` -> `sysmapid 9`
+- endurecimento adicional:
+  - `mtr_runner` agora devolve erro operacional legivel quando o destino e invalido ou o JSON do `mtr` vem quebrado
+
 ## 2026-04-07 - identidade global por IP, replay de rota e fallback ASN validados
 
 - decisao de arquitetura fechada:

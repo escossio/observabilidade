@@ -1,0 +1,119 @@
+[
+  {
+    "order": 1,
+    "ip": "10.45.0.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "10.45.0.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 2,
+    "ip": "100.65.77.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "100.65.77.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 3,
+    "ip": "172.16.128.221",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.221\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 4,
+    "ip": "172.16.133.150",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.133.150\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 5,
+    "ip": "172.16.128.113",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.113\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 6,
+    "ip": "172.16.128.181",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.181\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 7,
+    "ip": "172.16.128.182",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.182\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 8,
+    "ip": "172.16.130.122",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.130.122\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 9,
+    "ip": "172.16.134.242",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.134.242\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 10,
+    "ip": "172.16.135.209",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.135.209\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 11,
+    "ip": "172.16.128.42",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.42\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 12,
+    "ip": "187.19.161.199",
+    "asn": "AS28126",
+    "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+    "category": "public",
+    "label": "187.19.161.199\nAS28126\nBRISANET SERVICOS DE TELECOMUNICACOES S.A",
+    "source": "cache-ip"
+  },
+  {
+    "order": 13,
+    "ip": "1.0.0.1",
+    "asn": "AS13335",
+    "company": "Cloudflare, Inc.",
+    "category": "public",
+    "label": "1.0.0.1\nAS13335\nCloudflare, Inc.",
+    "source": "cache-ip"
+  }
+]

@@ -1,4 +1,4 @@
-# Contract - MTR Hop Map POC
+# Contract - MTR Hop Map
 
 ## Objetivo
 
@@ -9,6 +9,7 @@ Transformar uma rota observada com `mtr --aslookup` em uma topologia persistente
 - um template ICMP padrão para os hops
 - um mapa linear com ícone de nuvem em cada hop
 - rótulos mínimos: IP, ASN e empresa
+- execução única ou em lote sem duplicar lógica
 
 ## Regras
 
@@ -21,6 +22,8 @@ Transformar uma rota observada com `mtr --aslookup` em uma topologia persistente
 7. ASN ausente vira `AS private` e `Private / local network`.
 8. Falha no `whois` não derruba a execução; o fallback usa cache local e depois o hint ASN do MTR.
 9. O layout é linear horizontal.
+10. Falha em um destino não pode derrubar a execução dos demais destinos do lote.
+11. O `sysmap` do Zabbix 7.4 não tem tags nativas; a metadata operacional do mapa fica registrada pela automação.
 
 ## Política de nome
 
@@ -29,8 +32,19 @@ Transformar uma rota observada com `mtr --aslookup` em uma topologia persistente
 - grupo: `Transit / Hop`
 - template: `ICMP Ping`
 
+## Metadata operacional do mapa
+
+- `source=mtr-hop-map`
+- `target=<destino>`
+- `target_slug=<slug>`
+- `mode=live|replay`
+- `last_trace=<run_id>`
+
+Esses campos ficam em `map_metadata.json` e no relatório agregado do run.
+
 ## Persistência
 
-- a evidência local de cada rodada fica em `data/runs/<timestamp>/`
+- a evidência local de cada rodada fica em `data/runs/<run_id>/`
+- cada destino do lote ganha uma subpasta em `data/runs/<run_id>/targets/<ordem>-<target_slug>/`
 - o repositório versiona código, contrato, handoff e evidência textual
 - segredos ficam fora do git e são lidos do ambiente provisionado

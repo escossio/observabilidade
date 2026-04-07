@@ -1,0 +1,10 @@
+{
+  "source": "mtr-hop-map",
+  "target": "observabilidade.escossio.dev.br-replay-validation",
+  "target_slug": "observabilidade-escossio-dev-br-replay-validation",
+  "mode": "replay",
+  "last_trace": "20260407-003511",
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - observabilidade.escossio.dev.br-replay-validation",
+  "sysmapid": "6"
+}

@@ -1,5 +1,28 @@
 # Status
 
+## 2026-04-07 - frente MTR hop map generalizada para multiplos destinos
+
+- generalizacao implementada:
+  - a CLI agora aceita `--target` repetido para lote simples
+  - a CLI agora aceita `--targets-file` com um destino por linha ou `destino<TAB>replay.json`
+  - a frente agora processa multiplos destinos dentro do mesmo `run_id`
+  - cada destino grava artefatos em `mtr-hop-map/data/runs/<run_id>/targets/<ordem>-<target_slug>/`
+- convencao de mapa consolidada:
+  - nome canonico continua `MTR ASN - <destino>`
+  - metadata operacional do mapa foi padronizada em `source`, `target`, `target_slug`, `mode` e `last_trace`
+  - o `sysmap` do Zabbix 7.4 nao expõe tags nativas de mapa; essa metadata ficou formalizada em `map_metadata.json` e no relatorio agregado
+- validacao real desta rodada:
+  - lote live executado com `observabilidade.escossio.dev.br`, `one.one.one.one` e `invalid.invalid`
+  - `observabilidade.escossio.dev.br` reutilizou o mapa canonico `sysmapid 5`
+  - `one.one.one.one` criou/atualizou o mapa `sysmapid 8`
+  - `invalid.invalid` falhou sem interromper os demais destinos e sem criar mapa
+  - reuso global por IP entre mapas foi confirmado com intersecao real dos hostids `10780..10791`
+- cobertura de replay ampliada:
+  - fixture nova: `mtr-hop-map/data/replays/one-one-one-one-route-a.json`
+  - suite nova: `mtr-hop-map/data/replays/replay-suite-targets.txt`
+  - replay em lote validado no run `mtr-hop-map/data/runs/20260407-003511/`
+  - mapa de replay novo: `MTR ASN - one.one.one.one-replay-validation` / `sysmapid 9`
+
 ## 2026-04-07 - endurecimento da frente MTR hop map
 
 - decisao de arquitetura fechada:
