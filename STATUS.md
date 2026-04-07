@@ -1,5 +1,56 @@
 # Status
 
+## 2026-04-06 - RB3011 adicionada como segundo elemento solto no mapa AGT
+
+- Mapa alterado:
+  - `sysmapid`: `2`
+  - nome: `AGT - Visão Visual`
+- Novo elemento adicionado:
+  - host Zabbix: `MikroTik RB3011`
+  - `hostid`: `10778`
+  - label: `MikroTik RB3011`
+  - ícone: `Router_(96)` (`imageid` `126`)
+  - posição: elemento solto, sem ligação com o AGT
+  - o elemento ficou com porte visual equivalente ao do AGT pela mesma família/tamanho de ícone
+- Navegação:
+  - manteve-se o comportamento de host element com o mesmo destino operacional do mapa
+  - o link do mapa continua apontando para `zabbix.php?action=host.dashboard.view&hostid={HOST.ID}`
+- Validação:
+  - `map.update` respondeu com sucesso
+  - `map.get` confirmou os dois elementos no mapa
+  - o elemento do AGT permaneceu intacto
+  - não houve alteração no Grafana
+- Artefatos:
+  - `artifacts/zabbix_agt_visual_map.md`
+
+## 2026-04-06 - mapa visual do host AGT criado no Zabbix
+
+- Mapa criado no runtime do Zabbix:
+  - `sysmapid`: `2`
+  - nome: `AGT - Visão Visual`
+  - dimensão: `860x420`
+- Host ligado ao mapa:
+  - host: `agt01`
+  - `hostid`: `10776`
+  - IP/interface observada: `10.45.0.3` / `127.0.0.1:10050`
+  - grupo: `Linux servers`
+  - template vinculado: `Linux by Zabbix agent`
+- Elemento visual:
+  - tipo: host element
+  - label: `AGT / 10.45.0.3`
+  - ícone: `Server_(96)` (`imageid` `151`)
+  - o elemento ficou ligado ao host real do Zabbix
+- Navegação escolhida:
+  - URL do elemento: `zabbix.php?action=host.dashboard.view&hostid={HOST.ID}`
+  - decisão: usar o dashboard nativo do host como entrada operacional mais útil
+  - motivo: a consulta ao host mostrou dashboards disponíveis (`System performance`, `Network interfaces`, `Filesystems`)
+- Validação:
+  - `map.create` respondeu com sucesso
+  - `map.get` confirmou o elemento do host e a URL associada
+  - não houve alteração no Grafana
+- Artefato novo:
+  - `artifacts/zabbix_agt_visual_map_created.md`
+
 ## 2026-04-06 - árvore causal do Grafana saiu de SVG inline para embed estático
 
 - Causa raiz confirmada:
