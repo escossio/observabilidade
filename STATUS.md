@@ -1,5 +1,39 @@
 # Status
 
+## 2026-04-06 - notebook note-leo onboardado no Zabbix
+
+- Identidade real validada no notebook:
+  - hostname: `note-leo`
+  - FQDN: `note-leo.escossio.dev.br`
+  - sistema: `Linux note-leo 6.12.74+deb12-amd64`
+- Acesso e agent:
+  - acesso SSH como `root` funcionou com a senha informada
+  - `zabbix-agent2` estava `active` e `enabled`
+  - a porta `10050/tcp` estava bloqueada pelo `firewalld` e foi liberada apenas para `10.45.0.3`
+- Validação do agent:
+  - `agent.ping` retornou `1`
+  - `system.hostname` retornou `note-leo`
+  - `system.uname` retornou a string do Debian 12 / kernel 6.12
+- Cadastro no Zabbix:
+  - host: `note-leo`
+  - visible name: `note-leo / 10.45.0.10`
+  - `hostid`: `10779`
+  - grupo: `Linux servers` (`groupid 2`)
+  - template vinculado: `Linux by Zabbix agent` (`templateid 10001`)
+  - interface agent: `10.45.0.10:10050`
+- Estado da coleta:
+  - o host já aparece como `available=1` na interface agent
+  - métricas base do template já começaram a preencher `latest data`
+  - a regra `net.if.discovery` existe no template e está em `1h`
+  - os prototypes de tráfego `net.if.in["{#IFNAME}"]` e `net.if.out["{#IFNAME}"]` estão presentes
+  - no agent, `net.if.discovery` retornou `wlp42s0` entre as interfaces
+  - no agent, `net.if.in["wlp42s0"]` e `net.if.out["wlp42s0"]` retornaram valores reais
+  - a materialização dos itens de rede no Zabbix depende do próximo ciclo de discovery
+- Limitação registrada:
+  - a coleta de rede ficou habilitada e validada no agent, mas ainda depende da janela de descoberta de `1h` do template para aparecer como itens derivados no Zabbix
+- Artefato criado:
+  - `artifacts/notebook_10.45.0.10_zabbix_onboarding.md`
+
 ## 2026-04-06 - RB3011 reduzida um pouco no mapa AGT do Zabbix
 
 - Ajuste aplicado:
