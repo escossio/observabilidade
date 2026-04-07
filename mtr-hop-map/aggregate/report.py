@@ -23,6 +23,16 @@ def write_outputs(output_dir: Path, aggregate: dict[str, Any]) -> None:
     (output_dir / "report.md").write_text(_render_report(aggregate))
 
 
+def write_promotion_outputs(output_dir: Path, promotion: dict[str, Any], zabbix_snapshot: dict[str, Any] | None = None) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "promoted_nodes.json").write_text(json.dumps(promotion["promoted_nodes"], indent=2, ensure_ascii=False))
+    (output_dir / "promoted_edges.json").write_text(json.dumps(promotion["promoted_edges"], indent=2, ensure_ascii=False))
+    (output_dir / "backbone_map_plan.json").write_text(json.dumps(promotion, indent=2, ensure_ascii=False))
+    if zabbix_snapshot is not None:
+        (output_dir / "zabbix_map_snapshot.json").write_text(json.dumps(zabbix_snapshot, indent=2, ensure_ascii=False))
+    (output_dir / "report.md").write_text(_render_promotion_report(promotion, zabbix_snapshot))
+
+
 def _write_hops_inventory(path: Path, inventory: list[dict[str, Any]]) -> None:
     fieldnames = [
         "ip",
@@ -69,6 +79,86 @@ def _write_edge_candidates(path: Path, inventory: list[dict[str, Any]]) -> None:
         path,
         [row for row in inventory if row["classification"]["primary_class"] == "edge_brisanet_candidate" or row["edge_count"] > 0],
     )
+
+
+def _render_promotion_report(promotion: dict[str, Any], zabbix_snapshot: dict[str, Any] | None) -> str:
+    backbone = promotion["promoted_nodes"]["backbone_observed"]
+    candidates = promotion["promoted_nodes"]["candidate_nodes"]
+    watchlist = promotion["promoted_nodes"]["watchlist_nodes"]
+    backbone_edges = promotion["promoted_edges"]["backbone_observed"]
+    candidate_edges = promotion["promoted_edges"]["candidate_edges"]
+    lines = [
+        "# MTR Hop Map - Promoção Estrutural",
+        "",
+        "## Critérios",
+        "",
+        f"- nó backbone observado: runs >= {promotion['meta']['rules']['node']['min_runs']}, targets >= {promotion['meta']['rules']['node']['min_targets']}, recurrence >= {promotion['meta']['rules']['node']['min_ratio']}",
+        f"- aresta canônica: runs >= {promotion['meta']['rules']['edge']['min_runs']}, targets >= {promotion['meta']['rules']['edge']['min_targets']}, estabilidade >= {promotion['meta']['rules']['edge']['min_ratio']}",
+        "",
+        "## Backbone observado",
+        "",
+    ]
+    for node in backbone[:20]:
+        lines.append(f"- `{node['ip']}` - runs `{node['run_count']}` - targets `{node['target_count']}` - confidence `{node['confidence']}`")
+    lines += [
+        "",
+        "## Borda candidata",
+        "",
+    ]
+    for node in [node for node in candidates if node["role"] == "edge_brisanet_candidate"][:10]:
+        lines.append(
+            f"- `{node['ip']}` - edge `{node['edge_count']}` - runs `{node['run_count']}` - confidence `{node['confidence']}`"
+        )
+    lines += [
+        "",
+        "## Saídas CDN",
+        "",
+    ]
+    for node in [node for node in candidates if node["role"] == "cdn_candidate"][:10]:
+        lines.append(f"- `{node['ip']}` - `{node['company']}` - confidence `{node['confidence']}`")
+    lines += [
+        "",
+        "## Watchlist DNS",
+        "",
+    ]
+    if watchlist:
+        for node in watchlist:
+            lines.append(f"- `{node['ip']}` - confidence `{node['confidence']}`")
+    else:
+        lines.append("- nenhum nó DNS observável no corpus atual")
+    lines += [
+        "",
+        "## Arestas promovidas",
+        "",
+    ]
+    for edge in backbone_edges[:20]:
+        lines.append(f"- `{edge['source']} -> {edge['target']}` - backbone observado - confidence `{edge['confidence']}`")
+    for edge in candidate_edges[:20]:
+        lines.append(f"- `{edge['source']} -> {edge['target']}` - `{edge['role']}` - confidence `{edge['confidence']}`")
+    if zabbix_snapshot:
+        lines += [
+            "",
+            "## Zabbix",
+            "",
+            f"- sysmapid: `{zabbix_snapshot['sysmapid']}`",
+            f"- elementos: `{zabbix_snapshot['selement_count']}`",
+            f"- links: `{zabbix_snapshot['link_count']}`",
+            f"- mapa: `{zabbix_snapshot['map_name']}`",
+        ]
+    lines += [
+        "",
+        "## Watchlist ausente do corpus",
+        "",
+        "- `177.37.220.17`",
+        "- `177.37.220.18`",
+        "",
+        "## Distinção de camadas",
+        "",
+        "- backbone observado: nós e arestas com recorrência alta e estável",
+        "- candidatos: nós/arestas com evidência forte mas ainda heurística",
+        "- watchlist: itens observáveis ou ausentes que precisam de monitoramento separado",
+    ]
+    return "\n".join(lines) + "\n"
 
 
 def _render_report(aggregate: dict[str, Any]) -> str:

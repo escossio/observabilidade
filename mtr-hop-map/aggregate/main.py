@@ -9,7 +9,9 @@ from typing import Any
 
 from .graph_build import build_aggregate
 from .loader import load_samples
-from .report import write_outputs
+from .promote import promote_structure
+from .report import write_outputs, write_promotion_outputs
+from .zabbix_publish import build_backbone_plan, publish_backbone_map
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -138,14 +140,23 @@ def main() -> None:
     parser.add_argument("--runs-root", default=str(DEFAULT_RUNS_ROOT), help="Root dos runs do mtr-hop-map")
     parser.add_argument("--output-dir", help="Diretório de saída da agregação")
     parser.add_argument("--limit", type=int, default=15, help="Limite de linhas nos rankings principais")
+    parser.add_argument("--publish-zabbix", action="store_true", help="Publica o mapa agregado no Zabbix")
     args = parser.parse_args()
 
     runs_root = Path(args.runs_root)
     samples = load_samples(runs_root)
     aggregate = build_aggregate(samples)
+    aggregate["promote"] = promote_structure(aggregate)
     output_dir = Path(args.output_dir) if args.output_dir else DEFAULT_OUTPUT_ROOT / _now_run_id()
     output = build_output(samples, aggregate, output_dir)
     write_outputs(output_dir, output)
+    if args.publish_zabbix:
+        backbone_plan = build_backbone_plan(aggregate)
+        zabbix_snapshot = publish_backbone_map(backbone_plan)
+        write_promotion_outputs(output_dir, backbone_plan, zabbix_snapshot)
+    else:
+        backbone_plan = build_backbone_plan(aggregate)
+        write_promotion_outputs(output_dir, backbone_plan, None)
     print(json.dumps(output["summary"], indent=2, ensure_ascii=False))
 
 

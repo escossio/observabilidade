@@ -38,6 +38,7 @@ def build_aggregate(samples: list[TraceSample]) -> dict[str, Any]:
         "sample_targets": set(),
         "sample_runs": set(),
         "sample_count": 0,
+        "run_count": 0,
         "path_count": 0,
         "last_hop_count": 0,
         "last_internal_count": 0,
@@ -69,6 +70,7 @@ def build_aggregate(samples: list[TraceSample]) -> dict[str, Any]:
             node["sample_targets"].add(sample.target)
             node["sample_runs"].add(sample.run_id)
             node["sample_count"] += 1
+            node["run_count"] = len(node["sample_runs"])
             node["asns"][str(hop.get("asn", ""))] += 1
             node["companies"][str(hop.get("company", ""))] += 1
             node["hostnames"][str(hop.get("hostname", ""))] += 1
@@ -91,21 +93,30 @@ def build_aggregate(samples: list[TraceSample]) -> dict[str, Any]:
                 edge_counter[str(penultimate["ip"])] += 1
 
     inventory: list[dict[str, Any]] = []
+    total_runs = len({sample.run_id for sample in samples}) or 1
     for ip, node in nodes.items():
         asn = node["asns"].most_common(1)[0][0] if node["asns"] else "AS???"
         company = node["companies"].most_common(1)[0][0] if node["companies"] else "Unknown"
         hostname = node["hostnames"].most_common(1)[0][0] if node["hostnames"] else ""
+        run_count = len(node["sample_runs"])
+        target_count = len(node["sample_targets"])
+        recurrence_ratio = run_count / total_runs
+        edge_stability_ratio = node["edge_count"] / run_count if run_count else 0.0
         record = {
             "ip": ip,
             "asn": asn,
             "company": company,
             "hostname": hostname,
             "observations": node["observations"],
-            "sample_count": len(node["sample_targets"]),
+            "sample_count": target_count,
+            "target_count": target_count,
+            "run_count": run_count,
             "path_count": len({sample.target for sample in samples if ip in [hop.get("ip") for hop in sample.hops]}),
             "last_hop_count": node["last_hop_count"],
             "last_internal_count": node["last_internal_count"],
             "edge_count": node["edge_count"],
+            "recurrence_ratio": recurrence_ratio,
+            "edge_stability_ratio": edge_stability_ratio,
             "transitions_from": dict(node["transitions_from"]),
             "transitions_to": dict(node["transitions_to"]),
         }
@@ -165,4 +176,3 @@ def build_aggregate(samples: list[TraceSample]) -> dict[str, Any]:
         "ix_rankings": ix_rankings,
         "dns_rankings": dns_rankings,
     }
-

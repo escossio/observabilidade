@@ -1,0 +1,649 @@
+{
+  "map_name": "MTR Backbone - Brisanet Observed",
+  "canonical_path": [
+    "10.45.0.1",
+    "100.65.77.1",
+    "172.16.128.221",
+    "172.16.133.150",
+    "172.16.128.113",
+    "172.16.128.181",
+    "172.16.128.182",
+    "172.16.130.122",
+    "172.16.134.242",
+    "172.16.135.209",
+    "172.16.128.42",
+    "187.19.161.199",
+    "104.21.4.50"
+  ],
+  "promoted_nodes": {
+    "backbone_observed": [
+      {
+        "ip": "10.45.0.1",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "10.45.0.1\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "100.65.77.1",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "100.65.77.1\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.128.221",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.128.221\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.133.150",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.133.150\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.128.113",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.128.113\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.128.181",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.128.181\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.128.182",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.128.182\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.130.122",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.130.122\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.134.242",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.134.242\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.135.209",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.135.209\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.16.128.42",
+        "role": "backbone_observed",
+        "class_name": "internal_brisanet",
+        "label": "172.16.128.42\nbackbone observed\nruns 19/11",
+        "company": "Private / local network",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 0,
+        "last_internal_count": 0
+      }
+    ],
+    "candidate_nodes": [
+      {
+        "ip": "187.19.161.199",
+        "role": "edge_brisanet_candidate",
+        "class_name": "edge_brisanet_candidate",
+        "label": "187.19.161.199\n[candidate]\nedge 22 conf high",
+        "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "edge_count=22",
+          "last_internal_count=22"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "recurrence_ratio": 1.0,
+        "edge_count": 22,
+        "last_internal_count": 22
+      },
+      {
+        "ip": "104.21.4.50",
+        "role": "cdn_candidate",
+        "class_name": "cdn_candidate",
+        "label": "104.21.4.50\nCDN candidate\nCloudflare, Inc.\nconf high",
+        "company": "Cloudflare, Inc.",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "observations": 10,
+        "target_count": 6,
+        "run_count": 10,
+        "recurrence_ratio": 0.5263157894736842,
+        "edge_count": 0,
+        "last_internal_count": 0
+      },
+      {
+        "ip": "172.67.131.172",
+        "role": "cdn_candidate",
+        "class_name": "cdn_candidate",
+        "label": "172.67.131.172\nCDN candidate\nCloudflare, Inc.\nconf high",
+        "company": "Cloudflare, Inc.",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "observations": 10,
+        "target_count": 5,
+        "run_count": 10,
+        "recurrence_ratio": 0.5263157894736842,
+        "edge_count": 0,
+        "last_internal_count": 0
+      }
+    ],
+    "watchlist_nodes": [
+      {
+        "ip": "1.0.0.1",
+        "role": "dns_watchlist",
+        "class_name": "dns_infra_candidate",
+        "label": "1.0.0.1\nDNS watchlist\nconf high",
+        "company": "Cloudflare, Inc.",
+        "confidence": "high",
+        "evidence": [
+          "known_dns_ip=1.0.0.1",
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "observations": 2,
+        "target_count": 2,
+        "run_count": 2,
+        "recurrence_ratio": 0.10526315789473684,
+        "edge_count": 0,
+        "last_internal_count": 0
+      }
+    ]
+  },
+  "promoted_edges": {
+    "backbone_observed": [
+      {
+        "source": "10.45.0.1",
+        "target": "100.65.77.1",
+        "role": "backbone_observed",
+        "label": "10.45.0.1 -> 100.65.77.1",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "100.65.77.1",
+        "target": "172.16.128.221",
+        "role": "backbone_observed",
+        "label": "100.65.77.1 -> 172.16.128.221",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.128.113",
+        "target": "172.16.128.181",
+        "role": "backbone_observed",
+        "label": "172.16.128.113 -> 172.16.128.181",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.128.181",
+        "target": "172.16.128.182",
+        "role": "backbone_observed",
+        "label": "172.16.128.181 -> 172.16.128.182",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.128.182",
+        "target": "172.16.130.122",
+        "role": "backbone_observed",
+        "label": "172.16.128.182 -> 172.16.130.122",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.128.221",
+        "target": "172.16.133.150",
+        "role": "backbone_observed",
+        "label": "172.16.128.221 -> 172.16.133.150",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.130.122",
+        "target": "172.16.134.242",
+        "role": "backbone_observed",
+        "label": "172.16.130.122 -> 172.16.134.242",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.133.150",
+        "target": "172.16.128.113",
+        "role": "backbone_observed",
+        "label": "172.16.133.150 -> 172.16.128.113",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.134.242",
+        "target": "172.16.135.209",
+        "role": "backbone_observed",
+        "label": "172.16.134.242 -> 172.16.135.209",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "172.16.135.209",
+        "target": "172.16.128.42",
+        "role": "backbone_observed",
+        "label": "172.16.135.209 -> 172.16.128.42",
+        "confidence": "high",
+        "evidence": [
+          "dominant_path",
+          "pair_runs=19"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      }
+    ],
+    "candidate_edges": [
+      {
+        "source": "172.16.128.42",
+        "target": "187.19.161.199",
+        "role": "candidate_edge",
+        "label": "172.16.128.42 -> 187.19.161.199",
+        "confidence": "high",
+        "evidence": [
+          "edge_brisanet_candidate",
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "edge_count=22",
+          "last_internal_count=22"
+        ],
+        "observations": 22,
+        "target_count": 11,
+        "run_count": 19,
+        "stability_ratio": 1.0
+      },
+      {
+        "source": "187.19.161.199",
+        "target": "104.21.4.50",
+        "role": "cdn_exit",
+        "label": "187.19.161.199 -> 104.21.4.50",
+        "confidence": "high",
+        "evidence": [
+          "cdn_candidate",
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "observations": 10,
+        "target_count": 6,
+        "run_count": 10,
+        "stability_ratio": 0.5263157894736842
+      },
+      {
+        "source": "187.19.161.199",
+        "target": "172.67.131.172",
+        "role": "cdn_exit",
+        "label": "187.19.161.199 -> 172.67.131.172",
+        "confidence": "high",
+        "evidence": [
+          "cdn_candidate",
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "observations": 10,
+        "target_count": 5,
+        "run_count": 10,
+        "stability_ratio": 0.5263157894736842
+      }
+    ]
+  },
+  "placements": [
+    {
+      "ip": "10.45.0.1",
+      "role": "backbone_observed",
+      "x": 40,
+      "y": 130,
+      "zindex": 0,
+      "label": "10.45.0.1\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "100.65.77.1",
+      "role": "backbone_observed",
+      "x": 195,
+      "y": 130,
+      "zindex": 1,
+      "label": "100.65.77.1\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.128.221",
+      "role": "backbone_observed",
+      "x": 350,
+      "y": 130,
+      "zindex": 2,
+      "label": "172.16.128.221\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.133.150",
+      "role": "backbone_observed",
+      "x": 505,
+      "y": 130,
+      "zindex": 3,
+      "label": "172.16.133.150\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.128.113",
+      "role": "backbone_observed",
+      "x": 660,
+      "y": 130,
+      "zindex": 4,
+      "label": "172.16.128.113\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.128.181",
+      "role": "backbone_observed",
+      "x": 815,
+      "y": 130,
+      "zindex": 5,
+      "label": "172.16.128.181\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.128.182",
+      "role": "backbone_observed",
+      "x": 970,
+      "y": 130,
+      "zindex": 6,
+      "label": "172.16.128.182\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.130.122",
+      "role": "backbone_observed",
+      "x": 1125,
+      "y": 130,
+      "zindex": 7,
+      "label": "172.16.130.122\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.134.242",
+      "role": "backbone_observed",
+      "x": 1280,
+      "y": 130,
+      "zindex": 8,
+      "label": "172.16.134.242\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.135.209",
+      "role": "backbone_observed",
+      "x": 1435,
+      "y": 130,
+      "zindex": 9,
+      "label": "172.16.135.209\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "172.16.128.42",
+      "role": "backbone_observed",
+      "x": 1590,
+      "y": 130,
+      "zindex": 10,
+      "label": "172.16.128.42\nbackbone observed\nruns 19/11"
+    },
+    {
+      "ip": "187.19.161.199",
+      "role": "edge_brisanet_candidate",
+      "x": 1745,
+      "y": 130,
+      "zindex": 11,
+      "label": "187.19.161.199\n[candidate]\nedge 22 conf high"
+    },
+    {
+      "ip": "104.21.4.50",
+      "role": "cdn_candidate",
+      "x": 40,
+      "y": 285,
+      "zindex": 50,
+      "label": "104.21.4.50\nCDN candidate\nCloudflare, Inc.\nconf high"
+    },
+    {
+      "ip": "172.67.131.172",
+      "role": "cdn_candidate",
+      "x": 225,
+      "y": 285,
+      "zindex": 51,
+      "label": "172.67.131.172\nCDN candidate\nCloudflare, Inc.\nconf high"
+    },
+    {
+      "ip": "1.0.0.1",
+      "role": "dns_watchlist",
+      "x": 40,
+      "y": 410,
+      "zindex": 60,
+      "label": "1.0.0.1\nDNS watchlist\nconf high"
+    }
+  ],
+  "meta": {
+    "rules": {
+      "node": {
+        "min_runs": 8,
+        "min_targets": 3,
+        "min_ratio": 0.7
+      },
+      "edge": {
+        "min_runs": 8,
+        "min_targets": 3,
+        "min_ratio": 0.75
+      }
+    },
+    "map_name": "MTR Backbone - Brisanet Observed"
+  },
+  "counts": {
+    "backbone_nodes": 11,
+    "candidate_nodes": 3,
+    "watchlist_nodes": 1,
+    "backbone_edges": 10,
+    "candidate_edges": 3
+  }
+}
