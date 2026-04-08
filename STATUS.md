@@ -2,6 +2,36 @@
 
 # Status
 
+## 2026-04-08 - trigger sintética agregadora criada para 187.19.161.199
+
+- host agregador confirmado por API:
+  - `hop-ip-187-19-161-199`
+  - `hostid 10791`
+- três hosts posteriores confirmados por API no sysmap `10`:
+  - `hop-ip-104-21-4-50`
+  - `hop-ip-172-67-131-172`
+  - `hop-ip-1-0-0-1`
+- item usado em todos os três nós posteriores:
+  - `icmpping`
+- triggers criadas no host `10791`:
+  - `Saídas após 187.19.161.199 degradadas (2/3)` - `Warning`
+  - `Saídas após 187.19.161.199 indisponíveis (3/3)` - `High`
+- triggers ICMP antigas desabilitadas no host:
+  - `32670`
+  - `32671`
+  - `32672`
+  - `32673`
+- validação real:
+  - as expressões cross-host foram aceitas pelo backend do Zabbix
+  - a resolução das expressões confirmou referências válidas para os itens dos três hosts posteriores
+  - o mapa `MTR Unified - Brisanet Observed` não foi alterado nesta rodada
+- artefatos gerados:
+  - `artifacts/synthetic_trigger_plan.json`
+  - `artifacts/downstream_hosts_validation.json`
+  - `artifacts/zabbix_trigger_update.json`
+  - `artifacts/report.md`
+  - `artifacts/handoff_187_19_161_199_sintetico.md`
+
 ## 2026-04-07 - debian2 espelhado no baseline do AGT
 
 - host de referência lido via API:

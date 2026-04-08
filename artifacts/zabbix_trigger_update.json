@@ -1,0 +1,51 @@
+{
+  "aggregator_host": {
+    "host": "hop-ip-187-19-161-199",
+    "hostid": "10791"
+  },
+  "created_triggers": [
+    {
+      "triggerid": "32932",
+      "description": "Saídas após 187.19.161.199 degradadas (2/3)",
+      "priority": "Warning",
+      "expression": "(({48996}=0 and {48997}=0) or ({48996}=0 and {48998}=0) or ({48997}=0 and {48998}=0))"
+    },
+    {
+      "triggerid": "32933",
+      "description": "Saídas após 187.19.161.199 indisponíveis (3/3)",
+      "priority": "High",
+      "expression": "({48999}=0 and {49000}=0 and {49001}=0)"
+    }
+  ],
+  "updated_triggers": [],
+  "disabled_triggers": [
+    {
+      "triggerid": "32670",
+      "description": "ICMP Ping: Unavailable by ICMP ping"
+    },
+    {
+      "triggerid": "32671",
+      "description": "ICMP Ping: High ICMP ping loss"
+    },
+    {
+      "triggerid": "32672",
+      "description": "ICMP Ping: High ICMP ping response time"
+    },
+    {
+      "triggerid": "32673",
+      "description": "ICMP unreachable"
+    }
+  ],
+  "expressions": {
+    "warning": "(({48996}=0 and {48997}=0) or ({48996}=0 and {48998}=0) or ({48997}=0 and {48998}=0))",
+    "critical": "({48999}=0 and {49000}=0 and {49001}=0)"
+  },
+  "severities": {
+    "warning": "2",
+    "critical": "4"
+  },
+  "notes": [
+    "As triggers novas foram criadas no host 10791, mas a resolução da expressão no Zabbix referenciou os itens dos três hosts posteriores.",
+    "O host continua com o item ICMP, porém a dependência visual principal deixou de ser o ICMP do próprio host."
+  ]
+}

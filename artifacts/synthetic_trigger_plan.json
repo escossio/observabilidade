@@ -1,0 +1,36 @@
+{
+  "aggregator_host": "hop-ip-187-19-161-199",
+  "aggregator_hostid": "10791",
+  "downstream_hosts": [
+    "hop-ip-104-21-4-50",
+    "hop-ip-172-67-131-172",
+    "hop-ip-1-0-0-1"
+  ],
+  "downstream_items": [
+    {
+      "host": "hop-ip-104-21-4-50",
+      "item_key": "icmpping"
+    },
+    {
+      "host": "hop-ip-172-67-131-172",
+      "item_key": "icmpping"
+    },
+    {
+      "host": "hop-ip-1-0-0-1",
+      "item_key": "icmpping"
+    }
+  ],
+  "trigger_strategy": {
+    "warning": "2 de 3 indisponíveis em janela de 5m",
+    "critical": "3 de 3 indisponíveis em janela de 5m"
+  },
+  "window": "5m",
+  "planned_old_trigger_changes": [
+    "Desabilitar as triggers herdadas de ICMP do host 10791 para evitar que o estado visual continue preso ao ping do próprio host",
+    "Preservar os itens icmpping/icmppingloss/icmppingsec como base técnica, mas sem dependência visual direta"
+  ],
+  "notes": [
+    "Os três hosts posteriores foram confirmados por API a partir das ligações do sysmap 10 no host 10791.",
+    "Não houve alteração em mapa, layout, topologia ou links."
+  ]
+}

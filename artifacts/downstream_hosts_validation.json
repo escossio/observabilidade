@@ -1,0 +1,21 @@
+{
+  "host_a": "hop-ip-104-21-4-50",
+  "host_b": "hop-ip-172-67-131-172",
+  "host_c": "hop-ip-1-0-0-1",
+  "hostids": {
+    "host_a": "10793",
+    "host_b": "10792",
+    "host_c": "10794"
+  },
+  "item_key_used": "icmpping",
+  "item_supported": true,
+  "latest_value_if_available": {
+    "host_a": "1",
+    "host_b": "1",
+    "host_c": "1"
+  },
+  "notes": [
+    "Todos os três hosts têm os itens icmpping, icmppingloss e icmppingsec habilitados e suportados.",
+    "A validação usou os nomes técnicos dos hosts, não rótulos visuais do mapa."
+  ]
+}
