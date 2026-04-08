@@ -1,0 +1,31 @@
+{
+  "hostid": "10844",
+  "host_name": "debian2",
+  "visible_name": "debian2",
+  "group": [
+    {
+      "groupid": "2",
+      "name": "Linux servers"
+    }
+  ],
+  "template": [
+    {
+      "templateid": "10001",
+      "host": "Linux by Zabbix agent"
+    }
+  ],
+  "interfaces": [
+    {
+      "interfaceid": "148",
+      "ip": "10.45.0.2",
+      "main": "1",
+      "type": "1",
+      "useip": "1",
+      "port": "10050"
+    }
+  ],
+  "tags": [],
+  "inventory_mode": "-1",
+  "tls_connect": "1",
+  "tls_accept": "1"
+}

@@ -1,0 +1,16 @@
+{
+  "ssh_ok": true,
+  "remote_user": "root",
+  "remote_hostname": "debian2-1.escossio.dev.br",
+  "agent_ping_ok": true,
+  "agent_version": "6.0.14",
+  "zabbix_host_present": true,
+  "key_checks_tested": [
+    "agent.ping",
+    "agent.version",
+    "system.uptime",
+    "system.cpu.load[all,avg1]"
+  ],
+  "key_checks_ok": true,
+  "notes": "zabbix_get respondeu 1, 6.0.14, uptime e carga; a API já mostra o host debian2 no baseline correto."
+}

@@ -1,5 +1,28 @@
 # Status
 
+# Status
+
+## 2026-04-07 - debian2 espelhado no baseline do AGT
+
+- baseline de referência:
+  - host `agt01`
+- host final no Zabbix:
+  - `debian2`
+- baseline aplicado:
+  - grupo `Linux servers`
+  - template `Linux by Zabbix agent`
+  - interface `10.45.0.2:10050`
+  - inventário `-1`
+  - sem tags e sem macros específicas
+- agent remoto preparado com override explícito:
+  - `/etc/zabbix/zabbix_agentd.conf.d/90-debian2-baseline.conf`
+- validação real:
+  - SSH sem senha ok
+  - `zabbix_get` respondeu `agent.ping`, `agent.version`, `system.uptime` e `system.cpu.load[all,avg1]`
+- artefatos da rodada salvos em:
+  - `data/runs/20260407-debian2-baseline/`
+- o mapa do MTR/Zabbix não foi alterado
+
 ## 2026-04-07 - mapa unificado expandido com novos ramos
 
 - fonte de verdade desta rodada:

@@ -1,5 +1,27 @@
 # Status
 
+# Status
+
+## 2026-04-07 - debian2 espelhado no baseline do AGT
+
+- host de referência lido via API:
+  - `agt01`
+- host final ajustado no Zabbix:
+  - `debian2`
+- baseline espelhado:
+  - grupo `Linux servers`
+  - template `Linux by Zabbix agent`
+  - interface `10.45.0.2:10050`
+  - inventário `-1`
+  - sem tags e sem macros específicas
+- o agent remoto foi preparado com override explícito em:
+  - `/etc/zabbix/zabbix_agentd.conf.d/90-debian2-baseline.conf`
+- validação real:
+  - SSH sem senha ok
+  - `zabbix_get` respondeu `agent.ping`, `agent.version`, `system.uptime` e `system.cpu.load[all,avg1]`
+- o host `debian2` ficou reutilizando o `hostid 10844`
+- nenhum mapa do Zabbix foi alterado nesta rodada
+
 ## 2026-04-07 - debian2-1 agora está monitorado no Zabbix
 
 - o host `debian2-1` foi criado/reaproveitado no Zabbix com monitoramento ICMP

@@ -1,0 +1,51 @@
+{
+  "hostid": "10844",
+  "host": "debian2",
+  "items": [
+    {
+      "itemid": "70078",
+      "name": "Zabbix agent ping",
+      "key_": "agent.ping",
+      "status": "0",
+      "state": "0",
+      "error": "",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "70091",
+      "name": "Version of Zabbix agent running",
+      "key_": "agent.version",
+      "status": "0",
+      "state": "0",
+      "error": "",
+      "lastvalue": ""
+    },
+    {
+      "itemid": "70090",
+      "name": "Load average (1m avg)",
+      "key_": "system.cpu.load[all,avg1]",
+      "status": "0",
+      "state": "0",
+      "error": "",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "70081",
+      "name": "System uptime",
+      "key_": "system.uptime",
+      "status": "0",
+      "state": "0",
+      "error": "",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "70084",
+      "name": "Available memory",
+      "key_": "vm.memory.size[available]",
+      "status": "0",
+      "state": "0",
+      "error": "",
+      "lastvalue": "0"
+    }
+  ]
+}

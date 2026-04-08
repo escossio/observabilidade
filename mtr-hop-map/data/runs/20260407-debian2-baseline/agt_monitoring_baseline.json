@@ -1,0 +1,35 @@
+{
+  "agt_host_name": "agt01",
+  "agt_hostid": "10776",
+  "groups": [
+    {
+      "groupid": "2",
+      "name": "Linux servers"
+    }
+  ],
+  "templates": [
+    {
+      "templateid": "10001",
+      "host": "Linux by Zabbix agent"
+    }
+  ],
+  "interfaces": [
+    {
+      "interfaceid": "81",
+      "ip": "127.0.0.1",
+      "main": "1",
+      "type": "1",
+      "useip": "1",
+      "port": "10050"
+    }
+  ],
+  "tags": [],
+  "macros": [],
+  "inventory_mode": "-1",
+  "agent_mode": "passive",
+  "tls_mode": {
+    "tls_connect": "1",
+    "tls_accept": "1"
+  },
+  "notes": "Baseline lido do host real agt01 via API do Zabbix local."
+}

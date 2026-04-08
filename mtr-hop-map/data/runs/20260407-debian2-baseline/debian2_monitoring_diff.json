@@ -1,0 +1,20 @@
+{
+  "debian2_host_name": "debian2",
+  "debian2_ip": "10.45.0.2",
+  "baseline_applied": true,
+  "groups_matched": true,
+  "templates_matched": true,
+  "tags_matched": true,
+  "macros_matched": true,
+  "agent_installed": true,
+  "agent_service_status": "active",
+  "tls_configured": true,
+  "remaining_differences": [
+    "nome visível final foi ajustado de debian2-1 para debian2",
+    "grupo foi trocado de Remote Sources para Linux servers",
+    "template foi trocado de ICMP Ping para Linux by Zabbix agent",
+    "tags operacionais de origem remota foram removidas para igualar o baseline do AGT",
+    "o host continua com hostid próprio e interface própria em 10.45.0.2"
+  ],
+  "notes": "Hostid 10844 reaproveitado; baseline de monitoramento do agt01 espelhado no debian2."
+}
