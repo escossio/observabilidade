@@ -1770,3 +1770,23 @@
 - os labels foram encurtados para reduzir poluição visual
 - o tronco foi mantido horizontal no topo e as famílias externas foram separadas em bandas
 - as ligações não foram recalculadas; só a apresentação visual mudou
+# Status
+
+## 2026-04-07 - origem remota debian2-1 preparada para coleta
+
+- o host `debian2-1` foi validado por SSH sem senha a partir do host do Zabbix
+- acesso remoto confirmado:
+  - destino: `10.45.0.2`
+  - usuário: `root`
+  - hostname remoto: `debian2-1.escossio.dev.br`
+- ambiente remoto confirmado:
+  - Debian 12 (bookworm)
+  - `mtr` em `/usr/bin/mtr`
+  - `traceroute`, `dig`, `jq` e `python3` presentes
+- a source remota foi registrada no projeto em:
+  - `mtr-hop-map/sources/debian2-1.json`
+- o wrapper de smoke test ficou em:
+  - `mtr-hop-map/scripts/run_remote_source_smoke.sh`
+- o smoke test remoto foi salvo em:
+  - `mtr-hop-map/data/runs/20260407-remote-debian2-1-debian2-1-smoke/`
+- nenhum mapa do Zabbix foi alterado nesta rodada

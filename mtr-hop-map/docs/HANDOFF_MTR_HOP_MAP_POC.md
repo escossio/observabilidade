@@ -1,5 +1,16 @@
 # Handoff - MTR Hop Map
 
+## 2026-04-07 - preparação da origem remota debian2-1
+
+- origem remota registrada: `debian2-1`
+- host remoto: `10.45.0.2`
+- usuário remoto: `root`
+- hostname remoto confirmado: `debian2-1.escossio.dev.br`
+- comando remoto padronizado: `/usr/bin/mtr -4 -n -r -c 2 --report-wide --aslookup --json <destino>`
+- wrapper local: `scripts/run_remote_source_smoke.sh`
+- config local: `sources/debian2-1.json`
+- smoke test salvo em `data/runs/20260407-remote-debian2-1-debian2-1-smoke/`
+
 ## 2026-04-07 - acabamento visual do mapa canônico
 
 - o mapa canônico único `MTR Unified - Brisanet Observed` continua no `sysmapid 10`

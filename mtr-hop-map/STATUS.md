@@ -232,3 +232,19 @@
   - executar MTR real
   - reconciliar hosts, template e mapa
   - validar idempotência em segunda execução
+# Status
+
+## 2026-04-07 - source remota debian2-1 preparada
+
+- source remota canônica: `debian2-1`
+- host remoto: `10.45.0.2`
+- usuário remoto efetivo: `root`
+- hostname remoto confirmado: `debian2-1.escossio.dev.br`
+- comando padronizado de coleta:
+  - `/usr/bin/mtr -4 -n -r -c 2 --report-wide --aslookup --json <destino>`
+- wrapper local versionado:
+  - `scripts/run_remote_source_smoke.sh`
+- configuração local versionada:
+  - `sources/debian2-1.json`
+- smoke test executado com sucesso para `8.8.8.8`
+- nenhum mapa do Zabbix foi alterado

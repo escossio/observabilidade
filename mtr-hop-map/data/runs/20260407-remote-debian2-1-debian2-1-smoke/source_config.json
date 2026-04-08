@@ -1,0 +1,17 @@
+{
+  "name": "debian2-1",
+  "host": "10.45.0.2",
+  "ssh_user": "root",
+  "ssh_options": [
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=5"
+  ],
+  "mtr_path": "/usr/bin/mtr",
+  "mtr_command": "/usr/bin/mtr -4 -n -r -c 2 --report-wide --aslookup --json",
+  "transport": "ssh",
+  "requires_sudo": false,
+  "smoke_target": "8.8.8.8",
+  "notes": "Origem remota validada por SSH sem senha. O host local do Zabbix acessa o debian2-1 pelo IP 10.45.0.2."
+}

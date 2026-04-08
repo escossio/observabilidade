@@ -1,0 +1,138 @@
+root
+debian2-1.escossio.dev.br
+Linux debian2-1 6.1.0-44-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.164-1 (2026-03-09) x86_64 GNU/Linux
+MTR=/usr/bin/mtr
+{
+    "report": {
+        "mtr": {
+            "src": "debian2-1",
+            "dst": "8.8.8.8",
+            "tos": 0,
+            "tests": 2,
+            "psize": "64",
+            "bitpattern": "0x00"
+        },
+        "hubs": [
+            {
+                "count": 1,
+                "host": "10.45.0.1",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 0.244,
+                "Avg": 0.247,
+                "Best": 0.244,
+                "Wrst": 0.25,
+                "StDev": 0.004
+            },
+            {
+                "count": 2,
+                "host": "100.65.77.1",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 14.148,
+                "Avg": 11.877,
+                "Best": 9.606,
+                "Wrst": 14.148,
+                "StDev": 3.211
+            },
+            {
+                "count": 3,
+                "host": "172.16.128.221",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 88.246,
+                "Avg": 53.984,
+                "Best": 19.722,
+                "Wrst": 88.246,
+                "StDev": 48.453
+            },
+            {
+                "count": 4,
+                "host": "172.16.133.150",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 35.53,
+                "Avg": 28.138,
+                "Best": 20.746,
+                "Wrst": 35.53,
+                "StDev": 10.453
+            },
+            {
+                "count": 5,
+                "host": "172.16.128.113",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 17.915,
+                "Avg": 16.809,
+                "Best": 15.704,
+                "Wrst": 17.915,
+                "StDev": 1.563
+            },
+            {
+                "count": 6,
+                "host": "172.16.128.181",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 19.854,
+                "Avg": 20.693,
+                "Best": 19.854,
+                "Wrst": 21.533,
+                "StDev": 1.186
+            },
+            {
+                "count": 7,
+                "host": "142.250.166.72",
+                "ASN": "AS15169",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 68.996,
+                "Avg": 65.876,
+                "Best": 62.756,
+                "Wrst": 68.996,
+                "StDev": 4.412
+            },
+            {
+                "count": 8,
+                "host": "108.170.226.233",
+                "ASN": "AS15169",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 66.444,
+                "Avg": 64.961,
+                "Best": 63.479,
+                "Wrst": 66.444,
+                "StDev": 2.096
+            },
+            {
+                "count": 9,
+                "host": "192.178.110.171",
+                "ASN": "AS15169",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 66.693,
+                "Avg": 63.824,
+                "Best": 60.956,
+                "Wrst": 66.693,
+                "StDev": 4.057
+            },
+            {
+                "count": 10,
+                "host": "8.8.8.8",
+                "ASN": "AS15169",
+                "Loss%": 0.0,
+                "Snt": 2,
+                "Last": 53.04,
+                "Avg": 54.673,
+                "Best": 53.04,
+                "Wrst": 56.306,
+                "StDev": 2.309
+            }
+        ]
+    }
+}
