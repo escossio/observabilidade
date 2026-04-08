@@ -1,5 +1,13 @@
 # Handoff - MTR Hop Map
 
+## 2026-04-07 - acabamento visual do mapa canônico
+
+- o mapa canônico único `MTR Unified - Brisanet Observed` continua no `sysmapid 10`
+- esta rodada mexeu só em apresentação visual
+- o canvas foi ampliado e os ícones ficaram padronizados por classe
+- o tronco principal ficou mais limpo e os ramos externos foram separados visualmente
+- as ligações corretas foram preservadas
+
 ## 2026-04-07 - expansão da frente com Prime Video, Instagram, Microsoft e Akamai
 
 - a frente já validou traces live para:

@@ -1,5 +1,14 @@
 # Handoff - MTR Hop Map Aggregation
 
+## 2026-04-07 - acabamento visual do mapa unificado
+
+- o `sysmapid 10` foi mantido
+- o canvas foi ampliado para `2440x1846`
+- os ícones foram padronizados por classe
+- os labels foram reduzidos para melhorar a leitura operacional
+- as bandas visuais ficaram separadas por família externa quando possível
+- as ligações foram preservadas; nenhuma regra de topologia foi alterada
+
 ## Rodada atual
 
 - fonte de verdade:

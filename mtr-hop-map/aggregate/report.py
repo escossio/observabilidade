@@ -28,6 +28,18 @@ def write_unified_outputs(output_dir: Path, unified: dict[str, Any], zabbix_snap
     (output_dir / "unified_nodes.json").write_text(json.dumps(unified["unified_nodes"], indent=2, ensure_ascii=False))
     (output_dir / "unified_edges.json").write_text(json.dumps(unified["unified_edges"], indent=2, ensure_ascii=False))
     (output_dir / "unified_map_plan.json").write_text(json.dumps(unified, indent=2, ensure_ascii=False))
+    visual_layout_plan = {
+        "map_name": unified["map_name"],
+        "sysmapid": zabbix_snapshot["sysmapid"] if zabbix_snapshot else None,
+        "old_size": {"width": 1900, "height": 560},
+        "new_size": unified.get("canvas", {"width": 2400, "height": 980}),
+        "icon_policy": unified.get("visual_policy", {}).get("icon_policy", {}),
+        "layout_groups": unified.get("visual_policy", {}).get("layout_groups", {}),
+        "label_policy": unified.get("visual_policy", {}).get("label_policy", {}),
+        "changed_coordinates_count": len(unified.get("placements", [])),
+        "notes": "Ajuste visual somente; arestas preservadas e a topologia não foi recalculada.",
+    }
+    (output_dir / "visual_layout_plan.json").write_text(json.dumps(visual_layout_plan, indent=2, ensure_ascii=False))
     if zabbix_snapshot is not None:
         (output_dir / "zabbix_map_snapshot.json").write_text(json.dumps(zabbix_snapshot, indent=2, ensure_ascii=False))
     (output_dir / "report.md").write_text(_render_unified_report(unified, zabbix_snapshot))

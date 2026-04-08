@@ -1755,3 +1755,18 @@
   - Akamai
 - `8.8.8.8` e `9.9.9.9` reforçaram ramos já existentes
 - os mapas por destino permaneceram intactos e o mapa canônico continuou sendo o `sysmapid 10`
+# Status
+
+## 2026-04-07 - acabamento visual do mapa unificado no sysmapid 10
+
+- o mapa canônico único `MTR Unified - Brisanet Observed` foi refinado só no visual
+- o `sysmapid` continua sendo `10`
+- o canvas foi ampliado de `1900x560` para `2440x1846`
+- a política de ícones foi padronizada por classe:
+  - backbone observado: `Server_(96)`
+  - borda candidata: `Router_(96)`
+  - CDN/external: `Cloud_(96)`
+  - watchlist: `Notebook_(96)`
+- os labels foram encurtados para reduzir poluição visual
+- o tronco foi mantido horizontal no topo e as famílias externas foram separadas em bandas
+- as ligações não foram recalculadas; só a apresentação visual mudou

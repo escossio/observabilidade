@@ -1,5 +1,20 @@
 # Status
 
+## 2026-04-07 - acabamento visual aplicado ao mapa unificado
+
+- o mapa canônico único continua sendo:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- a rodada foi visual בלבד:
+  - canvas ampliado para `2440x1846`
+  - ícones padronizados por classe
+  - labels encurtados
+  - famílias externas separadas em bandas
+- o tronco principal continua horizontal e legível
+- as ligações foram preservadas, sem recálculo da topologia
+- snapshot visual final disponível em `visual_layout_plan.json` e `zabbix_map_snapshot.json`
+
+
 ## 2026-04-07 - mapa unificado expandido com novos ramos e Akamai validado por DNS
 
 - o mapa canônico único permaneceu:

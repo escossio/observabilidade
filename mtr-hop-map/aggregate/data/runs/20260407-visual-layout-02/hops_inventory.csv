@@ -1,0 +1,65 @@
+ip,asn,company,hostname,observations,sample_count,path_count,last_hop_count,last_internal_count,edge_count,primary_class,confidence,source_type,evidence
+10.45.0.1,AS private,Private / local network,,42,21,21,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+100.65.77.1,AS private,Private / local network,,42,21,21,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.113,AS private,Private / local network,,42,21,21,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.181,AS private,Private / local network,,42,21,21,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.221,AS private,Private / local network,,42,21,21,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.133.150,AS private,Private / local network,,42,21,21,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.182,AS private,Private / local network,,25,12,12,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.42,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.130.122,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.134.242,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.135.209,AS private,Private / local network,,22,11,11,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+187.19.161.199,AS28126,BRISANET SERVICOS DE TELECOMUNICACOES S.A,,22,11,11,0,22,22,edge_brisanet_candidate,high,observed,asn=AS28126 | company=BRISANET SERVICOS DE TELECOMUNICACOES S.A | edge_count=22 | last_internal_count=22
+104.21.4.50,AS13335,"Cloudflare, Inc.",,10,6,6,10,0,0,cdn_candidate,high,observed,"asn=AS13335 | company=Cloudflare, Inc."
+172.67.131.172,AS13335,"Cloudflare, Inc.",,10,5,5,10,0,0,cdn_candidate,high,observed,"asn=AS13335 | company=Cloudflare, Inc."
+108.170.226.233,AS15169,Google LLC,,4,1,1,0,0,0,cdn_candidate,high,observed,asn=AS15169 | company=Google LLC
+142.250.166.72,AS15169,Google LLC,,4,1,1,0,0,0,cdn_candidate,high,observed,asn=AS15169 | company=Google LLC
+187.16.223.64,AS???,Unknown ASN,,4,1,1,0,0,0,unknown,low,inferred,asn=AS??? | company=Unknown ASN
+192.178.110.171,AS15169,Google LLC,,4,1,1,0,0,0,cdn_candidate,high,observed,asn=AS15169 | company=Google LLC
+200.25.56.83,AS7195,EDGEUNO S.A.S,,4,1,1,0,0,0,unknown,low,inferred,asn=AS7195 | company=EDGEUNO S.A.S
+8.8.8.8,AS15169,Google LLC,,4,1,1,4,0,0,dns_infra_candidate,high,observed,known_dns_ip=8.8.8.8 | asn=AS15169 | company=Google LLC
+9.9.9.9,AS19281,Quad9,,4,1,1,4,0,0,destination,medium,observed,last_hop_count=4 | asn=AS19281
+12.122.153.181,AS7018,"AT&T Enterprises, LLC",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS7018 | company=AT&T Enterprises, LLC"
+12.123.154.54,AS7018,"AT&T Enterprises, LLC",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS7018 | company=AT&T Enterprises, LLC"
+12.252.89.6,AS7018,"AT&T Enterprises, LLC",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS7018 | company=AT&T Enterprises, LLC"
+138.204.238.149,AS52320,"GlobeNet Cabos Submarinos Colombia, S.A.S.",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS52320 | company=GlobeNet Cabos Submarinos Colombia, S.A.S."
+143.166.30.172,AS3614,"Dell, Inc.",,3,1,1,3,0,0,destination,medium,observed,last_hop_count=3 | asn=AS3614
+159.148.147.244,AS51894,AS_MIKROTIKLS,,3,1,1,3,0,0,destination,medium,observed,last_hop_count=3 | asn=AS51894
+172.16.128.178,AS private,Private / local network,,3,1,1,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+172.16.128.62,AS private,Private / local network,,3,1,1,0,0,0,internal_brisanet,medium,observed,asn=AS private | company=Private / local network
+192.205.32.109,AS7018,"AT&T Enterprises, LLC",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS7018 | company=AT&T Enterprises, LLC"
+2.16.186.39,AS20940,AKAMAI-ASN1,,3,3,3,0,0,0,cdn_candidate,high,observed,asn=AS20940 | company=AKAMAI-ASN1
+200.16.69.2,AS52320,"GlobeNet Cabos Submarinos Colombia, S.A.S.",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS52320 | company=GlobeNet Cabos Submarinos Colombia, S.A.S."
+213.248.84.33,AS1299,"TWELVE99 Arelion, fka Telia Carrier",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS1299 | company=TWELVE99 Arelion, fka Telia Carrier"
+32.130.89.4,AS7018,"AT&T Enterprises, LLC",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS7018 | company=AT&T Enterprises, LLC"
+62.115.142.191,AS1299,"TWELVE99 Arelion, fka Telia Carrier",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS1299 | company=TWELVE99 Arelion, fka Telia Carrier"
+62.115.50.180,AS1299,"TWELVE99 Arelion, fka Telia Carrier",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS1299 | company=TWELVE99 Arelion, fka Telia Carrier"
+80.91.254.90,AS1299,"TWELVE99 Arelion, fka Telia Carrier",,3,1,1,0,0,0,unknown,low,inferred,"asn=AS1299 | company=TWELVE99 Arelion, fka Telia Carrier"
+84.16.6.34,AS12956,TELXIUS TELXIUS Cable,,3,1,1,0,0,0,unknown,low,inferred,asn=AS12956 | company=TELXIUS TELXIUS Cable
+94.142.98.175,AS12956,TELXIUS TELXIUS Cable,,3,1,1,0,0,0,unknown,low,inferred,asn=AS12956 | company=TELXIUS TELXIUS Cable
+1.0.0.1,AS13335,"Cloudflare, Inc.",,2,2,2,2,0,0,dns_infra_candidate,high,observed,"known_dns_ip=1.0.0.1 | asn=AS13335 | company=Cloudflare, Inc."
+187.19.162.195,AS28126,BRISANET SERVICOS DE TELECOMUNICACOES S.A,,2,2,2,0,2,0,edge_brisanet_candidate,high,observed,asn=AS28126 | company=BRISANET SERVICOS DE TELECOMUNICACOES S.A | last_internal_count=2
+2.16.186.19,AS20940,AKAMAI-ASN1,,2,2,2,0,0,0,cdn_candidate,medium,observed,asn=AS20940 | company=AKAMAI-ASN1
+2.16.186.23,AS20940,AKAMAI-ASN1,,2,2,2,0,0,0,cdn_candidate,medium,observed,asn=AS20940 | company=AKAMAI-ASN1
+104.44.119.171,AS8075,Microsoft Corporation,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS8075 | company=Microsoft Corporation
+104.44.28.204,AS8075,Microsoft Corporation,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS8075 | company=Microsoft Corporation
+104.44.31.214,AS8075,Microsoft Corporation,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS8075 | company=Microsoft Corporation
+104.44.32.88,AS8075,Microsoft Corporation,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS8075 | company=Microsoft Corporation
+104.44.34.213,AS8075,Microsoft Corporation,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS8075 | company=Microsoft Corporation
+129.134.60.178,AS32934,"Facebook, Inc.",,1,1,1,0,0,0,unknown,low,inferred,"asn=AS32934 | company=Facebook, Inc."
+147.75.214.158,AS???,Unknown ASN,,1,1,1,0,0,0,unknown,low,inferred,asn=AS??? | company=Unknown ASN
+163.77.194.43,AS???,Unknown ASN,,1,1,1,0,0,0,unknown,low,inferred,asn=AS??? | company=Unknown ASN
+177.37.221.191,AS28126,BRISANET SERVICOS DE TELECOMUNICACOES S.A,,1,1,1,0,1,0,edge_brisanet_candidate,medium,observed,asn=AS28126 | company=BRISANET SERVICOS DE TELECOMUNICACOES S.A | last_internal_count=1
+2.16.186.11,AS20940,AKAMAI-ASN1,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS20940 | company=AKAMAI-ASN1
+2.16.186.20,AS20940,AKAMAI-ASN1,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS20940 | company=AKAMAI-ASN1
+2.16.186.24,AS20940,AKAMAI-ASN1,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS20940 | company=AKAMAI-ASN1
+2.16.186.7,AS20940,AKAMAI-ASN1,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS20940 | company=AKAMAI-ASN1
+2.16.186.9,AS20940,AKAMAI-ASN1,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS20940 | company=AKAMAI-ASN1
+23.194.180.67,AS16625,"Akamai Technologies, Inc.",,1,1,1,1,0,0,cdn_candidate,high,observed,"asn=AS16625 | company=Akamai Technologies, Inc."
+23.194.181.154,AS16625,"Akamai Technologies, Inc.",,1,1,1,1,0,0,cdn_candidate,high,observed,"asn=AS16625 | company=Akamai Technologies, Inc."
+23.194.182.92,AS16625,"Akamai Technologies, Inc.",,1,1,1,1,0,0,cdn_candidate,high,observed,"asn=AS16625 | company=Akamai Technologies, Inc."
+3.174.37.212,AS16509,"Amazon.com, Inc.",,1,1,1,1,0,0,cdn_candidate,high,observed,"asn=AS16509 | company=Amazon.com, Inc."
+51.10.3.50,AS8075,Unknown ASN,,1,1,1,0,0,0,cdn_candidate,medium,observed,asn=AS8075 | company=Unknown ASN
+52.97.4.226,AS8075,Microsoft Corporation,,1,1,1,1,0,0,cdn_candidate,high,observed,asn=AS8075 | company=Microsoft Corporation
+57.144.128.34,AS32934,"Facebook, Inc.",,1,1,1,1,0,0,destination,low,observed,last_hop_count=1 | asn=AS32934

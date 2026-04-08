@@ -1,0 +1,56 @@
+{
+  "map_name": "MTR Unified - Brisanet Observed",
+  "sysmapid": "10",
+  "old_size": {
+    "width": 1900,
+    "height": 560
+  },
+  "new_size": {
+    "width": 2440,
+    "height": 1846
+  },
+  "icon_policy": {
+    "backbone_observed": "Server_(96)",
+    "edge_brisanet_candidate": "Router_(96)",
+    "cdn_candidate": "Cloud_(96)",
+    "dns_watchlist": "Notebook_(96)"
+  },
+  "layout_groups": {
+    "trunk": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181",
+      "172.16.128.182",
+      "172.16.130.122",
+      "172.16.134.242",
+      "172.16.135.209",
+      "172.16.128.42",
+      "187.19.161.199",
+      "104.21.4.50"
+    ],
+    "bands": [
+      "google",
+      "quad9",
+      "akamai",
+      "microsoft",
+      "meta",
+      "amazon",
+      "att",
+      "twelve99",
+      "dell",
+      "mikrotik",
+      "unknown"
+    ]
+  },
+  "label_policy": {
+    "backbone_observed": "IP + core runs/targets",
+    "edge_brisanet_candidate": "IP + edge count + confidence",
+    "cdn_candidate": "IP + family + confidence",
+    "dns_watchlist": "IP + watchlist + confidence"
+  },
+  "changed_coordinates_count": 64,
+  "notes": "Ajuste visual somente; arestas preservadas e a topologia não foi recalculada."
+}

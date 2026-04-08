@@ -7,6 +7,8 @@ from src.config import load_config
 from src.hop_policy import normalize_ip
 from src.zabbix_api import ZabbixAPI
 
+from .layout import compute_canvas_size
+
 
 UNIFIED_MAP_NAME = "MTR Unified - Brisanet Observed"
 LEGACY_MAP_NAME = "MTR Backbone - Brisanet Observed"
@@ -37,13 +39,13 @@ def _resolve_host(api: ZabbixAPI, ip: str, groupid: str) -> dict[str, Any] | Non
 
 def _label_for(role: str, row: dict[str, Any]) -> str:
     if role == "backbone_observed":
-        return f"{row['ip']}\nbackbone observed\nruns {row['run_count']}/{row['target_count']}"
+        return f"{row['ip']}\ncore {row['run_count']}/{row['target_count']}"
     if role == "edge_brisanet_candidate":
-        return f"{row['ip']}\n[candidate]\nedge {row['edge_count']} conf {row['confidence']}"
+        return f"{row['ip']}\nedge {row['edge_count']} {row['confidence']}"
     if role == "cdn_candidate":
-        return f"{row['ip']}\nCDN candidate\n{row['company']}\nconf {row['confidence']}"
+        return f"{row['ip']}\ncdn {row['company']}\n{row['confidence']}"
     if role == "dns_watchlist":
-        return f"{row['ip']}\nDNS watchlist\nconf {row['confidence']}"
+        return f"{row['ip']}\nwatchlist {row['confidence']}"
     return row["ip"]
 
 
@@ -204,13 +206,13 @@ def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
         classification = row.get("classification", {})
         label = row.get("ip", ip)
         if role == "backbone_observed" and row:
-            label = f"{ip}\nbackbone observed\nruns {row['run_count']}/{row['target_count']}"
+            label = f"{ip}\ncore {row['run_count']}/{row['target_count']}"
         elif role == "edge_brisanet_candidate" and row:
-            label = f"{ip}\n[candidate]\nedge {row['edge_count']} conf {classification.get('confidence', 'low')}"
+            label = f"{ip}\nedge {row['edge_count']} {classification.get('confidence', 'low')}"
         elif role == "cdn_candidate" and row:
-            label = f"{ip}\nCDN candidate\n{row['company']}\nconf {classification.get('confidence', 'low')}"
+            label = f"{ip}\ncdn {row['company']}\n{classification.get('confidence', 'low')}"
         elif role == "dns_watchlist" and row:
-            label = f"{ip}\nDNS watchlist\nconf {classification.get('confidence', 'low')}"
+            label = f"{ip}\nwatchlist {classification.get('confidence', 'low')}"
         elif role == "destination" and row:
             label = f"{ip}\n{row['company']}\ndestination"
         elif role == "unknown" and row:
@@ -288,19 +290,58 @@ def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
     unified_edges.sort(key=lambda edge: (edge["source"], edge["target"]))
 
     placements: list[dict[str, Any]] = []
-    trunk_positions = {ip: (40 + idx * 155, 120) for idx, ip in enumerate(canonical_path)}
+    placed_ips: set[str] = set()
+    trunk_positions = {ip: (80 + idx * 175, 150) for idx, ip in enumerate(canonical_path)}
     for idx, ip in enumerate(canonical_path):
         node = node_by_ip.get(ip)
         if not node:
             continue
-        placements.append({"ip": ip, "role": node["role"], "x": trunk_positions[ip][0], "y": trunk_positions[ip][1], "zindex": idx, "label": node["label"]})
+        placements.append({"ip": ip, "role": node["role"], "x": trunk_positions[ip][0], "y": trunk_positions[ip][1], "zindex": idx, "label": node["label"], "band": "trunk"})
+        placed_ips.add(ip)
 
     branch_index = 0
+    family_bands = {"google": 0, "quad9": 1, "akamai": 2, "microsoft": 3, "meta": 4, "amazon": 5, "att": 6, "twelve99": 7, "dell": 8, "mikrotik": 9, "unknown": 10}
     for path in branch_paths:
         split = _common_prefix_len(list(canonical_path), path)
         anchor_ip = canonical_path[max(0, split - 1)] if split else canonical_path[0]
-        anchor_x, _anchor_y = trunk_positions.get(anchor_ip, (40, 120))
-        branch_y = 280 + branch_index * 120
+        anchor_x, _anchor_y = trunk_positions.get(anchor_ip, (80, 150))
+        family = "unknown"
+        for ip in reversed(path):
+            row = inventory.get(ip)
+            if not row:
+                continue
+            company = str(row.get("company", "")).lower()
+            if "google" in company:
+                family = "google"
+                break
+            if "quad9" in company:
+                family = "quad9"
+                break
+            if "akama" in company:
+                family = "akamai"
+                break
+            if "microsoft" in company:
+                family = "microsoft"
+                break
+            if "instagram" in company or "meta" in company:
+                family = "meta"
+                break
+            if "amazon" in company or "prime" in company:
+                family = "amazon"
+                break
+            if "att" in company or "at&t" in company:
+                family = "att"
+                break
+            if "twelve99" in company or "telia" in company:
+                family = "twelve99"
+                break
+            if "dell" in company:
+                family = "dell"
+                break
+            if "mikrotik" in company:
+                family = "mikrotik"
+                break
+        branch_y = 360 + family_bands.get(family, family_bands["unknown"]) * 150
         branch_index += 1
         x = anchor_x
         for offset, ip in enumerate(path[split:]):
@@ -310,8 +351,13 @@ def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
             if ip in trunk_positions:
                 x, _ = trunk_positions[ip]
                 continue
-            x += 155 if offset > 0 else 155
-            placements.append({"ip": ip, "role": node["role"], "x": x, "y": branch_y, "zindex": 40 + branch_index * 10 + offset, "label": node["label"]})
+            if ip in placed_ips:
+                continue
+            x += 175
+            placements.append({"ip": ip, "role": node["role"], "x": x, "y": branch_y, "zindex": 40 + branch_index * 10 + offset, "label": node["label"], "band": family})
+            placed_ips.add(ip)
+
+    canvas_width, canvas_height = compute_canvas_size(len(canonical_path), max((len(path) for path in branch_paths), default=0), len({p.get("band", "unknown") for p in placements if p.get("band") != "trunk"}))
 
     return {
         "map_name": UNIFIED_MAP_NAME,
@@ -322,6 +368,25 @@ def build_unified_plan(aggregate: dict[str, Any]) -> dict[str, Any]:
         "unified_nodes": unified_nodes,
         "unified_edges": unified_edges,
         "placements": placements,
+        "canvas": {"width": canvas_width, "height": canvas_height},
+        "visual_policy": {
+            "icon_policy": {
+                "backbone_observed": "Server_(96)",
+                "edge_brisanet_candidate": "Router_(96)",
+                "cdn_candidate": "Cloud_(96)",
+                "dns_watchlist": "Notebook_(96)",
+            },
+            "label_policy": {
+                "backbone_observed": "IP + core runs/targets",
+                "edge_brisanet_candidate": "IP + edge count + confidence",
+                "cdn_candidate": "IP + family + confidence",
+                "dns_watchlist": "IP + watchlist + confidence",
+            },
+            "layout_groups": {
+                "trunk": canonical_path,
+                "bands": ["google", "quad9", "akamai", "microsoft", "meta", "amazon", "att", "twelve99", "dell", "mikrotik", "unknown"],
+            },
+        },
         "meta": promoted["meta"],
         "counts": {
             "backbone_nodes": len(backbone),
@@ -368,8 +433,8 @@ def publish_unified_map(plan: dict[str, Any]) -> dict[str, Any]:
         selements.append(_build_element(images[role]["imageid"], placement["x"], placement["y"], placement["label"], host["hostid"], placement["zindex"]))
 
     existing = api.get_map(plan["map_name"]) or api.get_map(plan.get("legacy_map_name", ""))
-    width = max(1900, 40 * 2 + max(1, len([node for node in plan["placements"] if node["y"] == 120]) - 1) * 155 + 96)
-    height = 560
+    width = plan.get("canvas", {}).get("width", 2400)
+    height = plan.get("canvas", {}).get("height", 980)
 
     if existing is None:
         api.call("map.create", _create_map_payload(plan["map_name"], width, height, selements))
@@ -434,6 +499,8 @@ def publish_unified_map(plan: dict[str, Any]) -> dict[str, Any]:
         "map_name": existing["name"],
         "selement_count": len(existing.get("selements", [])),
         "link_count": len(existing.get("links", [])),
+        "width": existing.get("width", width),
+        "height": existing.get("height", height),
         "host_lookup": host_lookup,
         "skipped": skipped,
     }

@@ -1,0 +1,998 @@
+[
+  {
+    "source": "10.45.0.1",
+    "target": "100.65.77.1",
+    "role": "backbone_observed",
+    "label": "10.45.0.1 -> 100.65.77.1",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 42,
+    "target_count": 21,
+    "run_count": 25,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "100.65.77.1",
+    "target": "172.16.128.221",
+    "role": "backbone_observed",
+    "label": "100.65.77.1 -> 172.16.128.221",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 42,
+    "target_count": 21,
+    "run_count": 25,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "104.44.119.171",
+    "target": "51.10.3.50",
+    "role": "cdn_exit",
+    "label": "104.44.119.171 -> 51.10.3.50",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS8075",
+      "company=Unknown ASN"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "104.44.28.204",
+    "target": "104.44.32.88",
+    "role": "cdn_exit",
+    "label": "104.44.28.204 -> 104.44.32.88",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS8075",
+      "company=Microsoft Corporation"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "104.44.31.214",
+    "target": "104.44.28.204",
+    "role": "cdn_exit",
+    "label": "104.44.31.214 -> 104.44.28.204",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS8075",
+      "company=Microsoft Corporation"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "104.44.32.88",
+    "target": "52.97.4.226",
+    "role": "cdn_exit",
+    "label": "104.44.32.88 -> 52.97.4.226",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS8075",
+      "company=Microsoft Corporation"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "104.44.34.213",
+    "target": "104.44.31.214",
+    "role": "cdn_exit",
+    "label": "104.44.34.213 -> 104.44.31.214",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS8075",
+      "company=Microsoft Corporation"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "108.170.226.233",
+    "target": "192.178.110.171",
+    "role": "cdn_exit",
+    "label": "108.170.226.233 -> 192.178.110.171",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS15169",
+      "company=Google LLC"
+    ],
+    "observations": 4,
+    "target_count": 1,
+    "run_count": 4,
+    "stability_ratio": 0.16
+  },
+  {
+    "source": "12.122.153.181",
+    "target": "12.252.89.6",
+    "role": "branch",
+    "label": "12.122.153.181 -> 12.252.89.6",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS7018",
+      "company=AT&T Enterprises, LLC"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "12.123.154.54",
+    "target": "12.122.153.181",
+    "role": "branch",
+    "label": "12.123.154.54 -> 12.122.153.181",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS7018",
+      "company=AT&T Enterprises, LLC"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "12.252.89.6",
+    "target": "143.166.30.172",
+    "role": "destination_edge",
+    "label": "12.252.89.6 -> 143.166.30.172",
+    "confidence": "medium",
+    "evidence": [
+      "last_hop_count=3",
+      "asn=AS3614"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "129.134.60.178",
+    "target": "163.77.194.43",
+    "role": "branch",
+    "label": "129.134.60.178 -> 163.77.194.43",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS???",
+      "company=Unknown ASN"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "138.204.238.149",
+    "target": "200.16.69.2",
+    "role": "branch",
+    "label": "138.204.238.149 -> 200.16.69.2",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS52320",
+      "company=GlobeNet Cabos Submarinos Colombia, S.A.S."
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "142.250.166.72",
+    "target": "108.170.226.233",
+    "role": "cdn_exit",
+    "label": "142.250.166.72 -> 108.170.226.233",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS15169",
+      "company=Google LLC"
+    ],
+    "observations": 4,
+    "target_count": 1,
+    "run_count": 4,
+    "stability_ratio": 0.16
+  },
+  {
+    "source": "147.75.214.158",
+    "target": "129.134.60.178",
+    "role": "branch",
+    "label": "147.75.214.158 -> 129.134.60.178",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS32934",
+      "company=Facebook, Inc."
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "163.77.194.43",
+    "target": "57.144.128.34",
+    "role": "destination_edge",
+    "label": "163.77.194.43 -> 57.144.128.34",
+    "confidence": "low",
+    "evidence": [
+      "last_hop_count=1",
+      "asn=AS32934"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "172.16.128.113",
+    "target": "172.16.128.181",
+    "role": "backbone_observed",
+    "label": "172.16.128.113 -> 172.16.128.181",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 42,
+    "target_count": 21,
+    "run_count": 25,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.128.178",
+    "target": "84.16.6.34",
+    "role": "branch",
+    "label": "172.16.128.178 -> 84.16.6.34",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS12956",
+      "company=TELXIUS TELXIUS Cable"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "104.44.119.171",
+    "role": "cdn_exit",
+    "label": "172.16.128.181 -> 104.44.119.171",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS8075",
+      "company=Microsoft Corporation"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "138.204.238.149",
+    "role": "branch",
+    "label": "172.16.128.181 -> 138.204.238.149",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS52320",
+      "company=GlobeNet Cabos Submarinos Colombia, S.A.S."
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "142.250.166.72",
+    "role": "cdn_exit",
+    "label": "172.16.128.181 -> 142.250.166.72",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS15169",
+      "company=Google LLC"
+    ],
+    "observations": 4,
+    "target_count": 1,
+    "run_count": 4,
+    "stability_ratio": 0.16
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "172.16.128.182",
+    "role": "backbone_observed",
+    "label": "172.16.128.181 -> 172.16.128.182",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 25,
+    "target_count": 12,
+    "run_count": 22,
+    "stability_ratio": 0.88
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "177.37.221.191",
+    "role": "candidate_edge",
+    "label": "172.16.128.181 -> 177.37.221.191",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS28126",
+      "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "last_internal_count=1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "187.16.223.64",
+    "role": "branch",
+    "label": "172.16.128.181 -> 187.16.223.64",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS???",
+      "company=Unknown ASN"
+    ],
+    "observations": 4,
+    "target_count": 1,
+    "run_count": 4,
+    "stability_ratio": 0.16
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "187.19.162.195",
+    "role": "candidate_edge",
+    "label": "172.16.128.181 -> 187.19.162.195",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS28126",
+      "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "last_internal_count=2"
+    ],
+    "observations": 2,
+    "target_count": 2,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "2.16.186.19",
+    "role": "cdn_exit",
+    "label": "172.16.128.181 -> 2.16.186.19",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 2,
+    "target_count": 2,
+    "run_count": 2,
+    "stability_ratio": 0.08
+  },
+  {
+    "source": "172.16.128.181",
+    "target": "3.174.37.212",
+    "role": "cdn_exit",
+    "label": "172.16.128.181 -> 3.174.37.212",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS16509",
+      "company=Amazon.com, Inc."
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "172.16.128.182",
+    "target": "172.16.128.62",
+    "role": "branch",
+    "label": "172.16.128.182 -> 172.16.128.62",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "172.16.128.182",
+    "target": "172.16.130.122",
+    "role": "backbone_observed",
+    "label": "172.16.128.182 -> 172.16.130.122",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 0.76
+  },
+  {
+    "source": "172.16.128.221",
+    "target": "172.16.133.150",
+    "role": "backbone_observed",
+    "label": "172.16.128.221 -> 172.16.133.150",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 42,
+    "target_count": 21,
+    "run_count": 25,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.128.42",
+    "target": "187.19.161.199",
+    "role": "candidate_edge",
+    "label": "172.16.128.42 -> 187.19.161.199",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS28126",
+      "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "edge_count=22",
+      "last_internal_count=22"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 0.76
+  },
+  {
+    "source": "172.16.128.62",
+    "target": "172.16.128.178",
+    "role": "branch",
+    "label": "172.16.128.62 -> 172.16.128.178",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "172.16.130.122",
+    "target": "172.16.134.242",
+    "role": "backbone_observed",
+    "label": "172.16.130.122 -> 172.16.134.242",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 0.76
+  },
+  {
+    "source": "172.16.133.150",
+    "target": "172.16.128.113",
+    "role": "backbone_observed",
+    "label": "172.16.133.150 -> 172.16.128.113",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 42,
+    "target_count": 21,
+    "run_count": 25,
+    "stability_ratio": 1.0
+  },
+  {
+    "source": "172.16.134.242",
+    "target": "172.16.135.209",
+    "role": "backbone_observed",
+    "label": "172.16.134.242 -> 172.16.135.209",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 0.76
+  },
+  {
+    "source": "172.16.135.209",
+    "target": "172.16.128.42",
+    "role": "backbone_observed",
+    "label": "172.16.135.209 -> 172.16.128.42",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS private",
+      "company=Private / local network"
+    ],
+    "observations": 22,
+    "target_count": 11,
+    "run_count": 19,
+    "stability_ratio": 0.76
+  },
+  {
+    "source": "177.37.221.191",
+    "target": "147.75.214.158",
+    "role": "branch",
+    "label": "177.37.221.191 -> 147.75.214.158",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS???",
+      "company=Unknown ASN"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "187.16.223.64",
+    "target": "200.25.56.83",
+    "role": "branch",
+    "label": "187.16.223.64 -> 200.25.56.83",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS7195",
+      "company=EDGEUNO S.A.S"
+    ],
+    "observations": 4,
+    "target_count": 1,
+    "run_count": 4,
+    "stability_ratio": 0.16
+  },
+  {
+    "source": "187.19.161.199",
+    "target": "1.0.0.1",
+    "role": "branch",
+    "label": "187.19.161.199 -> 1.0.0.1",
+    "confidence": "high",
+    "evidence": [
+      "known_dns_ip=1.0.0.1",
+      "asn=AS13335",
+      "company=Cloudflare, Inc."
+    ],
+    "observations": 2,
+    "target_count": 2,
+    "run_count": 2,
+    "stability_ratio": 0.08
+  },
+  {
+    "source": "187.19.161.199",
+    "target": "104.21.4.50",
+    "role": "cdn_exit",
+    "label": "187.19.161.199 -> 104.21.4.50",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS13335",
+      "company=Cloudflare, Inc."
+    ],
+    "observations": 10,
+    "target_count": 6,
+    "run_count": 10,
+    "stability_ratio": 0.4
+  },
+  {
+    "source": "187.19.161.199",
+    "target": "172.67.131.172",
+    "role": "cdn_exit",
+    "label": "187.19.161.199 -> 172.67.131.172",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS13335",
+      "company=Cloudflare, Inc."
+    ],
+    "observations": 10,
+    "target_count": 5,
+    "run_count": 10,
+    "stability_ratio": 0.4
+  },
+  {
+    "source": "187.19.162.195",
+    "target": "2.16.186.19",
+    "role": "cdn_exit",
+    "label": "187.19.162.195 -> 2.16.186.19",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 2,
+    "target_count": 2,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "187.19.162.195",
+    "target": "2.16.186.20",
+    "role": "cdn_exit",
+    "label": "187.19.162.195 -> 2.16.186.20",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "192.178.110.171",
+    "target": "8.8.8.8",
+    "role": "branch",
+    "label": "192.178.110.171 -> 8.8.8.8",
+    "confidence": "high",
+    "evidence": [
+      "known_dns_ip=8.8.8.8",
+      "asn=AS15169",
+      "company=Google LLC"
+    ],
+    "observations": 4,
+    "target_count": 1,
+    "run_count": 4,
+    "stability_ratio": 0.16
+  },
+  {
+    "source": "192.205.32.109",
+    "target": "32.130.89.4",
+    "role": "branch",
+    "label": "192.205.32.109 -> 32.130.89.4",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS7018",
+      "company=AT&T Enterprises, LLC"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "2.16.186.11",
+    "target": "2.16.186.24",
+    "role": "cdn_exit",
+    "label": "2.16.186.11 -> 2.16.186.24",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.19",
+    "target": "2.16.186.7",
+    "role": "cdn_exit",
+    "label": "2.16.186.19 -> 2.16.186.7",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.19",
+    "target": "2.16.186.9",
+    "role": "cdn_exit",
+    "label": "2.16.186.19 -> 2.16.186.9",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.20",
+    "target": "2.16.186.11",
+    "role": "cdn_exit",
+    "label": "2.16.186.20 -> 2.16.186.11",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.23",
+    "target": "2.16.186.39",
+    "role": "cdn_exit",
+    "label": "2.16.186.23 -> 2.16.186.39",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 2,
+    "target_count": 2,
+    "run_count": 2,
+    "stability_ratio": 0.08
+  },
+  {
+    "source": "2.16.186.24",
+    "target": "2.16.186.39",
+    "role": "cdn_exit",
+    "label": "2.16.186.24 -> 2.16.186.39",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.39",
+    "target": "23.194.180.67",
+    "role": "cdn_exit",
+    "label": "2.16.186.39 -> 23.194.180.67",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS16625",
+      "company=Akamai Technologies, Inc."
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.39",
+    "target": "23.194.181.154",
+    "role": "cdn_exit",
+    "label": "2.16.186.39 -> 23.194.181.154",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS16625",
+      "company=Akamai Technologies, Inc."
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.39",
+    "target": "23.194.182.92",
+    "role": "cdn_exit",
+    "label": "2.16.186.39 -> 23.194.182.92",
+    "confidence": "high",
+    "evidence": [
+      "asn=AS16625",
+      "company=Akamai Technologies, Inc."
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.7",
+    "target": "2.16.186.23",
+    "role": "cdn_exit",
+    "label": "2.16.186.7 -> 2.16.186.23",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "2.16.186.9",
+    "target": "2.16.186.23",
+    "role": "cdn_exit",
+    "label": "2.16.186.9 -> 2.16.186.23",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS20940",
+      "company=AKAMAI-ASN1"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "200.16.69.2",
+    "target": "62.115.50.180",
+    "role": "branch",
+    "label": "200.16.69.2 -> 62.115.50.180",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS1299",
+      "company=TWELVE99 Arelion, fka Telia Carrier"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "200.25.56.83",
+    "target": "9.9.9.9",
+    "role": "destination_edge",
+    "label": "200.25.56.83 -> 9.9.9.9",
+    "confidence": "medium",
+    "evidence": [
+      "last_hop_count=4",
+      "asn=AS19281"
+    ],
+    "observations": 4,
+    "target_count": 1,
+    "run_count": 4,
+    "stability_ratio": 0.16
+  },
+  {
+    "source": "213.248.84.33",
+    "target": "159.148.147.244",
+    "role": "destination_edge",
+    "label": "213.248.84.33 -> 159.148.147.244",
+    "confidence": "medium",
+    "evidence": [
+      "last_hop_count=3",
+      "asn=AS51894"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "32.130.89.4",
+    "target": "12.123.154.54",
+    "role": "branch",
+    "label": "32.130.89.4 -> 12.123.154.54",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS7018",
+      "company=AT&T Enterprises, LLC"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "51.10.3.50",
+    "target": "104.44.34.213",
+    "role": "cdn_exit",
+    "label": "51.10.3.50 -> 104.44.34.213",
+    "confidence": "medium",
+    "evidence": [
+      "asn=AS8075",
+      "company=Microsoft Corporation"
+    ],
+    "observations": 1,
+    "target_count": 1,
+    "run_count": 1,
+    "stability_ratio": 0.04
+  },
+  {
+    "source": "62.115.142.191",
+    "target": "213.248.84.33",
+    "role": "branch",
+    "label": "62.115.142.191 -> 213.248.84.33",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS1299",
+      "company=TWELVE99 Arelion, fka Telia Carrier"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "62.115.50.180",
+    "target": "80.91.254.90",
+    "role": "branch",
+    "label": "62.115.50.180 -> 80.91.254.90",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS1299",
+      "company=TWELVE99 Arelion, fka Telia Carrier"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "80.91.254.90",
+    "target": "62.115.142.191",
+    "role": "branch",
+    "label": "80.91.254.90 -> 62.115.142.191",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS1299",
+      "company=TWELVE99 Arelion, fka Telia Carrier"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "84.16.6.34",
+    "target": "94.142.98.175",
+    "role": "branch",
+    "label": "84.16.6.34 -> 94.142.98.175",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS12956",
+      "company=TELXIUS TELXIUS Cable"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  },
+  {
+    "source": "94.142.98.175",
+    "target": "192.205.32.109",
+    "role": "branch",
+    "label": "94.142.98.175 -> 192.205.32.109",
+    "confidence": "low",
+    "evidence": [
+      "asn=AS7018",
+      "company=AT&T Enterprises, LLC"
+    ],
+    "observations": 3,
+    "target_count": 1,
+    "run_count": 3,
+    "stability_ratio": 0.12
+  }
+]
