@@ -1,0 +1,11 @@
+{
+  "status": "ok",
+  "hostid": "10844",
+  "hostname": "debian2-1",
+  "visible_name": "debian2-1 / 10.45.0.2",
+  "action": "reused",
+  "match_source": "hostname",
+  "warnings": [],
+  "group": "Remote Sources",
+  "template": "ICMP Ping"
+}

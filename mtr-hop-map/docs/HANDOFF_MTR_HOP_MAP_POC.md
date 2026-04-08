@@ -1,5 +1,16 @@
 # Handoff - MTR Hop Map
 
+## 2026-04-07 - debian2-1 monitorado no Zabbix
+
+- o host `debian2-1` foi criado/reaproveitado no Zabbix
+- hostid: `10844`
+- grupo: `Remote Sources`
+- template: `ICMP Ping`
+- monitoramento: `ICMP` via host remoto `10.45.0.2`
+- wrapper idempotente: `scripts/ensure_debian2_monitoring.sh`
+- config versionada: `sources/debian2-1.json`
+- o smoke test remoto segue salvo em `data/runs/20260407-remote-debian2-1-debian2-1-smoke/`
+
 ## 2026-04-07 - preparação da origem remota debian2-1
 
 - origem remota registrada: `debian2-1`

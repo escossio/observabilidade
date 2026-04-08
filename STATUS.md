@@ -1,5 +1,20 @@
 # Status
 
+## 2026-04-07 - debian2-1 agora está monitorado no Zabbix
+
+- o host `debian2-1` foi criado/reaproveitado no Zabbix com monitoramento ICMP
+- acesso remoto validado por SSH sem senha em `10.45.0.2`
+- usuário remoto efetivo: `root`
+- hostname remoto confirmado: `debian2-1.escossio.dev.br`
+- o host Zabbix ficou em grupo próprio:
+  - `Remote Sources`
+- o template aplicado é:
+  - `ICMP Ping`
+- o host ficou registrado com:
+  - `hostid 10844`
+- o mapa `sysmapid 10` não foi alterado
+
+
 ## 2026-04-07 - mapa unificado expandido com 4 novos destinos
 
 - fonte de verdade desta rodada:

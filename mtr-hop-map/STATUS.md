@@ -234,6 +234,24 @@
   - validar idempotência em segunda execução
 # Status
 
+## 2026-04-07 - debian2-1 registrado no Zabbix como origem monitorada
+
+- source remota canônica: `debian2-1`
+- host remoto: `10.45.0.2`
+- usuário remoto efetivo: `root`
+- hostname remoto confirmado: `debian2-1.escossio.dev.br`
+- o host Zabbix foi criado/reaproveitado com:
+  - grupo `Remote Sources`
+  - template `ICMP Ping`
+  - `hostid 10844`
+- a source remota versionada está em:
+  - `sources/debian2-1.json`
+- o wrapper idempotente de monitoramento está em:
+  - `scripts/ensure_debian2_monitoring.sh`
+- o smoke test remoto anterior permanece como evidência em:
+  - `data/runs/20260407-remote-debian2-1-debian2-1-smoke/`
+- o mapa canônico `sysmapid 10` não sofreu alteração
+
 ## 2026-04-07 - source remota debian2-1 preparada
 
 - source remota canônica: `debian2-1`

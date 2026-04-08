@@ -13,5 +13,13 @@
   "transport": "ssh",
   "requires_sudo": false,
   "smoke_target": "8.8.8.8",
+  "zabbix_monitoring": {
+    "enabled": true,
+    "host_name": "debian2-1",
+    "visible_name": "debian2-1 / 10.45.0.2",
+    "group": "Remote Sources",
+    "template": "ICMP Ping",
+    "tag_role": "remote-source"
+  },
   "notes": "Origem remota validada por SSH sem senha. O host local do Zabbix acessa o debian2-1 pelo IP 10.45.0.2."
 }
