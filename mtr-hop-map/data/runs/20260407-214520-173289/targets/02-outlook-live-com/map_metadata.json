@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "outlook.live.com",
+  "target_slug": "outlook-live-com",
+  "mode": "live",
+  "last_trace": "20260407-214520-173289",
+  "dry_run": true,
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - outlook.live.com",
+  "sysmapid": null
+}

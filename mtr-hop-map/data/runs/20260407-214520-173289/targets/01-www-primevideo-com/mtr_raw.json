@@ -1,0 +1,134 @@
+{
+    "report": {
+        "mtr": {
+            "src": "agt01",
+            "dst": "www.primevideo.com",
+            "tos": 0,
+            "tests": 1,
+            "psize": "64",
+            "bitpattern": "0x00"
+        },
+        "hubs": [
+            {
+                "count": 1,
+                "host": "10.45.0.1",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 1,
+                "Last": 0.477,
+                "Avg": 0.477,
+                "Best": 0.477,
+                "Wrst": 0.477,
+                "StDev": 0.0
+            },
+            {
+                "count": 2,
+                "host": "100.65.77.1",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 1,
+                "Last": 9.945,
+                "Avg": 9.945,
+                "Best": 9.945,
+                "Wrst": 9.945,
+                "StDev": 0.0
+            },
+            {
+                "count": 3,
+                "host": "172.16.128.221",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 1,
+                "Last": 20.056,
+                "Avg": 20.056,
+                "Best": 20.056,
+                "Wrst": 20.056,
+                "StDev": 0.0
+            },
+            {
+                "count": 4,
+                "host": "172.16.133.150",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 1,
+                "Last": 16.876,
+                "Avg": 16.876,
+                "Best": 16.876,
+                "Wrst": 16.876,
+                "StDev": 0.0
+            },
+            {
+                "count": 5,
+                "host": "172.16.128.113",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 1,
+                "Last": 17.85,
+                "Avg": 17.85,
+                "Best": 17.85,
+                "Wrst": 17.85,
+                "StDev": 0.0
+            },
+            {
+                "count": 6,
+                "host": "172.16.128.181",
+                "ASN": "AS???",
+                "Loss%": 0.0,
+                "Snt": 1,
+                "Last": 18.601,
+                "Avg": 18.601,
+                "Best": 18.601,
+                "Wrst": 18.601,
+                "StDev": 0.0
+            },
+            {
+                "count": 7,
+                "host": "???",
+                "ASN": "AS???",
+                "Loss%": 100.0,
+                "Snt": 1,
+                "Last": 0.0,
+                "Avg": 0.0,
+                "Best": 0.0,
+                "Wrst": 0.0,
+                "StDev": 0.0
+            },
+            {
+                "count": 8,
+                "host": "???",
+                "ASN": "AS???",
+                "Loss%": 100.0,
+                "Snt": 1,
+                "Last": 0.0,
+                "Avg": 0.0,
+                "Best": 0.0,
+                "Wrst": 0.0,
+                "StDev": 0.0
+            },
+            {
+                "count": 9,
+                "host": "???",
+                "ASN": "AS???",
+                "Loss%": 100.0,
+                "Snt": 1,
+                "Last": 0.0,
+                "Avg": 0.0,
+                "Best": 0.0,
+                "Wrst": 0.0,
+                "StDev": 0.0
+            },
+            {
+                "count": 10,
+                "host": "3.174.37.212",
+                "ASN": "AS16509",
+                "Loss%": 0.0,
+                "Snt": 1,
+                "Last": 17.166,
+                "Avg": 17.166,
+                "Best": 17.166,
+                "Wrst": 17.166,
+                "StDev": 0.0
+            }
+        ]
+    }
+}

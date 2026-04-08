@@ -1,0 +1,110 @@
+[
+  {
+    "order": 1,
+    "ip": "10.45.0.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "10.45.0.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 2,
+    "ip": "100.65.77.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "100.65.77.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 3,
+    "ip": "172.16.128.221",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.221\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 4,
+    "ip": "172.16.133.150",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.133.150\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 5,
+    "ip": "172.16.128.113",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.113\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 6,
+    "ip": "172.16.128.181",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.181\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 7,
+    "ip": "187.19.162.195",
+    "asn": "AS28126",
+    "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+    "category": "public",
+    "label": "187.19.162.195\nAS28126\nBRISANET SERVICOS DE TELECOMUNICACOES S.A",
+    "source": "cache-ip"
+  },
+  {
+    "order": 8,
+    "ip": "2.16.186.20",
+    "asn": "AS20940",
+    "company": "AKAMAI-ASN1",
+    "category": "public",
+    "label": "2.16.186.20\nAS20940\nAKAMAI-ASN1",
+    "source": "whois-cymru"
+  },
+  {
+    "order": 9,
+    "ip": "2.16.186.11",
+    "asn": "AS20940",
+    "company": "AKAMAI-ASN1",
+    "category": "public",
+    "label": "2.16.186.11\nAS20940\nAKAMAI-ASN1",
+    "source": "whois-cymru"
+  },
+  {
+    "order": 10,
+    "ip": "2.16.186.24",
+    "asn": "AS20940",
+    "company": "AKAMAI-ASN1",
+    "category": "public",
+    "label": "2.16.186.24\nAS20940\nAKAMAI-ASN1",
+    "source": "whois-cymru"
+  },
+  {
+    "order": 11,
+    "ip": "2.16.186.39",
+    "asn": "AS20940",
+    "company": "AKAMAI-ASN1",
+    "category": "public",
+    "label": "2.16.186.39\nAS20940\nAKAMAI-ASN1",
+    "source": "cache-ip"
+  },
+  {
+    "order": 12,
+    "ip": "23.194.181.154",
+    "asn": "AS16625",
+    "company": "Akamai Technologies, Inc.",
+    "category": "public",
+    "label": "23.194.181.154\nAS16625\nAkamai Technologies, Inc.",
+    "source": "whois-cymru"
+  }
+]

@@ -1725,3 +1725,33 @@
   - `ether1 inbound traffic` = `1490222658`
   - `ether1 outbound traffic` = `540053278`
 - o `delay` do item mestre foi devolvido para `1m` após a validação inicial
+# Status
+
+## 2026-04-07 - mapa unificado expandido com Prime Video, Instagram e Microsoft/Akamai
+
+- a camada `mtr-hop-map/aggregate` publicou nova evolução do mapa canônico único:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- a rodada incorporou traces live válidos para:
+  - `www.primevideo.com`
+  - `www.instagram.com`
+  - `www.microsoft.com`
+  - `account.microsoft.com`
+  - `outlook.live.com`
+  - `www.xbox.com`
+  - `8.8.8.8`
+  - `9.9.9.9`
+- a pré-seleção Akamai foi feita por DNS e validou:
+  - `www.microsoft.com -> e13678.dscb.akamaiedge.net`
+  - `account.microsoft.com -> e9412.b.akamaiedge.net`
+  - `www.xbox.com -> e1822.dsca.akamaiedge.net`
+- o mapa final publicado no Zabbix ficou com:
+  - `68` selements
+  - `65` links
+- os ramos novos vieram de:
+  - Prime Video / Amazon
+  - Instagram / Meta
+  - Microsoft
+  - Akamai
+- `8.8.8.8` e `9.9.9.9` reforçaram ramos já existentes
+- os mapas por destino permaneceram intactos e o mapa canônico continuou sendo o `sysmapid 10`

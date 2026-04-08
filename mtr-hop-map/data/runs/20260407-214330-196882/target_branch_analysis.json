@@ -1,0 +1,343 @@
+[
+  {
+    "target": "www.primevideo.com",
+    "run_source": "live",
+    "path_detected": [],
+    "intersects_backbone": false,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": false,
+    "new_nodes": [],
+    "new_edges": [],
+    "external_family_detected": "unknown",
+    "notes": "Zabbix API error in map.create: {'code': -32500, 'message': 'Application error.', 'data': 'No permissions to referred object or it does not exist!'}"
+  },
+  {
+    "target": "www.instagram.com",
+    "run_source": "live",
+    "path_detected": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181",
+      "177.37.221.191",
+      "147.75.214.158",
+      "129.134.60.178",
+      "163.77.194.43",
+      "57.144.128.34"
+    ],
+    "intersects_backbone": true,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": true,
+    "new_nodes": [
+      "177.37.221.191",
+      "147.75.214.158",
+      "129.134.60.178",
+      "163.77.194.43",
+      "57.144.128.34"
+    ],
+    "new_edges": [
+      {
+        "source": "172.16.128.181",
+        "target": "177.37.221.191"
+      },
+      {
+        "source": "177.37.221.191",
+        "target": "147.75.214.158"
+      },
+      {
+        "source": "147.75.214.158",
+        "target": "129.134.60.178"
+      },
+      {
+        "source": "129.134.60.178",
+        "target": "163.77.194.43"
+      },
+      {
+        "source": "163.77.194.43",
+        "target": "57.144.128.34"
+      }
+    ],
+    "external_family_detected": "unknown",
+    "notes": "prefix_len=6; branch_len=5"
+  },
+  {
+    "target": "www.microsoft.com",
+    "run_source": "live",
+    "path_detected": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181",
+      "187.19.162.195",
+      "2.16.186.19",
+      "2.16.186.7",
+      "2.16.186.23",
+      "2.16.186.39",
+      "23.194.182.92"
+    ],
+    "intersects_backbone": true,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": true,
+    "new_nodes": [
+      "187.19.162.195",
+      "2.16.186.19",
+      "2.16.186.7",
+      "2.16.186.23",
+      "2.16.186.39",
+      "23.194.182.92"
+    ],
+    "new_edges": [
+      {
+        "source": "172.16.128.181",
+        "target": "187.19.162.195"
+      },
+      {
+        "source": "187.19.162.195",
+        "target": "2.16.186.19"
+      },
+      {
+        "source": "2.16.186.19",
+        "target": "2.16.186.7"
+      },
+      {
+        "source": "2.16.186.7",
+        "target": "2.16.186.23"
+      },
+      {
+        "source": "2.16.186.23",
+        "target": "2.16.186.39"
+      },
+      {
+        "source": "2.16.186.39",
+        "target": "23.194.182.92"
+      }
+    ],
+    "external_family_detected": "unknown",
+    "notes": "prefix_len=6; branch_len=6"
+  },
+  {
+    "target": "account.microsoft.com",
+    "run_source": "live",
+    "path_detected": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181",
+      "187.19.162.195",
+      "2.16.186.20",
+      "2.16.186.11",
+      "2.16.186.24",
+      "2.16.186.39",
+      "23.194.181.154"
+    ],
+    "intersects_backbone": true,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": true,
+    "new_nodes": [
+      "187.19.162.195",
+      "2.16.186.20",
+      "2.16.186.11",
+      "2.16.186.24",
+      "2.16.186.39",
+      "23.194.181.154"
+    ],
+    "new_edges": [
+      {
+        "source": "172.16.128.181",
+        "target": "187.19.162.195"
+      },
+      {
+        "source": "187.19.162.195",
+        "target": "2.16.186.20"
+      },
+      {
+        "source": "2.16.186.20",
+        "target": "2.16.186.11"
+      },
+      {
+        "source": "2.16.186.11",
+        "target": "2.16.186.24"
+      },
+      {
+        "source": "2.16.186.24",
+        "target": "2.16.186.39"
+      },
+      {
+        "source": "2.16.186.39",
+        "target": "23.194.181.154"
+      }
+    ],
+    "external_family_detected": "unknown",
+    "notes": "prefix_len=6; branch_len=6"
+  },
+  {
+    "target": "outlook.live.com",
+    "run_source": "live",
+    "path_detected": [],
+    "intersects_backbone": false,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": false,
+    "new_nodes": [],
+    "new_edges": [],
+    "external_family_detected": "unknown",
+    "notes": "Zabbix API error in map.create: {'code': -32500, 'message': 'Application error.', 'data': 'No permissions to referred object or it does not exist!'}"
+  },
+  {
+    "target": "www.xbox.com",
+    "run_source": "live",
+    "path_detected": [],
+    "intersects_backbone": false,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": false,
+    "new_nodes": [],
+    "new_edges": [],
+    "external_family_detected": "unknown",
+    "notes": "Zabbix API error in map.create: {'code': -32500, 'message': 'Application error.', 'data': 'No permissions to referred object or it does not exist!'}"
+  },
+  {
+    "target": "8.8.8.8",
+    "run_source": "live",
+    "path_detected": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181",
+      "142.250.166.72",
+      "108.170.226.233",
+      "192.178.110.171",
+      "8.8.8.8"
+    ],
+    "intersects_backbone": true,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": true,
+    "new_nodes": [
+      "142.250.166.72",
+      "108.170.226.233",
+      "192.178.110.171",
+      "8.8.8.8"
+    ],
+    "new_edges": [
+      {
+        "source": "172.16.128.181",
+        "target": "142.250.166.72"
+      },
+      {
+        "source": "142.250.166.72",
+        "target": "108.170.226.233"
+      },
+      {
+        "source": "108.170.226.233",
+        "target": "192.178.110.171"
+      },
+      {
+        "source": "192.178.110.171",
+        "target": "8.8.8.8"
+      }
+    ],
+    "external_family_detected": "google",
+    "notes": "prefix_len=6; branch_len=4"
+  },
+  {
+    "target": "9.9.9.9",
+    "run_source": "live",
+    "path_detected": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181",
+      "187.16.223.64",
+      "200.25.56.83",
+      "9.9.9.9"
+    ],
+    "intersects_backbone": true,
+    "shared_trunk_until": [
+      "10.45.0.1",
+      "100.65.77.1",
+      "172.16.128.221",
+      "172.16.133.150",
+      "172.16.128.113",
+      "172.16.128.181"
+    ],
+    "new_branch_detected": true,
+    "new_nodes": [
+      "187.16.223.64",
+      "200.25.56.83",
+      "9.9.9.9"
+    ],
+    "new_edges": [
+      {
+        "source": "172.16.128.181",
+        "target": "187.16.223.64"
+      },
+      {
+        "source": "187.16.223.64",
+        "target": "200.25.56.83"
+      },
+      {
+        "source": "200.25.56.83",
+        "target": "9.9.9.9"
+      }
+    ],
+    "external_family_detected": "quad9",
+    "notes": "prefix_len=6; branch_len=3"
+  }
+]

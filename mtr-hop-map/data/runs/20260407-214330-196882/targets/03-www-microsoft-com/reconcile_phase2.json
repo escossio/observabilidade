@@ -1,0 +1,148 @@
+{
+  "target": "www.microsoft.com",
+  "map_name": "MTR ASN - www.microsoft.com",
+  "sysmapid": "14",
+  "host_groupid": "25",
+  "templateid": "10564",
+  "hostids": [
+    "10829",
+    "10780",
+    "10781",
+    "10782",
+    "10783",
+    "10784",
+    "10785",
+    "10825",
+    "10826",
+    "10827",
+    "10828",
+    "10830"
+  ],
+  "selementids": [
+    "184",
+    "174",
+    "175",
+    "176",
+    "177",
+    "178",
+    "179",
+    "180",
+    "181",
+    "182",
+    "183",
+    "185"
+  ],
+  "linkids": [
+    "240",
+    "241",
+    "242",
+    "243",
+    "244",
+    "245",
+    "246",
+    "247",
+    "248",
+    "249",
+    "250"
+  ],
+  "created_map": false,
+  "host_actions": [
+    {
+      "ip": "10.45.0.1",
+      "hostid": "10780",
+      "hostname": "hop-ip-10-45-0-1",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "100.65.77.1",
+      "hostid": "10781",
+      "hostname": "hop-ip-100-65-77-1",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.221",
+      "hostid": "10782",
+      "hostname": "hop-ip-172-16-128-221",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.133.150",
+      "hostid": "10783",
+      "hostname": "hop-ip-172-16-133-150",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.113",
+      "hostid": "10784",
+      "hostname": "hop-ip-172-16-128-113",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "172.16.128.181",
+      "hostid": "10785",
+      "hostname": "hop-ip-172-16-128-181",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "187.19.162.195",
+      "hostid": "10825",
+      "hostname": "hop-ip-187-19-162-195",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "2.16.186.19",
+      "hostid": "10826",
+      "hostname": "hop-ip-2-16-186-19",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "2.16.186.7",
+      "hostid": "10827",
+      "hostname": "hop-ip-2-16-186-7",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "2.16.186.23",
+      "hostid": "10828",
+      "hostname": "hop-ip-2-16-186-23",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "2.16.186.39",
+      "hostid": "10829",
+      "hostname": "hop-ip-2-16-186-39",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    },
+    {
+      "ip": "23.194.182.92",
+      "hostid": "10830",
+      "hostname": "hop-ip-23-194-182-92",
+      "action": "reused",
+      "match_source": "hostname",
+      "warnings": []
+    }
+  ],
+  "plan": null
+}

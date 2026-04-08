@@ -1,0 +1,3622 @@
+{
+  "inventory": [
+    {
+      "ip": "10.45.0.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {},
+      "transitions_to": {
+        "100.65.77.1": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "100.65.77.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "10.45.0.1": 42
+      },
+      "transitions_to": {
+        "172.16.128.221": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.113",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.133.150": 42
+      },
+      "transitions_to": {
+        "172.16.128.181": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.181",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.113": 42
+      },
+      "transitions_to": {
+        "172.16.128.182": 25,
+        "142.250.166.72": 4,
+        "187.16.223.64": 4,
+        "138.204.238.149": 3,
+        "177.37.221.191": 1,
+        "187.19.162.195": 2,
+        "3.174.37.212": 1,
+        "104.44.119.171": 1,
+        "2.16.186.19": 1
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.221",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "100.65.77.1": 42
+      },
+      "transitions_to": {
+        "172.16.133.150": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.133.150",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.221": 42
+      },
+      "transitions_to": {
+        "172.16.128.113": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.182",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 25,
+      "sample_count": 12,
+      "target_count": 12,
+      "run_count": 22,
+      "path_count": 12,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.88,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 25
+      },
+      "transitions_to": {
+        "172.16.130.122": 22,
+        "172.16.128.62": 3
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.42",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.135.209": 22
+      },
+      "transitions_to": {
+        "187.19.161.199": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.130.122",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.182": 22
+      },
+      "transitions_to": {
+        "172.16.134.242": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.134.242",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.130.122": 22
+      },
+      "transitions_to": {
+        "172.16.135.209": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.135.209",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.134.242": 22
+      },
+      "transitions_to": {
+        "172.16.128.42": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "187.19.161.199",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 22,
+      "edge_count": 22,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 1.1578947368421053,
+      "transitions_from": {
+        "172.16.128.42": 22
+      },
+      "transitions_to": {
+        "104.21.4.50": 10,
+        "172.67.131.172": 10,
+        "1.0.0.1": 2
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "edge_count=22",
+          "last_internal_count=22"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    },
+    {
+      "ip": "104.21.4.50",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "hostname": "",
+      "observations": 10,
+      "sample_count": 6,
+      "target_count": 6,
+      "run_count": 10,
+      "path_count": 6,
+      "last_hop_count": 10,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.4,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.161.199": 10
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "172.67.131.172",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "hostname": "",
+      "observations": 10,
+      "sample_count": 5,
+      "target_count": 5,
+      "run_count": 10,
+      "path_count": 5,
+      "last_hop_count": 10,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.4,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.161.199": 10
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "108.170.226.233",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "142.250.166.72": 4
+      },
+      "transitions_to": {
+        "192.178.110.171": 4
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "142.250.166.72",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 4
+      },
+      "transitions_to": {
+        "108.170.226.233": 4
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "187.16.223.64",
+      "asn": "AS???",
+      "company": "Unknown ASN",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 4
+      },
+      "transitions_to": {
+        "200.25.56.83": 4
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS???",
+          "company=Unknown ASN"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "192.178.110.171",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "108.170.226.233": 4
+      },
+      "transitions_to": {
+        "8.8.8.8": 4
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "200.25.56.83",
+      "asn": "AS7195",
+      "company": "EDGEUNO S.A.S",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.16.223.64": 4
+      },
+      "transitions_to": {
+        "9.9.9.9": 4
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS7195",
+          "company=EDGEUNO S.A.S"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "8.8.8.8",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 4,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "192.178.110.171": 4
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "dns_infra_candidate",
+        "confidence": "high",
+        "evidence": [
+          "known_dns_ip=8.8.8.8",
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "9.9.9.9",
+      "asn": "AS19281",
+      "company": "Quad9",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 4,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "200.25.56.83": 4
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "destination",
+        "confidence": "medium",
+        "evidence": [
+          "last_hop_count=4",
+          "asn=AS19281"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "12.122.153.181",
+      "asn": "AS7018",
+      "company": "AT&T Enterprises, LLC",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "12.123.154.54": 3
+      },
+      "transitions_to": {
+        "12.252.89.6": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS7018",
+          "company=AT&T Enterprises, LLC"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "12.123.154.54",
+      "asn": "AS7018",
+      "company": "AT&T Enterprises, LLC",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "32.130.89.4": 3
+      },
+      "transitions_to": {
+        "12.122.153.181": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS7018",
+          "company=AT&T Enterprises, LLC"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "12.252.89.6",
+      "asn": "AS7018",
+      "company": "AT&T Enterprises, LLC",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "12.122.153.181": 3
+      },
+      "transitions_to": {
+        "143.166.30.172": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS7018",
+          "company=AT&T Enterprises, LLC"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "138.204.238.149",
+      "asn": "AS52320",
+      "company": "GlobeNet Cabos Submarinos Colombia, S.A.S.",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 3
+      },
+      "transitions_to": {
+        "200.16.69.2": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS52320",
+          "company=GlobeNet Cabos Submarinos Colombia, S.A.S."
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "143.166.30.172",
+      "asn": "AS3614",
+      "company": "Dell, Inc.",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 3,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "12.252.89.6": 3
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "destination",
+        "confidence": "medium",
+        "evidence": [
+          "last_hop_count=3",
+          "asn=AS3614"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "159.148.147.244",
+      "asn": "AS51894",
+      "company": "AS_MIKROTIKLS",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 3,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "213.248.84.33": 3
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "destination",
+        "confidence": "medium",
+        "evidence": [
+          "last_hop_count=3",
+          "asn=AS51894"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.178",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.62": 3
+      },
+      "transitions_to": {
+        "84.16.6.34": 3
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.62",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.182": 3
+      },
+      "transitions_to": {
+        "172.16.128.178": 3
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "192.205.32.109",
+      "asn": "AS7018",
+      "company": "AT&T Enterprises, LLC",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "94.142.98.175": 3
+      },
+      "transitions_to": {
+        "32.130.89.4": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS7018",
+          "company=AT&T Enterprises, LLC"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "2.16.186.39",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 3,
+      "target_count": 3,
+      "run_count": 2,
+      "path_count": 3,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.23": 2,
+        "2.16.186.24": 1
+      },
+      "transitions_to": {
+        "23.194.182.92": 1,
+        "23.194.181.154": 1,
+        "23.194.180.67": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "200.16.69.2",
+      "asn": "AS52320",
+      "company": "GlobeNet Cabos Submarinos Colombia, S.A.S.",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "138.204.238.149": 3
+      },
+      "transitions_to": {
+        "62.115.50.180": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS52320",
+          "company=GlobeNet Cabos Submarinos Colombia, S.A.S."
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "213.248.84.33",
+      "asn": "AS1299",
+      "company": "TWELVE99 Arelion, fka Telia Carrier",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "62.115.142.191": 3
+      },
+      "transitions_to": {
+        "159.148.147.244": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS1299",
+          "company=TWELVE99 Arelion, fka Telia Carrier"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "32.130.89.4",
+      "asn": "AS7018",
+      "company": "AT&T Enterprises, LLC",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "192.205.32.109": 3
+      },
+      "transitions_to": {
+        "12.123.154.54": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS7018",
+          "company=AT&T Enterprises, LLC"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "62.115.142.191",
+      "asn": "AS1299",
+      "company": "TWELVE99 Arelion, fka Telia Carrier",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "80.91.254.90": 3
+      },
+      "transitions_to": {
+        "213.248.84.33": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS1299",
+          "company=TWELVE99 Arelion, fka Telia Carrier"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "62.115.50.180",
+      "asn": "AS1299",
+      "company": "TWELVE99 Arelion, fka Telia Carrier",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "200.16.69.2": 3
+      },
+      "transitions_to": {
+        "80.91.254.90": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS1299",
+          "company=TWELVE99 Arelion, fka Telia Carrier"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "80.91.254.90",
+      "asn": "AS1299",
+      "company": "TWELVE99 Arelion, fka Telia Carrier",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "62.115.50.180": 3
+      },
+      "transitions_to": {
+        "62.115.142.191": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS1299",
+          "company=TWELVE99 Arelion, fka Telia Carrier"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "84.16.6.34",
+      "asn": "AS12956",
+      "company": "TELXIUS TELXIUS Cable",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.178": 3
+      },
+      "transitions_to": {
+        "94.142.98.175": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS12956",
+          "company=TELXIUS TELXIUS Cable"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "94.142.98.175",
+      "asn": "AS12956",
+      "company": "TELXIUS TELXIUS Cable",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "84.16.6.34": 3
+      },
+      "transitions_to": {
+        "192.205.32.109": 3
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS12956",
+          "company=TELXIUS TELXIUS Cable"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "1.0.0.1",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 2,
+      "path_count": 2,
+      "last_hop_count": 2,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.161.199": 2
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "dns_infra_candidate",
+        "confidence": "high",
+        "evidence": [
+          "known_dns_ip=1.0.0.1",
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "187.19.162.195",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 1,
+      "path_count": 2,
+      "last_hop_count": 0,
+      "last_internal_count": 2,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 2
+      },
+      "transitions_to": {
+        "2.16.186.19": 1,
+        "2.16.186.20": 1
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "last_internal_count=2"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.19",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 2,
+      "path_count": 2,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.162.195": 1,
+        "172.16.128.181": 1
+      },
+      "transitions_to": {
+        "2.16.186.7": 1,
+        "2.16.186.9": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.23",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 2,
+      "path_count": 2,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.7": 1,
+        "2.16.186.9": 1
+      },
+      "transitions_to": {
+        "2.16.186.39": 2
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.119.171",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 1
+      },
+      "transitions_to": {
+        "51.10.3.50": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.28.204",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.31.214": 1
+      },
+      "transitions_to": {
+        "104.44.32.88": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.31.214",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.34.213": 1
+      },
+      "transitions_to": {
+        "104.44.28.204": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.32.88",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.28.204": 1
+      },
+      "transitions_to": {
+        "52.97.4.226": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.34.213",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "51.10.3.50": 1
+      },
+      "transitions_to": {
+        "104.44.31.214": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "129.134.60.178",
+      "asn": "AS32934",
+      "company": "Facebook, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "147.75.214.158": 1
+      },
+      "transitions_to": {
+        "163.77.194.43": 1
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS32934",
+          "company=Facebook, Inc."
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "147.75.214.158",
+      "asn": "AS???",
+      "company": "Unknown ASN",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "177.37.221.191": 1
+      },
+      "transitions_to": {
+        "129.134.60.178": 1
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS???",
+          "company=Unknown ASN"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "163.77.194.43",
+      "asn": "AS???",
+      "company": "Unknown ASN",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "129.134.60.178": 1
+      },
+      "transitions_to": {
+        "57.144.128.34": 1
+      },
+      "classification": {
+        "primary_class": "unknown",
+        "confidence": "low",
+        "evidence": [
+          "asn=AS???",
+          "company=Unknown ASN"
+        ],
+        "source_type": "inferred",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "177.37.221.191",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 1,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 1
+      },
+      "transitions_to": {
+        "147.75.214.158": 1
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "last_internal_count=1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.11",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.20": 1
+      },
+      "transitions_to": {
+        "2.16.186.24": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.20",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.162.195": 1
+      },
+      "transitions_to": {
+        "2.16.186.11": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.24",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.11": 1
+      },
+      "transitions_to": {
+        "2.16.186.39": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.7",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.19": 1
+      },
+      "transitions_to": {
+        "2.16.186.23": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.9",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.19": 1
+      },
+      "transitions_to": {
+        "2.16.186.23": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "23.194.180.67",
+      "asn": "AS16625",
+      "company": "Akamai Technologies, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.39": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16625",
+          "company=Akamai Technologies, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "23.194.181.154",
+      "asn": "AS16625",
+      "company": "Akamai Technologies, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.39": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16625",
+          "company=Akamai Technologies, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "23.194.182.92",
+      "asn": "AS16625",
+      "company": "Akamai Technologies, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.39": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16625",
+          "company=Akamai Technologies, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "3.174.37.212",
+      "asn": "AS16509",
+      "company": "Amazon.com, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16509",
+          "company=Amazon.com, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "51.10.3.50",
+      "asn": "AS8075",
+      "company": "Unknown ASN",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.119.171": 1
+      },
+      "transitions_to": {
+        "104.44.34.213": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Unknown ASN"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "52.97.4.226",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.32.88": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "57.144.128.34",
+      "asn": "AS32934",
+      "company": "Facebook, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "163.77.194.43": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "destination",
+        "confidence": "low",
+        "evidence": [
+          "last_hop_count=1",
+          "asn=AS32934"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    }
+  ],
+  "edge_rankings": [
+    {
+      "ip": "187.19.161.199",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 22,
+      "edge_count": 22,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 1.1578947368421053,
+      "transitions_from": {
+        "172.16.128.42": 22
+      },
+      "transitions_to": {
+        "104.21.4.50": 10,
+        "172.67.131.172": 10,
+        "1.0.0.1": 2
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "edge_count=22",
+          "last_internal_count=22"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    },
+    {
+      "ip": "187.19.162.195",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 1,
+      "path_count": 2,
+      "last_hop_count": 0,
+      "last_internal_count": 2,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 2
+      },
+      "transitions_to": {
+        "2.16.186.19": 1,
+        "2.16.186.20": 1
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "last_internal_count=2"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    },
+    {
+      "ip": "177.37.221.191",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 1,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 1
+      },
+      "transitions_to": {
+        "147.75.214.158": 1
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "last_internal_count=1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    }
+  ],
+  "internal_rankings": [
+    {
+      "ip": "10.45.0.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {},
+      "transitions_to": {
+        "100.65.77.1": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "100.65.77.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "10.45.0.1": 42
+      },
+      "transitions_to": {
+        "172.16.128.221": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.113",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.133.150": 42
+      },
+      "transitions_to": {
+        "172.16.128.181": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.181",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.113": 42
+      },
+      "transitions_to": {
+        "172.16.128.182": 25,
+        "142.250.166.72": 4,
+        "187.16.223.64": 4,
+        "138.204.238.149": 3,
+        "177.37.221.191": 1,
+        "187.19.162.195": 2,
+        "3.174.37.212": 1,
+        "104.44.119.171": 1,
+        "2.16.186.19": 1
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.221",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "100.65.77.1": 42
+      },
+      "transitions_to": {
+        "172.16.133.150": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.133.150",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 42,
+      "sample_count": 21,
+      "target_count": 21,
+      "run_count": 25,
+      "path_count": 21,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 1.0,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.221": 42
+      },
+      "transitions_to": {
+        "172.16.128.113": 42
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.182",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 25,
+      "sample_count": 12,
+      "target_count": 12,
+      "run_count": 22,
+      "path_count": 12,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.88,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 25
+      },
+      "transitions_to": {
+        "172.16.130.122": 22,
+        "172.16.128.62": 3
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.42",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.135.209": 22
+      },
+      "transitions_to": {
+        "187.19.161.199": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.130.122",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.182": 22
+      },
+      "transitions_to": {
+        "172.16.134.242": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.134.242",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.130.122": 22
+      },
+      "transitions_to": {
+        "172.16.135.209": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.135.209",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.134.242": 22
+      },
+      "transitions_to": {
+        "172.16.128.42": 22
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "187.19.161.199",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 22,
+      "sample_count": 11,
+      "target_count": 11,
+      "run_count": 19,
+      "path_count": 11,
+      "last_hop_count": 0,
+      "last_internal_count": 22,
+      "edge_count": 22,
+      "recurrence_ratio": 0.76,
+      "edge_stability_ratio": 1.1578947368421053,
+      "transitions_from": {
+        "172.16.128.42": 22
+      },
+      "transitions_to": {
+        "104.21.4.50": 10,
+        "172.67.131.172": 10,
+        "1.0.0.1": 2
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "edge_count=22",
+          "last_internal_count=22"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    },
+    {
+      "ip": "172.16.128.178",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.62": 3
+      },
+      "transitions_to": {
+        "84.16.6.34": 3
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "172.16.128.62",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 3,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.12,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.182": 3
+      },
+      "transitions_to": {
+        "172.16.128.178": 3
+      },
+      "classification": {
+        "primary_class": "internal_brisanet",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS private",
+          "company=Private / local network"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "187.19.162.195",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 1,
+      "path_count": 2,
+      "last_hop_count": 0,
+      "last_internal_count": 2,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 2
+      },
+      "transitions_to": {
+        "2.16.186.19": 1,
+        "2.16.186.20": 1
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "last_internal_count=2"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    },
+    {
+      "ip": "177.37.221.191",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 1,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 1
+      },
+      "transitions_to": {
+        "147.75.214.158": 1
+      },
+      "classification": {
+        "primary_class": "edge_brisanet_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS28126",
+          "company=BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+          "last_internal_count=1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "brisanet"
+        ]
+      }
+    }
+  ],
+  "cdn_rankings": [
+    {
+      "ip": "104.21.4.50",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "hostname": "",
+      "observations": 10,
+      "sample_count": 6,
+      "target_count": 6,
+      "run_count": 10,
+      "path_count": 6,
+      "last_hop_count": 10,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.4,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.161.199": 10
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "172.67.131.172",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "hostname": "",
+      "observations": 10,
+      "sample_count": 5,
+      "target_count": 5,
+      "run_count": 10,
+      "path_count": 5,
+      "last_hop_count": 10,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.4,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.161.199": 10
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "108.170.226.233",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "142.250.166.72": 4
+      },
+      "transitions_to": {
+        "192.178.110.171": 4
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "142.250.166.72",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 4
+      },
+      "transitions_to": {
+        "108.170.226.233": 4
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "192.178.110.171",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "108.170.226.233": 4
+      },
+      "transitions_to": {
+        "8.8.8.8": 4
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.39",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 3,
+      "sample_count": 3,
+      "target_count": 3,
+      "run_count": 2,
+      "path_count": 3,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.23": 2,
+        "2.16.186.24": 1
+      },
+      "transitions_to": {
+        "23.194.182.92": 1,
+        "23.194.181.154": 1,
+        "23.194.180.67": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.19",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 2,
+      "path_count": 2,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.162.195": 1,
+        "172.16.128.181": 1
+      },
+      "transitions_to": {
+        "2.16.186.7": 1,
+        "2.16.186.9": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.23",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 2,
+      "path_count": 2,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.7": 1,
+        "2.16.186.9": 1
+      },
+      "transitions_to": {
+        "2.16.186.39": 2
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.119.171",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 1
+      },
+      "transitions_to": {
+        "51.10.3.50": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.28.204",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.31.214": 1
+      },
+      "transitions_to": {
+        "104.44.32.88": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.31.214",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.34.213": 1
+      },
+      "transitions_to": {
+        "104.44.28.204": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.32.88",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.28.204": 1
+      },
+      "transitions_to": {
+        "52.97.4.226": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "104.44.34.213",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "51.10.3.50": 1
+      },
+      "transitions_to": {
+        "104.44.31.214": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.11",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.20": 1
+      },
+      "transitions_to": {
+        "2.16.186.24": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.20",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.162.195": 1
+      },
+      "transitions_to": {
+        "2.16.186.11": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.24",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.11": 1
+      },
+      "transitions_to": {
+        "2.16.186.39": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.7",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.19": 1
+      },
+      "transitions_to": {
+        "2.16.186.23": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "2.16.186.9",
+      "asn": "AS20940",
+      "company": "AKAMAI-ASN1",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.19": 1
+      },
+      "transitions_to": {
+        "2.16.186.23": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS20940",
+          "company=AKAMAI-ASN1"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "23.194.180.67",
+      "asn": "AS16625",
+      "company": "Akamai Technologies, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.39": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16625",
+          "company=Akamai Technologies, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "23.194.181.154",
+      "asn": "AS16625",
+      "company": "Akamai Technologies, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.39": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16625",
+          "company=Akamai Technologies, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "23.194.182.92",
+      "asn": "AS16625",
+      "company": "Akamai Technologies, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "2.16.186.39": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16625",
+          "company=Akamai Technologies, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "3.174.37.212",
+      "asn": "AS16509",
+      "company": "Amazon.com, Inc.",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "172.16.128.181": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS16509",
+          "company=Amazon.com, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "51.10.3.50",
+      "asn": "AS8075",
+      "company": "Unknown ASN",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 0,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.119.171": 1
+      },
+      "transitions_to": {
+        "104.44.34.213": 1
+      },
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "medium",
+        "evidence": [
+          "asn=AS8075",
+          "company=Unknown ASN"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    },
+    {
+      "ip": "52.97.4.226",
+      "asn": "AS8075",
+      "company": "Microsoft Corporation",
+      "hostname": "",
+      "observations": 1,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 1,
+      "path_count": 1,
+      "last_hop_count": 1,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.04,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "104.44.32.88": 1
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "cdn_candidate",
+        "confidence": "high",
+        "evidence": [
+          "asn=AS8075",
+          "company=Microsoft Corporation"
+        ],
+        "source_type": "observed",
+        "subclasses": [
+          "cdn"
+        ]
+      }
+    }
+  ],
+  "ix_rankings": [],
+  "dns_rankings": [
+    {
+      "ip": "8.8.8.8",
+      "asn": "AS15169",
+      "company": "Google LLC",
+      "hostname": "",
+      "observations": 4,
+      "sample_count": 1,
+      "target_count": 1,
+      "run_count": 4,
+      "path_count": 1,
+      "last_hop_count": 4,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.16,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "192.178.110.171": 4
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "dns_infra_candidate",
+        "confidence": "high",
+        "evidence": [
+          "known_dns_ip=8.8.8.8",
+          "asn=AS15169",
+          "company=Google LLC"
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    },
+    {
+      "ip": "1.0.0.1",
+      "asn": "AS13335",
+      "company": "Cloudflare, Inc.",
+      "hostname": "",
+      "observations": 2,
+      "sample_count": 2,
+      "target_count": 2,
+      "run_count": 2,
+      "path_count": 2,
+      "last_hop_count": 2,
+      "last_internal_count": 0,
+      "edge_count": 0,
+      "recurrence_ratio": 0.08,
+      "edge_stability_ratio": 0.0,
+      "transitions_from": {
+        "187.19.161.199": 2
+      },
+      "transitions_to": {},
+      "classification": {
+        "primary_class": "dns_infra_candidate",
+        "confidence": "high",
+        "evidence": [
+          "known_dns_ip=1.0.0.1",
+          "asn=AS13335",
+          "company=Cloudflare, Inc."
+        ],
+        "source_type": "observed",
+        "subclasses": []
+      }
+    }
+  ]
+}

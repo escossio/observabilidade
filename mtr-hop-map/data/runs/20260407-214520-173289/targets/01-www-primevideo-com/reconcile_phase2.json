@@ -1,0 +1,315 @@
+{
+  "target": "www.primevideo.com",
+  "map_name": "MTR ASN - www.primevideo.com",
+  "sysmapid": null,
+  "host_groupid": "25",
+  "templateid": "10564",
+  "hostids": [],
+  "selementids": [],
+  "linkids": [],
+  "created_map": true,
+  "host_actions": [
+    {
+      "ip": "10.45.0.1",
+      "hostid": "10780",
+      "hostname": "hop-ip-10-45-0-1",
+      "action": "planned-reuse",
+      "match_source": "hostname",
+      "warnings": [],
+      "planned": true
+    },
+    {
+      "ip": "100.65.77.1",
+      "hostid": "10781",
+      "hostname": "hop-ip-100-65-77-1",
+      "action": "planned-reuse",
+      "match_source": "hostname",
+      "warnings": [],
+      "planned": true
+    },
+    {
+      "ip": "172.16.128.221",
+      "hostid": "10782",
+      "hostname": "hop-ip-172-16-128-221",
+      "action": "planned-reuse",
+      "match_source": "hostname",
+      "warnings": [],
+      "planned": true
+    },
+    {
+      "ip": "172.16.133.150",
+      "hostid": "10783",
+      "hostname": "hop-ip-172-16-133-150",
+      "action": "planned-reuse",
+      "match_source": "hostname",
+      "warnings": [],
+      "planned": true
+    },
+    {
+      "ip": "172.16.128.113",
+      "hostid": "10784",
+      "hostname": "hop-ip-172-16-128-113",
+      "action": "planned-reuse",
+      "match_source": "hostname",
+      "warnings": [],
+      "planned": true
+    },
+    {
+      "ip": "172.16.128.181",
+      "hostid": "10785",
+      "hostname": "hop-ip-172-16-128-181",
+      "action": "planned-reuse",
+      "match_source": "hostname",
+      "warnings": [],
+      "planned": true
+    },
+    {
+      "ip": "3.174.37.212",
+      "hostid": "10819",
+      "hostname": "hop-ip-3-174-37-212",
+      "action": "planned-reuse",
+      "match_source": "hostname",
+      "warnings": [],
+      "planned": true
+    }
+  ],
+  "plan": {
+    "target": "www.primevideo.com",
+    "map_name": "MTR ASN - www.primevideo.com",
+    "dry_run": true,
+    "current_map": {
+      "sysmapid": null,
+      "name": "MTR ASN - www.primevideo.com",
+      "selementids": [],
+      "hostids": [],
+      "linkids": []
+    },
+    "predicted_actions": {
+      "hosts": {
+        "create": [],
+        "reuse": [
+          {
+            "ip": "10.45.0.1",
+            "hostid": "10780",
+            "hostname": "hop-ip-10-45-0-1",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "100.65.77.1",
+            "hostid": "10781",
+            "hostname": "hop-ip-100-65-77-1",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.128.221",
+            "hostid": "10782",
+            "hostname": "hop-ip-172-16-128-221",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.133.150",
+            "hostid": "10783",
+            "hostname": "hop-ip-172-16-133-150",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.128.113",
+            "hostid": "10784",
+            "hostname": "hop-ip-172-16-128-113",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.128.181",
+            "hostid": "10785",
+            "hostname": "hop-ip-172-16-128-181",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "3.174.37.212",
+            "hostid": "10819",
+            "hostname": "hop-ip-3-174-37-212",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          }
+        ],
+        "update": []
+      },
+      "selements": {
+        "reuse": [
+          {
+            "ip": "10.45.0.1",
+            "hostid": "10780",
+            "hostname": "hop-ip-10-45-0-1",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "100.65.77.1",
+            "hostid": "10781",
+            "hostname": "hop-ip-100-65-77-1",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.128.221",
+            "hostid": "10782",
+            "hostname": "hop-ip-172-16-128-221",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.133.150",
+            "hostid": "10783",
+            "hostname": "hop-ip-172-16-133-150",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.128.113",
+            "hostid": "10784",
+            "hostname": "hop-ip-172-16-128-113",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "172.16.128.181",
+            "hostid": "10785",
+            "hostname": "hop-ip-172-16-128-181",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          },
+          {
+            "ip": "3.174.37.212",
+            "hostid": "10819",
+            "hostname": "hop-ip-3-174-37-212",
+            "action": "planned-reuse",
+            "match_source": "hostname",
+            "warnings": [],
+            "planned": true
+          }
+        ],
+        "create": [],
+        "detach_from_map": [],
+        "keep": []
+      },
+      "links": {
+        "reuse": [],
+        "create": [
+          {
+            "left": 1,
+            "right": 2,
+            "left_hostid": "10780",
+            "right_hostid": "10781",
+            "status": "create"
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "left_hostid": "10781",
+            "right_hostid": "10782",
+            "status": "create"
+          },
+          {
+            "left": 3,
+            "right": 4,
+            "left_hostid": "10782",
+            "right_hostid": "10783",
+            "status": "create"
+          },
+          {
+            "left": 4,
+            "right": 5,
+            "left_hostid": "10783",
+            "right_hostid": "10784",
+            "status": "create"
+          },
+          {
+            "left": 5,
+            "right": 6,
+            "left_hostid": "10784",
+            "right_hostid": "10785",
+            "status": "create"
+          },
+          {
+            "left": 6,
+            "right": 7,
+            "left_hostid": "10785",
+            "right_hostid": null,
+            "status": "create"
+          },
+          {
+            "left": 7,
+            "right": 8,
+            "left_hostid": null,
+            "right_hostid": null,
+            "status": "create"
+          },
+          {
+            "left": 8,
+            "right": 9,
+            "left_hostid": null,
+            "right_hostid": null,
+            "status": "create"
+          },
+          {
+            "left": 9,
+            "right": 10,
+            "left_hostid": null,
+            "right_hostid": "10819",
+            "status": "create"
+          }
+        ],
+        "detach_from_map": [],
+        "keep": []
+      },
+      "metadata": {
+        "source": "mtr-hop-map",
+        "target": "www.primevideo.com",
+        "target_slug": "www-primevideo-com",
+        "mode": "dry-run",
+        "last_trace": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-214520-173289/targets/01-www-primevideo-com"
+      }
+    },
+    "counters": {
+      "host_create": 0,
+      "host_reuse": 7,
+      "host_update": 0,
+      "host_detach": 0,
+      "link_create": 0,
+      "link_reuse": 0,
+      "link_detach": 0
+    }
+  }
+}

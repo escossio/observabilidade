@@ -3,22 +3,28 @@
 ## Rodada atual
 
 - fonte de verdade:
-  - replay controlado para os 4 alvos desta rodada
-  - corpus consolidado em `data/runs/20260407-030220-957449/`
+  - traces live válidos para `www.primevideo.com`, `www.instagram.com`, `www.microsoft.com`, `account.microsoft.com`, `outlook.live.com`, `www.xbox.com`, `8.8.8.8` e `9.9.9.9`
+  - corpus consolidado em `data/runs/20260407-214330-196882/` e `data/runs/20260407-214520-173289/`
 - o mapa canônico único foi expandido no Zabbix:
   - `MTR Unified - Brisanet Observed`
   - `sysmapid 10`
 - a última expansão anexou novos ramos para:
-  - `8.8.8.8` / Google
-  - `9.9.9.9` / Quad9
-  - `dell.com` / Dell
-  - `wiki.mikrotik.com` / Mikrotik
+  - `www.primevideo.com` / Prime Video / Amazon
+  - `www.instagram.com` / Instagram / Meta
+  - `www.microsoft.com` / Microsoft via Akamai
+  - `account.microsoft.com` / Microsoft via Akamai
+  - `outlook.live.com` / Microsoft
+  - `www.xbox.com` / Microsoft via Akamai
 - o grafo final publicado ficou com:
-  - `39` nós
-  - `38` links
-- o tronco comum permaneceu único
+  - `68` selements
+  - `65` links
+- o tronco comum até `172.16.128.181` permaneceu único
 - a borda candidata `187.19.161.199` continua como candidato forte, não confirmação absoluta
 - `177.37.220.17` e `177.37.220.18` continuam sem evidência observada no corpus atual
+- a seleção Akamai foi validada por DNS:
+  - `www.microsoft.com -> e13678.dscb.akamaiedge.net`
+  - `account.microsoft.com -> e9412.b.akamaiedge.net`
+  - `www.xbox.com -> e1822.dsca.akamaiedge.net`
 
 ## O que foi entregue
 

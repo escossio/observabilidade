@@ -1,0 +1,119 @@
+[
+  {
+    "order": 1,
+    "ip": "10.45.0.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "10.45.0.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 2,
+    "ip": "100.65.77.1",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "100.65.77.1\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 3,
+    "ip": "172.16.128.221",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.221\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 4,
+    "ip": "172.16.133.150",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.133.150\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 5,
+    "ip": "172.16.128.113",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.113\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 6,
+    "ip": "172.16.128.181",
+    "asn": "AS private",
+    "company": "Private / local network",
+    "category": "private",
+    "label": "172.16.128.181\nAS private\nPrivate / local network",
+    "source": "mtr-private"
+  },
+  {
+    "order": 7,
+    "ip": "104.44.119.171",
+    "asn": "AS8075",
+    "company": "Microsoft Corporation",
+    "category": "public",
+    "label": "104.44.119.171\nAS8075\nMicrosoft Corporation",
+    "source": "mtr-public"
+  },
+  {
+    "order": 8,
+    "ip": "51.10.3.50",
+    "asn": "AS8075",
+    "company": "Unknown ASN",
+    "category": "unknown",
+    "label": "51.10.3.50\nAS8075\nUnknown ASN",
+    "source": "mtr-public"
+  },
+  {
+    "order": 9,
+    "ip": "104.44.34.213",
+    "asn": "AS8075",
+    "company": "Microsoft Corporation",
+    "category": "public",
+    "label": "104.44.34.213\nAS8075\nMicrosoft Corporation",
+    "source": "mtr-public"
+  },
+  {
+    "order": 10,
+    "ip": "104.44.31.214",
+    "asn": "AS8075",
+    "company": "Microsoft Corporation",
+    "category": "public",
+    "label": "104.44.31.214\nAS8075\nMicrosoft Corporation",
+    "source": "mtr-public"
+  },
+  {
+    "order": 11,
+    "ip": "104.44.28.204",
+    "asn": "AS8075",
+    "company": "Microsoft Corporation",
+    "category": "public",
+    "label": "104.44.28.204\nAS8075\nMicrosoft Corporation",
+    "source": "mtr-public"
+  },
+  {
+    "order": 12,
+    "ip": "104.44.32.88",
+    "asn": "AS8075",
+    "company": "Microsoft Corporation",
+    "category": "public",
+    "label": "104.44.32.88\nAS8075\nMicrosoft Corporation",
+    "source": "mtr-public"
+  },
+  {
+    "order": 13,
+    "ip": "52.97.4.226",
+    "asn": "AS8075",
+    "company": "Microsoft Corporation",
+    "category": "public",
+    "label": "52.97.4.226\nAS8075\nMicrosoft Corporation",
+    "source": "mtr-public"
+  }
+]

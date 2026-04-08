@@ -1,5 +1,29 @@
 # Status
 
+## 2026-04-07 - mapa unificado expandido com novos ramos e Akamai validado por DNS
+
+- o mapa canônico único permaneceu:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- a rodada incorporou traces live válidos e consolidou novos ramos para:
+  - `www.primevideo.com` / Prime Video / Amazon
+  - `www.instagram.com` / Instagram / Meta
+  - `www.microsoft.com` / Microsoft via Akamai
+  - `account.microsoft.com` / Microsoft via Akamai
+  - `outlook.live.com` / Microsoft
+  - `www.xbox.com` / Microsoft via Akamai
+- a pré-seleção Akamai foi baseada em hostname final de edge:
+  - `www.microsoft.com -> e13678.dscb.akamaiedge.net`
+  - `account.microsoft.com -> e9412.b.akamaiedge.net`
+  - `www.xbox.com -> e1822.dsca.akamaiedge.net`
+- a publicação final no Zabbix ficou com:
+  - `68` selements
+  - `65` links
+- `8.8.8.8` e `9.9.9.9` reforçaram famílias já existentes sem criar duplicação de IP
+- o tronco comum até `172.16.128.181` permaneceu estável
+- os mapas por destino permaneceram intactos
+
+
 ## 2026-04-07 - mapa unificado expandido com novos ramos publicados
 
 - fonte de verdade da rodada:

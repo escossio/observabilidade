@@ -1,0 +1,268 @@
+[
+  {
+    "status": "ok",
+    "target": "www.primevideo.com",
+    "target_slug": "www-primevideo-com",
+    "run_id": "20260407-214520-173289",
+    "run_dir": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-214520-173289",
+    "target_dir": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-214520-173289/targets/01-www-primevideo-com",
+    "mode": "live",
+    "hop_count": 10,
+    "mtr_source_kind": "live",
+    "mtr_source_path": null,
+    "host_identity_model": "global-ip",
+    "dry_run": true,
+    "asn_summary": {
+      "lookup_mode": "online",
+      "timeout_seconds": 5,
+      "cache_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/cache/asn_company_cache.json",
+      "stats": {
+        "whois_success": 0,
+        "cache_ip_hit": 1,
+        "cache_asn_hit": 0,
+        "hint_fallback": 0,
+        "unknown_fallback": 0,
+        "private_shortcut": 6
+      },
+      "events": []
+    },
+    "map_name": "MTR ASN - www.primevideo.com",
+    "sysmapid": null,
+    "created_map": true,
+    "hostids": [],
+    "selementids": [],
+    "linkids": [],
+    "host_actions": [
+      {
+        "ip": "10.45.0.1",
+        "hostid": "10780",
+        "hostname": "hop-ip-10-45-0-1",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "100.65.77.1",
+        "hostid": "10781",
+        "hostname": "hop-ip-100-65-77-1",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.128.221",
+        "hostid": "10782",
+        "hostname": "hop-ip-172-16-128-221",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.133.150",
+        "hostid": "10783",
+        "hostname": "hop-ip-172-16-133-150",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.128.113",
+        "hostid": "10784",
+        "hostname": "hop-ip-172-16-128-113",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.128.181",
+        "hostid": "10785",
+        "hostname": "hop-ip-172-16-128-181",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "3.174.37.212",
+        "hostid": "10819",
+        "hostname": "hop-ip-3-174-37-212",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      }
+    ],
+    "map_metadata": {
+      "source": "mtr-hop-map",
+      "target": "www.primevideo.com",
+      "target_slug": "www-primevideo-com",
+      "mode": "live",
+      "last_trace": "20260407-214520-173289",
+      "dry_run": true,
+      "native_tags_supported": false,
+      "map_name": "MTR ASN - www.primevideo.com",
+      "sysmapid": null
+    }
+  },
+  {
+    "status": "error",
+    "target": "outlook.live.com",
+    "target_slug": "outlook-live-com",
+    "run_id": "20260407-214520-173289",
+    "target_dir": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-214520-173289/targets/02-outlook-live-com",
+    "mode": "live",
+    "dry_run": true,
+    "error": "sequence item 0: expected str instance, NoneType found"
+  },
+  {
+    "status": "ok",
+    "target": "www.xbox.com",
+    "target_slug": "www-xbox-com",
+    "run_id": "20260407-214520-173289",
+    "run_dir": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-214520-173289",
+    "target_dir": "/srv/observabilidade-zabbix/mtr-hop-map/data/runs/20260407-214520-173289/targets/03-www-xbox-com",
+    "mode": "live",
+    "hop_count": 12,
+    "mtr_source_kind": "live",
+    "mtr_source_path": null,
+    "host_identity_model": "global-ip",
+    "dry_run": true,
+    "asn_summary": {
+      "lookup_mode": "online",
+      "timeout_seconds": 5,
+      "cache_path": "/srv/observabilidade-zabbix/mtr-hop-map/data/cache/asn_company_cache.json",
+      "stats": {
+        "whois_success": 0,
+        "cache_ip_hit": 5,
+        "cache_asn_hit": 0,
+        "hint_fallback": 0,
+        "unknown_fallback": 0,
+        "private_shortcut": 6
+      },
+      "events": []
+    },
+    "map_name": "MTR ASN - www.xbox.com",
+    "sysmapid": null,
+    "created_map": true,
+    "hostids": [],
+    "selementids": [],
+    "linkids": [],
+    "host_actions": [
+      {
+        "ip": "10.45.0.1",
+        "hostid": "10780",
+        "hostname": "hop-ip-10-45-0-1",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "100.65.77.1",
+        "hostid": "10781",
+        "hostname": "hop-ip-100-65-77-1",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.128.221",
+        "hostid": "10782",
+        "hostname": "hop-ip-172-16-128-221",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.133.150",
+        "hostid": "10783",
+        "hostname": "hop-ip-172-16-133-150",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.128.113",
+        "hostid": "10784",
+        "hostname": "hop-ip-172-16-128-113",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "172.16.128.181",
+        "hostid": "10785",
+        "hostname": "hop-ip-172-16-128-181",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "2.16.186.19",
+        "hostid": "10826",
+        "hostname": "hop-ip-2-16-186-19",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "2.16.186.9",
+        "hostid": "10842",
+        "hostname": "hop-ip-2-16-186-9",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "2.16.186.23",
+        "hostid": "10828",
+        "hostname": "hop-ip-2-16-186-23",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "2.16.186.39",
+        "hostid": "10829",
+        "hostname": "hop-ip-2-16-186-39",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      },
+      {
+        "ip": "23.194.180.67",
+        "hostid": "10843",
+        "hostname": "hop-ip-23-194-180-67",
+        "action": "planned-reuse",
+        "match_source": "hostname",
+        "warnings": [],
+        "planned": true
+      }
+    ],
+    "map_metadata": {
+      "source": "mtr-hop-map",
+      "target": "www.xbox.com",
+      "target_slug": "www-xbox-com",
+      "mode": "live",
+      "last_trace": "20260407-214520-173289",
+      "dry_run": true,
+      "native_tags_supported": false,
+      "map_name": "MTR ASN - www.xbox.com",
+      "sysmapid": null
+    }
+  }
+]

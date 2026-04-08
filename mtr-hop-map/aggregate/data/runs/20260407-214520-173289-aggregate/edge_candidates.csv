@@ -1,0 +1,4 @@
+ip,asn,company,hostname,observations,sample_count,path_count,last_hop_count,last_internal_count,edge_count,primary_class,confidence,source_type,evidence
+187.19.161.199,AS28126,BRISANET SERVICOS DE TELECOMUNICACOES S.A,,22,11,11,0,22,22,edge_brisanet_candidate,high,observed,asn=AS28126 | company=BRISANET SERVICOS DE TELECOMUNICACOES S.A | edge_count=22 | last_internal_count=22
+187.19.162.195,AS28126,BRISANET SERVICOS DE TELECOMUNICACOES S.A,,2,2,2,0,2,0,edge_brisanet_candidate,high,observed,asn=AS28126 | company=BRISANET SERVICOS DE TELECOMUNICACOES S.A | last_internal_count=2
+177.37.221.191,AS28126,BRISANET SERVICOS DE TELECOMUNICACOES S.A,,1,1,1,0,1,0,edge_brisanet_candidate,medium,observed,asn=AS28126 | company=BRISANET SERVICOS DE TELECOMUNICACOES S.A | last_internal_count=1

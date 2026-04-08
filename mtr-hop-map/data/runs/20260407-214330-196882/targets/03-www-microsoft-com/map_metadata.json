@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "www.microsoft.com",
+  "target_slug": "www-microsoft-com",
+  "mode": "live",
+  "last_trace": "20260407-214330-196882",
+  "dry_run": false,
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - www.microsoft.com",
+  "sysmapid": "14"
+}

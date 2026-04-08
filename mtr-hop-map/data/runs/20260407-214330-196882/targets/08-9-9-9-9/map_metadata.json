@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "9.9.9.9",
+  "target_slug": "9-9-9-9",
+  "mode": "live",
+  "last_trace": "20260407-214330-196882",
+  "dry_run": false,
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - 9.9.9.9",
+  "sysmapid": "12"
+}

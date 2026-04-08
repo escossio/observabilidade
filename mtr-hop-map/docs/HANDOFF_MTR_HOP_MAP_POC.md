@@ -1,5 +1,27 @@
 # Handoff - MTR Hop Map
 
+## 2026-04-07 - expansão da frente com Prime Video, Instagram, Microsoft e Akamai
+
+- a frente já validou traces live para:
+  - `www.primevideo.com`
+  - `www.instagram.com`
+  - `www.microsoft.com`
+  - `account.microsoft.com`
+  - `outlook.live.com`
+  - `www.xbox.com`
+  - `8.8.8.8`
+  - `9.9.9.9`
+- a coleta revelou novas famílias externas:
+  - Prime Video / Amazon
+  - Instagram / Meta
+  - Microsoft
+  - Akamai
+- a pré-seleção Akamai foi baseada em DNS:
+  - `www.microsoft.com -> e13678.dscb.akamaiedge.net`
+  - `account.microsoft.com -> e9412.b.akamaiedge.net`
+  - `www.xbox.com -> e1822.dsca.akamaiedge.net`
+- o mapa canônico único continua sendo `MTR Unified - Brisanet Observed` no `sysmapid 10`
+
 ## 2026-04-07 - JSON stdout canônico
 
 - A CLI ganhou `--json` para consumo automático.

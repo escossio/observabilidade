@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "account.microsoft.com",
+  "target_slug": "account-microsoft-com",
+  "mode": "live",
+  "last_trace": "20260407-214330-196882",
+  "dry_run": false,
+  "native_tags_supported": false,
+  "map_name": "MTR ASN - account.microsoft.com",
+  "sysmapid": "15"
+}

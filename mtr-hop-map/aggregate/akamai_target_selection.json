@@ -1,0 +1,42 @@
+[
+  {
+    "candidate_input": "www.microsoft.com",
+    "dns_resolution": [
+      "www.microsoft.com-c-3.edgekey.net.",
+      "www.microsoft.com-c-3.edgekey.net.globalredir.akadns.net.",
+      "e13678.dscb.akamaiedge.net.",
+      "23.194.182.92"
+    ],
+    "final_hostname": "e13678.dscb.akamaiedge.net",
+    "akamai_match": true,
+    "matched_suffix": "akamaiedge.net",
+    "selected_for_mtr": true,
+    "notes": "CNAME final aponta para hostname Akamai; usado como edge validado."
+  },
+  {
+    "candidate_input": "account.microsoft.com",
+    "dns_resolution": [
+      "account.microsoft.com.edgekey.net.",
+      "e9412.b.akamaiedge.net.",
+      "23.194.181.154"
+    ],
+    "final_hostname": "e9412.b.akamaiedge.net",
+    "akamai_match": true,
+    "matched_suffix": "akamaiedge.net",
+    "selected_for_mtr": true,
+    "notes": "CNAME final em Akamai; edge confirmado por resolução DNS."
+  },
+  {
+    "candidate_input": "www.xbox.com",
+    "dns_resolution": [
+      "wildcard.xbox.com.edgekey.net.",
+      "e1822.dsca.akamaiedge.net.",
+      "23.194.180.67"
+    ],
+    "final_hostname": "e1822.dsca.akamaiedge.net",
+    "akamai_match": true,
+    "matched_suffix": "akamaiedge.net",
+    "selected_for_mtr": true,
+    "notes": "CNAME final em Akamai; edge confirmado por resolução DNS."
+  }
+]

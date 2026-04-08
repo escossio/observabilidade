@@ -1,80 +1,34 @@
-# MTR Hop Map - Mapa Unificado
+# Relatório da rodada
 
-## Critérios
+## Resumo
+- mapa canônico único mantido: `MTR Unified - Brisanet Observed`
+- `sysmapid`: `10`
+- estado final do mapa publicado: `selement_count=68` e `link_count=65`
+- corpus agregado lido: `25` runs e `42` targets
+- novos destinos da rodada: Prime Video, Instagram, Microsoft, Outlook, Xbox, Google e Quad9
 
-- nó backbone observado: runs >= 8, targets >= 3, recurrence >= 0.7
-- aresta canônica: runs >= 8, targets >= 3, estabilidade >= 0.75
+## Seleção Akamai
+- `www.microsoft.com` selecionado como alvo Akamai porque a resolução final caiu em `e13678.dscb.akamaiedge.net`
+- `account.microsoft.com` selecionado como alvo Akamai porque a resolução final caiu em `e9412.b.akamaiedge.net`
+- `www.xbox.com` selecionado como alvo Akamai porque a resolução final caiu em `e1822.dsca.akamaiedge.net`
 
-## Backbone observado
+## Leitura por alvo
+- `www.primevideo.com`: ramo novo, família externa `amazon`
+- `www.instagram.com`: ramo novo, família externa `meta`
+- `www.microsoft.com`: ramo novo, família externa `akamai`
+- `account.microsoft.com`: ramo novo, família externa `akamai`
+- `outlook.live.com`: ramo novo, família externa `microsoft`
+- `www.xbox.com`: ramo novo, família externa `akamai`
+- `8.8.8.8`: reforçou ramo existente de `google`
+- `9.9.9.9`: reforçou ramo existente de `quad9`
 
-- `10.45.0.1` - runs `23` - targets `15` - confidence `medium`
-- `100.65.77.1` - runs `23` - targets `15` - confidence `medium`
-- `172.16.128.221` - runs `23` - targets `15` - confidence `medium`
-- `172.16.133.150` - runs `23` - targets `15` - confidence `medium`
-- `172.16.128.113` - runs `23` - targets `15` - confidence `medium`
-- `172.16.128.181` - runs `23` - targets `15` - confidence `medium`
-- `172.16.128.182` - runs `22` - targets `12` - confidence `medium`
-- `172.16.130.122` - runs `19` - targets `11` - confidence `medium`
-- `172.16.134.242` - runs `19` - targets `11` - confidence `medium`
-- `172.16.135.209` - runs `19` - targets `11` - confidence `medium`
-- `172.16.128.42` - runs `19` - targets `11` - confidence `medium`
+## Estado final do mapa
+- `map_name`: `MTR Unified - Brisanet Observed`
+- `sysmapid`: `10`
+- `selement_count`: `68`
+- `link_count`: `65`
 
-## Borda candidata
-
-- `187.19.161.199` - edge `22` - runs `19` - confidence `high`
-
-## Saídas CDN
-
-- `104.21.4.50` - `Cloudflare, Inc.` - confidence `high`
-- `172.67.131.172` - `Cloudflare, Inc.` - confidence `high`
-- `108.170.226.233` - `Google LLC` - confidence `high`
-- `142.250.166.72` - `Google LLC` - confidence `high`
-- `192.178.110.171` - `Google LLC` - confidence `high`
-
-## Watchlist DNS
-
-- `8.8.8.8` - confidence `high`
-- `1.0.0.1` - confidence `high`
-
-## Arestas promovidas
-
-- `10.45.0.1 -> 100.65.77.1` - backbone observado - confidence `high`
-- `100.65.77.1 -> 172.16.128.221` - backbone observado - confidence `high`
-- `172.16.128.113 -> 172.16.128.181` - backbone observado - confidence `high`
-- `172.16.128.181 -> 172.16.128.182` - backbone observado - confidence `high`
-- `172.16.128.182 -> 172.16.130.122` - backbone observado - confidence `high`
-- `172.16.128.221 -> 172.16.133.150` - backbone observado - confidence `high`
-- `172.16.130.122 -> 172.16.134.242` - backbone observado - confidence `high`
-- `172.16.133.150 -> 172.16.128.113` - backbone observado - confidence `high`
-- `172.16.134.242 -> 172.16.135.209` - backbone observado - confidence `high`
-- `172.16.135.209 -> 172.16.128.42` - backbone observado - confidence `high`
-- `172.16.128.42 -> 187.19.161.199` - `candidate_edge` - confidence `high`
-- `187.19.161.199 -> 104.21.4.50` - `cdn_exit` - confidence `high`
-- `187.19.161.199 -> 108.170.226.233` - `cdn_exit` - confidence `high`
-- `187.19.161.199 -> 142.250.166.72` - `cdn_exit` - confidence `high`
-- `187.19.161.199 -> 172.67.131.172` - `cdn_exit` - confidence `high`
-- `187.19.161.199 -> 192.178.110.171` - `cdn_exit` - confidence `high`
-
-## Zabbix
-
-- sysmapid: `10`
-- elementos: `39`
-- links: `38`
-- mapa: `MTR Unified - Brisanet Observed`
-
-## Watchlist ausente do corpus
-
-- `177.37.220.17`
-- `177.37.220.18`
-
-## Distinção de camadas
-
-- backbone observado: nós e arestas com recorrência alta e estável
-- candidatos: nós/arestas com evidência forte mas ainda heurística
-- watchlist: itens observáveis ou ausentes que precisam de monitoramento separado
-
-## Artefatos
-
-- `unified_nodes.json`
-- `unified_edges.json`
-- `unified_map_plan.json`
+## Observações
+- o tronco comum até `172.16.128.181` permaneceu estável
+- não houve duplicação de IP equivalente no grafo unificado
+- os mapas por destino permanecem intactos; apenas o mapa canônico foi atualizado in-place

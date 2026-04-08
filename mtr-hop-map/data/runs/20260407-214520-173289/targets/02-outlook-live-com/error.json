@@ -1,0 +1,4 @@
+{
+  "target": "outlook.live.com",
+  "error": "sequence item 0: expected str instance, NoneType found"
+}
