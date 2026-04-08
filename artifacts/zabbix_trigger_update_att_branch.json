@@ -1,0 +1,436 @@
+{
+  "updated_hosts": [
+    {
+      "updated_host": "hop-ip-192-205-32-109",
+      "hostid": "10806",
+      "created_triggers": [
+        {
+          "triggerid": "32934",
+          "description": "Saídas após 192.205.32.109 degradadas (2/3)",
+          "priority": 2,
+          "expression": "((max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-123-154-54/icmpping,5m)=0) or (max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0) or (max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0))"
+        },
+        {
+          "triggerid": "32935",
+          "description": "Saídas após 192.205.32.109 indisponíveis (3/3)",
+          "priority": 4,
+          "expression": "(max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0)"
+        }
+      ],
+      "disabled_triggers": [
+        {
+          "triggerid": "32731",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32732",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32730",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32733",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "expressions": {
+        "warning": "((max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-123-154-54/icmpping,5m)=0) or (max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0) or (max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0))",
+        "critical": "(max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0)"
+      },
+      "severities": {
+        "warning": "2",
+        "critical": "4"
+      }
+    },
+    {
+      "updated_host": "hop-ip-32-130-89-4",
+      "hostid": "10807",
+      "created_triggers": [
+        {
+          "triggerid": "32936",
+          "description": "Saídas após 32.130.89.4 degradadas (2/3)",
+          "priority": 2,
+          "expression": "((max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0) or (max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0) or (max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0))"
+        },
+        {
+          "triggerid": "32937",
+          "description": "Saídas após 32.130.89.4 indisponíveis (3/3)",
+          "priority": 4,
+          "expression": "(max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0)"
+        }
+      ],
+      "disabled_triggers": [
+        {
+          "triggerid": "32735",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32736",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32734",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32737",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "expressions": {
+        "warning": "((max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0) or (max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0) or (max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0))",
+        "critical": "(max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0)"
+      },
+      "severities": {
+        "warning": "2",
+        "critical": "4"
+      }
+    },
+    {
+      "updated_host": "hop-ip-12-123-154-54",
+      "hostid": "10808",
+      "created_triggers": [
+        {
+          "triggerid": "32938",
+          "description": "Saídas após 12.123.154.54 degradadas (2/3)",
+          "priority": 2,
+          "expression": "((max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0) or (max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0) or (max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0))"
+        },
+        {
+          "triggerid": "32939",
+          "description": "Saídas após 12.123.154.54 indisponíveis (3/3)",
+          "priority": 4,
+          "expression": "(max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0)"
+        }
+      ],
+      "disabled_triggers": [
+        {
+          "triggerid": "32739",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32740",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32738",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32741",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "expressions": {
+        "warning": "((max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0) or (max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0) or (max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0))",
+        "critical": "(max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0)"
+      },
+      "severities": {
+        "warning": "2",
+        "critical": "4"
+      }
+    },
+    {
+      "updated_host": "hop-ip-12-122-153-181",
+      "hostid": "10809",
+      "created_triggers": [
+        {
+          "triggerid": "32940",
+          "description": "Saídas após 12.122.153.181 indisponíveis (2/2)",
+          "priority": 4,
+          "expression": "(max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0)"
+        }
+      ],
+      "disabled_triggers": [
+        {
+          "triggerid": "32743",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32744",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32742",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32745",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "expressions": {
+        "critical": "(max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0)"
+      },
+      "severities": {
+        "critical": "4"
+      }
+    }
+  ],
+  "created_triggers": [
+    {
+      "triggerid": "32940",
+      "description": "Saídas após 12.122.153.181 indisponíveis (2/2)",
+      "priority": "4",
+      "status": "0",
+      "state": "0",
+      "expression": "({49020}=0 and {49021}=0)",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10810",
+          "host": "hop-ip-12-252-89-6"
+        },
+        {
+          "hostid": "10811",
+          "host": "hop-ip-143-166-30-172"
+        }
+      ]
+    },
+    {
+      "triggerid": "32938",
+      "description": "Saídas após 12.123.154.54 degradadas (2/3)",
+      "priority": "2",
+      "status": "0",
+      "state": "0",
+      "expression": "(({49014}=0 and {49015}=0) or ({49014}=0 and {49016}=0) or ({49015}=0 and {49016}=0))",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10809",
+          "host": "hop-ip-12-122-153-181"
+        },
+        {
+          "hostid": "10810",
+          "host": "hop-ip-12-252-89-6"
+        },
+        {
+          "hostid": "10811",
+          "host": "hop-ip-143-166-30-172"
+        }
+      ]
+    },
+    {
+      "triggerid": "32939",
+      "description": "Saídas após 12.123.154.54 indisponíveis (3/3)",
+      "priority": "4",
+      "status": "0",
+      "state": "0",
+      "expression": "({49017}=0 and {49018}=0 and {49019}=0)",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10809",
+          "host": "hop-ip-12-122-153-181"
+        },
+        {
+          "hostid": "10810",
+          "host": "hop-ip-12-252-89-6"
+        },
+        {
+          "hostid": "10811",
+          "host": "hop-ip-143-166-30-172"
+        }
+      ]
+    },
+    {
+      "triggerid": "32934",
+      "description": "Saídas após 192.205.32.109 degradadas (2/3)",
+      "priority": "2",
+      "status": "0",
+      "state": "0",
+      "expression": "(({49002}=0 and {49003}=0) or ({49002}=0 and {49004}=0) or ({49003}=0 and {49004}=0))",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10807",
+          "host": "hop-ip-32-130-89-4"
+        },
+        {
+          "hostid": "10808",
+          "host": "hop-ip-12-123-154-54"
+        },
+        {
+          "hostid": "10809",
+          "host": "hop-ip-12-122-153-181"
+        }
+      ]
+    },
+    {
+      "triggerid": "32935",
+      "description": "Saídas após 192.205.32.109 indisponíveis (3/3)",
+      "priority": "4",
+      "status": "0",
+      "state": "0",
+      "expression": "({49005}=0 and {49006}=0 and {49007}=0)",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10807",
+          "host": "hop-ip-32-130-89-4"
+        },
+        {
+          "hostid": "10808",
+          "host": "hop-ip-12-123-154-54"
+        },
+        {
+          "hostid": "10809",
+          "host": "hop-ip-12-122-153-181"
+        }
+      ]
+    },
+    {
+      "triggerid": "32936",
+      "description": "Saídas após 32.130.89.4 degradadas (2/3)",
+      "priority": "2",
+      "status": "0",
+      "state": "0",
+      "expression": "(({49008}=0 and {49009}=0) or ({49008}=0 and {49010}=0) or ({49009}=0 and {49010}=0))",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10808",
+          "host": "hop-ip-12-123-154-54"
+        },
+        {
+          "hostid": "10809",
+          "host": "hop-ip-12-122-153-181"
+        },
+        {
+          "hostid": "10810",
+          "host": "hop-ip-12-252-89-6"
+        }
+      ]
+    },
+    {
+      "triggerid": "32937",
+      "description": "Saídas após 32.130.89.4 indisponíveis (3/3)",
+      "priority": "4",
+      "status": "0",
+      "state": "0",
+      "expression": "({49011}=0 and {49012}=0 and {49013}=0)",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10808",
+          "host": "hop-ip-12-123-154-54"
+        },
+        {
+          "hostid": "10809",
+          "host": "hop-ip-12-122-153-181"
+        },
+        {
+          "hostid": "10810",
+          "host": "hop-ip-12-252-89-6"
+        }
+      ]
+    }
+  ],
+  "updated_triggers": [],
+  "disabled_triggers": [
+    {
+      "triggerid": "32731",
+      "description": "ICMP Ping: High ICMP ping loss"
+    },
+    {
+      "triggerid": "32732",
+      "description": "ICMP Ping: High ICMP ping response time"
+    },
+    {
+      "triggerid": "32730",
+      "description": "ICMP Ping: Unavailable by ICMP ping"
+    },
+    {
+      "triggerid": "32733",
+      "description": "ICMP unreachable"
+    },
+    {
+      "triggerid": "32735",
+      "description": "ICMP Ping: High ICMP ping loss"
+    },
+    {
+      "triggerid": "32736",
+      "description": "ICMP Ping: High ICMP ping response time"
+    },
+    {
+      "triggerid": "32734",
+      "description": "ICMP Ping: Unavailable by ICMP ping"
+    },
+    {
+      "triggerid": "32737",
+      "description": "ICMP unreachable"
+    },
+    {
+      "triggerid": "32739",
+      "description": "ICMP Ping: High ICMP ping loss"
+    },
+    {
+      "triggerid": "32740",
+      "description": "ICMP Ping: High ICMP ping response time"
+    },
+    {
+      "triggerid": "32738",
+      "description": "ICMP Ping: Unavailable by ICMP ping"
+    },
+    {
+      "triggerid": "32741",
+      "description": "ICMP unreachable"
+    },
+    {
+      "triggerid": "32743",
+      "description": "ICMP Ping: High ICMP ping loss"
+    },
+    {
+      "triggerid": "32744",
+      "description": "ICMP Ping: High ICMP ping response time"
+    },
+    {
+      "triggerid": "32742",
+      "description": "ICMP Ping: Unavailable by ICMP ping"
+    },
+    {
+      "triggerid": "32745",
+      "description": "ICMP unreachable"
+    }
+  ],
+  "expressions": {
+    "hop-ip-192-205-32-109": {
+      "warning": "((max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-123-154-54/icmpping,5m)=0) or (max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0) or (max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0))",
+      "critical": "(max(/hop-ip-32-130-89-4/icmpping,5m)=0 and max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0)"
+    },
+    "hop-ip-32-130-89-4": {
+      "warning": "((max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0) or (max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0) or (max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0))",
+      "critical": "(max(/hop-ip-12-123-154-54/icmpping,5m)=0 and max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0)"
+    },
+    "hop-ip-12-123-154-54": {
+      "warning": "((max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0) or (max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0) or (max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0))",
+      "critical": "(max(/hop-ip-12-122-153-181/icmpping,5m)=0 and max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0)"
+    },
+    "hop-ip-12-122-153-181": {
+      "critical": "(max(/hop-ip-12-252-89-6/icmpping,5m)=0 and max(/hop-ip-143-166-30-172/icmpping,5m)=0)"
+    }
+  },
+  "severities": {
+    "hop-ip-192-205-32-109": {
+      "warning": "2",
+      "critical": "4"
+    },
+    "hop-ip-32-130-89-4": {
+      "warning": "2",
+      "critical": "4"
+    },
+    "hop-ip-12-123-154-54": {
+      "warning": "2",
+      "critical": "4"
+    },
+    "hop-ip-12-122-153-181": {
+      "critical": "4"
+    }
+  },
+  "notes": [
+    "Triggers sintéticas criadas nos agregadores intermediários do ramo Dell/ATT.",
+    "O mapa/sysmap não foi alterado nesta rodada."
+  ]
+}

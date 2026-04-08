@@ -1,0 +1,43 @@
+{
+  "branch_name": "Dell/ATT",
+  "candidate_aggregator_hosts": [
+    "hop-ip-192-205-32-109",
+    "hop-ip-32-130-89-4",
+    "hop-ip-12-123-154-54",
+    "hop-ip-12-122-153-181"
+  ],
+  "downstream_hosts_by_aggregator": {
+    "hop-ip-192-205-32-109": [
+      "hop-ip-32-130-89-4",
+      "hop-ip-12-123-154-54",
+      "hop-ip-12-122-153-181"
+    ],
+    "hop-ip-32-130-89-4": [
+      "hop-ip-12-123-154-54",
+      "hop-ip-12-122-153-181",
+      "hop-ip-12-252-89-6"
+    ],
+    "hop-ip-12-123-154-54": [
+      "hop-ip-12-122-153-181",
+      "hop-ip-12-252-89-6",
+      "hop-ip-143-166-30-172"
+    ],
+    "hop-ip-12-122-153-181": [
+      "hop-ip-12-252-89-6",
+      "hop-ip-143-166-30-172"
+    ]
+  },
+  "downstream_items": "icmpping",
+  "trigger_strategy_by_aggregator": {
+    "hop-ip-192-205-32-109": "warning 2/3 + critical 3/3",
+    "hop-ip-32-130-89-4": "warning 2/3 + critical 3/3",
+    "hop-ip-12-123-154-54": "warning 2/3 + critical 3/3",
+    "hop-ip-12-122-153-181": "critical 2/2"
+  },
+  "window": "5m",
+  "planned_old_trigger_changes": "desabilitar triggers ICMP herdadas nos hosts agregadores tratados",
+  "notes": [
+    "Somente os nós intermediários com trecho útil posterior suficiente foram modelados.",
+    "Os hosts 84.16.6.34 e 94.142.98.175 foram inspecionados, mas não receberam nova trigger sintética nesta rodada."
+  ]
+}

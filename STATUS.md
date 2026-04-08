@@ -2,6 +2,41 @@
 
 # Status
 
+## 2026-04-08 - modelo sintético aplicado ao ramo Dell/ATT
+
+- trecho Dell/ATT confirmado por API no mapa `MTR Unified - Brisanet Observed`:
+  - `84.16.6.34`
+  - `94.142.98.175`
+  - `192.205.32.109`
+  - `32.130.89.4`
+  - `12.123.154.54`
+  - `12.122.153.181`
+  - `12.252.89.6`
+  - `143.166.30.172`
+- hosts agregadores tratados com trigger sintética:
+  - `hop-ip-192-205-32-109` (`hostid 10806`)
+  - `hop-ip-32-130-89-4` (`hostid 10807`)
+  - `hop-ip-12-123-154-54` (`hostid 10808`)
+  - `hop-ip-12-122-153-181` (`hostid 10809`)
+- item usado nos hosts posteriores:
+  - `icmpping`
+- estratégia aplicada:
+  - `192.205.32.109`, `32.130.89.4` e `12.123.154.54`: `warning 2/3` + `critical 3/3`
+  - `12.122.153.181`: `critical 2/2`
+- triggers herdadas de ICMP nos quatro agregadores foram desabilitadas
+- os hosts `84.16.6.34` e `94.142.98.175` foram inspecionados, mas ficaram fora da modelagem sintética nesta rodada por não serem os pontos agregadores escolhidos
+- validação real:
+  - os hosts do trecho foram confirmados por API
+  - os itens `icmpping` dos hosts posteriores estavam habilitados e suportados
+  - as expressões cross-host foram gravadas no host correto
+  - o mapa e o layout não foram alterados
+- artefatos gerados:
+  - `artifacts/synthetic_trigger_plan_att_branch.json`
+  - `artifacts/downstream_hosts_validation_att_branch.json`
+  - `artifacts/zabbix_trigger_update_att_branch.json`
+  - `artifacts/report.md`
+  - `artifacts/handoff_187_19_161_199_sintetico.md`
+
 ## 2026-04-08 - trigger sintética agregadora criada para 187.19.161.199
 
 - host agregador confirmado por API:

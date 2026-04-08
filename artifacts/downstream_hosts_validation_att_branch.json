@@ -1,0 +1,35 @@
+{
+  "inspected_hosts": [
+    "hop-ip-192-205-32-109",
+    "hop-ip-32-130-89-4",
+    "hop-ip-12-123-154-54",
+    "hop-ip-12-122-153-181"
+  ],
+  "hostids": {
+    "hop-ip-192-205-32-109": "10806",
+    "hop-ip-32-130-89-4": "10807",
+    "hop-ip-12-123-154-54": "10808",
+    "hop-ip-12-122-153-181": "10809"
+  },
+  "item_key_used_by_host": {
+    "hop-ip-192-205-32-109": "icmpping",
+    "hop-ip-32-130-89-4": "icmpping",
+    "hop-ip-12-123-154-54": "icmpping",
+    "hop-ip-12-122-153-181": "icmpping"
+  },
+  "item_supported_by_host": {
+    "hop-ip-192-205-32-109": true,
+    "hop-ip-32-130-89-4": true,
+    "hop-ip-12-123-154-54": true,
+    "hop-ip-12-122-153-181": true
+  },
+  "latest_value_if_available": {
+    "hop-ip-192-205-32-109": "1",
+    "hop-ip-32-130-89-4": "1",
+    "hop-ip-12-123-154-54": "1",
+    "hop-ip-12-122-153-181": "1"
+  },
+  "notes": [
+    "Todos os hosts do trecho têm icmpping habilitado e suportado."
+  ]
+}

@@ -2,51 +2,40 @@
 
 ## Objetivo
 
-Substituir o status visual do host `187.19.161.199` por uma trigger sintética baseada nos três hosts posteriores do ramo, sem mexer no mapa, layout, topologia ou links.
+Aplicar no ramo Dell/ATT a mesma estratégia de trigger sintética cross-host usada na rodada anterior, sem mexer no mapa, layout ou topologia.
 
-## Host agregador confirmado
+## Hosts agregadores tratados
 
-- host técnico: `hop-ip-187-19-161-199`
-- hostid: `10791`
-- interface principal: `187.19.161.199:10050`
-- grupo: `Transit / Hop`
-- template base: `ICMP Ping`
+- `hop-ip-192-205-32-109` (`hostid 10806`)
+- `hop-ip-32-130-89-4` (`hostid 10807`)
+- `hop-ip-12-123-154-54` (`hostid 10808`)
+- `hop-ip-12-122-153-181` (`hostid 10809`)
 
-## Três hosts posteriores confirmados
+## Cadeia validada
 
-- `hop-ip-104-21-4-50` (`hostid 10793`)
-- `hop-ip-172-67-131-172` (`hostid 10792`)
-- `hop-ip-1-0-0-1` (`hostid 10794`)
+- `84.16.6.34`
+- `94.142.98.175`
+- `192.205.32.109`
+- `32.130.89.4`
+- `12.123.154.54`
+- `12.122.153.181`
+- `12.252.89.6`
+- `143.166.30.172`
 
-## Itens validados
+## Estratégia aplicada
 
-- item usado nos três hosts: `icmpping`
-- estado dos itens: habilitados e suportados
-- últimos valores lidos na validação:
-  - `hop-ip-104-21-4-50`: `1`
-  - `hop-ip-172-67-131-172`: `1`
-  - `hop-ip-1-0-0-1`: `1`
-
-## Trigger sintética criada
-
-- `Saídas após 187.19.161.199 degradadas (2/3)` com severidade `Warning`
-- `Saídas após 187.19.161.199 indisponíveis (3/3)` com severidade `High`
-- janela operacional: `5m`
+- hosts `192.205.32.109`, `32.130.89.4` e `12.123.154.54`: warning `2/3` + critical `3/3`
+- host `12.122.153.181`: critical `2/2` por falta de três hosts úteis adiante
+- item usado em todos os posteriores: `icmpping`
+- janela: `5m`
 
 ## Triggers antigas tratadas
 
-- `32670` - `ICMP Ping: Unavailable by ICMP ping` - desabilitada
-- `32671` - `ICMP Ping: High ICMP ping loss` - desabilitada
-- `32672` - `ICMP Ping: High ICMP ping response time` - desabilitada
-- `32673` - `ICMP unreachable` - desabilitada
+- triggers ICMP herdadas desabilitadas nos quatro hosts agregadores tratados
 
 ## Validação objetiva
 
-- o host correto foi resolvido por API como `10791`
-- os três hosts posteriores foram resolvidos por API a partir das ligações do sysmap `10`
-- as expressões novas foram gravadas e retornadas pelo Zabbix com referências cross-host válidas
-- o sysmap não foi alterado nesta rodada
-
-## Observação
-
-- a resolução interna das expressões do Zabbix substituiu os nomes técnicos pelos `itemid` associados, o que confirma que os itens foram aceitos pelo mecanismo do backend
+- os hosts foram confirmados por API usando os IPs do trecho
+- os itens `icmpping` dos hosts posteriores estavam habilitados e suportados
+- as expressões cross-host foram aceitas pelo backend do Zabbix
+- o mapa `MTR Unified - Brisanet Observed` não foi alterado nesta rodada
