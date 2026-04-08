@@ -1,0 +1,24 @@
+{
+  "aggregator_host": "hop-ip-192-205-32-109",
+  "aggregator_hostid": "10806",
+  "trapper_keys": [
+    "synthetic.test.downstream1",
+    "synthetic.test.downstream2",
+    "synthetic.test.downstream3"
+  ],
+  "trigger_names": [
+    "TESTE: downstreams degradados (2/3)",
+    "TESTE: downstreams indisponíveis (3/3)"
+  ],
+  "test_scenarios": [
+    "1,1,1 normal",
+    "0,0,1 warning",
+    "0,0,0 critical",
+    "1,1,1 recovery"
+  ],
+  "cleanup_strategy": "Keep the TESTE items/triggers enabled for repeatability; remove by key/description via API if an explicit cleanup is requested later.",
+  "notes": [
+    "Modo de teste isolado da lógica produtiva.",
+    "Itens trapper recebem valores via zabbix_sender apenas."
+  ]
+}

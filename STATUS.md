@@ -2,6 +2,39 @@
 
 # Status
 
+## 2026-04-08 - modo de teste seguro para triggers sintéticas habilitado
+
+- host agregador de teste:
+  - `hop-ip-192-205-32-109`
+  - `hostid 10806`
+- itens trapper criados:
+  - `synthetic.test.downstream1`
+  - `synthetic.test.downstream2`
+  - `synthetic.test.downstream3`
+- triggers de teste criadas:
+  - `TESTE: downstreams degradados (2/3)`
+  - `TESTE: downstreams indisponíveis (3/3)`
+- ferramenta de envio validada:
+  - `zabbix_sender`
+- cenários executados:
+  - normal `1,1,1`
+  - warning `0,0,1`
+  - critical `0,0,0`
+  - recovery `1,1,1`
+- validação real:
+  - `zabbix_sender` processou os 3 valores por cenário
+  - `problem.get` confirmou abertura do warning e da critical
+  - a recuperação fechou os eventos ao voltar para `1,1,1`
+  - o mapa `MTR Unified - Brisanet Observed` não foi alterado
+- o modo de teste ficou separado da lógica produtiva por naming explícito `TESTE`
+- artefatos gerados:
+  - `artifacts/synthetic_test_mode_plan.json`
+  - `artifacts/zabbix_trapper_items_test.json`
+  - `artifacts/zabbix_trigger_test_update.json`
+  - `artifacts/zabbix_sender_test_runs.txt`
+  - `artifacts/report.md`
+  - `artifacts/handoff_synthetic_test_mode.md`
+
 ## 2026-04-08 - modelo sintético aplicado ao ramo Dell/ATT
 
 - trecho Dell/ATT confirmado por API no mapa `MTR Unified - Brisanet Observed`:

@@ -1,0 +1,32 @@
+{
+  "host": "hop-ip-192-205-32-109",
+  "created_test_triggers": [
+    {
+      "triggerid": "32941",
+      "description": "TESTE: downstreams degradados (2/3)",
+      "priority": "2",
+      "status": "0",
+      "state": "0",
+      "expression": "(({49028}=0 and {49029}=0) or ({49028}=0 and {49030}=0) or ({49029}=0 and {49030}=0))"
+    },
+    {
+      "triggerid": "32942",
+      "description": "TESTE: downstreams indisponíveis (3/3)",
+      "priority": "4",
+      "status": "0",
+      "state": "0",
+      "expression": "({49031}=0 and {49032}=0 and {49033}=0)"
+    }
+  ],
+  "expressions": {
+    "warning": "((last(/hop-ip-192-205-32-109/synthetic.test.downstream1)=0 and last(/hop-ip-192-205-32-109/synthetic.test.downstream2)=0) or (last(/hop-ip-192-205-32-109/synthetic.test.downstream1)=0 and last(/hop-ip-192-205-32-109/synthetic.test.downstream3)=0) or (last(/hop-ip-192-205-32-109/synthetic.test.downstream2)=0 and last(/hop-ip-192-205-32-109/synthetic.test.downstream3)=0))",
+    "critical": "(last(/hop-ip-192-205-32-109/synthetic.test.downstream1)=0 and last(/hop-ip-192-205-32-109/synthetic.test.downstream2)=0 and last(/hop-ip-192-205-32-109/synthetic.test.downstream3)=0)"
+  },
+  "severities": {
+    "warning": "Warning",
+    "critical": "High"
+  },
+  "notes": [
+    "Triggers de teste usam last() para disparo imediato via zabbix_sender e permanecem separadas da lógica produtiva."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "host": "hop-ip-192-205-32-109",
+  "created_items": [
+    {
+      "itemid": "70198",
+      "name": "TESTE synthetic downstream 1",
+      "key_": "synthetic.test.downstream1",
+      "type": "2",
+      "value_type": "3",
+      "status": "0",
+      "delay": "0",
+      "description": "Item de teste separado da lógica produtiva; alimentado por zabbix_sender.",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "70199",
+      "name": "TESTE synthetic downstream 2",
+      "key_": "synthetic.test.downstream2",
+      "type": "2",
+      "value_type": "3",
+      "status": "0",
+      "delay": "0",
+      "description": "Item de teste separado da lógica produtiva; alimentado por zabbix_sender.",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "70200",
+      "name": "TESTE synthetic downstream 3",
+      "key_": "synthetic.test.downstream3",
+      "type": "2",
+      "value_type": "3",
+      "status": "0",
+      "delay": "0",
+      "description": "Item de teste separado da lógica produtiva; alimentado por zabbix_sender.",
+      "state": "0",
+      "lastvalue": "0"
+    }
+  ],
+  "item_keys": [
+    "synthetic.test.downstream1",
+    "synthetic.test.downstream2",
+    "synthetic.test.downstream3"
+  ],
+  "item_type": "zabbix_trapper",
+  "value_type": "numeric_unsigned",
+  "notes": [
+    "Itens de teste criados no host agregador para receber dados via zabbix_sender."
+  ]
+}

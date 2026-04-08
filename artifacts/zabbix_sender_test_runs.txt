@@ -1,0 +1,305 @@
+[
+  {
+    "scenario": "normal",
+    "payload_file": "/tmp/zbx_sender_p7zq98ie.txt",
+    "payload": "hop-ip-192-205-32-109 synthetic.test.downstream1 1\nhop-ip-192-205-32-109 synthetic.test.downstream2 1\nhop-ip-192-205-32-109 synthetic.test.downstream3 1",
+    "returncode": 0,
+    "stdout": "Response from \"127.0.0.1:10051\": \"processed: 3; failed: 0; total: 3; seconds spent: 0.000110\"\nsent: 3; skipped: 0; total: 3",
+    "stderr": "",
+    "items": [
+      {
+        "itemid": "70198",
+        "key_": "synthetic.test.downstream1",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "70199",
+        "key_": "synthetic.test.downstream2",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "70200",
+        "key_": "synthetic.test.downstream3",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "1"
+      }
+    ],
+    "triggers": [
+      {
+        "triggerid": "32941",
+        "description": "TESTE: downstreams degradados (2/3)",
+        "priority": "2",
+        "status": "0",
+        "state": "0",
+        "expression": "(({49028}=0 and {49029}=0) or ({49028}=0 and {49030}=0) or ({49029}=0 and {49030}=0))"
+      },
+      {
+        "triggerid": "32942",
+        "description": "TESTE: downstreams indisponíveis (3/3)",
+        "priority": "4",
+        "status": "0",
+        "state": "0",
+        "expression": "({49031}=0 and {49032}=0 and {49033}=0)"
+      }
+    ],
+    "problems": []
+  },
+  {
+    "scenario": "warning",
+    "payload_file": "/tmp/zbx_sender_i25ycda1.txt",
+    "payload": "hop-ip-192-205-32-109 synthetic.test.downstream1 0\nhop-ip-192-205-32-109 synthetic.test.downstream2 0\nhop-ip-192-205-32-109 synthetic.test.downstream3 1",
+    "returncode": 0,
+    "stdout": "Response from \"127.0.0.1:10051\": \"processed: 3; failed: 0; total: 3; seconds spent: 0.000053\"\nsent: 3; skipped: 0; total: 3",
+    "stderr": "",
+    "items": [
+      {
+        "itemid": "70198",
+        "key_": "synthetic.test.downstream1",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "70199",
+        "key_": "synthetic.test.downstream2",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "70200",
+        "key_": "synthetic.test.downstream3",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "1"
+      }
+    ],
+    "triggers": [
+      {
+        "triggerid": "32941",
+        "description": "TESTE: downstreams degradados (2/3)",
+        "priority": "2",
+        "status": "0",
+        "state": "0",
+        "expression": "(({49028}=0 and {49029}=0) or ({49028}=0 and {49030}=0) or ({49029}=0 and {49030}=0))"
+      },
+      {
+        "triggerid": "32942",
+        "description": "TESTE: downstreams indisponíveis (3/3)",
+        "priority": "4",
+        "status": "0",
+        "state": "0",
+        "expression": "({49031}=0 and {49032}=0 and {49033}=0)"
+      }
+    ],
+    "problems": [
+      {
+        "eventid": "664",
+        "source": "0",
+        "object": "0",
+        "objectid": "32941",
+        "clock": "1775689991",
+        "ns": "354990365",
+        "r_eventid": "0",
+        "r_clock": "0",
+        "r_ns": "0",
+        "correlationid": "0",
+        "userid": "0",
+        "name": "TESTE: downstreams degradados (2/3)",
+        "acknowledged": "0",
+        "severity": "2",
+        "cause_eventid": "0",
+        "suppressed": "0",
+        "opdata": "",
+        "urls": []
+      }
+    ]
+  },
+  {
+    "scenario": "critical",
+    "payload_file": "/tmp/zbx_sender_fvv1upd7.txt",
+    "payload": "hop-ip-192-205-32-109 synthetic.test.downstream1 0\nhop-ip-192-205-32-109 synthetic.test.downstream2 0\nhop-ip-192-205-32-109 synthetic.test.downstream3 0",
+    "returncode": 0,
+    "stdout": "Response from \"127.0.0.1:10051\": \"processed: 3; failed: 0; total: 3; seconds spent: 0.000097\"\nsent: 3; skipped: 0; total: 3",
+    "stderr": "",
+    "items": [
+      {
+        "itemid": "70198",
+        "key_": "synthetic.test.downstream1",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "70199",
+        "key_": "synthetic.test.downstream2",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "70200",
+        "key_": "synthetic.test.downstream3",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "0"
+      }
+    ],
+    "triggers": [
+      {
+        "triggerid": "32941",
+        "description": "TESTE: downstreams degradados (2/3)",
+        "priority": "2",
+        "status": "0",
+        "state": "0",
+        "expression": "(({49028}=0 and {49029}=0) or ({49028}=0 and {49030}=0) or ({49029}=0 and {49030}=0))"
+      },
+      {
+        "triggerid": "32942",
+        "description": "TESTE: downstreams indisponíveis (3/3)",
+        "priority": "4",
+        "status": "0",
+        "state": "0",
+        "expression": "({49031}=0 and {49032}=0 and {49033}=0)"
+      }
+    ],
+    "problems": [
+      {
+        "eventid": "664",
+        "source": "0",
+        "object": "0",
+        "objectid": "32941",
+        "clock": "1775689991",
+        "ns": "354990365",
+        "r_eventid": "0",
+        "r_clock": "0",
+        "r_ns": "0",
+        "correlationid": "0",
+        "userid": "0",
+        "name": "TESTE: downstreams degradados (2/3)",
+        "acknowledged": "0",
+        "severity": "2",
+        "cause_eventid": "0",
+        "suppressed": "0",
+        "opdata": "",
+        "urls": []
+      },
+      {
+        "eventid": "665",
+        "source": "0",
+        "object": "0",
+        "objectid": "32942",
+        "clock": "1775689993",
+        "ns": "578438305",
+        "r_eventid": "0",
+        "r_clock": "0",
+        "r_ns": "0",
+        "correlationid": "0",
+        "userid": "0",
+        "name": "TESTE: downstreams indisponíveis (3/3)",
+        "acknowledged": "0",
+        "severity": "4",
+        "cause_eventid": "0",
+        "suppressed": "0",
+        "opdata": "",
+        "urls": []
+      }
+    ]
+  },
+  {
+    "scenario": "recovery",
+    "payload_file": "/tmp/zbx_sender_bmsmoe0l.txt",
+    "payload": "hop-ip-192-205-32-109 synthetic.test.downstream1 1\nhop-ip-192-205-32-109 synthetic.test.downstream2 1\nhop-ip-192-205-32-109 synthetic.test.downstream3 1",
+    "returncode": 0,
+    "stdout": "Response from \"127.0.0.1:10051\": \"processed: 3; failed: 0; total: 3; seconds spent: 0.000053\"\nsent: 3; skipped: 0; total: 3",
+    "stderr": "",
+    "items": [
+      {
+        "itemid": "70198",
+        "key_": "synthetic.test.downstream1",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "70199",
+        "key_": "synthetic.test.downstream2",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "70200",
+        "key_": "synthetic.test.downstream3",
+        "status": "0",
+        "state": "0",
+        "lastvalue": "1"
+      }
+    ],
+    "triggers": [
+      {
+        "triggerid": "32941",
+        "description": "TESTE: downstreams degradados (2/3)",
+        "priority": "2",
+        "status": "0",
+        "state": "0",
+        "expression": "(({49028}=0 and {49029}=0) or ({49028}=0 and {49030}=0) or ({49029}=0 and {49030}=0))"
+      },
+      {
+        "triggerid": "32942",
+        "description": "TESTE: downstreams indisponíveis (3/3)",
+        "priority": "4",
+        "status": "0",
+        "state": "0",
+        "expression": "({49031}=0 and {49032}=0 and {49033}=0)"
+      }
+    ],
+    "problems": [
+      {
+        "eventid": "664",
+        "source": "0",
+        "object": "0",
+        "objectid": "32941",
+        "clock": "1775689991",
+        "ns": "354990365",
+        "r_eventid": "667",
+        "r_clock": "1775689995",
+        "r_ns": "795961830",
+        "correlationid": "0",
+        "userid": "0",
+        "name": "TESTE: downstreams degradados (2/3)",
+        "acknowledged": "0",
+        "severity": "2",
+        "cause_eventid": "0",
+        "suppressed": "0",
+        "opdata": "",
+        "urls": []
+      },
+      {
+        "eventid": "665",
+        "source": "0",
+        "object": "0",
+        "objectid": "32942",
+        "clock": "1775689993",
+        "ns": "578438305",
+        "r_eventid": "666",
+        "r_clock": "1775689995",
+        "r_ns": "795950608",
+        "correlationid": "0",
+        "userid": "0",
+        "name": "TESTE: downstreams indisponíveis (3/3)",
+        "acknowledged": "0",
+        "severity": "4",
+        "cause_eventid": "0",
+        "suppressed": "0",
+        "opdata": "",
+        "urls": []
+      }
+    ]
+  }
+]

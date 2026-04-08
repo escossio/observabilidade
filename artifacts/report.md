@@ -2,40 +2,36 @@
 
 ## Objetivo
 
-Aplicar no ramo Dell/ATT a mesma estratégia de trigger sintética cross-host usada na rodada anterior, sem mexer no mapa, layout ou topologia.
+Habilitar um modo de teste seguro e reversível para validar triggers sintéticas no Zabbix com `zabbix_sender`, sem mexer no mapa, layout ou topologia.
 
-## Hosts agregadores tratados
+## Host agregador de teste
 
 - `hop-ip-192-205-32-109` (`hostid 10806`)
-- `hop-ip-32-130-89-4` (`hostid 10807`)
-- `hop-ip-12-123-154-54` (`hostid 10808`)
-- `hop-ip-12-122-153-181` (`hostid 10809`)
 
-## Cadeia validada
+## Camada de teste criada
 
-- `84.16.6.34`
-- `94.142.98.175`
-- `192.205.32.109`
-- `32.130.89.4`
-- `12.123.154.54`
-- `12.122.153.181`
-- `12.252.89.6`
-- `143.166.30.172`
+- itens trapper:
+  - `synthetic.test.downstream1`
+  - `synthetic.test.downstream2`
+  - `synthetic.test.downstream3`
+- triggers de teste:
+  - `TESTE: downstreams degradados (2/3)`
+  - `TESTE: downstreams indisponíveis (3/3)`
 
-## Estratégia aplicada
+## Estratégia de teste
 
-- hosts `192.205.32.109`, `32.130.89.4` e `12.123.154.54`: warning `2/3` + critical `3/3`
-- host `12.122.153.181`: critical `2/2` por falta de três hosts úteis adiante
-- item usado em todos os posteriores: `icmpping`
-- janela: `5m`
-
-## Triggers antigas tratadas
-
-- triggers ICMP herdadas desabilitadas nos quatro hosts agregadores tratados
+- cenário normal: `1,1,1`
+- cenário warning: `0,0,1`
+- cenário critical: `0,0,0`
+- cenário recovery: `1,1,1`
+- comando de injeção: `zabbix_sender`
+- lógica separada da produtiva por naming explícito `TESTE`
 
 ## Validação objetiva
 
-- os hosts foram confirmados por API usando os IPs do trecho
-- os itens `icmpping` dos hosts posteriores estavam habilitados e suportados
-- as expressões cross-host foram aceitas pelo backend do Zabbix
+- os trapper items foram criados no host correto
+- `zabbix_sender` processou 3 valores por cenário
+- o warning apareceu em `0,0,1`
+- a critical apareceu em `0,0,0`
+- a recuperação fechou os eventos ao voltar para `1,1,1`
 - o mapa `MTR Unified - Brisanet Observed` não foi alterado nesta rodada
