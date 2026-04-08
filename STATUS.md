@@ -1,5 +1,25 @@
 # Status
 
+## 2026-04-08 - scripts globais Ping e Traceroute habilitados no Zabbix Server
+
+- arquivo de configuração ajustado:
+  - `/etc/zabbix/zabbix_server.conf`
+  - `EnableGlobalScripts=0` -> `EnableGlobalScripts=1`
+- serviço reiniciado com sucesso:
+  - `zabbix-server` ficou `active (running)` após o restart
+- validação real no frontend:
+  - login autenticado no Zabbix UI em `http://127.0.0.1:8081/`
+  - `menu.popup` do host `10806` retornou os scripts `Ping` e `Traceroute`
+  - `popup.scriptexec` executou `Ping` com saída de `100% packet loss`
+  - `popup.scriptexec` executou `Traceroute` com saída completa até o destino
+- ajuste mínimo adicional de permissão:
+  - `role_rule` do role `3` recebeu `actions.execute_scripts=1`
+  - isso foi necessário para a conta `Admin` conseguir executar os scripts no frontend
+- nenhuma alteração de mapa, sysmap, layout, hosts, itens ou triggers foi feita nesta rodada
+- artefatos gerados:
+  - `artifacts/report.md`
+  - `artifacts/handoff_synthetic_test_mode.md`
+
 # Status
 
 ## 2026-04-08 - modo de teste seguro para triggers sintéticas habilitado

@@ -2,36 +2,41 @@
 
 ## Objetivo
 
-Habilitar um modo de teste seguro e reversível para validar triggers sintéticas no Zabbix com `zabbix_sender`, sem mexer no mapa, layout ou topologia.
+Habilitar a execução de Global scripts no Zabbix Server para que os scripts "Ping" e "Traceroute" funcionem a partir do menu do host no mapa.
 
-## Host agregador de teste
+## Mudança aplicada
 
-- `hop-ip-192-205-32-109` (`hostid 10806`)
+- arquivo ajustado:
+  - `/etc/zabbix/zabbix_server.conf`
+- parâmetro alterado:
+  - `EnableGlobalScripts=0` -> `EnableGlobalScripts=1`
+- serviço reiniciado:
+  - `zabbix-server`
 
-## Camada de teste criada
+## Validação no frontend
 
-- itens trapper:
-  - `synthetic.test.downstream1`
-  - `synthetic.test.downstream2`
-  - `synthetic.test.downstream3`
-- triggers de teste:
-  - `TESTE: downstreams degradados (2/3)`
-  - `TESTE: downstreams indisponíveis (3/3)`
+- login autenticado no frontend em `http://127.0.0.1:8081/`
+- `menu.popup` do host `10806` retornou os scripts:
+  - `Ping`
+  - `Traceroute`
+- `popup.scriptexec` executou `Ping` com saída bem-sucedida
+- `popup.scriptexec` executou `Traceroute` com saída bem-sucedida
 
-## Estratégia de teste
+## Evidência textual
 
-- cenário normal: `1,1,1`
-- cenário warning: `0,0,1`
-- cenário critical: `0,0,0`
-- cenário recovery: `1,1,1`
-- comando de injeção: `zabbix_sender`
-- lógica separada da produtiva por naming explícito `TESTE`
+- valor anterior de `EnableGlobalScripts`: `0`
+- valor final de `EnableGlobalScripts`: `1`
+- o `zabbix-server` ficou `active (running)` após o restart
+- Ping retornou:
+  - `100% packet loss`
+- Traceroute retornou uma rota completa até `192.205.32.109`
 
-## Validação objetiva
+## Observação de permissão
 
-- os trapper items foram criados no host correto
-- `zabbix_sender` processou 3 valores por cenário
-- o warning apareceu em `0,0,1`
-- a critical apareceu em `0,0,0`
-- a recuperação fechou os eventos ao voltar para `1,1,1`
-- o mapa `MTR Unified - Brisanet Observed` não foi alterado nesta rodada
+- para validar a execução no frontend com a conta `Admin`, foi necessário liberar a regra `actions.execute_scripts=1` no role `3`
+- isso não alterou mapa, sysmap, layout, hosts, itens ou triggers
+
+## Conclusão
+
+- o problema era de configuração do servidor e de permissão de execução da conta usada na UI
+- os scripts globais passaram a executar no frontend sem mexer no mapa ou na topologia
