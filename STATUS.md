@@ -1,5 +1,29 @@
 # Status
 
+## 2026-04-08 - ramo Dell/ATT normalizado, triggers ICMP legadas desabilitadas
+
+- hosts auditados:
+  - `hop-ip-32-130-89-4` (`hostid 10807`)
+  - `hop-ip-12-123-154-54` (`hostid 10808`)
+  - `hop-ip-12-122-153-181` (`hostid 10809`)
+  - `hop-ip-12-252-89-6` (`hostid 10810`)
+- triggers legadas desabilitadas:
+  - `32734` a `32749` em ICMP ping / loss / response time / unreachable
+- triggers sintéticas mantidas:
+  - `32934`, `32935`, `32936`, `32937`, `32938`, `32939`, `32940`
+- estado final:
+  - `32.130.89.4`: apenas sintética `2/3` e `3/3`
+  - `12.123.154.54`: apenas sintética `2/3` e `3/3`
+  - `12.122.153.181`: apenas sintéticas `2/3` e `3/3` do ramo acima
+  - `12.252.89.6`: apenas sintética `2/3`
+- nenhuma alteração de mapa, sysmap, layout, links ou topologia
+- artefatos gerados:
+  - `artifacts/att_branch_open_problems_audit.json`
+  - `artifacts/att_branch_trigger_cleanup_plan.json`
+  - `artifacts/att_branch_trigger_update.json`
+  - `artifacts/report.md`
+  - `artifacts/handoff_att_branch_trigger_cleanup.md`
+
 ## 2026-04-08 - scripts globais Ping e Traceroute habilitados no Zabbix Server
 
 - arquivo de configuração ajustado:

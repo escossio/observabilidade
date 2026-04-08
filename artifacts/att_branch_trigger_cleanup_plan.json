@@ -1,0 +1,73 @@
+{
+  "hosts": [
+    {
+      "host": "32.130.89.4",
+      "triggers_to_keep": [
+        "Saídas após 192.205.32.109 degradadas (2/3)",
+        "Saídas após 192.205.32.109 indisponíveis (3/3)"
+      ],
+      "triggers_to_disable": [
+        "ICMP Ping: Unavailable by ICMP ping",
+        "ICMP Ping: High ICMP ping loss",
+        "ICMP Ping: High ICMP ping response time",
+        "ICMP unreachable"
+      ],
+      "triggers_to_adjust": [],
+      "rationale": "Host deve exibir apenas a modelagem sintética do trecho.",
+      "notes": []
+    },
+    {
+      "host": "12.123.154.54",
+      "triggers_to_keep": [
+        "Saídas após 192.205.32.109 degradadas (2/3)",
+        "Saídas após 192.205.32.109 indisponíveis (3/3)",
+        "Saídas após 32.130.89.4 degradadas (2/3)"
+      ],
+      "triggers_to_disable": [
+        "ICMP Ping: Unavailable by ICMP ping",
+        "ICMP Ping: High ICMP ping loss",
+        "ICMP Ping: High ICMP ping response time",
+        "ICMP unreachable"
+      ],
+      "triggers_to_adjust": [],
+      "rationale": "As triggers legadas de ICMP poluíam o estado visual do host.",
+      "notes": []
+    },
+    {
+      "host": "12.122.153.181",
+      "triggers_to_keep": [
+        "Saídas após 192.205.32.109 degradadas (2/3)",
+        "Saídas após 192.205.32.109 indisponíveis (3/3)",
+        "Saídas após 32.130.89.4 degradadas (2/3)"
+      ],
+      "triggers_to_disable": [
+        "ICMP Ping: Unavailable by ICMP ping",
+        "ICMP Ping: High ICMP ping loss",
+        "ICMP Ping: High ICMP ping response time",
+        "ICMP unreachable"
+      ],
+      "triggers_to_adjust": [],
+      "rationale": "O host ficou com apenas a lógica sintética necessária e sem legado de ICMP.",
+      "notes": []
+    },
+    {
+      "host": "12.252.89.6",
+      "triggers_to_keep": [
+        "Saídas após 32.130.89.4 degradadas (2/3)"
+      ],
+      "triggers_to_disable": [
+        "ICMP Ping: Unavailable by ICMP ping",
+        "ICMP Ping: High ICMP ping loss",
+        "ICMP Ping: High ICMP ping response time",
+        "ICMP unreachable"
+      ],
+      "triggers_to_adjust": [],
+      "rationale": "Este host já estava correto na lógica sintética; o legado de ICMP foi removido por consistência.",
+      "notes": []
+    }
+  ],
+  "notes": [
+    "A limpeza foca apenas os quatro hosts-alvo.",
+    "A lógica sintética foi preservada como modelo correto."
+  ]
+}

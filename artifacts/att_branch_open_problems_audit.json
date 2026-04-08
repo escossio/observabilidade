@@ -1,0 +1,229 @@
+{
+  "hosts": [
+    "32.130.89.4",
+    "12.123.154.54",
+    "12.122.153.181",
+    "12.252.89.6"
+  ],
+  "hostids": {
+    "32.130.89.4": 10807,
+    "12.123.154.54": 10808,
+    "12.122.153.181": 10809,
+    "12.252.89.6": 10810
+  },
+  "open_problems_by_host": {
+    "32.130.89.4": [
+      "Saídas após 192.205.32.109 degradadas (2/3)",
+      "Saídas após 192.205.32.109 indisponíveis (3/3)"
+    ],
+    "12.123.154.54": [
+      "Saídas após 192.205.32.109 degradadas (2/3)",
+      "Saídas após 192.205.32.109 indisponíveis (3/3)",
+      "Saídas após 32.130.89.4 degradadas (2/3)"
+    ],
+    "12.122.153.181": [
+      "Saídas após 192.205.32.109 degradadas (2/3)",
+      "Saídas após 192.205.32.109 indisponíveis (3/3)",
+      "Saídas após 32.130.89.4 degradadas (2/3)"
+    ],
+    "12.252.89.6": [
+      "Saídas após 32.130.89.4 degradadas (2/3)"
+    ]
+  },
+  "open_triggers_by_host": {
+    "32.130.89.4": [
+      {
+        "triggerid": 32934,
+        "description": "Saídas após 192.205.32.109 degradadas (2/3)",
+        "priority": 2,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32935,
+        "description": "Saídas após 192.205.32.109 indisponíveis (3/3)",
+        "priority": 4,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32734,
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "priority": 4,
+        "status": 1,
+        "value": 1,
+        "classification": "legada ICMP"
+      },
+      {
+        "triggerid": 32737,
+        "description": "ICMP unreachable",
+        "priority": 3,
+        "status": 1,
+        "value": 1,
+        "classification": "legada ICMP"
+      }
+    ],
+    "12.123.154.54": [
+      {
+        "triggerid": 32934,
+        "description": "Saídas após 192.205.32.109 degradadas (2/3)",
+        "priority": 2,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32935,
+        "description": "Saídas após 192.205.32.109 indisponíveis (3/3)",
+        "priority": 4,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32936,
+        "description": "Saídas após 32.130.89.4 degradadas (2/3)",
+        "priority": 2,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32738,
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "priority": 4,
+        "status": 1,
+        "value": 1,
+        "classification": "legada ICMP"
+      },
+      {
+        "triggerid": 32741,
+        "description": "ICMP unreachable",
+        "priority": 3,
+        "status": 1,
+        "value": 1,
+        "classification": "legada ICMP"
+      }
+    ],
+    "12.122.153.181": [
+      {
+        "triggerid": 32934,
+        "description": "Saídas após 192.205.32.109 degradadas (2/3)",
+        "priority": 2,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32935,
+        "description": "Saídas após 192.205.32.109 indisponíveis (3/3)",
+        "priority": 4,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32936,
+        "description": "Saídas após 32.130.89.4 degradadas (2/3)",
+        "priority": 2,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32742,
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "priority": 4,
+        "status": 1,
+        "value": 1,
+        "classification": "legada ICMP"
+      },
+      {
+        "triggerid": 32745,
+        "description": "ICMP unreachable",
+        "priority": 3,
+        "status": 1,
+        "value": 1,
+        "classification": "legada ICMP"
+      }
+    ],
+    "12.252.89.6": [
+      {
+        "triggerid": 32936,
+        "description": "Saídas após 32.130.89.4 degradadas (2/3)",
+        "priority": 2,
+        "status": 0,
+        "value": 1,
+        "classification": "sintética desejada"
+      },
+      {
+        "triggerid": 32746,
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "priority": 4,
+        "status": 1,
+        "value": 0,
+        "classification": "legada ICMP"
+      },
+      {
+        "triggerid": 32747,
+        "description": "ICMP Ping: High ICMP ping loss",
+        "priority": 2,
+        "status": 1,
+        "value": 0,
+        "classification": "legada ICMP"
+      },
+      {
+        "triggerid": 32748,
+        "description": "ICMP Ping: High ICMP ping response time",
+        "priority": 2,
+        "status": 1,
+        "value": 0,
+        "classification": "legada ICMP"
+      },
+      {
+        "triggerid": 32749,
+        "description": "ICMP unreachable",
+        "priority": 3,
+        "status": 1,
+        "value": 0,
+        "classification": "legada ICMP"
+      }
+    ]
+  },
+  "trigger_type_classification": {
+    "legada ICMP": [
+      32734,
+      32735,
+      32736,
+      32737,
+      32738,
+      32739,
+      32740,
+      32741,
+      32742,
+      32743,
+      32744,
+      32745,
+      32746,
+      32747,
+      32748,
+      32749
+    ],
+    "sintética desejada": [
+      32934,
+      32935,
+      32936,
+      32937,
+      32938,
+      32939,
+      32940
+    ]
+  },
+  "notes": [
+    "A poluição do mapa vinha de triggers ICMP legadas ainda habilitadas nesses hosts.",
+    "As triggers sintéticas já estavam ativas e foram mantidas.",
+    "A desabilitação das legadas preserva a modelagem sintética sem mexer no mapa."
+  ]
+}

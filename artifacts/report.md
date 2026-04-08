@@ -2,41 +2,41 @@
 
 ## Objetivo
 
-Habilitar a execução de Global scripts no Zabbix Server para que os scripts "Ping" e "Traceroute" funcionem a partir do menu do host no mapa.
+Auditar e normalizar os incidentes do ramo Dell/ATT, removendo a poluição gerada por triggers ICMP legadas e preservando a lógica sintética correta.
 
-## Mudança aplicada
+## Ações executadas
 
-- arquivo ajustado:
-  - `/etc/zabbix/zabbix_server.conf`
-- parâmetro alterado:
-  - `EnableGlobalScripts=0` -> `EnableGlobalScripts=1`
-- serviço reiniciado:
-  - `zabbix-server`
+- hosts auditados:
+  - `32.130.89.4`
+  - `12.123.154.54`
+  - `12.122.153.181`
+  - `12.252.89.6`
+- triggers legadas desabilitadas:
+  - `32734` a `32749`
+- triggers sintéticas mantidas:
+  - `32934` a `32940`
 
-## Validação no frontend
+## Antes da limpeza
 
-- login autenticado no frontend em `http://127.0.0.1:8081/`
-- `menu.popup` do host `10806` retornou os scripts:
-  - `Ping`
-  - `Traceroute`
-- `popup.scriptexec` executou `Ping` com saída bem-sucedida
-- `popup.scriptexec` executou `Traceroute` com saída bem-sucedida
+- `32.130.89.4` tinha problema ativo em ICMP legado e também problemas sintéticos
+- `12.123.154.54` tinha problema ativo em ICMP legado e problemas sintéticos
+- `12.122.153.181` tinha problema ativo em ICMP legado e problemas sintéticos
+- `12.252.89.6` já estava correto na lógica sintética, mas ainda carregava legado de ICMP habilitado
 
-## Evidência textual
+## Depois da limpeza
 
-- valor anterior de `EnableGlobalScripts`: `0`
-- valor final de `EnableGlobalScripts`: `1`
-- o `zabbix-server` ficou `active (running)` após o restart
-- Ping retornou:
-  - `100% packet loss`
-- Traceroute retornou uma rota completa até `192.205.32.109`
+- todos os triggers ICMP legados dos quatro hosts ficaram desabilitados
+- permaneceram apenas os triggers sintéticos do ramo Dell/ATT
+- nenhum mapa, sysmap, layout ou topologia foi alterado
 
-## Observação de permissão
+## Estado final
 
-- para validar a execução no frontend com a conta `Admin`, foi necessário liberar a regra `actions.execute_scripts=1` no role `3`
-- isso não alterou mapa, sysmap, layout, hosts, itens ou triggers
+- `32.130.89.4`: 2 problemas sintéticos ativos
+- `12.123.154.54`: 3 problemas sintéticos ativos
+- `12.122.153.181`: 3 problemas sintéticos ativos
+- `12.252.89.6`: 1 problema sintético ativo
 
 ## Conclusão
 
-- o problema era de configuração do servidor e de permissão de execução da conta usada na UI
-- os scripts globais passaram a executar no frontend sem mexer no mapa ou na topologia
+- a poluição vinha de triggers ICMP legadas ainda habilitadas
+- a modelagem sintética passou a ser a única lógica ativa nesses hosts-alvo
