@@ -1,5 +1,137 @@
 # Status
 
+## 2026-04-10 - VM 10.45.0.4 saneada com runner autocontido e rodada real local concluida
+
+- VM alvo confirmada:
+  - `livecopilot-validation`
+  - IP `10.45.0.4/24`
+  - usuario `codex`
+  - chave de acesso operacional: `/lab/projects/livecopilot/lab/vms/livecopilot-validation/admin_sshkey`
+- acesso real validado:
+  - `ssh -i /lab/projects/livecopilot/lab/vms/livecopilot-validation/admin_sshkey codex@10.45.0.4`
+  - a VM respondeu com `enp1s0 10.45.0.4/24`
+  - `/srv` estava livre para uso canonico
+- legado preservado na propria VM:
+  - `/home/codex/validation-runner` mantido intacto
+  - `/home/codex/artifacts` mantido intacto
+- congelamento do legado documentado na VM em:
+  - `/srv/validator/docs/legacy-freeze.md`
+- acoplamento antigo confirmado e removido do novo fluxo:
+  - `run_validation_round.js` carregava Playwright de `/srv/liveui`
+  - `run_validation_round.js` fixava `DEFAULT_APP_URL` em `http://10.45.0.3:8099`
+  - `run_validation_round.js` fixava `HOST_IP=10.45.0.3`
+  - `run_validation_round.js` fazia captura remota no host via SSH/SCP
+  - o novo runner em `/srv/validator` nao usa `ssh`
+  - o novo runner em `/srv/validator` nao usa `/srv/liveui`
+  - o novo runner executa browser e `tcpdump` localmente na `.4`
+- estrutura oficial criada na VM:
+  - `/srv/validator/bin`
+  - `/srv/validator/runs`
+  - `/srv/validator/docs`
+  - `/srv/validator/archive`
+- arquivos oficiais implantados na VM:
+  - `/srv/validator/package.json`
+  - `/srv/validator/bin/run-validator.sh`
+  - `/srv/validator/bin/browser_probe.mjs`
+  - `/srv/validator/docs/README.md`
+  - `/srv/validator/docs/legacy-freeze.md`
+- dependencia minima instalada na VM:
+  - `jq`
+  - `playwright-core` em `/srv/validator/node_modules`
+- rodada real local concluida na propria VM:
+  - comando:
+    - `/srv/validator/bin/run-validator.sh --url https://example.com --iface enp1s0 --name prova-local-vm-10-45-0-4`
+  - pasta gerada:
+    - `/srv/validator/runs/20260410T222609Z-prova-local-vm-10-45-0-4`
+  - artefatos minimos confirmados:
+    - `capture.pcap`
+    - `browser-console.json`
+    - `browser-network.json`
+    - `page.png`
+    - `summary.md`
+- evidencia objetiva da rodada real na `.4`:
+  - `tcpdump: listening on enp1s0`
+  - `839 packets captured`
+  - resposta HTTP inicial `200`
+  - `final_url: https://example.com/`
+  - titulo carregado: `Example Domain`
+  - veredito do runner: `PASS`
+
+## 2026-04-10 - runner autocontido minimo preparado e validado localmente; alvo 10.45.0.4 bloqueado por acesso
+
+- estrutura nova criada de forma isolada em:
+  - `/srv/validator/bin`
+  - `/srv/validator/runs`
+  - `/srv/validator/docs`
+  - `/srv/validator/archive`
+- legado preservado:
+  - `/home/codex/validation-runner` mantido sem alteracao
+  - `/home/codex/artifacts` nao foi tocado
+- congelamento do estado anterior documentado em:
+  - `/srv/validator/docs/legacy-freeze.md`
+- novo runner oficial criado em:
+  - `/srv/validator/bin/run-validator.sh`
+  - `/srv/validator/bin/browser_probe.mjs`
+  - `/srv/validator/package.json`
+- dependencia minima adicionada:
+  - `playwright-core` em `/srv/validator/node_modules`
+- acoplamento antigo explicitado e removido da nova implementacao:
+  - o runner novo nao usa `ssh`
+  - o runner novo nao usa `/srv/liveui`
+  - a captura agora eh local via `tcpdump`
+  - o browser agora eh local via `chromium` headless
+- prova tecnica executada localmente no host atual em:
+  - `2026-04-10T22:14:51Z` a `2026-04-10T22:14:58Z`
+  - alvo: `https://example.com`
+  - interface: `br0`
+  - pasta de saida: `/srv/validator/runs/20260410T221451Z-prova-local-agt01`
+- artefatos minimos confirmados na prova local:
+  - `capture.pcap`
+  - `browser-console.json`
+  - `browser-network.json`
+  - `page.png`
+  - `summary.md`
+- evidencia objetiva da prova local:
+  - `tcpdump: listening on br0`
+  - `941 packets captured`
+  - resposta inicial HTTP `200`
+  - `Example Domain` carregado em `chromium` headless
+- bloqueio desta rodada:
+  - em `2026-04-10`, `ssh root@10.45.0.4` e `ssh codex@10.45.0.4` falharam com `Permission denied (publickey,password,keyboard-interactive)`
+  - o alias operacional `debian2` desta infraestrutura continua apontando para `10.45.0.2`, nao para `10.45.0.4`
+  - por isso a aplicacao final e a validacao obrigatoria especificamente em `10.45.0.4` ficaram bloqueadas por acesso, nao por implementacao
+  - nenhum ajuste destrutivo foi feito em `.2`, `.3` ou `.4`
+- verificacao adicional em `2026-04-10` dentro dos projetos de `/srv`:
+  - `mtr-hop-map/sources/debian2-1.json` confirma `debian2-1` em `10.45.0.2`
+  - `mtr-hop-map/STATUS.md` e `STATUS.md` do projeto repetem `10.45.0.2` como origem remota canonica
+  - `internet-observation` e `/srv/liveui` confirmam acoplamentos antigos com `10.45.0.3` e `/srv/liveui`
+  - nao foi encontrada referencia operacional versionada a `10.45.0.4` em nenhum projeto sob `/srv`
+  - isso reforca que a divergencia atual eh de inventario/acesso do ambiente, nao do runner novo
+- verificacao direta em `root@agt01:/srv/liveui` em `2026-04-10`:
+  - a arvore contem apenas `artifacts`, `automation`, `downloads`, `logs`, `scripts` e `session`
+  - `scripts/common.sh` fixa `LIVEUI_BIND_IP=10.45.0.3` e caminhos locais sob `/srv/liveui`
+  - os scripts de automacao (`smoke-homepage.js`, `smoke-chat-e2e.js`, `smoke-chat-skill-local.js`) gravam evidencias em `/srv/liveui/artifacts`
+  - `logs/novnc.log` confirma publicacao local do noVNC em `10.45.0.3:6081`
+  - nao existe referencia a `10.45.0.4`, `validation-runner` ou `/home/codex/artifacts` dentro de `/srv/liveui`
+  - conclusao: `/srv/liveui` eh laboratorio local de browser/noVNC e nao a base da VM alvo desta rodada
+- verificacao fora de `/srv` em `2026-04-10`:
+  - existe definicao libvirt local da VM `livecopilot-validation` em `/etc/libvirt/qemu/livecopilot-validation.xml`
+  - a documentacao da VM em `/lab/projects/livecopilot/lab/vms/livecopilot-validation/docs/README.md` confirma:
+    - IP: `10.45.0.4/24`
+    - usuario administrativo: `codex`
+    - chave correta: `/lab/projects/livecopilot/lab/vms/livecopilot-validation/admin_sshkey`
+  - o `cloudinit/network-config` da VM confirma `10.45.0.4/24`
+  - o `cloudinit/user-data` confirma o usuario `codex`
+  - a VM esta `running` no libvirt
+  - o host ja conhecia a fingerprint SSH de `10.45.0.4` em `/root/.ssh/known_hosts`
+- acesso validado em `2026-04-10`:
+  - `ssh -i /lab/projects/livecopilot/lab/vms/livecopilot-validation/admin_sshkey codex@10.45.0.4` funcionou
+  - hostname retornado pela VM: `localhost`
+  - interface da VM: `enp1s0 10.45.0.4/24`
+  - `/srv` da VM esta praticamente vazio
+  - `/home/codex/validation-runner` existe na VM e contem o runner legado com artefatos completos
+  - isso confirma que a VM correta da rodada eh mesmo a `10.45.0.4`
+
 ## 2026-04-08 - ramo Dell/ATT normalizado, triggers ICMP legadas desabilitadas
 
 - hosts auditados:

@@ -38,6 +38,10 @@ artifacts/environment_inventory.txt
 artifacts/validation_results.txt
 artifacts/rendered_examples/
 
+# Validator workspace synced from VM
+validator/node_modules/
+validator/runs/
+
 # Tool caches
 .pytest_cache/
 __pycache__/
