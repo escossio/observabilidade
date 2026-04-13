@@ -24,8 +24,10 @@ Transformar uma rota observada com `mtr --aslookup` em uma topologia persistente
 9. O layout é linear horizontal.
 10. Falha em um destino não pode derrubar a execução dos demais destinos do lote.
 11. O `sysmap` do Zabbix 7.4 não tem tags nativas; a metadata operacional do mapa fica registrada pela automação.
-12. `--dry-run` deve bloquear toda escrita no Zabbix e produzir o plano completo de reconciliação.
-13. `--json` deve emitir um JSON canônico estável no stdout para automação.
+12. Hops `local_recurring_backbone` e `destination` podem receber o template ICMP nativo.
+13. Hops `pivot_or_exit_point`, `transit_external`, `service_family_facebook_meta` e `unknown` não devem herdar o template ICMP padrão; ficam observacionais ou sintéticos.
+14. `--dry-run` deve bloquear toda escrita no Zabbix e produzir o plano completo de reconciliação.
+15. `--json` deve emitir um JSON canônico estável no stdout para automação.
 
 ## Política de nome
 

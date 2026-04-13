@@ -1,0 +1,29 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "files_changed": [
+    "mtr-hop-map/src/hop_policy.py",
+    "mtr-hop-map/src/zabbix_api.py",
+    "mtr-hop-map/src/zabbix_reconcile.py",
+    "mtr-hop-map/docs/CONTRACT_MTR_HOP_MAP.md",
+    "mtr-hop-map/README.md",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/route_monitoring_policy.json",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/report.md",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/handoff.md",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/facebook_route_trigger_audit.json",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/facebook_route_trigger_cleanup.json",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/route_onboarding_policy_fix.json",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/route_onboarding_diff.json"
+  ],
+  "logic_changed": [
+    "classificacao de hop agora define o modo de monitoramento por classe",
+    "host.update passa a usar templates_clear para remover heranca ICMP de classes observacionais",
+    "host.create nao anexa ICMP nativamente quando o hop nao deve ser gerenciavel por default",
+    "a documentacao passou a explicitar a politica de template por classe"
+  ],
+  "trigger_default_behavior_before": "ICMP Ping era anexado automaticamente a qualquer host com IP na reconciliacao",
+  "trigger_default_behavior_after": "ICMP Ping fica apenas em local_recurring_backbone e destination; demais classes passam sem template nativo",
+  "notes": [
+    "A mudanca evita reincidencia de incidente em hops externos intermediarios.",
+    "A politica ficou declarada em codigo e em documentos versionados."
+  ]
+}

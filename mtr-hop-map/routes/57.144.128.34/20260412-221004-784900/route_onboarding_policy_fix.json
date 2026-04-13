@@ -1,0 +1,51 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "route_policy_before": {
+    "template_default_behavior": "template ICMP Ping herdado automaticamente por todo hop com IP",
+    "classes_treated_as_native": [
+      "local_recurring_backbone",
+      "pivot_or_exit_point",
+      "transit_external",
+      "service_family_facebook_meta",
+      "destination"
+    ],
+    "classes_treated_as_observational": []
+  },
+  "route_policy_after": {
+    "template_default_behavior": "template ICMP Ping nativo somente para local_recurring_backbone e destination",
+    "classes_treated_as_native": [
+      "local_recurring_backbone",
+      "destination"
+    ],
+    "classes_treated_as_observational": [
+      "pivot_or_exit_point",
+      "transit_external",
+      "service_family_facebook_meta",
+      "unknown"
+    ]
+  },
+  "class_transit_external_behavior": {
+    "monitoring": "nao receber incidentes nativos/default de ICMP/ping response time como baseline automatico",
+    "alerting": "ficar observacional ou usar logica sintetica quando explicitamente configurado"
+  },
+  "class_destination_behavior": {
+    "monitoring": "manter monitoramento nativo adequado ao destino final",
+    "alerting": "preservar reachability, perda e latencia do destino como baseline valido"
+  },
+  "affected_files": [
+    "mtr-hop-map/src/hop_policy.py",
+    "mtr-hop-map/src/zabbix_api.py",
+    "mtr-hop-map/src/zabbix_reconcile.py",
+    "mtr-hop-map/docs/CONTRACT_MTR_HOP_MAP.md",
+    "mtr-hop-map/README.md",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/route_monitoring_policy.json",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/report.md",
+    "mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/handoff.md",
+    "mtr-hop-map/STATUS.md",
+    "STATUS.md"
+  ],
+  "notes": [
+    "A correção foi aplicada na rota atual e no fluxo de onboarding para novas rotas.",
+    "Os hops classificado como pivot_or_exit_point, transit_external e service_family_facebook_meta passaram a ser observacionais por padrao."
+  ]
+}

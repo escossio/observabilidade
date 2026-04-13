@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from .config import Config
-from .hop_policy import build_identity, slugify
+from .hop_policy import build_identity, classify_hop_role, monitoring_mode_for_role, slugify
 from .map_layout import build_layout, compute_map_size
 from .mtr_parser import Hop
 from .zabbix_api import HostEnsureResult, ZabbixAPI
@@ -104,11 +104,14 @@ def _build_nodes(
     host_actions: list[dict[str, Any]] = []
 
     mapable_hops = _mapable_hops(hops)
+    destination_ip = mapable_hops[-1].ip if mapable_hops else None
     layout = build_layout(len(mapable_hops), config.left_margin, config.top_margin, config.hop_spacing)
 
     for hop, (x, y) in zip(mapable_hops, layout):
 
         identity = build_identity(hop)
+        role = classify_hop_role(hop, destination_ip)
+        template_mode = monitoring_mode_for_role(role)
         host_result: HostEnsureResult = api.ensure_host(
             hostname=identity.hostname,
             visible_name=identity.visible_name,
@@ -116,6 +119,7 @@ def _build_nodes(
             templateid=templateid,
             ip=hop.ip,
             tags=identity.tags,
+            template_mode=template_mode,
         )
         hostid = host_result.host["hostid"]
         hostids.append(hostid)
@@ -147,11 +151,14 @@ def _plan_nodes(
     host_actions: list[dict[str, Any]] = []
 
     mapable_hops = _mapable_hops(hops)
+    destination_ip = mapable_hops[-1].ip if mapable_hops else None
     layout = build_layout(len(mapable_hops), config.left_margin, config.top_margin, config.hop_spacing)
 
     for hop, (x, y) in zip(mapable_hops, layout):
 
         identity = build_identity(hop)
+        role = classify_hop_role(hop, destination_ip)
+        template_mode = monitoring_mode_for_role(role)
         host_result: HostEnsureResult = api.plan_host(
             hostname=identity.hostname,
             visible_name=identity.visible_name,
@@ -159,6 +166,7 @@ def _plan_nodes(
             templateid=templateid,
             ip=hop.ip,
             tags=identity.tags,
+            template_mode=template_mode,
         )
         hostid = host_result.host.get("hostid") if host_result.host else None
         if hostid:

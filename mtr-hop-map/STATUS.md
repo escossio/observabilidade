@@ -2,6 +2,21 @@
 
 # Status
 
+## 2026-04-13 - rota Facebook/Meta 57.144.128.34 corrigida e onboarding endurecido
+
+- a rota individual `route-facebook-57-144-128-34` foi limpa sem mexer no mapa `MTR Route - 57.144.128.34`
+- `177.37.221.191`, `147.75.214.158`, `129.134.60.178` e `163.77.194.43` perderam a heranca nativa do template `ICMP Ping`
+- os problemas ativos nessas ocorrencias foram resolvidos apos a limpeza de template
+- `57.144.128.34` continuou com monitoramento nativo como destino final
+- o onboarding agora classifica a politica por classe e impede template ICMP padrao em:
+  - `pivot_or_exit_point`
+  - `transit_external`
+  - `service_family_facebook_meta`
+  - `unknown`
+- os arquivos de evidencia e politica foram gravados em:
+  - `routes/57.144.128.34/20260412-221004-784900/`
+- a documentacao geral da frente passou a explicitar a politica de template por classe
+
 ## 2026-04-12 - rota individual oficial de 57.144.128.34 inaugurada
 
 - destino inaugural da familia Facebook/Meta:

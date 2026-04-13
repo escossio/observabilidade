@@ -2,29 +2,41 @@
 
 ## Fechamento
 
-- A rota individual oficial de `57.144.128.34` foi criada com `route_id` `route-facebook-57-144-128-34`.
-- O mapa individual foi publicado no Zabbix como `MTR Route - 57.144.128.34` (`sysmapid 17`).
-- O baseline inicial ficou ancorado na coleta live de `20260412-221004-784900`.
-- O mapa canônico global permaneceu em `sysmapid 10`.
+- A rota individual oficial de `57.144.128.34` permaneceu no mapa `MTR Route - 57.144.128.34` (`sysmapid 17`).
+- A topologia do mapa não foi alterada nesta rodada.
+- O problema desta rodada era de monitoramento indevido nos hops externos intermediários, não de mapa.
 
-## O que a rodada consolidou
+## O que foi corrigido
 
-- `177.37.221.191` foi registrado como pivot de saída e reaproveitamento de edge Brisanet candidato.
-- `147.75.214.158` e `163.77.194.43` ficaram como trânsito externo.
-- `129.134.60.178` ficou como familia Facebook/Meta antes do destino final.
-- `57.144.128.34` ficou como destino final da rota individual.
+- `177.37.221.191`: removida a herança nativa do template `ICMP Ping`.
+- `147.75.214.158`: removida a herança nativa do template `ICMP Ping`.
+- `129.134.60.178`: removida a herança nativa do template `ICMP Ping`, mantendo a classificação de familia Meta como observacional/sintética.
+- `163.77.194.43`: removida a herança nativa do template `ICMP Ping`.
+- `57.144.128.34`: monitoramento nativo preservado como destino final.
 
-## O que mudou no código
+## Estado final
 
-- O reconciliador já vinha criando o sysmap vazio primeiro e renderizando só hops com IP.
-- Nesta rodada, nenhuma mudança estrutural adicional foi necessária para o Zabbix aceitar a rota.
+- intermediários externos: sem triggers nativas/default e sem problemas abertos.
+- destino final: com triggers nativas preservadas.
+- mapa individual: sem mudança de layout, sem recomputar rota e sem apagar host/mapa.
+
+## Mudança no onboarding
+
+- o onboarding agora classifica a política de monitoramento por classe de hop.
+- `local_recurring_backbone` e `destination` seguem recebendo template ICMP nativo.
+- `pivot_or_exit_point`, `transit_external`, `service_family_facebook_meta` e `unknown` passam a ser observacionais/sintéticos por padrão.
+- a regra foi registrada em código e documentação para não repetir o incidente em novas rotas.
+
+## Evidências
+
+- `facebook_route_trigger_audit.json`
+- `facebook_route_trigger_cleanup.json`
+- `route_onboarding_policy_fix.json`
+- `route_onboarding_diff.json`
+- `route_monitoring_policy.json`
+- `report.md`
 
 ## Limitações restantes
 
-- A classificação de `service_family_facebook_meta` continua heurística e depende da topologia observada nesta primeira rota.
-- Ainda não existe um gerador automático dedicado para criar a pasta da rota individual a partir de qualquer novo run sem script auxiliar.
-
-## Próximo passo natural
-
-- Reexecutar `57.144.128.34` em novas janelas para validar se a sequência se mantém ou se uma variante persistente aparece.
-
+- a seleção entre `pivot_or_exit_point` e `service_family_facebook_meta` ainda depende da evidência do trace e do ASN/empresa observados.
+- o próximo refinamento natural é sintetizar alertas por trecho quando houver histórico suficiente.

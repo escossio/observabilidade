@@ -1,0 +1,226 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "map_name": "MTR Route - 57.144.128.34",
+  "sysmapid": "17",
+  "hosts": [
+    {
+      "host": "177.37.221.191",
+      "hostid": "10820",
+      "role": "pivot_or_exit_point",
+      "kept_triggers": [],
+      "disabled_triggers": [
+        {
+          "triggerid": "32786",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32787",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32788",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32789",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "adjusted_triggers": [
+        {
+          "action": "templates_clear",
+          "templateid": "10564",
+          "template_name": "ICMP Ping"
+        }
+      ],
+      "manually_closed_events": [],
+      "resolved_eventids": [
+        "1437",
+        "1439"
+      ],
+      "final_problem_state": {
+        "open_problem_count": 0,
+        "open_problem_names": []
+      },
+      "notes": [
+        "Host externo intermediario convertido para modo observacional.",
+        "Heranca do template ICMP Ping removida; triggers legadas deixaram de existir."
+      ]
+    },
+    {
+      "host": "147.75.214.158",
+      "hostid": "10821",
+      "role": "transit_external",
+      "kept_triggers": [],
+      "disabled_triggers": [
+        {
+          "triggerid": "32790",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32791",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32792",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32793",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "adjusted_triggers": [
+        {
+          "action": "templates_clear",
+          "templateid": "10564",
+          "template_name": "ICMP Ping"
+        }
+      ],
+      "manually_closed_events": [],
+      "resolved_eventids": [
+        "528",
+        "529"
+      ],
+      "final_problem_state": {
+        "open_problem_count": 0,
+        "open_problem_names": []
+      },
+      "notes": [
+        "Transito externo limpo sem alterar o mapa.",
+        "Sem host gerenciavel por default depois da limpeza."
+      ]
+    },
+    {
+      "host": "129.134.60.178",
+      "hostid": "10822",
+      "role": "service_family_facebook_meta",
+      "kept_triggers": [],
+      "disabled_triggers": [
+        {
+          "triggerid": "32794",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32795",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32796",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32797",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "adjusted_triggers": [
+        {
+          "action": "templates_clear",
+          "templateid": "10564",
+          "template_name": "ICMP Ping"
+        }
+      ],
+      "manually_closed_events": [],
+      "resolved_eventids": [],
+      "final_problem_state": {
+        "open_problem_count": 0,
+        "open_problem_names": []
+      },
+      "notes": [
+        "Classificacao de familia Meta revisada e mantida sem heranca nativa.",
+        "Host ficou observacional/sintetico para evitar repeticao de incidente indevido."
+      ]
+    },
+    {
+      "host": "163.77.194.43",
+      "hostid": "10823",
+      "role": "transit_external",
+      "kept_triggers": [],
+      "disabled_triggers": [
+        {
+          "triggerid": "32798",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32799",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32800",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32801",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "adjusted_triggers": [
+        {
+          "action": "templates_clear",
+          "templateid": "10564",
+          "template_name": "ICMP Ping"
+        }
+      ],
+      "manually_closed_events": [],
+      "resolved_eventids": [
+        "530",
+        "531"
+      ],
+      "final_problem_state": {
+        "open_problem_count": 0,
+        "open_problem_names": []
+      },
+      "notes": [
+        "Transito externo limpo sem apagar o host nem mexer no mapa.",
+        "A limpeza removeu o legado de ICMP e deixou apenas observabilidade por logica futura."
+      ]
+    },
+    {
+      "host": "57.144.128.34",
+      "hostid": "10824",
+      "role": "destination",
+      "kept_triggers": [
+        {
+          "triggerid": "32802",
+          "description": "ICMP Ping: Unavailable by ICMP ping"
+        },
+        {
+          "triggerid": "32803",
+          "description": "ICMP Ping: High ICMP ping loss"
+        },
+        {
+          "triggerid": "32804",
+          "description": "ICMP Ping: High ICMP ping response time"
+        },
+        {
+          "triggerid": "32805",
+          "description": "ICMP unreachable"
+        }
+      ],
+      "disabled_triggers": [],
+      "adjusted_triggers": [
+        {
+          "action": "template_retained",
+          "templateid": "10564",
+          "template_name": "ICMP Ping"
+        }
+      ],
+      "manually_closed_events": [],
+      "resolved_eventids": [],
+      "final_problem_state": {
+        "open_problem_count": 0,
+        "open_problem_names": []
+      },
+      "notes": [
+        "Destino final preservou monitoramento nativo.",
+        "Nenhum problema estava aberto no destino e a topologia do mapa permaneceu intacta."
+      ]
+    }
+  ],
+  "notes": [
+    "A limpeza foi executada apenas nos hosts da rota individual; o mapa individual nao foi alterado.",
+    "Os eventos dos intermediarios foram resolvidos sem necessidade de fechamento manual.",
+    "O destino final continuou com o template ICMP Ping ligado."
+  ]
+}

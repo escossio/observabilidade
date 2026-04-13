@@ -1,5 +1,19 @@
 # Status
 
+## 2026-04-13 - rota Facebook/Meta 57.144.128.34 limpa e onboarding ajustado
+
+- a rota individual `route-facebook-57-144-128-34` teve os hops intermediarios externos corrigidos para nao herdarem o template ICMP padrao
+- `177.37.221.191`, `147.75.214.158`, `129.134.60.178` e `163.77.194.43` ficaram sem triggers nativas/default e sem problemas abertos
+- `57.144.128.34` continuou com monitoramento nativo de destino
+- a politica de onboarding passou a tratar `pivot_or_exit_point`, `transit_external`, `service_family_facebook_meta` e `unknown` como observacionais ou sinteticos por padrao
+- os artefatos da rodada ficaram em:
+  - `mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/`
+- os arquivos novos principais foram:
+  - `facebook_route_trigger_audit.json`
+  - `facebook_route_trigger_cleanup.json`
+  - `route_onboarding_policy_fix.json`
+  - `route_onboarding_diff.json`
+
 ## 2026-04-12 - baseline SNMP core da ONT/AP 10.45.0.7 aplicado no Zabbix
 
 - template criado: `Template SNMP Core - MitraStar ONT AP` (`templateid 10845`)

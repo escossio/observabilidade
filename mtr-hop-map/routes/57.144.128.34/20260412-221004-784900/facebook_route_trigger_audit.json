@@ -1,0 +1,305 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "map_name": "MTR Route - 57.144.128.34",
+  "sysmapid": "17",
+  "hosts": [
+    "177.37.221.191",
+    "147.75.214.158",
+    "129.134.60.178",
+    "163.77.194.43",
+    "57.144.128.34"
+  ],
+  "hostids": {
+    "177.37.221.191": "10820",
+    "147.75.214.158": "10821",
+    "129.134.60.178": "10822",
+    "163.77.194.43": "10823",
+    "57.144.128.34": "10824"
+  },
+  "active_triggers_by_host": {
+    "177.37.221.191": [
+      {
+        "triggerid": "32786",
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "expression": "max(/hop-ip-177-37-221-191/icmpping,#3)=0",
+        "priority": 4,
+        "templateid": "23176",
+        "status": 0
+      },
+      {
+        "triggerid": "32787",
+        "description": "ICMP Ping: High ICMP ping loss",
+        "expression": "min(/hop-ip-177-37-221-191/icmppingloss,5m)>20 and min(/hop-ip-177-37-221-191/icmppingloss,5m)<100",
+        "priority": 2,
+        "templateid": "23177",
+        "status": 0
+      },
+      {
+        "triggerid": "32788",
+        "description": "ICMP Ping: High ICMP ping response time",
+        "expression": "avg(/hop-ip-177-37-221-191/icmppingsec,5m)>0.15",
+        "priority": 2,
+        "templateid": "23178",
+        "status": 0
+      },
+      {
+        "triggerid": "32789",
+        "description": "ICMP unreachable",
+        "expression": "last(/hop-ip-177-37-221-191/icmpping)=0",
+        "priority": 3,
+        "templateid": "32625",
+        "status": 0
+      }
+    ],
+    "147.75.214.158": [
+      {
+        "triggerid": "32790",
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "expression": "max(/hop-ip-147-75-214-158/icmpping,#3)=0",
+        "priority": 4,
+        "templateid": "23176",
+        "status": 0
+      },
+      {
+        "triggerid": "32791",
+        "description": "ICMP Ping: High ICMP ping loss",
+        "expression": "min(/hop-ip-147-75-214-158/icmppingloss,5m)>20 and min(/hop-ip-147-75-214-158/icmppingloss,5m)<100",
+        "priority": 2,
+        "templateid": "23177",
+        "status": 0
+      },
+      {
+        "triggerid": "32792",
+        "description": "ICMP Ping: High ICMP ping response time",
+        "expression": "avg(/hop-ip-147-75-214-158/icmppingsec,5m)>0.15",
+        "priority": 2,
+        "templateid": "23178",
+        "status": 0
+      },
+      {
+        "triggerid": "32793",
+        "description": "ICMP unreachable",
+        "expression": "last(/hop-ip-147-75-214-158/icmpping)=0",
+        "priority": 3,
+        "templateid": "32625",
+        "status": 0
+      }
+    ],
+    "129.134.60.178": [
+      {
+        "triggerid": "32794",
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "expression": "max(/hop-ip-129-134-60-178/icmpping,#3)=0",
+        "priority": 4,
+        "templateid": "23176",
+        "status": 0
+      },
+      {
+        "triggerid": "32795",
+        "description": "ICMP Ping: High ICMP ping loss",
+        "expression": "min(/hop-ip-129-134-60-178/icmppingloss,5m)>20 and min(/hop-ip-129-134-60-178/icmppingloss,5m)<100",
+        "priority": 2,
+        "templateid": "23177",
+        "status": 0
+      },
+      {
+        "triggerid": "32796",
+        "description": "ICMP Ping: High ICMP ping response time",
+        "expression": "avg(/hop-ip-129-134-60-178/icmppingsec,5m)>0.15",
+        "priority": 2,
+        "templateid": "23178",
+        "status": 0
+      },
+      {
+        "triggerid": "32797",
+        "description": "ICMP unreachable",
+        "expression": "last(/hop-ip-129-134-60-178/icmpping)=0",
+        "priority": 3,
+        "templateid": "32625",
+        "status": 0
+      }
+    ],
+    "163.77.194.43": [
+      {
+        "triggerid": "32798",
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "expression": "max(/hop-ip-163-77-194-43/icmpping,#3)=0",
+        "priority": 4,
+        "templateid": "23176",
+        "status": 0
+      },
+      {
+        "triggerid": "32799",
+        "description": "ICMP Ping: High ICMP ping loss",
+        "expression": "min(/hop-ip-163-77-194-43/icmppingloss,5m)>20 and min(/hop-ip-163-77-194-43/icmppingloss,5m)<100",
+        "priority": 2,
+        "templateid": "23177",
+        "status": 0
+      },
+      {
+        "triggerid": "32800",
+        "description": "ICMP Ping: High ICMP ping response time",
+        "expression": "avg(/hop-ip-163-77-194-43/icmppingsec,5m)>0.15",
+        "priority": 2,
+        "templateid": "23178",
+        "status": 0
+      },
+      {
+        "triggerid": "32801",
+        "description": "ICMP unreachable",
+        "expression": "last(/hop-ip-163-77-194-43/icmpping)=0",
+        "priority": 3,
+        "templateid": "32625",
+        "status": 0
+      }
+    ],
+    "57.144.128.34": [
+      {
+        "triggerid": "32802",
+        "description": "ICMP Ping: Unavailable by ICMP ping",
+        "expression": "max(/hop-ip-57-144-128-34/icmpping,#3)=0",
+        "priority": 4,
+        "templateid": "23176",
+        "status": 0
+      },
+      {
+        "triggerid": "32803",
+        "description": "ICMP Ping: High ICMP ping loss",
+        "expression": "min(/hop-ip-57-144-128-34/icmppingloss,5m)>20 and min(/hop-ip-57-144-128-34/icmppingloss,5m)<100",
+        "priority": 2,
+        "templateid": "23177",
+        "status": 0
+      },
+      {
+        "triggerid": "32804",
+        "description": "ICMP Ping: High ICMP ping response time",
+        "expression": "avg(/hop-ip-57-144-128-34/icmppingsec,5m)>0.15",
+        "priority": 2,
+        "templateid": "23178",
+        "status": 0
+      },
+      {
+        "triggerid": "32805",
+        "description": "ICMP unreachable",
+        "expression": "last(/hop-ip-57-144-128-34/icmpping)=0",
+        "priority": 3,
+        "templateid": "32625",
+        "status": 0
+      }
+    ]
+  },
+  "open_problems_by_host": {
+    "177.37.221.191": [
+      {
+        "eventid": "1437",
+        "name": "ICMP unreachable",
+        "severity": 3,
+        "objectid": "32789",
+        "acknowledged": 0,
+        "clock": "1775837344"
+      },
+      {
+        "eventid": "1439",
+        "name": "ICMP Ping: Unavailable by ICMP ping",
+        "severity": 4,
+        "objectid": "32786",
+        "acknowledged": 0,
+        "clock": "1775837464"
+      }
+    ],
+    "147.75.214.158": [
+      {
+        "eventid": "528",
+        "name": "ICMP Ping: Unavailable by ICMP ping",
+        "severity": 4,
+        "objectid": "32790",
+        "acknowledged": 0,
+        "clock": "1775609045"
+      },
+      {
+        "eventid": "529",
+        "name": "ICMP unreachable",
+        "severity": 3,
+        "objectid": "32793",
+        "acknowledged": 0,
+        "clock": "1775609045"
+      }
+    ],
+    "163.77.194.43": [
+      {
+        "eventid": "530",
+        "name": "ICMP Ping: Unavailable by ICMP ping",
+        "severity": 4,
+        "objectid": "32798",
+        "acknowledged": 0,
+        "clock": "1775609048"
+      },
+      {
+        "eventid": "531",
+        "name": "ICMP unreachable",
+        "severity": 3,
+        "objectid": "32801",
+        "acknowledged": 0,
+        "clock": "1775609048"
+      }
+    ]
+  },
+  "trigger_type_classification": {
+    "177.37.221.191": {
+      "nativa_default_indevida": [
+        "32786",
+        "32787",
+        "32788",
+        "32789"
+      ],
+      "sintetica_valida": [],
+      "adequada_ao_destino": []
+    },
+    "147.75.214.158": {
+      "nativa_default_indevida": [
+        "32790",
+        "32791",
+        "32792",
+        "32793"
+      ],
+      "sintetica_valida": [],
+      "adequada_ao_destino": []
+    },
+    "129.134.60.178": {
+      "nativa_default_indevida": [
+        "32794",
+        "32795",
+        "32796",
+        "32797"
+      ],
+      "sintetica_valida": [],
+      "adequada_ao_destino": []
+    },
+    "163.77.194.43": {
+      "nativa_default_indevida": [
+        "32798",
+        "32799",
+        "32800",
+        "32801"
+      ],
+      "sintetica_valida": [],
+      "adequada_ao_destino": []
+    },
+    "57.144.128.34": {
+      "nativa_default_indevida": [],
+      "sintetica_valida": [],
+      "adequada_ao_destino": [
+        "32802",
+        "32803",
+        "32804",
+        "32805"
+      ]
+    }
+  },
+  "notes": [
+    "Antes da limpeza, os hops intermediarios ainda herdavam o template ICMP Ping.",
+    "177.37.221.191, 147.75.214.158 e 163.77.194.43 abriram incidentes indevidos por triggers nativas/default de ICMP.",
+    "129.134.60.178 estava sem incidente aberto, mas ainda carregava o mesmo legado indevido.",
+    "57.144.128.34 manteve a politica correta de destino e ficou como unico hop com monitoramento nativo."
+  ]
+}

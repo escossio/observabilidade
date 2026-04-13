@@ -240,6 +240,7 @@ class ZabbixAPI:
         templateid: str,
         ip: str,
         tags: list[dict[str, str]],
+        template_mode: str = "link",
     ) -> HostEnsureResult:
         warnings: list[str] = []
         existing = self.get_host(hostname)
@@ -254,14 +255,32 @@ class ZabbixAPI:
 
         if existing:
             if self.dry_run:
-                action = self._preview_existing_host_action(existing, hostname, visible_name, groupid, templateid, ip, tags)
+                action = self._preview_existing_host_action(
+                    existing,
+                    hostname,
+                    visible_name,
+                    groupid,
+                    templateid,
+                    ip,
+                    tags,
+                    template_mode,
+                )
                 return HostEnsureResult(
                     host=existing,
                     action=action,
                     match_source=match_source,
                     warnings=warnings,
                 )
-            action = self._update_existing_host(existing, hostname, visible_name, groupid, templateid, ip, tags)
+            action = self._update_existing_host(
+                existing,
+                hostname,
+                visible_name,
+                groupid,
+                templateid,
+                ip,
+                tags,
+                template_mode,
+            )
             return HostEnsureResult(
                 host=self.get_host_by_id(existing["hostid"]),
                 action=action,
@@ -295,11 +314,12 @@ class ZabbixAPI:
                         "port": "10050",
                     }
                 ],
-                "templates": [{"templateid": templateid}],
                 "tags": tags,
             },
         )
         hostid = result["hostids"][0]
+        if template_mode == "link" and templateid:
+            self.call("host.update", {"hostid": hostid, "templates": [{"templateid": templateid}]})
         return HostEnsureResult(
             host=self.get_host_by_id(hostid),
             action="created",
@@ -316,6 +336,7 @@ class ZabbixAPI:
         templateid: str,
         ip: str,
         tags: list[dict[str, str]],
+        template_mode: str,
     ) -> str:
         planned = existing.get("host") != hostname or existing.get("name") != visible_name
 
@@ -329,7 +350,10 @@ class ZabbixAPI:
 
         current_templates = existing.get("parentTemplates", [])
         templateids = {row["templateid"] for row in current_templates}
-        planned = planned or templateid not in templateids
+        if template_mode == "link":
+            planned = planned or templateid not in templateids
+        elif template_mode == "clear":
+            planned = planned or templateid in templateids
 
         interface = next((row for row in existing.get("interfaces", []) if row.get("main") == "1"), None)
         if interface is None:
@@ -360,6 +384,7 @@ class ZabbixAPI:
         templateid: str,
         ip: str,
         tags: list[dict[str, str]],
+        template_mode: str,
     ) -> str:
         updates: dict[str, Any] = {"hostid": existing["hostid"]}
 
@@ -380,8 +405,10 @@ class ZabbixAPI:
 
         current_templates = existing.get("parentTemplates", [])
         templateids = {row["templateid"] for row in current_templates}
-        if templateid not in templateids:
+        if template_mode == "link" and templateid not in templateids:
             updates["templates"] = [{"templateid": row["templateid"]} for row in current_templates] + [{"templateid": templateid}]
+        elif template_mode == "clear" and templateid in templateids:
+            updates["templates_clear"] = [{"templateid": templateid}]
 
         interface = next((row for row in existing.get("interfaces", []) if row.get("main") == "1"), None)
         if interface is None:
@@ -422,12 +449,13 @@ class ZabbixAPI:
         templateid: str,
         ip: str,
         tags: list[dict[str, str]],
+        template_mode: str = "link",
     ) -> HostEnsureResult:
         dry_run_api = ZabbixAPI(self.url, self.user, self.password, dry_run=True)
         dry_run_api.session = self.session
         dry_run_api.token = self.token
         dry_run_api._request_id = self._request_id
-        return dry_run_api.ensure_host(hostname, visible_name, groupid, templateid, ip, tags)
+        return dry_run_api.ensure_host(hostname, visible_name, groupid, templateid, ip, tags, template_mode=template_mode)
 
     def get_image(self, name: str) -> dict | None:
         result = self.call("image.get", {"output": "extend", "filter": {"name": [name]}})

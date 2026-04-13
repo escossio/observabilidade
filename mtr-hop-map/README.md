@@ -82,6 +82,9 @@ python3 -m aggregate.main --output-dir aggregate/data/runs/demo
   - `target_slug=<slug>`
   - `mode=live|replay`
   - `last_trace=<run_id>`
+- política de template por classe:
+  - `local_recurring_backbone` e `destination`: template ICMP nativo
+  - `pivot_or_exit_point`, `transit_external`, `service_family_facebook_meta` e `unknown`: sem herdar template ICMP padrão
 
 ## O que a execução salva
 
@@ -133,4 +136,3 @@ A camada de agregação em `aggregate/` lê os runs já produzidos pela CLI para
 - a classificação da camada agregada é heurística e traz confiança explícita
 - o corpus atual não mostra os IPs `177.37.220.17` e `177.37.220.18`; eles ficam como watchlist ausente até aparecerem em novas coletas
 - `IX/PTT` e `CDN` ficam como candidatos, não como verdade final
-

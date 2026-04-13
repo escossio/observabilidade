@@ -3,28 +3,48 @@
   "policy_by_class": {
     "local_recurring_backbone": {
       "monitoring": "validar recorrencia e saude dos trechos adjacentes; evitar ICMP por hop como gatilho principal",
-      "alerting": "alertar apenas se a malha recorrente sumir ou mudar de forma persistente"
+      "alerting": "alertar apenas se a malha recorrente sumir ou mudar de forma persistente",
+      "template_behavior": "native"
     },
     "pivot_or_exit_point": {
       "monitoring": "usar quorum dos downstreams e continuidade da sequencia",
-      "alerting": "alertar quando o pivot desaparecer, trocar de ASN ou sair da posicao esperada"
+      "alerting": "alertar quando o pivot desaparecer, trocar de ASN ou sair da posicao esperada",
+      "template_behavior": "observational_or_synthetic"
     },
     "transit_external": {
       "monitoring": "preferir trigger sintetica por trecho; nao depender do ICMP do proprio hop",
-      "alerting": "alertar se houver troca persistente do fornecedor de transito ou quebra de caminho"
+      "alerting": "alertar se houver troca persistente do fornecedor de transito ou quebra de caminho",
+      "template_behavior": "observational_or_synthetic"
     },
     "service_family_facebook_meta": {
       "monitoring": "validar a familia Facebook/Meta como bloco de caminho e monitorar a continuidade do ramo",
-      "alerting": "alertar se a familia mudar de ASN, sumir do baseline ou virar rota alternativa persistente"
+      "alerting": "alertar se a familia mudar de ASN, sumir do baseline ou virar rota alternativa persistente",
+      "template_behavior": "observational_or_synthetic"
     },
     "destination": {
       "monitoring": "monitorar reachability e comportamento do destino final; ICMP complementar se fizer sentido",
-      "alerting": "alertar quando o destino cair, responder fora do padrao ou perder consistencia de caminho"
+      "alerting": "alertar quando o destino cair, responder fora do padrao ou perder consistencia de caminho",
+      "template_behavior": "native"
     },
     "unknown": {
       "monitoring": "preservar como gap de observacao e nao como host gerenciavel",
-      "alerting": "alertar apenas quando o gap persistir, crescer ou deslocar a posicao esperada"
+      "alerting": "alertar apenas quando o gap persistir, crescer ou deslocar a posicao esperada",
+      "template_behavior": "observational_or_synthetic"
     }
+  },
+  "native_template_policy": {
+    "allowed_classes": [
+      "local_recurring_backbone",
+      "destination"
+    ],
+    "blocked_classes": [
+      "pivot_or_exit_point",
+      "transit_external",
+      "service_family_facebook_meta",
+      "unknown"
+    ],
+    "default_template": "ICMP Ping",
+    "default_template_group": "Templates/Network devices"
   },
   "synthetic_trigger_candidates": [
     {
@@ -63,6 +83,7 @@
   },
   "notes": [
     "O mapa do Zabbix monitora apenas os hops com IP.",
-    "Os gaps de no-response permanecem no baseline e entram apenas na leitura de desvio."
+    "Os gaps de no-response permanecem no baseline e entram apenas na leitura de desvio.",
+    "A politica de template por classe agora esta explicitada para onboarding futuro."
   ]
 }
