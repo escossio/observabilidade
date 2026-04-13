@@ -1,0 +1,145 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "target": "57.144.128.34",
+  "baseline_path": [
+    "10.45.0.1",
+    "100.65.77.1",
+    "172.16.128.221",
+    "172.16.133.150",
+    "172.16.128.113",
+    "172.16.128.181",
+    "177.37.221.191",
+    "147.75.214.158",
+    "129.134.60.178",
+    "163.77.194.43",
+    "57.144.128.34"
+  ],
+  "baseline_hops": [
+    {
+      "order": 1,
+      "ip": "10.45.0.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "category": "private",
+      "class": "local_recurring_backbone",
+      "response": true,
+      "label": "10.45.0.1\nAS private\nPrivate / local network",
+      "source": "mtr-private"
+    },
+    {
+      "order": 2,
+      "ip": "100.65.77.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "category": "private",
+      "class": "local_recurring_backbone",
+      "response": true,
+      "label": "100.65.77.1\nAS private\nPrivate / local network",
+      "source": "mtr-private"
+    },
+    {
+      "order": 3,
+      "ip": "172.16.128.221",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "category": "private",
+      "class": "local_recurring_backbone",
+      "response": true,
+      "label": "172.16.128.221\nAS private\nPrivate / local network",
+      "source": "mtr-private"
+    },
+    {
+      "order": 4,
+      "ip": "172.16.133.150",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "category": "private",
+      "class": "local_recurring_backbone",
+      "response": true,
+      "label": "172.16.133.150\nAS private\nPrivate / local network",
+      "source": "mtr-private"
+    },
+    {
+      "order": 5,
+      "ip": "172.16.128.113",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "category": "private",
+      "class": "local_recurring_backbone",
+      "response": true,
+      "label": "172.16.128.113\nAS private\nPrivate / local network",
+      "source": "mtr-private"
+    },
+    {
+      "order": 6,
+      "ip": "172.16.128.181",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "category": "private",
+      "class": "local_recurring_backbone",
+      "response": true,
+      "label": "172.16.128.181\nAS private\nPrivate / local network",
+      "source": "mtr-private"
+    },
+    {
+      "order": 7,
+      "ip": "177.37.221.191",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "category": "public",
+      "class": "pivot_or_exit_point",
+      "response": true,
+      "label": "177.37.221.191\nAS28126\nBRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "source": "cache-ip"
+    },
+    {
+      "order": 8,
+      "ip": "147.75.214.158",
+      "asn": "AS???",
+      "company": "Unknown ASN",
+      "category": "public",
+      "class": "transit_external",
+      "response": true,
+      "label": "147.75.214.158\nAS???\nUnknown ASN",
+      "source": "fallback-unknown"
+    },
+    {
+      "order": 9,
+      "ip": "129.134.60.178",
+      "asn": "AS32934",
+      "company": "Facebook, Inc.",
+      "category": "public",
+      "class": "service_family_facebook_meta",
+      "response": true,
+      "label": "129.134.60.178\nAS32934\nFacebook, Inc.",
+      "source": "cache-ip"
+    },
+    {
+      "order": 10,
+      "ip": "163.77.194.43",
+      "asn": "AS???",
+      "company": "Unknown ASN",
+      "category": "public",
+      "class": "transit_external",
+      "response": true,
+      "label": "163.77.194.43\nAS???\nUnknown ASN",
+      "source": "fallback-unknown"
+    },
+    {
+      "order": 11,
+      "ip": "57.144.128.34",
+      "asn": "AS32934",
+      "company": "Facebook, Inc.",
+      "category": "public",
+      "class": "destination",
+      "response": true,
+      "label": "57.144.128.34\nAS32934\nFacebook, Inc.",
+      "source": "cache-ip"
+    }
+  ],
+  "first_seen": "2026-04-12T22:10:16.176908",
+  "notes": [
+    "Baseline inicial ancorado na coleta live de 2026-04-12.",
+    "A comparação futura deve usar a sequência de hops com IP como chave principal e tratar gaps como contexto auxiliar."
+  ]
+}

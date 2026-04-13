@@ -1,0 +1,29 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "route_validated_as_whole": true,
+  "target_reachable": true,
+  "baseline_recorded": true,
+  "map_created": true,
+  "map_name": "MTR Route - 57.144.128.34",
+  "sysmapid": "17",
+  "global_map_changed": false,
+  "global_map_snapshot": {
+    "sysmapid": "10",
+    "name": "MTR Unified - Brisanet Observed",
+    "selements": 63,
+    "links": 65
+  },
+  "map_snapshot": {
+    "sysmapid": "17",
+    "name": "MTR Route - 57.144.128.34",
+    "selements": 11,
+    "links": 10
+  },
+  "observed_hop_count": 11,
+  "mapable_hop_count": 11,
+  "notes": [
+    "A coleta live fechou com sysmap novo 17 para 57.144.128.34.",
+    "O mapa global canônico permaneceu no sysmapid 10.",
+    "Os no-response nao entraram no mapa individual porque o Zabbix nao aceita elementos vazios."
+  ]
+}

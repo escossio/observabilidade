@@ -2,6 +2,57 @@
 
 # Status
 
+## 2026-04-12 - rota individual oficial de 57.144.128.34 inaugurada
+
+- destino inaugural da familia Facebook/Meta:
+  - `57.144.128.34`
+- rota individual oficial criada com:
+  - `route_id route-facebook-57-144-128-34`
+  - `map_name MTR Route - 57.144.128.34`
+  - `sysmapid 17`
+- o baseline inicial da rota foi salvo em:
+  - `routes/57.144.128.34/20260412-221004-784900/route_baseline.json`
+- os artefatos formais da rota individual ficaram em:
+  - `routes/57.144.128.34/20260412-221004-784900/`
+- a classificação separou a rota em:
+  - `local_recurring_backbone`
+  - `pivot_or_exit_point`
+  - `transit_external`
+  - `service_family_facebook_meta`
+  - `destination`
+- a malha local reutilizou o edge Brisanet candidato `177.37.221.191`
+- o mapa global canônico permaneceu intacto em:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- o reconciliador continuou a criar o sysmap vazio primeiro e a renderizar somente hops com IP no Zabbix
+
+## 2026-04-12 - rota individual oficial de dell.com inaugurada
+
+- destino inaugural do novo fluxo:
+  - `dell.com`
+- rota individual oficial criada com:
+  - `route_id route-dell-com`
+  - `map_name MTR ASN - dell.com`
+  - `sysmapid 16`
+- o baseline inicial da rota foi salvo em:
+  - `routes/dell.com/20260412-220216-226816/route_baseline.json`
+- os artefatos formais da rota individual ficaram em:
+  - `routes/dell.com/20260412-220216-226816/`
+- a classificação separou a rota em:
+  - `local_recurring_backbone`
+  - `pivot_or_exit_point`
+  - `transit_external`
+  - `service_family_dell_att`
+  - `destination`
+  - `unknown`
+- o mapa global canônico permaneceu intacto em:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- o reconciliador foi ajustado para:
+  - criar o sysmap vazio primeiro
+  - renderizar apenas hops com IP no Zabbix
+  - manter os `no-response` só como evidência e não como elementos vazios
+
 ## 2026-04-07 - debian2 espelhado no baseline do AGT
 
 - baseline de referência:

@@ -1,0 +1,11 @@
+{
+  "source": "mtr-hop-map",
+  "target": "57.144.128.34",
+  "target_slug": "57-144-128-34",
+  "mode": "live",
+  "last_trace": "20260412-221004-784900",
+  "dry_run": false,
+  "native_tags_supported": false,
+  "map_name": "MTR Route - 57.144.128.34",
+  "sysmapid": "17"
+}

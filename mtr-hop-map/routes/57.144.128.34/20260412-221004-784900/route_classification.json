@@ -1,0 +1,148 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "hops": [
+    {
+      "order": 1,
+      "ip": "10.45.0.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "class": "local_recurring_backbone",
+      "reason": [
+        "malha_local_privada_recorrente"
+      ]
+    },
+    {
+      "order": 2,
+      "ip": "100.65.77.1",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "class": "local_recurring_backbone",
+      "reason": [
+        "malha_local_privada_recorrente"
+      ]
+    },
+    {
+      "order": 3,
+      "ip": "172.16.128.221",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "class": "local_recurring_backbone",
+      "reason": [
+        "malha_local_privada_recorrente"
+      ]
+    },
+    {
+      "order": 4,
+      "ip": "172.16.133.150",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "class": "local_recurring_backbone",
+      "reason": [
+        "malha_local_privada_recorrente"
+      ]
+    },
+    {
+      "order": 5,
+      "ip": "172.16.128.113",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "class": "local_recurring_backbone",
+      "reason": [
+        "malha_local_privada_recorrente"
+      ]
+    },
+    {
+      "order": 6,
+      "ip": "172.16.128.181",
+      "asn": "AS private",
+      "company": "Private / local network",
+      "class": "local_recurring_backbone",
+      "reason": [
+        "malha_local_privada_recorrente"
+      ]
+    },
+    {
+      "order": 7,
+      "ip": "177.37.221.191",
+      "asn": "AS28126",
+      "company": "BRISANET SERVICOS DE TELECOMUNICACOES S.A",
+      "class": "pivot_or_exit_point",
+      "reason": [
+        "edge_brisanet_candidate_reutilizado_do_tronco_observado"
+      ]
+    },
+    {
+      "order": 8,
+      "ip": "147.75.214.158",
+      "asn": "AS???",
+      "company": "Unknown ASN",
+      "class": "transit_external",
+      "reason": [
+        "transito_externo_ou_ASN_nao_resolvido_no_bordeamento_meta"
+      ]
+    },
+    {
+      "order": 9,
+      "ip": "129.134.60.178",
+      "asn": "AS32934",
+      "company": "Facebook, Inc.",
+      "class": "service_family_facebook_meta",
+      "reason": [
+        "familia_service_meta_observada_antes_do_destino"
+      ]
+    },
+    {
+      "order": 10,
+      "ip": "163.77.194.43",
+      "asn": "AS???",
+      "company": "Unknown ASN",
+      "class": "transit_external",
+      "reason": [
+        "transito_externo_ou_ASN_nao_resolvido_no_bordeamento_meta"
+      ]
+    },
+    {
+      "order": 11,
+      "ip": "57.144.128.34",
+      "asn": "AS32934",
+      "company": "Facebook, Inc.",
+      "class": "destination",
+      "reason": [
+        "destino_final_facebook_meta"
+      ]
+    }
+  ],
+  "class_by_hop": {
+    "1": "local_recurring_backbone",
+    "2": "local_recurring_backbone",
+    "3": "local_recurring_backbone",
+    "4": "local_recurring_backbone",
+    "5": "local_recurring_backbone",
+    "6": "local_recurring_backbone",
+    "7": "pivot_or_exit_point",
+    "8": "transit_external",
+    "9": "service_family_facebook_meta",
+    "10": "transit_external",
+    "11": "destination"
+  },
+  "recurring_local_nodes": [
+    "10.45.0.1",
+    "100.65.77.1",
+    "172.16.128.221",
+    "172.16.133.150",
+    "172.16.128.113",
+    "172.16.128.181"
+  ],
+  "external_transit_nodes": [
+    "147.75.214.158",
+    "163.77.194.43"
+  ],
+  "destination_node": "57.144.128.34",
+  "notes": [
+    "Os primeiros 6 hops privados formam a malha local recorrente.",
+    "177.37.221.191 reaproveita o edge Brisanet candidato já observado em corpus anterior.",
+    "147.75.214.158 e 163.77.194.43 ficam como trânsito externo.",
+    "129.134.60.178 representa a familia Facebook/Meta antes do destino final.",
+    "Os gaps sem resposta foram mantidos como unknown para comparacao futura de desvio."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "route_map": {
+    "sysmapid": "17",
+    "name": "MTR Route - 57.144.128.34",
+    "selements": 11,
+    "links": 10
+  },
+  "global_map": {
+    "sysmapid": "10",
+    "name": "MTR Unified - Brisanet Observed",
+    "selements": 63,
+    "links": 65
+  }
+}

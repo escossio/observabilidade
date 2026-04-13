@@ -1,0 +1,68 @@
+{
+  "route_id": "route-facebook-57-144-128-34",
+  "policy_by_class": {
+    "local_recurring_backbone": {
+      "monitoring": "validar recorrencia e saude dos trechos adjacentes; evitar ICMP por hop como gatilho principal",
+      "alerting": "alertar apenas se a malha recorrente sumir ou mudar de forma persistente"
+    },
+    "pivot_or_exit_point": {
+      "monitoring": "usar quorum dos downstreams e continuidade da sequencia",
+      "alerting": "alertar quando o pivot desaparecer, trocar de ASN ou sair da posicao esperada"
+    },
+    "transit_external": {
+      "monitoring": "preferir trigger sintetica por trecho; nao depender do ICMP do proprio hop",
+      "alerting": "alertar se houver troca persistente do fornecedor de transito ou quebra de caminho"
+    },
+    "service_family_facebook_meta": {
+      "monitoring": "validar a familia Facebook/Meta como bloco de caminho e monitorar a continuidade do ramo",
+      "alerting": "alertar se a familia mudar de ASN, sumir do baseline ou virar rota alternativa persistente"
+    },
+    "destination": {
+      "monitoring": "monitorar reachability e comportamento do destino final; ICMP complementar se fizer sentido",
+      "alerting": "alertar quando o destino cair, responder fora do padrao ou perder consistencia de caminho"
+    },
+    "unknown": {
+      "monitoring": "preservar como gap de observacao e nao como host gerenciavel",
+      "alerting": "alertar apenas quando o gap persistir, crescer ou deslocar a posicao esperada"
+    }
+  },
+  "synthetic_trigger_candidates": [
+    {
+      "ip": "177.37.221.191",
+      "role": "pivot_or_exit_point",
+      "reason": "edge Brisanet candidato no tronco observado"
+    },
+    {
+      "ip": "147.75.214.158",
+      "role": "transit_external",
+      "reason": "transito externo antes da familia Meta"
+    },
+    {
+      "ip": "129.134.60.178",
+      "role": "service_family_facebook_meta",
+      "reason": "familia Meta antes do destino final"
+    },
+    {
+      "ip": "57.144.128.34",
+      "role": "destination",
+      "reason": "destino final Facebook/Meta"
+    }
+  ],
+  "destination_check_strategy": {
+    "primary": "checar reachability e comportamento do destino final em 57.144.128.34",
+    "secondary": "usar ICMP complementar se o destino continuar consistente",
+    "service": "preparar checagem de servico quando houver forma adequada de validar a resposta final"
+  },
+  "route_change_detection_strategy": {
+    "baseline_key": "sequencia ordenada de hops com IP",
+    "comparison": "comparar baseline_path com current_path em ordem, preservando gaps como contexto auxiliar",
+    "changed_temporarily": "divergencia isolada que some na proxima coleta ou nao se repita",
+    "changed_persistently": "a mesma divergencia repetida em coletas consecutivas ou em janela curta",
+    "promoted_new_path": "rota alternativa consolidada que supera a baseline por recorrencia",
+    "anomaly": "perda do destino, salto inesperado de ASN/familia ou aumento brusco de gaps sem padrao estavel"
+  },
+  "notes": [
+    "O mapa do Zabbix monitora apenas os hops com IP.",
+    "Os gaps de no-response permanecem no baseline e entram apenas na leitura de desvio."
+  ]
+}

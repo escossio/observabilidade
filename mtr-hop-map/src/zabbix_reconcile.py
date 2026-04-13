@@ -83,30 +83,12 @@ def _build_host_element(
     }
 
 
-def _build_placeholder_element(label: str, imageid: str, x: int, y: int, order: int) -> dict[str, Any]:
-    return {
-        "elementtype": 0,
-        "iconid_off": imageid,
-        "iconid_on": imageid,
-        "iconid_disabled": imageid,
-        "iconid_maintenance": imageid,
-        "label": label,
-        "label_location": -1,
-        "x": str(x),
-        "y": str(y),
-        "width": "96",
-        "height": "96",
-        "viewtype": 0,
-        "use_iconmap": 0,
-        "evaltype": 0,
-        "show_label": -1,
-        "zindex": str(max(0, order - 1)),
-        "urls": [],
-    }
-
-
 def _ordered_hops(hops: list[Hop]) -> list[Hop]:
     return sorted(hops, key=lambda hop: hop.order)
+
+
+def _mapable_hops(hops: list[Hop]) -> list[Hop]:
+    return [hop for hop in _ordered_hops(hops) if hop.category != "no-response" and hop.ip not in {"", "*"}]
 
 
 def _build_nodes(
@@ -117,15 +99,14 @@ def _build_nodes(
     host_groupid: str,
     templateid: str,
 ) -> tuple[list[MapNode], list[str], list[dict[str, Any]]]:
-    layout = build_layout(len(hops), config.left_margin, config.top_margin, config.hop_spacing)
     nodes: list[MapNode] = []
     hostids: list[str] = []
     host_actions: list[dict[str, Any]] = []
 
-    for hop, (x, y) in zip(_ordered_hops(hops), layout):
-        if hop.category == "no-response" or not hop.ip or hop.ip in {"*", ""}:
-            nodes.append(MapNode(hop=hop, element=_build_placeholder_element(hop.label, imageid, x, y, hop.order), hostid=None))
-            continue
+    mapable_hops = _mapable_hops(hops)
+    layout = build_layout(len(mapable_hops), config.left_margin, config.top_margin, config.hop_spacing)
+
+    for hop, (x, y) in zip(mapable_hops, layout):
 
         identity = build_identity(hop)
         host_result: HostEnsureResult = api.ensure_host(
@@ -161,15 +142,14 @@ def _plan_nodes(
     host_groupid: str,
     templateid: str,
 ) -> tuple[list[MapNode], list[str], list[dict[str, Any]]]:
-    layout = build_layout(len(hops), config.left_margin, config.top_margin, config.hop_spacing)
     nodes: list[MapNode] = []
     hostids: list[str] = []
     host_actions: list[dict[str, Any]] = []
 
-    for hop, (x, y) in zip(_ordered_hops(hops), layout):
-        if hop.category == "no-response" or not hop.ip or hop.ip in {"*", ""}:
-            nodes.append(MapNode(hop=hop, element=_build_placeholder_element(hop.label, imageid, x, y, hop.order), hostid=None))
-            continue
+    mapable_hops = _mapable_hops(hops)
+    layout = build_layout(len(mapable_hops), config.left_margin, config.top_margin, config.hop_spacing)
+
+    for hop, (x, y) in zip(mapable_hops, layout):
 
         identity = build_identity(hop)
         host_result: HostEnsureResult = api.plan_host(
@@ -381,7 +361,6 @@ def ensure_map_for_destination(
                 "background_scale": "1",
                 "show_element_label": "1",
                 "show_link_label": "0",
-                "selements": [node.element for node in desired_nodes],
             },
         )
         existing_map = api.get_map(map_name)

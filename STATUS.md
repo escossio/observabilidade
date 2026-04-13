@@ -1,5 +1,143 @@
 # Status
 
+## 2026-04-12 - baseline SNMP core da ONT/AP 10.45.0.7 aplicado no Zabbix
+
+- template criado: `Template SNMP Core - MitraStar ONT AP` (`templateid 10845`)
+- host criado: `MitraStar ONT/AP 10.45.0.7` (`hostid 10846`) em `Network devices`
+- itens aplicados: 19 itens SNMP fixos, sem LLD e sem subtree enterprise
+- coleta validada no host para `sysDescr.0`, `sysUpTime.0`, `sysName.0`, `ifNumber.0`, `br0`, `eth0` e `ra0`
+- `ifXTable` continua ausente, então o baseline ficou preso a contadores 32-bit
+- nenhum item ficou `unsupported`
+- triggers mantidas: indisponibilidade SNMP e `br0` oper down com admin up
+- trigger de `eth0` foi removida por risco de falso positivo; `ra0` ficou sem trigger dedicada
+- limitações restantes:
+  - correlação IP x interface continua parcialmente inconsistente entre CLI e SNMP
+  - 5 GHz continua sem `ifIndex` dedicado no `ifTable`
+
+## 2026-04-12 - revisao final do inventario SNMP da ONT 10.45.0.7 concluida
+
+- inventario e baseline minimo revalidados a partir de `snmp_interfaces.txt` e `snmp_ip.txt`
+- `br0` continua sendo a bridge principal na CLI, mas o SNMP anexou `10.45.0.7` e `1.1.1.1` ao `ifIndex 17`; correlacao nao e 1:1
+- `wl1`/5 GHz apareceu na CLI, mas nao ganhou `ifIndex` dedicado no `ifTable`
+- contadores disponiveis continuam sendo `ifInOctets`/`ifOutOctets` de 32 bits
+- subtree `1.3.6.1.4.1.3136.31` segue como candidato numerico sem MIB legivel
+
+## 2026-04-12 - baseline SNMP minimo e inventario de interfaces da ONT 10.45.0.7 consolidados
+
+- artefatos gerados em `artifacts/ont_10.45.0.7/`
+- inventario de 25 interfaces consolidado em `interface_inventory.csv` e `interface_inventory.md`
+- baseline minimo recomendado registrado em `zabbix_baseline_minimo.md`
+- subtree enterprise sem MIB legivel mantida apenas como candidato futuro em `enterprise_candidates.md`
+- conclusao operacional:
+  - interfaces core para Zabbix: `br0`, `eth0` e `ra0`
+  - opcionais de transporte interno: `eth0.2`, `eth0.3` e `eth0.5`
+  - contadores disponiveis sao 32-bit, entao coleta precisa ser curta
+  - SNMP 5 GHz nao ficou mapeado por ifDescr nesta rodada
+
+## 2026-04-12 - probe SNMP somente leitura na ONT 10.45.0.7 concluido
+
+- SNMP respondeu em `UDP/161`
+- comunidade funcional: `public`
+- versoes que responderam: `v1` e `v2c`
+- `private` nao respondeu nas tentativas conservadoras
+- `sysDescr.0` retornou `MitraStar Gateway Software Version BR_SV_1.11(WVK.0)b20`
+- `sysName.0` e `sysContact.0` retornaram `MitraStar`
+- `ifTable` respondeu com 25 interfaces
+- `ipAddressTable` respondeu com `10.45.0.7`, `1.1.1.1` e `127.0.0.1`
+- `ipNetToMediaTable` respondeu com entradas para `10.45.0.3` e `10.45.0.208`
+- `1.3.6.1.4.1.3136.31` respondeu com arvore numerica de contadores, sem nomes descritivos uteis
+- `1.3.6.1.2.1.17` e `1.3.6.1.2.1.25` nao responderam como subtrees padrao
+- artefatos gerados em `artifacts/ont_10.45.0.7/`
+- conclusao operacional:
+  - SNMP e util para inventario basico e monitoramento de interface/ARP
+  - os melhores candidatos imediatos para Zabbix sao `sysDescr`, `sysUpTime`, `ifDescr`, trafego de interface e tabela ARP
+
+## 2026-04-12 - varredura SSH somente leitura na ONT 10.45.0.7 concluida
+
+- alvo: `10.45.0.7`
+- usuario SSH: `support`
+- porta SSH: `22`
+- banner SSH observado: `SSH-2.0-dropbear_2017.75`
+- login SSH confirmado com CLI proprietaria de fabricante, nao shell Linux generico
+- artefatos gerados em `artifacts/ont_10.45.0.7/`
+- conclusao operacional:
+  - ONT/ONU GPON com Wi-Fi dual-band e funcoes de roteador/AP
+  - TR-069 ativo
+  - estado PON `O1`
+  - firmware `100WVK0b1`
+  - serial `MSTC36008821`
+  - SSID `wifi` ativo nas bandas 2.4 GHz e 5 GHz
+  - inventario de processos do SO nao ficou acessivel pela CLI restrita
+- observacao:
+  - `deviceinfo show config` pediu senha adicional e foi interrompido sem prosseguimento
+  - sem alteracao de configuracao, sem reboot, sem reset e sem escrita no equipamento
+
+## 2026-04-10 - validacao textual de 2 turnos no Livecopilot publico falhou por backend nao observado
+
+- rodada executada na VM `10.45.0.4` com o runner novo em `/srv/validator`
+- comando usado:
+  - `/srv/validator/bin/run-validator.sh --url https://livecopilot.escossio.dev.br/ --iface enp1s0 --name livecopilot-text-two-turn-v4 --scenario text-two-turn`
+- pasta final da rodada:
+  - `/srv/validator/runs/20260410T225029Z-livecopilot-text-two-turn-v4`
+- artefatos confirmados:
+  - `capture.pcap`
+  - `browser-console.json`
+  - `browser-network.json`
+  - `page-initial.png`
+  - `page-turn1.png`
+  - `page.png`
+  - `summary.md`
+  - `browser-summary.json`
+- artefato ausente por falha antes do segundo passo:
+  - `page-turn2.png`
+- resumo operacional:
+  - `http_status_inicial: 200`
+  - `final_url: https://livecopilot.escossio.dev.br/`
+  - `titulo: livecopilot`
+  - `quantidade_requests: 6`
+  - `erros_console: 1`
+  - `falhas_rede: 0`
+  - `veredito: FAIL`
+  - `classificacao_falha: BACKEND_CALL_NOT_OBSERVED`
+- evidencia observada:
+  - o textarea `#chat-input` foi encontrado
+  - o botao `#chat-submit` foi encontrado
+  - o prompt do turno 1 foi digitado e a UI ficou em estado de envio
+  - nao houve chamada posterior observavel da aplicação apos o envio
+  - o websocket `wss://livecopilot.escossio.dev.br/ws` abriu, mas so recebeu o estado inicial, sem frame de envio do turno
+- leitura operacional:
+  - a pagina publica sobe e a UI aceita o texto, mas o fluxo de conversa fica travado antes da chamada de backend que deveria produzir a resposta
+  - isso impede validar o turno 2 e caracteriza falha de integracao/fluxo, nao falha de carregamento
+
+## 2026-04-10 - validacao publica da VM 10.45.0.4 contra livecopilot concluida com PASS
+
+- rodada executada na VM `10.45.0.4` com o runner novo em `/srv/validator`
+- comando usado:
+  - `/srv/validator/bin/run-validator.sh --url https://livecopilot.escossio.dev.br/ --iface enp1s0 --name livecopilot-publico`
+- pasta final da rodada:
+  - `/srv/validator/runs/20260410T223755Z-livecopilot-publico`
+- artefatos confirmados:
+  - `capture.pcap`
+  - `browser-console.json`
+  - `browser-network.json`
+  - `page.png`
+  - `summary.md`
+- resumo operacional:
+  - `http_status_inicial: 200`
+  - `final_url: https://livecopilot.escossio.dev.br/`
+  - `quantidade_requests: 6`
+  - `erros_console: 1`
+  - `falhas_rede: 0`
+  - `veredito: PASS`
+- leitura do unico erro de console:
+  - `404` em `https://livecopilot.escossio.dev.br/favicon.ico`
+  - isso ficou como erro de asset, sem falha de navegacao ou de rede principal
+- websocket:
+  - nao houve evidência de websocket nos eventos coletados de rede
+- leitura operacional:
+  - o alvo publico sobe, responde `200`, carrega CSS e JS principais e completa a navegacao da pagina
+  - o 404 do favicon nao bloqueou a validacao
+
 ## 2026-04-10 - VM 10.45.0.4 saneada com runner autocontido e rodada real local concluida
 
 - VM alvo confirmada:
@@ -177,6 +315,42 @@
   - `artifacts/handoff_synthetic_test_mode.md`
 
 # Status
+
+## 2026-04-12 - rota individual oficial de dell.com inaugurada
+
+- rota individual registrada com:
+  - `route_id route-dell-com`
+  - `map_name MTR ASN - dell.com`
+  - `sysmapid 16`
+- a coleta desta rodada foi `live` e fechou com baseline inicial salvo em:
+  - `mtr-hop-map/routes/dell.com/20260412-220216-226816/route_baseline.json`
+- a classificação separou a rota em:
+  - malha local recorrente
+  - pivô/saída
+  - trânsito externo
+  - família de serviço Dell/AT&T
+  - destino
+  - gaps `unknown`
+- o mapa canônico global permaneceu intacto em:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- snapshot atual do canônico permanece em:
+  - `63` selements
+  - `65` links
+- a evidência e os artefatos da rota individual ficaram em:
+  - `mtr-hop-map/routes/dell.com/20260412-220216-226816/`
+- ajuste estrutural aplicado no reconciliador:
+  - `mtr-hop-map/src/zabbix_reconcile.py`
+  - sysmap agora é criado vazio primeiro
+  - somente hops com IP entram no mapa do Zabbix
+
+## 2026-04-12 - revisao final do inventario SNMP da ONT 10.45.0.7 concluida
+
+- inventario e baseline minimo revalidados a partir de `snmp_interfaces.txt` e `snmp_ip.txt`
+- `br0` continua sendo a bridge principal na CLI, mas o SNMP anexou `10.45.0.7` e `1.1.1.1` ao `ifIndex 17`; correlacao nao e 1:1
+- `wl1`/5 GHz apareceu na CLI, mas nao ganhou `ifIndex` dedicado no `ifTable`
+- contadores disponiveis continuam sendo `ifInOctets`/`ifOutOctets` de 32 bits
+- subtree `1.3.6.1.4.1.3136.31` segue como candidato numerico sem MIB legivel
 
 ## 2026-04-08 - modo de teste seguro para triggers sintéticas habilitado
 
@@ -2038,6 +2212,35 @@
 - o `delay` do item mestre foi devolvido para `1m` após a validação inicial
 # Status
 
+## 2026-04-12 - rota individual oficial de 57.144.128.34 inaugurada
+
+- rota individual criada para a familia Facebook/Meta com:
+  - `route_id route-facebook-57-144-128-34`
+  - `map_name MTR Route - 57.144.128.34`
+  - `sysmapid 17`
+- a coleta foi `live` e fechou com baseline inicial salvo em:
+  - `mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/route_baseline.json`
+- os nós recorrentes locais ficaram concentrados nos primeiros 6 hops privados
+- o tronco observado reaproveitou `177.37.221.191` como pivot Brisanet de saída
+- `147.75.214.158` e `163.77.194.43` foram registrados como trânsito externo
+- `129.134.60.178` foi classificado como familia Facebook/Meta antes do destino final
+- o mapa global canônico permaneceu intacto em:
+  - `MTR Unified - Brisanet Observed`
+  - `sysmapid 10`
+- snapshot atual do canônico permanece em:
+  - `63` selements
+  - `65` links
+- a evidência e os artefatos da rota individual ficaram em:
+  - `mtr-hop-map/routes/57.144.128.34/20260412-221004-784900/`
+
+## 2026-04-12 - revisao final do inventario SNMP da ONT 10.45.0.7 concluida
+
+- inventario e baseline minimo revalidados a partir de `snmp_interfaces.txt` e `snmp_ip.txt`
+- `br0` continua sendo a bridge principal na CLI, mas o SNMP anexou `10.45.0.7` e `1.1.1.1` ao `ifIndex 17`; correlacao nao e 1:1
+- `wl1`/5 GHz apareceu na CLI, mas nao ganhou `ifIndex` dedicado no `ifTable`
+- contadores disponiveis continuam sendo `ifInOctets`/`ifOutOctets` de 32 bits
+- subtree `1.3.6.1.4.1.3136.31` segue como candidato numerico sem MIB legivel
+
 ## 2026-04-07 - mapa unificado expandido com Prime Video, Instagram e Microsoft/Akamai
 
 - a camada `mtr-hop-map/aggregate` publicou nova evolução do mapa canônico único:
@@ -2068,6 +2271,14 @@
 - os mapas por destino permaneceram intactos e o mapa canônico continuou sendo o `sysmapid 10`
 # Status
 
+## 2026-04-12 - revisao final do inventario SNMP da ONT 10.45.0.7 concluida
+
+- inventario e baseline minimo revalidados a partir de `snmp_interfaces.txt` e `snmp_ip.txt`
+- `br0` continua sendo a bridge principal na CLI, mas o SNMP anexou `10.45.0.7` e `1.1.1.1` ao `ifIndex 17`; correlacao nao e 1:1
+- `wl1`/5 GHz apareceu na CLI, mas nao ganhou `ifIndex` dedicado no `ifTable`
+- contadores disponiveis continuam sendo `ifInOctets`/`ifOutOctets` de 32 bits
+- subtree `1.3.6.1.4.1.3136.31` segue como candidato numerico sem MIB legivel
+
 ## 2026-04-07 - acabamento visual do mapa unificado no sysmapid 10
 
 - o mapa canônico único `MTR Unified - Brisanet Observed` foi refinado só no visual
@@ -2082,6 +2293,14 @@
 - o tronco foi mantido horizontal no topo e as famílias externas foram separadas em bandas
 - as ligações não foram recalculadas; só a apresentação visual mudou
 # Status
+
+## 2026-04-12 - revisao final do inventario SNMP da ONT 10.45.0.7 concluida
+
+- inventario e baseline minimo revalidados a partir de `snmp_interfaces.txt` e `snmp_ip.txt`
+- `br0` continua sendo a bridge principal na CLI, mas o SNMP anexou `10.45.0.7` e `1.1.1.1` ao `ifIndex 17`; correlacao nao e 1:1
+- `wl1`/5 GHz apareceu na CLI, mas nao ganhou `ifIndex` dedicado no `ifTable`
+- contadores disponiveis continuam sendo `ifInOctets`/`ifOutOctets` de 32 bits
+- subtree `1.3.6.1.4.1.3136.31` segue como candidato numerico sem MIB legivel
 
 ## 2026-04-07 - origem remota debian2-1 preparada para coleta
 
